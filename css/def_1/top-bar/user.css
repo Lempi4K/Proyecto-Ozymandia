@@ -1,0 +1,205 @@
+.user{
+    margin: auto 0 auto auto;
+}
+
+.user > label{
+    position: relative;
+}
+
+.user-button{
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    height: 30px;
+    border: var(--color_4) 1px solid;
+    border-radius: 15px;
+    padding: 10px;
+}
+.user-button[data-perm="I"]{
+    background-color: var(--user-color_I);
+}
+.user-button[data-perm="U"]{
+    background-color: var(--user-color_U);
+}
+.user-button[data-perm="A"]{
+    background-color: var(--user-color_A);
+}
+.user-button[data-perm="D"]{
+    background-color: var(--user-color_D);
+}
+.user-button[data-perm="M"]{
+    background-color: var(--user-color_M);
+}
+.user-button[data-perm="P"]{
+    background-color: var(--user-color_P);
+}
+.user-button[data-perm="J"]{
+    background-color: var(--user-color_J);
+}
+
+.user-button > i{
+    margin-right: 10px;
+}
+
+#inpChkbxUser{
+    display: none;
+}
+
+#user-hide-menu{
+    display: none;
+    position: absolute;
+    top: 40px;
+    right: 0px;
+    overflow: hidden;
+    background-color: var(--color_1);
+    border: var(--color_4) 1px solid;
+    border-top: 0px;
+    z-index: 99;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+#main-menu{
+    position: relative;
+}
+
+#main-menu, .UHM-submenu{
+    background-color: var(--color_1);
+    width: 300px;
+    padding: 10px;
+
+}
+
+#user-hide-menu > ul > li{
+    list-style: none;
+}
+
+#user-hide-menu > ul > li > p{
+    color: var(--font-color_1);
+}
+
+#user-hide-menu > ul > li > a{
+    text-decoration: none;
+    color: var(--font_color_1);
+    display: flex;
+    align-items: center;
+    height: 30px;
+    padding: 5px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.1s ease-in-out 0s;
+    -webkit-tap-highlight-color: transparent;
+    font-weight: bold;
+    color: var(--font-color_1);
+}
+
+#user-hide-menu > ul > li > a:hover{
+    background-color: var(--hover-color_5);
+}
+#user-hide-menu > ul > li > a:active{
+    background-color: var(--select-color_5);
+}
+
+#user-hide-menu > ul > li > a:last-child{
+    margin-bottom: 0px;
+}
+
+#user-hide-menu > ul > li > a > i{
+    width: 20px;
+    text-align: center;
+    margin-right: 5px;
+    color: var(--logo_color)
+}
+
+.UHM-submenu{
+    position: absolute;
+    top: 0px;
+    left: 300px;
+}
+
+.UHM-submenu > div{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.UHM-submenu > div > a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50px;
+    padding: 5px 10px;
+    margin-right: 10px;
+    margin-left: 5px;
+    transition: background-color 0.1s ease-in-out 0s;
+    -webkit-tap-highlight-color: transparent;
+    color: var(--font-color_1);
+}
+
+.UHM-submenu > div > a:hover{
+    background-color:  var(--hover-color_5);
+}
+.UHM-submenu > div > a:active{
+    background-color:  var(--select-color_5);
+}
+
+.UHM-submenu > div > a > i{
+    border-radius: 50px;
+}
+
+.UHM-submenu > div h3{
+    margin-left: 10px;
+    font-weight: bold;
+    cursor: default;
+    color: var(--font-color_1);
+}
+
+.UHM-submenu > li{
+    position:relative;
+    padding: 10px;
+    padding-left: 35px
+}
+
+.UHM-submenu > li:last-child{
+    padding-bottom: 0px;
+}
+
+.UHM-submenu > li > i{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    padding: 3px;
+    border-radius: 10px;
+    background-color: var(--color_6);
+    color: var(--logo_color)
+}
+
+.UHM-submenu > li > h4{
+    height: 20px;
+    color: var(--font-color_1);
+}
+
+.UHM-submenu > li > ul{
+    display: flex;
+    flex-direction: column;
+    margin: 5px 0;
+}
+
+.UHM-submenu > li > ul:last-child{
+    margin-bottom: 0px;
+}
+
+.UHM-submenu > li > ul > li{
+    list-style: none;
+    border-radius: 5px;
+    transition: background-color 0.1s ease-in-out 0s;
+
+}
+.UHM-submenu > li > ul > li:hover{
+    background-color: var(--hover-color_5);
+
+}
+.UHM-submenu > li > ul > li > label{
+    padding: 5px;
+    color: var(--font-color_1);
+}

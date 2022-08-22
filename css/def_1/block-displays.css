@@ -1,0 +1,38 @@
+:root{  
+    --doc-height: 100%;
+}
+.block-display-container{
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: var(--doc-height);
+    background-color: rgb(255, 255, 255);
+    position: fixed;
+    z-index: 29;
+}
+
+.block-display-container > p{
+    display: block;
+    text-align: center;
+    padding: 20px;
+    background-color: #a61c41;
+    color: white;
+    font-weight: bold;
+    font-family:  var(--font-warning);
+    font-size: 20px;
+    cursor: default;
+    animation: blockPopIt 0.5s ease-in-out infinite normal forwards;
+}
+
+@keyframes blockPopIt {
+    0%{
+        transform: scale(1);
+    }
+    50%{
+        transform: scale(1.05);
+    }
+    100%{
+        transform: scale(1);
+    }
+}

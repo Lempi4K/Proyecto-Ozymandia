@@ -1,0 +1,48 @@
+.profile-data-container{
+    padding: 20px;
+}
+
+.profile-data-div{
+    margin-bottom: 20px;
+}
+
+.profile-data-container > div:last-child{
+    margin-bottom: 0px;
+}
+
+.profile-data-header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.profile-data-header > *{
+    font-size: 20px;
+}
+
+.profile-data-header > i{
+    margin-right: 10px;
+}
+
+.profile-data-header > p{
+    font-weight: bold;
+}
+
+.profile-data-item{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 10px;
+
+}
+
+.profile-data-item > p:first-child{
+    margin-bottom: 5px;
+}
+
+.profile-data-item > p:last-child{
+    border-top: var(--font-color_4) 1px solid;
+    width: max-content;
+    color: var(--font-color_4);
+}

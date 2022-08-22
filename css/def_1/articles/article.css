@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+.article{
+    width: 100%;
+    padding: 15px;
+    border: var(--article-color_1) 1px solid;
+    border-radius: 10px;
+}
+
+.article_head{
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.article_head > div > p:first-child{
+    font-weight: bold;
+    font-size: 15px;
+}
+.article_head > div > p:last-child{
+    font-size: 13px;
+}
+
+.article_userPic{
+    display: block;
+    padding: 10px;
+    font-size: 20px;
+    background-color: blue;
+    border-radius: 100%;
+    margin-right: 5px;
+    color: white;
+}
+
+.article_head > input[type="button"]{
+    margin-left: auto;
+    padding: 10px;
+    border-radius: 18px;
+    border: var(--article-color_1) 1px solid;
+    background-color: var(--logo_color);
+    color: var(--font-color_2);
+    font-weight: bold;
+}
+
+.article_title{
+    font-family: var(--font-text);
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.article hr{
+    margin: 10px 0px;
+    color: var(--article1--text-color_1);
+}
+
+.article_container p, .article_container a, .article_container ul, .article_container b, .article_container u, .article_container i{
+    font-family: var(--font-text);
+}
+
+.article_subtitle_1{
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.article_text, .article_text_list, .article_text_link{
+    font-size: 12px;
+    font-weight: normal;
+}
+.article b, .article u, .article i{
+    font-size: 12px;
+}
+
+.article_subtitle_2{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.article_linkBtn{
+    font-size: 13px;
+    text-decoration: none;
+    
+}
+
+.article_end{
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.article_text_list{
+    margin: 0 2em; 
+}
+
+.article_video > iframe{
+    width: 100%;
+    border-radius: 5px;
+}
+
+.article_img > img{
+    width: 100%;
+    border-radius: 5px;
+}
+
+.article_link_img > a{
+    display: block;
+    line-height: 0px;
+}
+
+.article_link_img > a > img{
+    width: 100%;
+    border-radius: 5px;
+}
+
+.article_linkBtn{
+    display: block;
+    width: max-content;
+    text-decoration: none;
+    border: var(--article-color_1) 1px solid;
+    padding: 5px;
+    margin: 0 auto 20px;
+}

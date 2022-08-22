@@ -1,0 +1,102 @@
+.navigation{
+    flex: 1;
+    height: 100%;
+    background-color: var(--color_2);
+    border-right: var(--color_4) 2px solid;
+    overflow-y: auto;
+    overflow-x: hidden
+}
+
+.menu li{
+    list-style: none;
+}
+
+.menu li > a{
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 5px;
+    padding-left: 15px;
+}
+
+
+.menu li > a > input[type="radio"]{
+    display: none;
+}
+
+.menu li > a > label{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px;
+    border-radius: 5px;
+    width: max-content;
+    color: var(--font-color_1);
+    transition: background-color 0.1s ease-in-out 0s;
+}
+
+.menu > .navLastItem > a > label{
+    background-color: var(--logo_color);
+    color: var(--font-color_2)
+}
+.menu > .navLastItem > a > label:hover{
+    background-color: var(--hover-color_2);
+}
+.menu > .navLastItem > a > input[type="radio"]:checked + label{
+    background-color: var(--select-color_2);
+}
+
+.menu li > a > label:hover{
+    background-color: var(--hover-color_1);
+}
+
+.menu li > a > label > i{
+    margin-right: 10px;
+    width: 25px;
+}
+
+.menu li > a > label > *{
+    font-size: 20px;
+}
+
+.menu li > a > input[type="radio"]:checked + label{
+    background-color: var(--select-color_1);
+}
+
+.menu li > a > input[type="radio"]:checked + label > p{
+    font-weight: bold;
+}
+
+#search-nav{
+    display: none;
+}
+
+#nav-OpenerMenu{
+    display: none;
+    transition: all 0.2s ease-in-out 0s;
+}
+#inpChkbxNav1{
+    display: none;
+}
+.menu li > a > input[type="checkbox"]:checked + label{
+    background-color: var(--select-color_1);
+}
+.menu-hideNav{
+    display: none;
+    flex-wrap: wrap;
+    height: 0px;
+    position: relative;
+    left: 0px;
+    overflow-y: hidden;
+    border-top: var(--color_4) 1px solid;
+    background-color: var(--color_5);
+}
+.menu-hideNav li > a > input[type="radio"]:checked + label{
+    background-color: var(--select-color_1);
+}
+.menu-hideNav li > a > label{
+    padding: 10px 5px;
+}
+.menu-hideNav li > a > label > i{
+    font-size: 20px;
+}

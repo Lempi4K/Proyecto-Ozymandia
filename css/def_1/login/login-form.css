@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+.login-main{
+    padding: 20px;
+}
+
+.login-form{
+    padding: 10px;
+}
+
+.inp-element{
+    position: relative;
+    margin: 20px 0; 
+}
+
+.inp-element > label{
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translate(0, -50%);
+    z-index: 10;
+    font-family: "Roboto";
+    font-size: 15px;
+    color: #a3a3a3;
+    font-weight: bold;
+    transition: all 0.2s ease-in-out 0s;
+}
+
+.inp-element > label::selection{
+    background-color: transparent;
+}
+
+.inp-element > input[type="text"], .inp-element > input[type="password"]{
+    width: 100%;
+    padding: 10px;
+    padding-top: 20px;
+    font-family: "Roboto";
+    font-size: 15px;
+    border: #a3a3a3 2px solid;
+    border-radius: 5px;
+    transition: all 0.2s ease-in-out 0s;
+}
+
+.inp-element > input[type="text"]:focus, .inp-element > input[type="password"]:focus{
+    outline: none;
+    border-color: #a61c41;
+}
+
+.inp-element > input[type="text"]:focus + label, .inp-element > input[type="password"]:focus + label{
+    top: 12px;
+    color: #a61c41;
+    font-size: 13px;
+}
+
+.inp-element > input[type="text"]::placeholder, .inp-element > input[type="password"]::placeholder{
+    color: transparent;
+}
+
+.inp-element > input[type="text"]:not(:placeholder-shown) + label, .inp-element > input[type="password"]:not(:placeholder-shown) + label{
+    top: 12px;
+    font-size: 13px;
+}
+
+.login-form input[type="button"]{
+    display: block;
+    margin: 0 auto;
+    padding: 10px;
+    font-size: 15px;
+    font-weight: bold;
+    font-family: "Roboto";
+    border-radius: 10px;
+    border: #a3a3a3 2px solid;
+    background-color: #a61c41;
+    color: #d4d4d4;
+    transition: all 0.2s ease-in-out 0s, filter 0.1s ease-in-out 0s;
+    cursor: pointer;
+}
+
+.login-form input[type="button"]:hover{
+    background-color: #cdcdcd;
+    color:  #a61c41;
+    border-color: #a61c41;
+}
+
+.login-form input[type="button"]:active{
+    filter: brightness(0.9);
+}
+
+.login-form input[type="button"]:disabled{
+    filter: grayscale(1);
+    cursor: default;
+}
+
+.login-form input[type="button"]:disabled:hover{
+    background-color: #a61c41;
+    color:  #cdcdcd;
+    border-color: #a3a3a3;
+}

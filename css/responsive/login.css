@@ -1,0 +1,26 @@
+:root{  
+    --doc-height: 100%;
+}
+@media screen and (max-width: 800px){
+    .all-container > div:last-child{
+        flex: none;
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, 0);
+        min-width: 320px;
+        border-right: black 2px solid;
+    }
+}
+@media screen and (max-width: 425px){
+    .all-container > div:last-child{
+        position: static;
+        height: var(--doc-height);
+        width: 100vw;
+        left: 0px;
+        transform: translate(0%, 0%);
+        border: none;
+    }
+    .gallery{
+        display: none;
+    }
+}

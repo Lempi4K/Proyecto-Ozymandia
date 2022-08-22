@@ -1,0 +1,115 @@
+:root{
+    --logo_color: #a61c41;
+    --logo_color_hover: #801733;
+    --color_1: white;
+    --color_2: #f6f6f6;
+    --color_3: white;
+    --color_4: rgb(100, 100, 100);
+    --color_5: rgb(228, 228, 228);
+    --color_6: rgb(217, 217, 217);
+    --user-color_I: rgb(171, 235, 255);
+    --user-color_U: rgb(76, 206, 76);
+    --user-color_A: rgb(255, 162, 162);
+    --user-color_D: rgb(255, 210, 158);
+    --user-color_M: rgb(255, 253, 156);
+    --user-color_P: rgb(255, 150, 195);
+    --user-color_J: rgb(160, 164, 255);
+    --font-color_1: black;
+    --font-color_2: white;
+    --font-color_3: rgb(63, 63, 63);
+    --font-color_4: rgb(95, 95, 95);
+    --font-color_5: rgb(162, 162, 162);
+    --font-logo: "Cookie";
+    --font-text: "Roboto";
+    --font-warning: "Oswald";
+
+    --hover-color_1: rgb(215, 215, 215);
+    --select-color_1: rgb(196, 196, 196);
+
+    --hover-color_2: #bf5571;
+    --select-color_2: #901a3a;
+
+    --hover-color_3: rgb(245, 245, 245);
+    --select-color_3: rgb(235, 235, 235);
+    --shComplementary-color_3: rgb(222, 222, 222); 
+    --shBackground-color_3: white;
+
+    --hover-color_4: rgba(245, 245, 245, 0.7);
+    --select-color_4: rgba(235, 235, 235, 0.7);
+    --shComplementary-color_4: rgba(222, 222, 222, 0.7);
+    --shBackground-color_4: rgba(255, 255, 255, 0.7);
+
+    --hover-color_5: rgb(232, 232, 232);
+    --select-color_5: rgb(217, 217, 217);
+
+    --form-color_1: #a61c41;
+    --form-color_2: rgb(217, 217, 217);
+    --form-color_3: black;
+
+    /*
+    *   Articles
+    */
+    --article-color_1: black;
+    --article-color_2: rgb(255, 255, 255);
+    --article-color_3: rgb(215, 215, 215);
+    --article1-color_1: rgb(181, 181, 181);
+    --article1--text-color_1: black;
+    --article1--text-color_2: red;
+    --article1--text-color_3: black;
+}
+
+@media (prefers-color-scheme: dark){
+    :root{
+        --color_1: black;
+        --color_2: rgb(25, 25, 25);
+        --color_3: black;
+        --color_4: rgb(155, 155, 155);
+        --color_5: rgb(27, 27, 27);
+        --color_6: white;
+        --user-color_I: rgb(0, 118, 154);
+        --user-color_U: rgb(0, 156, 0);
+        --user-color_A: rgb(158, 0, 0);
+        --user-color_D: rgb(161, 86, 0);
+        --user-color_M: rgb(155, 152, 0);
+        --user-color_P: rgb(148, 0, 64);
+        --user-color_J: rgb(0, 7, 136);
+        --font-color_1: rgb(255, 255, 255);
+        --font-color_3: rgb(192, 192, 192);
+        --font-color_4: rgb(160, 160, 160);
+        --font-color_5: rgb(93, 93, 93);
+    
+        --hover-color_1: rgb(40, 40, 40);
+        --select-color_1: rgb(59, 59, 59);
+    
+        --hover-color_2: #bf5571;
+        --select-color_2: #901a3a;
+    
+        --hover-color_3: rgb(10, 10, 10);
+        --select-color_3: rgb(30, 30, 30);
+        --shComplementary-color_3: rgb(40, 40, 40); 
+        --shBackground-color_3: black;
+    
+        --hover-color_4: rgba(10, 10, 10, 0.7);
+        --select-color_4: rgba(30, 30, 30, 0.7);
+        --shComplementary-color_4: rgba(40, 40, 40, 0.7);
+        --shBackground-color_4: rgba(0, 0, 0, 0.7);
+    
+        --hover-color_5: rgb(23, 23, 23);
+        --select-color_5: rgb(38, 38, 38);
+    
+        --form-color_1: #a61c41;
+        --form-color_2: rgb(217, 217, 217);
+        --form-color_3: black;
+    
+        /*
+        *   Articles
+        */
+        --article-color_1: white;
+        --article-color_2: rgb(40, 40, 40);
+        --article-color_3: rgb(62, 62, 62);
+        --article1-color_1: rgb(74, 74, 74);
+        --article1--text-color_1: white;
+        --article1--text-color_2: red;
+        --article1--text-color_3: white;
+    }
+}

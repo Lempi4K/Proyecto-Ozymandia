@@ -1,0 +1,34 @@
+.display-error-main{
+    display: flex;
+    align-items: flex-end;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0px;
+    left: -100px;
+    animation: error-slash 0.5s ease-in-out 1 normal forwards;
+}
+
+.display-error-main > p{
+    display: block;
+    text-align: center;
+    width: 100%;
+    padding: 10px;
+    background-color: #a61c41;
+    color: white;
+    font-weight: bold;
+    font-family: var(--font-warning);
+}
+.display-error-main > p > u{
+    color: white;
+}
+
+@keyframes error-slash {
+    0%{
+        left: -100%;
+    }
+    100%{
+        left: 0%;
+    }
+}

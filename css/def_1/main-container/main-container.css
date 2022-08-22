@@ -1,0 +1,12 @@
+:root{  
+    --doc-height: 100%;
+}
+
+.main-container{
+    display: flex;
+    max-width: 1500px;
+    height: calc(var(--doc-height) - 50px);    
+    background-color: gray;
+    overflow-y: hidden;
+    margin: 0 auto;
+}

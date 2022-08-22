@@ -1,0 +1,58 @@
+#central-content{
+    flex: 3;
+    background-color: var(--color_3);
+    overflow-x: hidden;
+    overflow-y: hidden;
+    position: relative;
+}
+
+.articles-container{
+    padding: 15px;
+    padding-top: 55px;
+    overflow-y: auto;
+    height: 100%;
+}
+
+.articles-container-single{
+    padding-top: 15px;
+}
+
+.article_divisor{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+    background: blur(3px);
+    z-index: 19;
+}
+
+.article_divisor > div{
+    flex: 1;
+    display: block;
+    text-align: center;
+    font-weight: bold;
+}
+
+.article_divisor > div input[type="radio"]{
+    display: none;
+}
+
+.article_divisor > div label{
+    display: block;
+    padding: 10px;
+    background-color: var(--shBackground-color_4);
+    backdrop-filter: blur(5px);
+    transition: all 0.1s ease-in-out 0s;
+    border-bottom: var(--shComplementary-color_3) 2px solid;  
+}
+
+.article_divisor > div label:hover{
+    background-color: var(--hover-color_4);
+
+}
+
+.article_divisor > div input[type="radio"]:checked + label{
+    background-color: var(--select-color_4);
+    border-bottom: var(--logo_color) 2px solid;  
+}

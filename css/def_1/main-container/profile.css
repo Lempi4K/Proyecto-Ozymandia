@@ -1,0 +1,193 @@
+.central-content{
+    padding: 0px;
+    position: relative;
+}
+
+.profile-content{
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.profile-background{
+    display: block;
+    height: 100px;
+    background: -webkit-linear-gradient(left, rgb(8, 165, 174), rgb(255, 255, 255));
+}
+.profile-background[data-perm="I"]{
+    background: linear-gradient(to right,  var(--user-color_I), rgb(255, 255, 255));
+}
+.profile-background[data-perm="U"]{
+    background: linear-gradient(to right,  var(--user-color_U), rgb(255, 255, 255));
+}
+.profile-background[data-perm="A"]{
+    background: linear-gradient(to right,  var(--user-color_A), rgb(255, 255, 255));
+}
+.profile-background[data-perm="D"]{
+    background: linear-gradient(to right,  var(--user-color_D), rgb(255, 255, 255));
+}
+.profile-background[data-perm="M"]{
+    background: linear-gradient(to right,  var(--user-color_M), rgb(255, 255, 255));
+}
+.profile-background[data-perm="P"]{
+    background: linear-gradient(to right,  var(--user-color_P), rgb(255, 255, 255));
+}
+.profile-background[data-perm="J"]{
+    background: linear-gradient(to right,  var(--user-color_J), rgb(255, 255, 255));
+}
+
+.profile-user-card{
+    display: block;
+    padding: 10px;
+}
+
+.profile-data{
+    display: block;
+
+}
+
+.profile-pic{
+    width: 150px;
+    height: 150px;
+    border-radius: 100%;
+    border: var(--color_3) 5px solid;
+    background-color: rgb(40, 226, 236);
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    margin-right: 10px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.profile-pic[data-perm="I"]{
+    background-color: var(--user-color_I);
+}
+.profile-pic[data-perm="U"]{
+    background-color: var(--user-color_U);
+}
+.profile-pic[data-perm="A"]{
+    background-color: var(--user-color_A);
+}
+.profile-pic[data-perm="D"]{
+    background-color: var(--user-color_D);
+}
+.profile-pic[data-perm="M"]{
+    background-color: var(--user-color_M);
+}
+.profile-pic[data-perm="P"]{
+    background-color: var(--user-color_P);
+}
+.profile-pic[data-perm="J"]{
+    background-color: var(--user-color_J);
+}
+
+.profile-pic > i{
+    font-size: 90px;
+    text-align: center;
+}
+
+.profile-pic > img{
+    display: none;
+}
+
+.profile-mainData{
+    padding: 10px;
+    padding-top: 100px;
+    position: relative;
+    border-bottom: black 2px solid;
+}
+
+.profile-mainData p, .profile-name{
+    font-family: "Roboto";
+    font-weight: bold;
+    text-align: center;
+}
+
+.profile-mainData .profile-name{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+}
+
+.profile-mainData .profile-user{
+    font-size: 15px;
+    color: var(--font-color_3);
+}
+
+.profile-rol{
+    width: 25px;
+    height: 25px;
+    padding: 5px;
+    position: relative;
+    margin-left: 5px;
+    border: var(--font-color_1) 1px solid;
+    border-radius: 100%;
+    background-color: rgb(17, 131, 7);
+}
+.profile-rol[data-perm="I"]{
+    background-color: var(--user-color_I);
+}
+.profile-rol[data-perm="U"]{
+    background-color: var(--user-color_U);
+}
+.profile-rol[data-perm="A"]{
+    background-color: var(--user-color_A);
+}
+.profile-rol[data-perm="D"]{
+    background-color: var(--user-color_D);
+}
+.profile-rol[data-perm="M"]{
+    background-color: var(--user-color_M);
+}
+.profile-rol[data-perm="P"]{
+    background-color: var(--user-color_P);
+}
+.profile-rol[data-perm="J"]{
+    background-color: var(--user-color_J);
+}
+
+.profile-rol p{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 15px;
+    transform: translate(-50%, -50%);
+    color: var(--font-color_2);
+}
+
+.profile-div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-div > div{
+    background-color: var(--shBackground-color_3);
+    flex: 1;
+}
+
+.profile-div > div > input[type="radio"]{
+    display: none;
+}
+
+.profile-div > div > input[type="radio"]:checked + label{
+    border-bottom: var(--logo_color) 2px solid;
+    background-color: var(--select-color_3);
+}
+
+.profile-div > div > label{
+    display: block;
+    text-align: center;
+    padding: 10px;
+    border-bottom: var(--shComplementary-color_3) 2px solid;
+    transition: all 0.1s ease-in-out 0s;
+    font-weight: bold;
+}
+
+.profile-div > div > label:hover{
+    background-color: var(--hover-color_3);
+}

@@ -1,0 +1,26 @@
+.gallery{
+    position: relative;
+}
+
+.gallery ul{
+    display: flex;
+}
+
+.gallery ul > li{
+list-style: none;
+}
+
+.gallery ul > li > img{
+    height: 100vh;
+    width: 100vw;
+    object-fit: cover;
+}
+
+.gradient{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent 70%, black 100%);
+}

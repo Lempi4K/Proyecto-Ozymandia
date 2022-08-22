@@ -1,0 +1,11 @@
+.lateral-content{
+    flex: 1.5;
+    height: 100%;
+    background-color: var(--color_2);
+    overflow-y: auto;
+    border-left: var(--color_4) 2px solid;
+}
+
+.aside_container{
+    padding: 10px;
+}

@@ -1,0 +1,26 @@
+
+.logo{
+    display: flex;
+    margin-right: auto;
+}
+
+.logo > a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.logo > a > img{
+    height: 30px;
+    margin-right: 10px;
+}
+
+.logo > a > p{
+    font-family: var(--font-logo), "Bree Serif";
+    color: var(--logo_color);    
+    font-size: 20px;
+}
+
+.logo > a > img::selection, .logo > a > p::selection{
+    background-color: transparent;
+}
