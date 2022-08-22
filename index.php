@@ -22,6 +22,6 @@
 <body>
     <div class="charging-display-container" id="charging-display-main"><img src="/src//img/logo/logo.png" alt=""></div>
     <div class="block-display-container" id="block-display-main"><p>Contenido no disponible para tí :///<br>Volviendo a la p&aacute;gina principal...</p></div>
-    <?php $view->displayPage() ?>
+    <?php $view->displayPage() ?> 
 </body>
 </html>
