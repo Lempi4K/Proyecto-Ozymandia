@@ -29,8 +29,10 @@ const titles = {
     "/contacto": "Contacto | Proyecto Ozymandia",
     "/aside": "Mas | Proyecto Ozymandia",
     "/buscar": "Buscar | Proyecto Ozymandia",
-    "/lienzo": "Crear | Proyecto Ozymandia"
+    "/lienzo": "Lienzo | Proyecto Ozymandia"
 }
+
+const AJAXLoad = new Event("AJAXLoad", {bubbles: false});
 
 async function handleLocation() {
     const path = window.location.pathname;
@@ -44,6 +46,7 @@ async function handleLocation() {
         const central_content = document.getElementById("replazable-content");
         let HTML = await AJAXrequestContent(routes[path])
         central_content.innerHTML = HTML;
+        central_content.dispatchEvent(AJAXLoad);
         ChargingAnimationEnd_1();
     }
 }

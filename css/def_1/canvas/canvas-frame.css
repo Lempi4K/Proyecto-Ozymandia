@@ -1,0 +1,34 @@
+.frmHead{
+
+}
+
+.frmHead h1{
+    display: block;
+    text-align: center;
+    font-size: 40px;
+    color: var(--font_color_1);
+}
+
+.frmBody{
+    margin-top: 10px;
+
+}
+
+.frmBody input[type="button"]{
+    display: block;
+    margin: 0px auto;
+    padding: 5px;
+    color: white;
+    background-color: var(--logo_color);
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 17px;
+    border: var(--logo_color) 1px solid;
+    transition: all 0.1s ease-in-out 0s;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+.frmBody input[type="button"]:hover{
+    background-color: white;
+    color: var(--logo_color)
+}
