@@ -5,7 +5,7 @@
 .frmHead h1{
     display: block;
     text-align: center;
-    font-size: 40px;
+    font-size: 30px;
     color: var(--font_color_1);
 }
 
@@ -13,22 +13,160 @@
     margin-top: 10px;
 
 }
+.frmBody > i{
+    display: block;
+    text-align: center;
+    font-size: 40px;
+    margin-bottom: 15px;
+}
 
 .frmBody input[type="button"]{
     display: block;
-    margin: 0px auto;
     padding: 5px;
+    margin: 0 auto;
     color: white;
     background-color: var(--logo_color);
     border-radius: 5px;
     font-weight: bold;
-    font-size: 17px;
+    font-size: 15px;
     border: var(--logo_color) 1px solid;
     transition: all 0.1s ease-in-out 0s;
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
 }
+
+
 .frmBody input[type="button"]:hover{
     background-color: white;
     color: var(--logo_color)
+}
+
+.frmChangeButtons{
+    display: flex;
+    align-items: center;
+}
+
+.frmSelect{
+    width: 100%;
+}
+
+.frmSelect ul{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    margin: 10px 0;
+}
+
+.frmSelect ul li{
+    list-style: none;
+    margin: 5px 5px;
+}
+
+.frmSelect ul li > input[type="radio"]{
+    display: none;
+}
+
+.frmSelect ul li > label{
+    display: flex;
+    width: 100px;
+    padding: 10px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    border: var(--font-color_1) 1px solid;
+    transition: all 0.1s ease-in-out 0s;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.frmSelect ul li > label:hover{
+    background-color: var(--hover-color_3);
+}
+
+.frmSelect ul li > input[type="radio"]:checked + label{
+    transform: scale(1.1);
+    background-color: var(--select-color_3);
+}
+.frmSelect ul li > input[type="radio"]:checked + label > p{
+    font-weight: bold;
+}
+.frmSelect ul li > input[type="radio"]:disabled + label{
+    filter: brightness(0.6);
+    background: var(--color_1);
+    border-color: var(--article1-color_1)
+}
+
+.frmSelect ul li > label > i{
+    font-size: 25px;
+}
+
+.frmSelect ul li > label > p{
+    margin-top: 5px;
+    transition: all 0.1s ease-in-out 0s;
+}
+
+.fdeText{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.frmInpText{
+    display: block;
+    position: relative;
+    width: 70%;
+    margin: 5px 0; 
+}
+
+.frmInpText > label{
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translate(0, -50%);
+    z-index: 10;
+    font-family: "Roboto";
+    font-size: 13px;
+    color: #a3a3a3;
+    font-weight: bold;
+    transition: all 0.2s ease-in-out 0s;
+}
+
+.frmInpText > label::selection{
+    background-color: transparent;
+}
+
+.frmInpText > input[type="text"]{
+    padding: 5px;
+    width: 100%;
+    padding-top: 15px;
+    padding-left: 10px;
+    font-family: "Roboto";
+    font-size: 13px;
+    border: #a3a3a3 2px solid;
+    border-radius: 5px;
+    transition: all 0.2s ease-in-out 0s;
+    color: black;
+}
+
+.frmInpText > input[type="text"]:focus{
+    outline: none;
+    border-color: #a61c41;
+}
+
+.frmInpText > input[type="text"]:focus + label{
+    top: 12px;
+    color: #a61c41;
+    font-size: 11px;
+}
+
+.frmInpText > input[type="text"]::placeholder{
+    color: transparent;
+}
+
+.frmInpText > input[type="text"]:not(:placeholder-shown) + label{
+    top: 12px;
+    font-size: 11px;
 }

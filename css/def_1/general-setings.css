@@ -49,6 +49,7 @@ img::selection{
 
 .no_select::selection{
     background-color: rgba(0, 0, 0, 0);
+    color: var(--font-color_1);
 }
 
 .clear-float{

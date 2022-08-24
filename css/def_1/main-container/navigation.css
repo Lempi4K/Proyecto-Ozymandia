@@ -33,11 +33,14 @@
     width: max-content;
     color: var(--font-color_1);
     transition: background-color 0.1s ease-in-out 0s;
+    cursor: pointer;
 }
 
 .menu > .navLastItem > a > label{
     background-color: var(--logo_color);
-    color: var(--font-color_2)
+}
+.navLastItem p, .navLastItem i{
+    color: var(--font-color_2);
 }
 .menu > .navLastItem > a > label:hover{
     background-color: var(--hover-color_2);
