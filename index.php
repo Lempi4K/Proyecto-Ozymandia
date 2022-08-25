@@ -19,6 +19,7 @@
     <script src="/modules/drk-mode/js/drk-mode_logic.js"></script>
     <script src="/js/scroll_up.js"></script>
     <script src="/js/canvas/frame-changer.js"></script>
+    <script src="/js/canvas/navasidcard-canvas.js"></script>
 </head>
 <body>
     <div class="charging-display-container" id="charging-display-main"><img src="/src//img/logo/logo.png" alt=""></div>

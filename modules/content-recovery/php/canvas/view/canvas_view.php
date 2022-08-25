@@ -103,6 +103,70 @@
                                 <input type="text" id="inpTxtDesc" placeholder="Desc">
                                 <label for="inpTxtDesc" class="no_select">Descripci&oacute;n</label>
                             </div>
+                            <div class="frmLabelSelector">
+                                <p>Elige las etiquetas:</p>
+                                <ul>
+                                    <li>
+                                        <input type="radio" name="inpRdbtnLbl" value="administrativo" id="inpRdbtnLbl1">
+                                        <label for="inpRdbtnLbl1" id="frmLabelAdmin">Administrativo</label>
+                                        <ul class="subLabels">
+                                            <li>
+                                                <input type="checkbox" id="inpChckbxLbl1">
+                                                <label for="inpChckbxLbl1" class="frmSubLabel">Grupo 1</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" id="inpChckbxLbl2">
+                                                <label for="inpChckbxLbl2" class="frmSubLabel">Grupo 2</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" id="inpChckbxLbl3">
+                                                <label for="inpChckbxLbl3" class="frmSubLabel">Grupo 3</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" id="inpChckbxLbl4">
+                                                <label for="inpChckbxLbl4" class="frmSubLabel">Grupo 4</label>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <input type="radio" name="inpRdbtnLbl" value="general" id="inpRdbtnLbl2">
+                                        <label for="inpRdbtnLbl2" id="frmLabelGene">General</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" name="inpRdbtnLbl" value="invitado" id="inpRdbtnLbl3">
+                                        <label for="inpRdbtnLbl3" id="frmLabelGuest">Invitado</label>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="frmNavSelector">
+                                <p>Elige el apartado:</p>
+                                <select name="" id="slctNav">
+                                    <option value="1">Nosotros</option>
+                                    <option value="2">Oferta Educativa</option>
+                                    <option value="3">Departamentos</option>
+                                    <option value="4">Docentes</option>
+                                    <option value="5">Transparencia</option>
+                                    <option value="6">Aplicaciones</option>
+                                    <option value="7">Contacto</option>
+                                </select>
+                            </div>
+                            <div class="frmFileSelector">
+                                <p>Elige la im&aacute;gen de fondo:</p>
+                                <input type="file" name="" id="inpFileNavasicard" accept=".jpg, .jpeg, .png">
+                                <label class="article article_navasicard cnvFrmNavasicard" for="inpFileNavasicard">
+                                    <a class="c_click">
+                                        <div class="article_container article_navasicard_container">
+                                            <div class="article_title article_navasicard_title">
+                                                <p id="NavasicardTitle">T&iacute;tulo</p>
+                                                <p class="article_text article_navasicard_text" id="NavasicardDesc">Descripci&oacute;n</p>
+                                            </div>
+                                            <hr>
+                                        </div>
+                                        <i class="fa-solid fa-image"></i>
+                                    </a>
+                                    <img alt="" class="article_navasicard_background">
+                                </label>
+                            </div>
                         </div>
                         <div class="frmChangeButtons">
                             <input type="button" value="Atras" class="cnvFrmBackBtn">

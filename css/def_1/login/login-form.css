@@ -39,6 +39,7 @@
     border: #a3a3a3 2px solid;
     border-radius: 5px;
     transition: all 0.2s ease-in-out 0s;
+    color: black;
 }
 
 .inp-element > input[type="text"]:focus, .inp-element > input[type="password"]:focus{

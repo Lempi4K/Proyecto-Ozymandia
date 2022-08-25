@@ -15,7 +15,7 @@
         <div class="top-bar">
             <header>
                 <div class="logo">
-                    <a href="/home" >
+                    <a href="/inicio" >
                         <img src="/src/img/logo/logo.png" alt="">
                         <p class="no_select">CBTIS 114</p>
                     </a>

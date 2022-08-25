@@ -170,3 +170,131 @@
     top: 12px;
     font-size: 11px;
 }
+
+.frmLabelSelector{
+    width: 80%;
+    padding: 5px;
+    margin-bottom: 5px;
+}
+.frmLabelSelector > p{
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.frmLabelSelector > ul{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: var(--color_2);
+    padding: 5px;
+    flex-wrap: wrap;
+    border-radius: 5px;
+}
+
+.frmLabelSelector > ul li{
+    margin: 5px;
+    list-style: none;
+}
+
+.frmLabelSelector > ul li > input[type="radio"]{
+    display: none;
+}
+
+.frmLabelSelector > ul li > input[type="radio"]:not(:checked) + label{
+    filter: brightness(0.6)
+}
+.frmLabelSelector > ul li > input[type="radio"]:checked ~ ul{
+    display: flex;
+}
+
+.frmLabelSelector > ul li > label{
+    display: block;
+    padding: 5px;
+    border: var(--article1-color_1) 1px solid;
+    width: max-content;
+    font-weight: bold;
+    transition: all 0.2s ease-in-out 0s;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+#frmLabelAdmin{
+    background-color: var(--user-color_A);
+}
+
+#frmLabelGene{
+    background-color: var(--user-color_M);
+}
+
+#frmLabelGuest{
+    background-color: var(--user-color_I);
+}
+
+.subLabels{
+    display: none;
+    flex-wrap: wrap;
+}
+
+.subLabels input[type="checkbox"]{
+    display: none;
+}
+
+.subLabels input[type="checkbox"]:checked + label{
+    border-color: var(--user-color_A);
+    box-shadow: inset var(--user-color_A) 0px 0px 9px 1px;
+}
+
+.frmNavSelector{
+    display: flex;
+    margin-bottom: 5px;
+}
+
+.frmNavSelector > p{
+    margin-right: 5px;
+    font-weight: bold;
+}
+
+.frmNavSelector > select{
+    background-color: var(--article-color_2);
+}
+
+.frmFileSelector{
+    margin: 5px;
+    margin-bottom: 10px;
+    width: 80%;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.frmFileSelector input[type="file"]{
+    display: none;
+}
+
+.frmFileSelector > p{
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.cnvFrmNavasicard{
+    display: block;
+    position: relative;
+    background-color: var(--color_1);
+}
+
+.cnvFrmNavasicard:hover > a > i{
+    filter: opacity(1);
+}
+
+.cnvFrmNavasicard i{
+    display: flex;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    color: black;
+    align-items: center;
+    justify-content: center;
+    font-size: 50px;
+    background-color: rgb(255, 255, 255, 0.3);
+    filter: opacity(0);
+    transition: all 0.2s ease-in-out 0s;
+}
