@@ -38,34 +38,26 @@ function returnFrame(e){
     };
 }
 
-window.addEventListener("load", e => {
-    document.getElementById("replazable-content").addEventListener("AJAXLoad", e => {
-        if(e.routeType != "lienzo"){
-            return;
+function frame_changer(){
+    canvasFrames = document.getElementsByClassName("canvas-frame");
+    nFrames = canvasFrames.length;
+
+    for(let i = 0; i < nFrames; i++){
+        if(canvasFrames[i].classList.contains("frame-active")){
+            activeFrame = i;
         }
-        canvasFrames = document.getElementsByClassName("canvas-frame");
-        nFrames = canvasFrames.length;
+    }
 
-        for(let i = 0; i < nFrames; i++){
-            if(canvasFrames[i].classList.contains("frame-active")){
-                activeFrame = i;
-            }
-        }
-
-        const cnvFrmBackBtn = document.getElementsByClassName("cnvFrmBackBtn");
-        for(let item of cnvFrmBackBtn){
-            item.addEventListener("click", e => {
-                returnFrame(e);
-            });
-        }
-        const cnvFrmNextBtn = document.getElementsByClassName("cnvFrmNextBtn");
-        for(let item of cnvFrmNextBtn){
-            item.addEventListener("click", e => {
-                advanceFrame(e);
-            });
-        }
-
-
-    });
-
-});
+    const cnvFrmBackBtn = document.getElementsByClassName("cnvFrmBackBtn");
+    for(let item of cnvFrmBackBtn){
+        item.addEventListener("click", e => {
+            returnFrame(e);
+        });
+    }
+    const cnvFrmNextBtn = document.getElementsByClassName("cnvFrmNextBtn");
+    for(let item of cnvFrmNextBtn){
+        item.addEventListener("click", e => {
+            advanceFrame(e);
+        });
+    }
+}

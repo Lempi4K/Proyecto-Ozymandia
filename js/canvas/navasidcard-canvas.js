@@ -9,6 +9,9 @@ function changeIMG(e){
 
 window.addEventListener("load", e => {
     document.getElementById("replazable-content").addEventListener("AJAXLoad", e => {
+        if(e.routeType != "lienzo"){
+            return;
+        }
         document.getElementById("inpFileNavasicard").addEventListener("change", e => {
             changeIMG(e);
         });
