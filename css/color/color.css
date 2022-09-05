@@ -56,6 +56,8 @@
     --article1--text-color_1: black;
     --article1--text-color_2: red;
     --article1--text-color_3: black;
+
+    --canvas-color_1: rgb(9, 48, 83);
 }
 
 @media (prefers-color-scheme: dark){

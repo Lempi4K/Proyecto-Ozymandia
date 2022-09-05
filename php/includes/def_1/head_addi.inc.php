@@ -30,6 +30,7 @@
 
         @import url("/css/def_1/canvas/canvas.css") screen;
         @import url("/css/def_1/canvas/canvas-frame.css") screen;
+        @import url("/css/def_1/canvas/canvas-article.css") screen;
 
         @import url("/css/responsive/index.css") screen;     
 </style>

@@ -1,5 +1,4 @@
 let article = {
-    id: 0,
     meta: {
         id: 0,
         type: 0,
@@ -11,7 +10,7 @@ let article = {
         background_img: "",
         pub_date: "",
         label: "",
-        sublabel: Array(),
+        sublabel: new Array(),
     },
     AEM:[
         {//Borrar al terminar desarrollo

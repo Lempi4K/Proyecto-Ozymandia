@@ -1,0 +1,134 @@
+.canvas-painter{
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+    border: none;
+    background: none;
+    padding: 0px;
+    border-radius: 0px;
+    overflow-y: hidden;
+}
+
+.canvas-painter > .frmBody{
+    margin: 0px;
+    position: relative;
+}
+
+.canvas-painter > .frmBody > .frmChangeButtons{
+    width: 100%;
+    position: absolute;
+    bottom: 10px;
+    left: 0px;
+}
+
+.cnvPntEditBar{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    z-index: 13;
+}
+
+.cnvPntEditBar > ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: var(--canvas-color_1);
+    padding: 5px;
+}
+
+.cnvPntEditBar > ul li{
+    margin: 5px;
+    list-style: none;
+}
+
+.cnvPntEditBar > ul li input[type="checkbox"]{
+    display: none;
+}
+
+.cnvPntEditBar > ul li input[type="checkbox"]:checked + label{
+    background-color: rgba(0, 0, 0, 0.3)
+}
+
+.cnvPntEditBar > ul li label{
+    padding: 5px;
+    min-width: 30px;
+    min-height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 5px;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.cnvPntEditBar > ul li  i{
+    font-size: 20px;
+    color: var(--font-color_2)
+}
+
+.cnvPaintWorkArea{
+    padding: 15px;
+    padding-top: 65px;
+    padding: 65px 15px 55px;
+    height: 100%;
+    overflow: auto;
+}
+
+.cnvPaintWorkArea > article{
+    background-color: var(--color_1);
+}
+
+.cpElement input[type="radio"]{
+    display: none;
+}
+
+.cpElement input[type="radio"]:checked + label > .cpeCreateBtns{
+    display: flex;
+}
+
+.cpElement label{
+    position: relative;
+    display: block;
+}
+
+.cpeCreateBtns{
+    display: none;/*Poner en none*/
+    width: 80%;
+    border-bottom: var(--font-color_1) 2px solid;
+    justify-content: center;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    box-shadow: var(--canvas-color_1) 0px 0px 5px 2px;
+}
+
+.cpeCreateBtns > div{
+    background-color: var(--font-color_1);
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    position: absolute;
+    bottom: -10px;
+    box-shadow: var(--canvas-color_1) 0px 0px 5px 2px;
+}
+
+.cpeCreateBtns i{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--color_1);
+    font-size: 20px;
+    background-color: transparent;
+}
+
+.cpecbTop{
+    top: -5px;
+}
+
+.cpecbBottom{
+    bottom: -5px;
+}
+

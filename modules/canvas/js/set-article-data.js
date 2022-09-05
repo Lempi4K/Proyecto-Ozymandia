@@ -13,7 +13,7 @@ function set_article_data(){
     for(let item of inpRdbtnFrmArtlTheme){
         item.addEventListener("change", e => {
             if(e.target.checked){
-                article.meta.type = parseInt(e.target.value);
+                article.meta.type = e.target.value;
                 console.log(article.meta.type);
             }
         });
