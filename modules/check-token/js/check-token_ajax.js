@@ -2,7 +2,8 @@ async function AJAXrequestChckToken(path){
     const blackList = {
         "/perfil": [-1, -1],
         "/aplicaciones": [-1, -1],
-        "/iniciar-sesion": [-2, 0, 1, 2, 3, 4, 5]
+        "/iniciar-sesion": [-2, 0, 1, 2, 3, 4, 5],
+        "/lienzo": [-1, 0]
     };
     const url = "/modules/check-token/controller/check-token_controller.php";
     const params = {
@@ -21,9 +22,8 @@ async function AJAXrequestChckToken(path){
         if (!res.ok){
             throw new Error("AJAX-Request-Failed")
         }
-
         if(json.errors === ""){
-            //console.log(json.data.result);
+            console.log(json.data.result);
             return json.data.result;
         } else{
             throw new Error(new String((json.errors)).replace(";", '\n'));

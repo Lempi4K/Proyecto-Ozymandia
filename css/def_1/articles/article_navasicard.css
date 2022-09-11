@@ -2,7 +2,7 @@
     padding: 0px;
     overflow: hidden;
     position: relative;
-    background-color: var(--color_4);
+    background-color: var(--article-color_1);
 }
 
 .article_navasicard > a{

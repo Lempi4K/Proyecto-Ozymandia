@@ -8,6 +8,7 @@
     font-weight: bold;
     font-family: "Roboto";
     font-size: 20px;
+    z-index: 2;
 }
 
 .article_1_head > img{
@@ -16,6 +17,7 @@
     top: 8px;
     float: left;
     margin-right: 10px;
+    z-index: 2;
 }
 
 .article_1_head > hr{

@@ -29,10 +29,17 @@ const titles = {
     "/contacto": "Contacto | Proyecto Ozymandia",
     "/aside": "Mas | Proyecto Ozymandia",
     "/buscar": "Buscar | Proyecto Ozymandia",
-    "/lienzo": "Crear | Proyecto Ozymandia"
+    "/lienzo": "Lienzo | Proyecto Ozymandia"
 }
 
+const eventType = {
+    "/lienzo": "lienzo"
+};
+
+let AJAXLoad = new Event("AJAXLoad", {bubbles: false});
+
 async function handleLocation() {
+    AJAXLoad.routeType = ""; 
     const path = window.location.pathname;
 
     if(! await AJAXrequestChckToken(path)){
@@ -44,6 +51,8 @@ async function handleLocation() {
         const central_content = document.getElementById("replazable-content");
         let HTML = await AJAXrequestContent(routes[path])
         central_content.innerHTML = HTML;
+        AJAXLoad.routeType = eventType[path]; 
+        central_content.dispatchEvent(AJAXLoad);
         ChargingAnimationEnd_1();
     }
 }

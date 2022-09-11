@@ -116,3 +116,19 @@
     padding: 5px;
     margin: 0 auto 20px;
 }
+
+.article_bold{
+    font-weight: bold;
+}
+
+.article_italic{
+    font-style: italic;
+}
+
+.article_underline{
+    text-decoration: underline;
+}
+
+.article_list{
+    list-style: circle;
+}

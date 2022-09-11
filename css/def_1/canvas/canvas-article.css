@@ -1,0 +1,295 @@
+.canvas-painter{
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+    border: none;
+    background: none;
+    padding: 0px;
+    border-radius: 0px;
+    overflow-y: hidden;
+}
+
+.cnvPntFrames{
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 30;
+    display: block;
+    display: none;
+}
+
+.cnvPntFrames > button{
+    margin: 10px 0 0 10px;
+    width: 30px;
+    height: 30px;
+    background-color: var(--logo_color);
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    z-index: 32;
+}
+
+.cnvPntFrames > button > i{
+    color: var(--font-color_2);
+    font-size: 20px;
+}
+
+.cpFrame{
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--color_1);
+    max-width: 90%;
+    max-height: 80%;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: var(--article-color_1) 0px 0px 5px 0px;
+    z-index: 31;
+    overflow-y: auto;
+}
+
+#cpfElementSelector{
+    width: 50%;
+}
+
+#cpfElementSelector > ul{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#cpfElementSelector > ul li{
+    list-style: none;
+    width: 100px;
+    height: 50px;
+    padding: 10px;
+    margin: 5px;
+    border: var(--article-color_1) 1px solid;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#cpfElementSelector > ul li > p{
+    font-weight: bold;
+    font-size: 15px;
+}
+
+#cpfElementSelector > ul li > i{
+    font-size: 20px;
+}
+
+#cpfElementData{
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 70%;
+}
+
+#cpfElementData > div, #cpfElementData > fieldset{
+    margin-bottom: 10px;
+}
+
+.cnvEditElement{
+    display: none;
+}
+
+#cpfElementData > :last-child{
+    margin-bottom: 0px;
+}
+
+.APITypeElements{
+    width: 50%;
+    padding: 10px;
+}
+
+.APITypeElements legend{
+    font-weight: bold;
+}
+
+.APITypeElements > .frmInpRdbtn{
+    display: flex;
+    justify-content: space-around;
+}
+
+.frmInpFile{
+width: 90%;
+}
+
+.frmInpFile > label{
+    display: flex;
+    cursor: pointer;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.frmInpFile > label > p{
+    flex: 3;
+    background-color: var(--article-color_2);
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+
+.frmInpFile > label > p > i{
+    margin-right: 5px;
+}
+
+.frmInpFile > label > div{
+    flex: 7;
+    background-color: var(--article-color_3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 13px;
+}
+
+
+.frmInpFile input[type="file"]{
+    display: none;
+}
+
+.canvas-painter > .frmBody{
+    margin: 0px;
+    position: relative;
+}
+
+.canvas-painter > .frmBody > .frmChangeButtons{
+    width: 100%;
+    position: absolute;
+    bottom: 10px;
+    left: 0px;
+}
+
+.cnvPntEditBar{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    z-index: 29;
+}
+
+.cnvPntEditBar > ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: var(--canvas-color_1);
+    padding: 5px;
+}
+
+.cnvPntEditBar > ul li{
+    margin: 5px;
+    list-style: none;
+}
+
+.cnvPntEditBar > ul li input[type="checkbox"]{
+    display: none;
+}
+
+.cnvPntEditBar > ul li input[type="checkbox"]:checked + label{
+    background-color: rgba(0, 0, 0, 0.3)
+}
+
+.cnvPntEditBar > ul li label{
+    padding: 5px;
+    min-width: 30px;
+    min-height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 5px;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.cnvPntEditBar > ul li  i{
+    font-size: 20px;
+    color: var(--font-color_2)
+}
+
+.cpebOther, .cpebText, #cnvDeleteBtn{
+    display: none;
+}
+
+.cnvPaintWorkArea{
+    padding: 15px;
+    padding-top: 65px;
+    padding: 65px 15px 55px;
+    height: 100%;
+    overflow: auto;
+}
+
+.cnvPaintWorkArea > article{
+    background-color: var(--color_1);
+}
+
+.cpElement input[type="radio"]{
+    display: none;
+}
+
+.cpElement input[type="radio"]:checked + label > .cpeCreateBtns{
+    display: flex;
+}
+
+.cpElement label{
+    position: relative;
+    display: block;
+}
+
+.cpeCreateBtns{
+    display: none;/*Poner en none*/
+    width: 80%;
+    border-bottom: var(--font-color_1) 2px solid;
+    justify-content: center;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    z-index: 20;
+    cursor: pointer;
+}
+
+.cpeCreateBtns > div{
+    background-color: var(--font-color_1);
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    position: absolute;
+    bottom: -10px;
+    box-shadow: var(--canvas-color_1) 0px 0px 5px 2px;
+}
+
+.cpeCreateBtns i{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--color_1);
+    font-size: 20px;
+    background-color: transparent;
+}
+
+.cpecbTop{
+    top: -5px;
+}
+
+.cpecbBottom{
+    bottom: -5px;
+}
+
+.cpecbMain{
+    display: flex;
+    width: 100%;
+    position: relative;
+    transform: none;
+    left: 0%;
+
+
+}
