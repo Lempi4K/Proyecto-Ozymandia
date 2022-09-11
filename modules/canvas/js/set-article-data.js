@@ -13,18 +13,18 @@ function set_article_data(){
     for(let item of inpRdbtnFrmArtlTheme){
         item.addEventListener("change", e => {
             if(e.target.checked){
-                article.meta.type = e.target.value;
-                console.log(article.meta.type);
+                article.meta.theme = e.target.value;
+                console.log(article.meta.theme);
             }
         });
     }
 
     document.getElementById("inpTxtTitle").addEventListener("input", e => {
-        article.meta.title = document.getElementById("NavasicardTitle").textContent;
+        article.meta.title = e.target.value;
     });
 
     document.getElementById("inpTxtDesc").addEventListener("input", e => {
-        article.meta.description = document.getElementById("NavasicardDesc").textContent;
+        article.meta.description = e.target.value;
     });
 
     const inpRdbtnLbl = document.getElementsByName("inpRdbtnLbl");
@@ -52,5 +52,26 @@ function set_article_data(){
 
     document.getElementById("slctNav").addEventListener("change", function(e){
         article.meta.subtype = parseInt(this.value);
+    });
+
+    document.getElementById("inpRdbtnFrmArtlType1").addEventListener("change", e => {
+        if(e.target.checked){
+            document.getElementById("frmNavSelector").style.display = "flex";
+            document.getElementById("frmFileSelector").style.display = "block";
+        }
+    });
+
+    document.getElementById("inpRdbtnFrmArtlType2").addEventListener("change", e => {
+        if(e.target.checked){
+            document.getElementById("frmNavSelector").style.display = "none";
+            document.getElementById("frmFileSelector").style.display = "none";
+        }
+    });
+
+    document.getElementById("inpRdbtnFrmArtlType3").addEventListener("change", e => {
+        if(e.target.checked){
+            document.getElementById("frmNavSelector").style.display = "none";
+            document.getElementById("frmFileSelector").style.display = "block";
+        }
     });
 }

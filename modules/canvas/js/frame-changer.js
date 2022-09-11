@@ -58,6 +58,9 @@ function frame_changer(){
     for(let item of cnvFrmNextBtn){
         item.addEventListener("click", e => {
             advanceFrame(e);
+            if(canvasFrames[activeFrame].id === "cnvFrmData"){
+                renderArticle();
+            }
         });
     }
 }

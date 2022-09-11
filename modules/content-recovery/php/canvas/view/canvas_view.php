@@ -31,7 +31,7 @@
                         <div class="frmSelect">
                             <ul>
                                 <li>
-                                    <input type="radio" name="inpRdbtnFrmArtlType" id="inpRdbtnFrmArtlType1" value="2" disabled>
+                                    <input type="radio" name="inpRdbtnFrmArtlType" id="inpRdbtnFrmArtlType1" value="2">
                                     <label for="inpRdbtnFrmArtlType1" class="no_select">
                                         <i class="fa-solid fa-compass"></i>
                                         <p class="no_select">Nav. Bar</p>
@@ -97,7 +97,7 @@
                         <div class="frmDataElements fdeText">
                             <div class="frmInpText">
                                 <input type="text" id="inpTxtTitle" placeholder="title">
-                                <label for="inpTxtTitle" calass="no_select">T&iacute;tulo</label>
+                                <label for="inpTxtTitle" class="no_select">T&iacute;tulo</label>
                             </div>
                             <div class="frmInpText">
                                 <input type="text" id="inpTxtDesc" placeholder="Desc">
@@ -138,7 +138,7 @@
                                     </li>
                                 </ul>
                             </div>
-                            <div class="frmNavSelector">
+                            <div class="frmNavSelector" id="frmNavSelector">
                                 <p>Elige el apartado:</p>
                                 <select name="" id="slctNav">
                                     <option value="1">Nosotros</option>
@@ -150,7 +150,7 @@
                                     <option value="7">Contacto</option>
                                 </select>
                             </div>
-                            <div class="frmFileSelector">
+                            <div class="frmFileSelector" id="frmFileSelector">
                                 <p>Elige la im&aacute;gen de fondo:</p>
                                 <input type="file" name="" id="inpFileNavasicard" accept=".jpg, .jpeg, .png">
                                 <label class="article article_navasicard cnvFrmNavasicard" for="inpFileNavasicard">
@@ -176,52 +176,136 @@
                 </div>
                 <div class="canvas-frame canvas-painter frame-active" id="cnvFrmData">
                     <div class="frmBody">
-                        <div class="cnvPntFrames">
+                        <div class="cnvPntFrames" id="cnvPntFrames">
+                            <button type="button"><i class="fa-solid fa-xmark"></i></button>
                             <div class="cpFrame" id="cpfElementSelector">
-
+                                <div class="frmHead">
+                                    <h1>Elementos</h1>
+                                </div>
+                                <ul>
+                                    <li class="cpesBtn" data-type="1">
+                                        <i class="fa-solid fa-font"></i>
+                                        <p>Texto</p>
+                                    </li>
+                                    <li class="cpesBtn" data-type="2">
+                                        <i class="fa-solid fa-link"></i>
+                                        <p>Link</p>
+                                    </li>
+                                    <li class="cpesBtn" data-type="3">
+                                        <i class="fa-solid fa-heading"></i>
+                                        <p>Subtítulo 1</p>
+                                    </li>
+                                    <li class="cpesBtn" data-type="4">
+                                        <i class="fa-solid fa-heading"></i>
+                                        <p>Subtítulo 2</p>
+                                    </li>
+                                    <li class="cpesBtn" data-type="5">
+                                        <i class="fa-brands fa-youtube"></i>
+                                        <p>Video</p>
+                                    </li>
+                                    <li class="cpesBtn" data-type="6">
+                                        <i class="fa-solid fa-image"></i>
+                                        <p>Imágen</p>
+                                    </li>
+                                    <li class="cpesBtn" data-type="7">
+                                        <i class="fa-solid fa-images"></i>
+                                        <p>Img/Link</p>
+                                    </li>
+                                    <li class="cpesBtn" data-type="8">
+                                        <i class="fa-solid fa-file-pdf"></i>
+                                        <p>PDF</p>
+                                    </li>
+                                    <li class="cpesBtn" data-type="9">
+                                        <i class="fa-solid fa-gears"></i>
+                                        <p>Rest API</p>
+                                    </li>
+                                </ul>
                             </div>
                             <div class="cpFrame" id="cpfElementData">
-
+                                <div class="frmHead">
+                                    <h1>Propiedades</h1>
+                                </div>
+                                <div class="frmInpText cnvEditElement">
+                                    <input type="text" id="inpTxtLink" placeholder="link">
+                                    <label for="inpTxtTitle" class="no_select">Link</label>
+                                </div>
+                                <fieldset class="APITypeElements cnvEditElement">
+                                    <legend>Tipo de API</legend>
+                                    <ul class="form-elements frmInpRdbtn">
+                                        <li>
+                                            <input type="radio" name="inpRdbtnAPIType" class="inpRdbtnAPIType" id="inpRdbtnAPIType1" value="1">
+                                            <label for="inpRdbtnAPIType1" class="no_select c_click"><i><i></i></i>Tabla</label>
+                                        </li>
+                                        <li>
+                                            <input type="radio" name="inpRdbtnAPIType" class="inpRdbtnAPIType" id="inpRdbtnAPIType2" value="2">
+                                            <label for="inpRdbtnAPIType2" class="no_select c_click"><i><i></i></i>PDF</label>
+                                        </li>
+                                    </ul>
+                                </fieldset>
+                                <div class="frmInpFile cnvEditElement" id="frmInpFileImg">
+                                    <input type="file" id="inpFileImgArticle" accept=".jpg, .jpeg, .png">
+                                    <label for="inpFileImgArticle">
+                                        <p>
+                                            <i class="fa-solid fa-image"></i>
+                                            Im&aacute;gen
+                                        </p>
+                                        <div>
+                                            Elige una im&aacute;gen
+                                        </div>
+                                    </label>
+                                </div>
+                                <div class="frmInpFile cnvEditElement" id="frmInpFilePdf">
+                                    <input type="file" id="inpFilePdfArticle" accept=".pdf">
+                                    <label for="inpFilePdfArticle">
+                                        <p>
+                                            <i class="fa-solid fa-file-pdf"></i>
+                                            PDF
+                                        </p>
+                                        <div>
+                                            Elige un archivo pdf
+                                        </div>
+                                    </label>
+                                </div>
                             </div>
                         </div>
                         <div class="cnvPntEditBar">
                             <ul>
-                                <li>
-                                    <input type="checkbox" id="cnvTextType1">
+                                <li class="cpebText">
+                                    <input type="checkbox" id="cnvTextType1" value="bold">
                                     <label for="cnvTextType1">
                                         <i class="fa-solid fa-bold"></i>
                                     </label>
                                 </li>
-                                <li>
-                                    <input type="checkbox" id="cnvTextType2">
+                                <li class="cpebText">
+                                    <input type="checkbox" id="cnvTextType2" value="italic">
                                     <label for="cnvTextType2">
                                         <i class="fa-solid fa-italic"></i>
                                     </label>
                                 </li>
-                                <li>
-                                    <input type="checkbox" id="cnvTextType3">
+                                <li class="cpebText">
+                                    <input type="checkbox" id="cnvTextType3" value="underline">
                                     <label for="cnvTextType3">
                                         <i class="fa-solid fa-underline"></i>
                                     </label>
                                 </li>
-                                <li>
+                                <li id="cnvEditBtn" class="cpebOther">
                                     <label for="">
                                         <i class="fa-solid fa-pen"></i>
                                     </label>
                                 </li>
-                                <li>
+                                <li id="cnvDeleteBtn">
                                     <label for="">
                                         <i class="fa-solid fa-trash-can"></i>
                                     </label>
                                 </li>
                             </ul>
                         </div>
-                        <div class="cnvPaintWorkArea">
+                        <div class="cnvPaintWorkArea" id="cnvPaintWorkArea">
                             <article class="article">
                                 <div class="article_container article_1">
                                     <div class="article_title article_1_title">
                                         <p>Template 1</p>
-                                        <p class="article_text article_2_text">Texto de titulo</p>
+                                        <p class="article_text">Texto de titulo</p>
                                     </div>
                                     <hr>
                                     <div class="article_content article_1_content">
@@ -243,7 +327,7 @@
                                                             <i class="fa-solid fa-plus"></i>
                                                         </div>
                                                     </div>
-                                                    <p class="article_subtitle_1 article_1_subtitle_1">
+                                                    <p class="article_subtitle_1 article_1_subtitle_1" contenteditable>
                                                         Subtitulo 1
                                                     </p>
                                                     <div class="cpeCreateBtns cpecbBottom">
@@ -261,7 +345,7 @@
                                                             <i class="fa-solid fa-plus"></i>
                                                         </div>
                                                     </div>
-                                                    <p class="article_subtitle_1 article_1_subtitle_1">
+                                                    <p class="article_subtitle_2 article_1_subtitle_2" contenteditable>
                                                         Subtitulo 2
                                                     </p>
                                                     <div class="cpeCreateBtns cpecbBottom">
@@ -282,6 +366,7 @@
                         </div>
                         <div class="frmChangeButtons">
                             <input type="button" value="Atras" class="cnvFrmBackBtn">
+                            <input type="button" value="Renderizar" id="DTCRenderButton">
                             <input type="button" value="Siguiente" class="cnvFrmNextBtn">
                         </div>
                     </div>

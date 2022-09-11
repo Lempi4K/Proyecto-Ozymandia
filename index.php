@@ -22,6 +22,7 @@
     <script src="/modules/canvas/js/frame-changer.js"></script>
     <script src="/modules/canvas/js/navasidcard-canvas.js"></script>
     <script src="/modules/canvas/js/set-article-data.js"></script>
+    <script src="/modules/canvas/js/canvas-functions.js"></script>
 </head>
 <body>
     <div class="charging-display-container" id="charging-display-main"><img src="/src//img/logo/logo.png" alt=""></div>

@@ -33,6 +33,8 @@
     transition: all 0.1s ease-in-out 0s;
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
+    position: relative;
+    z-index: 31;
 }
 
 
@@ -297,4 +299,8 @@
     background-color: rgb(255, 255, 255, 0.3);
     filter: opacity(0);
     transition: all 0.2s ease-in-out 0s;
+}
+
+#frmNavSelector, #frmFileSelector{
+    display: none;
 }

@@ -3,26 +3,22 @@ let article = {
         id: 0,
         type: 0,
         subtype: 1,
-        theme: 1,
+        theme: "article_2",
         autor_uid: 0,
-        title: "",
-        description: "",
+        title: "Titulo",
+        description: "Descripcion",
         background_img: "",
         pub_date: "",
         label: "",
         sublabel: new Array(),
     },
-    AEM:[
-        {//Borrar al terminar desarrollo
-            content: "",
-            url: "",
-            img: "",
-            pdf: "",
-            type: 1,
-            API_type: 0,
-        },
-    ],
+    AEM: new Array(),
     blocked: false,
+}
+
+let VirtualCanvas = {
+    selectedIndex: 0,
+    insert: -1
 }
 
 window.addEventListener("load", e => {
@@ -38,11 +34,15 @@ window.addEventListener("load", e => {
         article.meta.pub_date = `${date.getDate()}-${date.getMonth()}-${date.getFullYear()}`;
         console.log(article.meta.pub_date);
 
+        set_article_data();
+
         frame_changer();
 
         navasidecard_canvas();
 
-        set_article_data();
+        canvas_function();
+
+        renderArticle();
     });
 
 });
