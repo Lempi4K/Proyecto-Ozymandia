@@ -17,7 +17,7 @@ let article = {
 }
 
 let VirtualCanvas = {
-    selectedIndex: 0,
+    selectedIndex: -1,
     insert: -1
 }
 

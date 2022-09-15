@@ -73,18 +73,18 @@ function elementHandler(AEMobject){
         6 : `
             <div class="article_img ${article.meta.theme}_img">
                 <hr>
-                <img src="${article.AEM[VirtualCanvas.selectedIndex].img !== "" ? URL.createObjectURL(article.AEM[VirtualCanvas.selectedIndex].img) : ""}" alt="">
+                <img src="${AEMobject.img !== null ? URL.createObjectURL(AEMobject.img) : ""}" alt="">
             </div>`,
         7 : `
             <div class="article_link_img ${article.meta.theme}_link_img">
                 <hr>
                 <a>
-                    <img src="${article.AEM[VirtualCanvas.selectedIndex].img !== "" ? URL.createObjectURL(article.AEM[VirtualCanvas.selectedIndex].img) : ""}" alt="">
+                    <img src="${AEMobject.img !== null ? URL.createObjectURL(AEMobject.img) : ""}" alt="">
                 </a>
             </div>`,
-        8 : `<embed src="${article.AEM[VirtualCanvas.selectedIndex].pdf !== "" ? URL.createObjectURL(article.AEM[VirtualCanvas.selectedIndex].pdf) : ""}" type="application/pdf" width="100%" height="100%">`,
+        8 : `<embed src="${AEMobject.pdf !== null ? URL.createObjectURL(AEMobject.pdf) : ""}" type="application/pdf" width="100%" height="100%">`,
         9 : `<div class="article_text ${article.meta.theme}_text cpeEditable">
-                Enlace de la API: ${article.AEM[VirtualCanvas.selectedIndex].url}
+                Enlace de la API: ${AEMobject.url}
             </div>`,
     };
 
@@ -121,25 +121,40 @@ function closeFrames(){
 }
 
 function editBarUpdate(){
-    if(article.AEM[VirtualCanvas.selectedIndex].type <= 4 && article.AEM[VirtualCanvas.selectedIndex].type != 2){
-        for(let item of document.getElementsByClassName("cpebText")){
-            item.style.display = "block";
-            for(let item of document.querySelectorAll(".cpebText > input")){
-                item.checked = article.AEM[VirtualCanvas.selectedIndex][item.value];
+    if(article.AEM.length != 0){
+        if(VirtualCanvas.selectedIndex != -1){
+            document.querySelector(".cnvPntEditBar").style.height = "50px";
+
+            if(article.AEM[VirtualCanvas.selectedIndex].type <= 4 && article.AEM[VirtualCanvas.selectedIndex].type != 2){
+                for(let item of document.getElementsByClassName("cpebText")){
+                    item.style.display = "block";
+                    for(let item of document.querySelectorAll(".cpebText > input")){
+                        item.checked = article.AEM[VirtualCanvas.selectedIndex][item.value];
+                    }
+                }
+                for(let item of document.getElementsByClassName("cpebOther")){
+                    item.style.display = "none";
+                }
+                document.getElementById("cnvDeleteBtn").style.display = "block";
+            } else{
+                for(let item of document.getElementsByClassName("cpebText")){
+                    item.style.display = "none";
+                }
+                for(let item of document.getElementsByClassName("cpebOther")){
+                    item.style.display = "block";
+                }
+                document.getElementById("cnvDeleteBtn").style.display = "block";
             }
+
         }
-        for(let item of document.getElementsByClassName("cpebOther")){
-            item.style.display = "none";
+        else{
+            document.querySelector(".cnvPntEditBar").style.height = "0px";
         }
-        document.getElementById("cnvDeleteBtn").style.display = "block";
+        console.log(VirtualCanvas.selectedIndex);
     } else{
-        for(let item of document.getElementsByClassName("cpebText")){
-            item.style.display = "none";
+        for(let item of document.querySelectorAll(".cpebText > input")){
+            item.checked = false;
         }
-        for(let item of document.getElementsByClassName("cpebOther")){
-            item.style.display = "block";
-        }
-        document.getElementById("cnvDeleteBtn").style.display = "block";
     }
 }
 
@@ -153,6 +168,10 @@ function renderEvents(){
         });
     }
 
+    document.querySelector(".article_main").addEventListener("click", e => {
+        e.stopPropagation();
+    });
+
     for(let item of document.getElementsByClassName("cpeEditable")){
         item.addEventListener("blur", e => {
             if(e.target.innerHTML === ""){
@@ -161,7 +180,6 @@ function renderEvents(){
                 article.AEM[parseInt(id.replace("cpe", ""))].content = item.innerHTML;
             }
         })
-        console.log();
         item.addEventListener("input", e => {
             let id = new String(item.parentNode.parentNode.id);
             article.AEM[parseInt(id.replace("cpe", ""))].content = item.innerHTML;
@@ -221,6 +239,7 @@ function renderArticle(test=false){
 
         `;
     }
+
     if(article.AEM.length == 0){
         elementStr += `
         <div class="cpeCreateBtns cpecbMain">
@@ -242,14 +261,16 @@ function renderArticle(test=false){
     VirtualCanvas.insert = 0;
 
     renderEvents();
+
+    editBarUpdate();
 }
 
 function createElements(nType){
     let AEMobject = {
         content: "Elemento",
         url: "",
-        img: "",
-        pdf: "",
+        img: null,
+        pdf: null,
         type: nType,
         API_type: 0,
         bold: false,
@@ -258,10 +279,13 @@ function createElements(nType){
         list: false,
 
     }
-
+    if(article.AEM.length == 0){
+        VirtualCanvas.selectedIndex = 0;
+    }
     if(VirtualCanvas.insert > 0){
         article.AEM.splice(VirtualCanvas.selectedIndex + 1, 0, AEMobject);
         VirtualCanvas.selectedIndex++;
+        console.log("E no mames")
     } else if(VirtualCanvas.insert < 0){
         article.AEM.splice(VirtualCanvas.selectedIndex, 0, AEMobject);
     } else{
@@ -313,7 +337,7 @@ function editElements(){
 
 function deleteElements(){
     article.AEM.splice(VirtualCanvas.selectedIndex, 1);
-    VirtualCanvas.selectedIndex = 0;
+    VirtualCanvas.selectedIndex = -1;
     renderArticle();
 }
 
@@ -386,4 +410,18 @@ function canvas_function(){
             renderArticle();
         });
     }
+
+    
+    document.querySelector("html").addEventListener("click", e => {
+        VirtualCanvas.selectedIndex = -1;
+        editBarUpdate();
+        renderArticle();
+    });
+
+    document.querySelector(".cnvPntFrames").addEventListener("click", e => {
+        e.stopPropagation();
+    });
+    document.querySelector(".cnvPntEditBar").addEventListener("click", e => {
+        e.stopPropagation();
+    });
 }
