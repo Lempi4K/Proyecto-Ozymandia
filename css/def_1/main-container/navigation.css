@@ -45,8 +45,14 @@
 .menu > .navLastItem > a > label:hover{
     background-color: var(--hover-color_2);
 }
+.menu > .navLastItem > a > label{
+    border: var(--logo_color) 2px solid;
+}
 .menu > .navLastItem > a > input[type="radio"]:checked + label{
-    background-color: var(--select-color_2);
+    background-color: white;
+}
+.menu > .navLastItem > a > input[type="radio"]:checked + label i, .menu > .navLastItem > a > input[type="radio"]:checked + label p{
+    color: var(--logo_color);
 }
 
 .menu li > a > label:hover{

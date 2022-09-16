@@ -74,7 +74,17 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    -webkit-tap-highlight-color: transparent
 }
+
+#cpfElementSelector > ul li:hover{
+    background-color: var(--hover-color_3);
+}
+
+#cpfElementSelector > ul li:active{
+    background-color: var(--select-color_3);
+}
+
 #cpfElementSelector > ul li > p{
     font-weight: bold;
     font-size: 15px;
@@ -223,8 +233,7 @@ width: 90%;
 
 .cnvPaintWorkArea{
     padding: 15px;
-    padding-top: 65px;
-    padding: 65px 15px 55px;
+    padding-bottom: 55px;
     height: 100%;
     overflow: auto;
 }

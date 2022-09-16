@@ -14,9 +14,9 @@
             $HTML = <<< HTML
             <div class="canvas-container">
                 <div class="canvas-background"></div>
-                <div class="canvas-frame" id="cnvFrmTitle">
+                <div class="canvas-frame frame-active" id="cnvFrmTitle">
                     <div class="frmHead">
-                        <h1>Lienzo</h1>
+                        <h1>Ozymandia's Canvas</h1>
                     </div>
                     <div class="frmBody">
                         <i class="fa-solid fa-palette"></i>
@@ -174,7 +174,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="canvas-frame canvas-painter frame-active" id="cnvFrmData">
+                <div class="canvas-frame canvas-painter" id="cnvFrmData">
                     <div class="frmBody">
                         <div class="cnvPntFrames" id="cnvPntFrames">
                             <button type="button"><i class="fa-solid fa-xmark"></i></button>

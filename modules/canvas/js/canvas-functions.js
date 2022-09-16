@@ -92,7 +92,19 @@ function elementHandler(AEMobject){
 }
 
 function openFrames(edit=false){
-    document.getElementById("cnvPntFrames").style.display = "block";
+    let cnvPntFrames = document.getElementById("cnvPntFrames");
+    cnvPntFrames.style.display = "block";
+    cnvPntFrames.animate(
+        [
+            {filter : "opacity(0)"},
+            {filter : "opacity(1)"}
+        ],
+        {
+            duration: 150,
+            iterations: 1,
+            easing: "ease-in-out",
+        }
+    );
 
     if(edit){
         document.getElementById("cpfElementData").style.display = "flex";
@@ -102,7 +114,20 @@ function openFrames(edit=false){
 }
 
 function closeFrames(){
-    document.getElementById("cnvPntFrames").style.display = "none";
+    let cnvPntFrames = document.getElementById("cnvPntFrames");
+    cnvPntFrames.animate(
+        [
+            {filter : "opacity(1)"},
+            {filter : "opacity(0)"}
+        ],
+        {
+            duration: 150,
+            iterations: 1,
+            easing: "ease-in-out",
+        }
+    ).onfinish = () => {
+        cnvPntFrames.style.display = "none";
+    };
     document.getElementById("cpfElementData").style.display = "none";
     document.getElementById("cpfElementSelector").style.display = "none";
 
@@ -120,10 +145,79 @@ function closeFrames(){
     renderArticle();
 }
 
+function openEditBar(){
+    let cnvPntEditBa = document.querySelector(".cnvPntEditBar");
+    let cnvPaintWorkArea = document.getElementById("cnvPaintWorkArea");
+    if(cnvPntEditBa.offsetHeight == 0){
+        cnvPntEditBa.animate(
+            [
+                {height : "0px"},
+                {height : "50px"}
+            ],
+            {
+                duration: 150,
+                iterations: 1,
+                easing: "ease-in-out",
+            }
+        )
+        .onfinish = () => {
+            cnvPntEditBa.style.height = "50px";
+        };
+
+        cnvPaintWorkArea.animate(
+            [
+                {paddingTop : "15px"},
+                {paddingTop : "65px"}
+            ],
+            {
+                duration: 150,
+                iterations: 1,
+                easing: "ease-in-out",
+            } 
+        ).onfinish = () => {
+            cnvPaintWorkArea.style.paddingTop = "65px";
+        };
+    }
+}
+
+function closeEditBar(){
+    let cnvPntEditBa = document.querySelector(".cnvPntEditBar");
+    if(cnvPntEditBa.offsetHeight == 50){
+        cnvPntEditBa.animate(
+            [
+                {height : "50px"},
+                {height : "0px"}
+            ],
+            {
+                duration: 150,
+                iterations: 1,
+                easing: "ease-in-out",
+            }
+        )
+        .onfinish = () => {
+            cnvPntEditBa.style.height = "0px";
+        };
+
+        cnvPaintWorkArea.animate(
+            [
+                {paddingTop : "65px"},
+                {paddingTop : "15px"}
+            ],
+            {
+                duration: 150,
+                iterations: 1,
+                easing: "ease-in-out",
+            } 
+        ).onfinish = () => {
+            cnvPaintWorkArea.style.paddingTop = "15px";
+        };
+    }
+}
+
 function editBarUpdate(){
     if(article.AEM.length != 0){
         if(VirtualCanvas.selectedIndex != -1){
-            document.querySelector(".cnvPntEditBar").style.height = "50px";
+            openEditBar();
 
             if(article.AEM[VirtualCanvas.selectedIndex].type <= 4 && article.AEM[VirtualCanvas.selectedIndex].type != 2){
                 for(let item of document.getElementsByClassName("cpebText")){
@@ -148,13 +242,14 @@ function editBarUpdate(){
 
         }
         else{
-            document.querySelector(".cnvPntEditBar").style.height = "0px";
+            closeEditBar();
         }
         console.log(VirtualCanvas.selectedIndex);
     } else{
         for(let item of document.querySelectorAll(".cpebText > input")){
             item.checked = false;
         }
+        closeEditBar();
     }
 }
 
@@ -299,10 +394,9 @@ function createElements(nType){
         document.getElementById("cpfElementSelector").style.display = "none";
         editElements();
     } else{
+        editBarUpdate();
         closeFrames();
     }
-
-    editBarUpdate();
 }
 
 const objectProperties = {
@@ -413,9 +507,11 @@ function canvas_function(){
 
     
     document.querySelector("html").addEventListener("click", e => {
+        if(article.AEM.length != 0){
+            document.getElementById("cpeSelector" + VirtualCanvas.selectedIndex).checked = false;
+        }
         VirtualCanvas.selectedIndex = -1;
         editBarUpdate();
-        renderArticle();
     });
 
     document.querySelector(".cnvPntFrames").addEventListener("click", e => {
