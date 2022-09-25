@@ -10,7 +10,15 @@
         }
 
         //Funciones
+
+        public function IF($condition, $true, $false){
+            return ($condition ? $true : $false);
+        }
         public function displayCanvas(){
+            
+            
+
+            
             $HTML = <<< HTML
             <div class="canvas-container">
                 <div class="canvas-background"></div>
@@ -31,21 +39,21 @@
                         <div class="frmSelect">
                             <ul>
                                 <li>
-                                    <input type="radio" name="inpRdbtnFrmArtlType" id="inpRdbtnFrmArtlType1" value="2">
+                                    <input type="radio" name="inpRdbtnFrmArtlType" id="inpRdbtnFrmArtlType1" value="2" {$this->IF(($this->model->getPerm() > 0 && $this->model->getPerm() <= 3), "", "disabled")}>
                                     <label for="inpRdbtnFrmArtlType1" class="no_select">
                                         <i class="fa-solid fa-compass"></i>
                                         <p class="no_select">Nav. Bar</p>
                                     </label>
                                 </li>
                                 <li>
-                                    <input type="radio" name="inpRdbtnFrmArtlType" id="inpRdbtnFrmArtlType2" value="0" checked>
+                                    <input type="radio" name="inpRdbtnFrmArtlType" id="inpRdbtnFrmArtlType2" value="1" checked>
                                     <label for="inpRdbtnFrmArtlType2" class="no_select">
                                         <i class="fa-solid fa-house-user"></i>
                                         <p class="no_select">Principal</p>
                                     </label>
                                 </li>
                                 <li>
-                                    <input type="radio" name="inpRdbtnFrmArtlType" id="inpRdbtnFrmArtlType3" value="3">
+                                    <input type="radio" name="inpRdbtnFrmArtlType" id="inpRdbtnFrmArtlType3" value="3" {$this->IF(($this->model->getPerm() > 0 && $this->model->getPerm() <= 3), "", "disabled")}>
                                     <label for="inpRdbtnFrmArtlType3" class="no_select">
                                         <i class="fa-solid fa-thumbtack"></i>
                                         <p class="no_select">Fijado</p>
@@ -75,7 +83,7 @@
                                     </label>
                                 </li>
                                 <li>
-                                    <input type="radio" name="inpRdbtnFrmArtlTheme" id="inpRdbtnFrmArtlTheme2" value="article_1">
+                                    <input type="radio" name="inpRdbtnFrmArtlTheme" id="inpRdbtnFrmArtlTheme2" value="article_1" {$this->IF(($this->model->getPerm() > 0 && $this->model->getPerm() <= 3), "", "disabled")}>
                                     <label for="inpRdbtnFrmArtlTheme2" class="no_select">
                                         <i class="fa-brands fa-themeco"></i>
                                         <p class="no_select">Pro</p>
@@ -106,36 +114,32 @@
                             <div class="frmLabelSelector">
                                 <p>Elige las etiquetas:</p>
                                 <ul>
+            HTML;
+            for($i = 1; $i <=3; $i++){
+                if($this->model->getPermitedLabel($i)){
+                    $HTML .= <<< HTML
                                     <li>
-                                        <input type="radio" name="inpRdbtnLbl" value="administrativo" id="inpRdbtnLbl1">
-                                        <label for="inpRdbtnLbl1" id="frmLabelAdmin">Administrativo</label>
+                                        <input type="radio" name="inpRdbtnLbl" value="{$this->model->getPermitedLabelName($i)}" id="inpRdbtnLbl{$i}">
+                                        <label for="inpRdbtnLbl{$i}" id="frmLabel{$this->model->getPermitedLabelName($i)}">{$this->model->getPermitedLabelName($i)}</label>
                                         <ul class="subLabels">
+                    HTML;
+                    for($j = 0; $j < count($this->model->getLabels()); $j++){
+                        if($this->model->getLabels()[$j]["LABEL"] == $i){
+                            $HTML .= <<< HTML
                                             <li>
-                                                <input type="checkbox" id="inpChckbxLbl1" class="inpChckbxLbl" value="1">
-                                                <label for="inpChckbxLbl1" class="frmSubLabel">Grupo 1</label>
+                                                <input type="checkbox" id='inpChckbxLbl{$j}' class="inpChckbxLbl icl{$this->model->getPermitedLabelName($i)}" value='{$this->model->getLabels()[$j]["SUBLABEL"]}'>
+                                                <label for='inpChckbxLbl{$j}' class="frmSubLabel">{$this->model->getLabels()[$j]["SUBLABEL_N"]}</label>
                                             </li>
-                                            <li>
-                                                <input type="checkbox" id="inpChckbxLbl2" class="inpChckbxLbl" value="2">
-                                                <label for="inpChckbxLbl2" class="frmSubLabel">Grupo 2</label>
-                                            </li>
-                                            <li>
-                                                <input type="checkbox" id="inpChckbxLbl3" class="inpChckbxLbl" value="3">
-                                                <label for="inpChckbxLbl3" class="frmSubLabel">Grupo 3</label>
-                                            </li>
-                                            <li>
-                                                <input type="checkbox" id="inpChckbxLbl4" class="inpChckbxLbl" value="4">
-                                                <label for="inpChckbxLbl4" class="frmSubLabel">Grupo 4</label>
-                                            </li>
+                            HTML;
+                        }
+                    }
+                    $HTML .= <<< HTML
                                         </ul>
                                     </li>
-                                    <li>
-                                        <input type="radio" name="inpRdbtnLbl" value="general" id="inpRdbtnLbl2">
-                                        <label for="inpRdbtnLbl2" id="frmLabelGene">General</label>
-                                    </li>
-                                    <li>
-                                        <input type="radio" name="inpRdbtnLbl" value="invitado" id="inpRdbtnLbl3">
-                                        <label for="inpRdbtnLbl3" id="frmLabelGuest">Invitado</label>
-                                    </li>
+                    HTML;
+                }
+            }
+            $HTML .= <<< HTML
                                 </ul>
                             </div>
                             <div class="frmNavSelector" id="frmNavSelector">

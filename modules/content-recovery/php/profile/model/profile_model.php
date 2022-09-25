@@ -1,8 +1,5 @@
 <?php
-    include($_SERVER['DOCUMENT_ROOT']."/libs/php-jwt-master/src/JWT.php");
-
     use Firebase\JWT\JWT;
-    
     class ProfileModel{
         //Miembros de datos
         private $data = null;

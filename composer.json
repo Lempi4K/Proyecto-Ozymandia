@@ -1,0 +1,20 @@
+{
+    "name": "vendor/ozymandia",
+    "description": "Proyecto Ozymandia",
+    "type": "project",
+    "license": "Null",
+    "autoload": {
+        "psr-4": {
+            "Vendor\\Ozymandia\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Lempi4K",
+            "email": "lemopi2008@gmail.com"
+        }
+    ],
+    "require": {
+        "mongodb/mongodb": "^1.12"
+    }
+}

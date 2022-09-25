@@ -4,9 +4,6 @@
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
-    position: fixed;
-    top: 0px;
-    left: -100px;
     animation: error-slash 0.5s ease-in-out 1 normal forwards;
 }
 

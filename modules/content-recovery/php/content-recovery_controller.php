@@ -1,6 +1,8 @@
 <?php
     include($_SERVER['DOCUMENT_ROOT']."/modules/Simple_MySQL_lib/Simple_MySQL.php");
 
+    include($_SERVER['DOCUMENT_ROOT']."/libs/php-jwt-master/src/JWT.php");
+    
     include("profile/controller/profile_controller.php");
 
     include("nav/controller/nav_controller.php");

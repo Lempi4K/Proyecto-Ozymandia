@@ -219,16 +219,31 @@
     border-radius: 3px;
 }
 
-#frmLabelAdmin{
+#frmLabelAdministrativo{
     background-color: var(--user-color_A);
 }
 
-#frmLabelGene{
+#frmLabelGeneral{
     background-color: var(--user-color_M);
 }
 
-#frmLabelGuest{
+#frmLabelInvitado{
     background-color: var(--user-color_I);
+}
+
+.iclAdministrativo:checked + label{
+    border-color: var(--user-color_A);
+    box-shadow: inset var(--user-color_A) 0px 0px 9px 1px;
+}
+
+.iclGeneral:checked + label{
+    border-color: var(--user-color_M);
+    box-shadow: inset var(--user-color_M) 0px 0px 9px 1px;
+}
+
+.iclInvitado:checked + label{
+    border-color: var(--user-color_I);
+    box-shadow: inset var(--user-color_I) 0px 0px 9px 1px;
 }
 
 .subLabels{
@@ -238,11 +253,6 @@
 
 .subLabels input[type="checkbox"]{
     display: none;
-}
-
-.subLabels input[type="checkbox"]:checked + label{
-    border-color: var(--user-color_A);
-    box-shadow: inset var(--user-color_A) 0px 0px 9px 1px;
 }
 
 .frmNavSelector{

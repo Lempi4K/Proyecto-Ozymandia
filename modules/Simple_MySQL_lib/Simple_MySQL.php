@@ -16,14 +16,17 @@
                 case 0:{
                     $user = "User";
                     $pass = "090722User*";
+                    break;
                 }
                 case 1:{
                     $user = "Admin";
                     $pass = "090722Admin*";
+                    break;
                 }
                 case 2:{
                     $user = "Editor";
                     $pass = "090722Editor*";
+                    break;
                 }
             }
             try{
