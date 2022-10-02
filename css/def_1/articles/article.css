@@ -5,6 +5,7 @@
     padding: 15px;
     border: var(--article-color_1) 1px solid;
     border-radius: 10px;
+    position: relative;
 }
 
 .article_head{
@@ -131,4 +132,24 @@
 
 .article_list{
     list-style: circle;
+}
+
+.article:hover .article_AdminMenu{
+    display: flex;
+}
+
+.article_AdminMenu{
+    display: none;
+    margin-left: 10px;
+    position: absolute;
+    top: -15px;
+    right: -10px
+}
+.article_AdminMenu > div{
+    margin: 5px;
+}
+
+.article_AdminMenu > div > i{
+    font-size: 20px;
+    cursor: pointer;
 }

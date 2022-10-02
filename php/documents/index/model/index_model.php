@@ -1,4 +1,5 @@
 <?php
+    include($_SERVER['DOCUMENT_ROOT']."/modules/Simple_MongoDB_lib/Simple_MongoDB.php");
     include($_SERVER['DOCUMENT_ROOT']."/modules/Simple_MySQL_lib/Simple_MySQL.php");
     include($_SERVER['DOCUMENT_ROOT']."/libs/php-jwt-master/src/JWT.php");
     use Firebase\JWT\JWT;
@@ -8,6 +9,7 @@
         private $db_handler;
         private $perm;
         private $name;
+        private $aside_cursor;
         private $valid_token = true;
         private $errors = "";
 
@@ -35,7 +37,7 @@
                     
 
                     $query = "select NOMBRES from " . (($this->perm == 0 || $this->perm == 5)? "ALUMNOS" : "DOCENTES") . " where USER_ID = " . $tokenData->uid . ";";
-                    $names = ($this->db_handler->console_FV($query))["NOMBRES"];
+                    $names = ($this->db_handler->console_FV($query))["NOMBRES"] ?? null;
                     //echo "<script> console.log('". $names . "') </script>";
                     if($names == null){
                         $query = "select NOMBRES from ALUMNOS where USER_ID = " . $tokenData->uid . ";";
@@ -46,8 +48,17 @@
                     }else{
                         $this->name = $names;
                     }
+
+                    $query = array(
+                        '$and' => array(
+                            array("meta.type" => 3),
+                            array("delete" => false)
+                        )
+                    );
+                    $mongo = Simple_MongoDB::connection("ARTICLES_DATA", 1);
+                    $this->aside_cursor = $mongo->ARTICLES_DATA->RECIPES->find($query);
                 } catch(Exception $e){
-                    $this->errors = $this->errors . "PHP.profile_model:Construct:DB-Error:" . $e.getMessage() . ";";
+                    $this->errors = $this->errors . "PHP.profile_model:Construct:DB-Error:" . $e->getMessage() . ";";
                 }
             }
             else{
@@ -67,6 +78,9 @@
         }
         public function getValid_token(){
             return $this->valid_token;
+        }
+        public function getAside_cursor(){
+            return $this->aside_cursor;
         }
     }
 ?>

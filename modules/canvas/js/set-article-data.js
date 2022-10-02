@@ -31,6 +31,10 @@ function set_article_data(){
     for(let item of inpRdbtnLbl){
         item.addEventListener("change", e => {
             if(e.target.checked){
+                for(let item of document.querySelectorAll(".iclAdministrativo, .iclGeneral, .iclInvitado")){
+                    item.checked = false;
+                }
+                article.meta.sublabel = new Array();
                 article.meta.label = e.target.value;
                 console.log(article.meta.label);
             }
@@ -41,10 +45,10 @@ function set_article_data(){
     for(let item of inpChckbxLbl){
         item.addEventListener("change", e => {
             if(e.target.checked){
-                article.meta.sublabel = article.meta.sublabel + e.target.value + ";"
+                article.meta.sublabel.push(parseInt(e.target.value));
             } else{
-                let str = new String(article.meta.sublabel);
-                article.meta.sublabel = str.replace(e.target.value + ";", "");
+                let x = article.meta.sublabel.indexOf(parseInt(e.target.value));
+                article.meta.sublabel.splice(x, 1);
             }
             console.log(article.meta.sublabel);
         });
@@ -54,8 +58,15 @@ function set_article_data(){
         article.meta.subtype = parseInt(this.value);
     });
 
+    document.getElementById("slctNavVisibility").addEventListener("change", function(e){
+        article.meta.visibility = parseInt(this.value);
+    });
+    
+
     document.getElementById("inpRdbtnFrmArtlType1").addEventListener("change", e => {
         if(e.target.checked){
+            document.getElementById("frmNavVisibility").style.display = "flex";
+            document.getElementById("frmLabelSelector").style.display = "none";
             document.getElementById("frmNavSelector").style.display = "flex";
             document.getElementById("frmFileSelector").style.display = "block";
         }
@@ -63,6 +74,8 @@ function set_article_data(){
 
     document.getElementById("inpRdbtnFrmArtlType2").addEventListener("change", e => {
         if(e.target.checked){
+            document.getElementById("frmNavVisibility").style.display = "none";
+            document.getElementById("frmLabelSelector").style.display = "block";
             document.getElementById("frmNavSelector").style.display = "none";
             document.getElementById("frmFileSelector").style.display = "none";
         }
@@ -70,6 +83,8 @@ function set_article_data(){
 
     document.getElementById("inpRdbtnFrmArtlType3").addEventListener("change", e => {
         if(e.target.checked){
+            document.getElementById("frmNavVisibility").style.display = "none";
+            document.getElementById("frmLabelSelector").style.display = "none";
             document.getElementById("frmNavSelector").style.display = "none";
             document.getElementById("frmFileSelector").style.display = "block";
         }

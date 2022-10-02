@@ -10,7 +10,6 @@ async function AJAXrequestContent(query){
     };
     try{
         let res = await fetch (url, options), json = await res.json();
-        console.log(json);
 
         if (!res.ok){
             throw new Error("AJAX-Request-Failed");

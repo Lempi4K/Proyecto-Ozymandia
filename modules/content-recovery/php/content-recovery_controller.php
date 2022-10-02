@@ -1,4 +1,6 @@
 <?php
+    include($_SERVER['DOCUMENT_ROOT']."/modules/Simple_MongoDB_lib/Simple_MongoDB.php");
+
     include($_SERVER['DOCUMENT_ROOT']."/modules/Simple_MySQL_lib/Simple_MySQL.php");
 
     include($_SERVER['DOCUMENT_ROOT']."/libs/php-jwt-master/src/JWT.php");
@@ -14,6 +16,8 @@
     include("search/controller/search_controller.php");
 
     include("canvas/controller/canvas_controller.php");
+
+    include("article-decoder.php");
 
     header("Content-type: application/json; charset=utf-8");
     $POST = json_decode(file_get_contents("php://input"), true);
@@ -57,6 +61,6 @@
         }
     }
 
-    echo json_encode(array("HTML" => $content_controller->getHTML()));
+    echo json_encode(array("HTML" => $content_controller->getHTML(), "article_id" => $article_id));
 
 ?>

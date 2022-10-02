@@ -1,4 +1,4 @@
-let base = {
+var base = {
     "article_1" : "",
     "article_2" : ""
 };
@@ -82,7 +82,11 @@ function elementHandler(AEMobject){
                     <img src="${AEMobject.img !== null ? URL.createObjectURL(AEMobject.img) : ""}" alt="">
                 </a>
             </div>`,
-        8 : `<embed src="${AEMobject.pdf !== null ? URL.createObjectURL(AEMobject.pdf) : ""}" type="application/pdf" width="100%" height="100%">`,
+        8 : `
+            <div class="article_pdf ${article.meta.theme}_pdf">
+                <hr>
+                <embed src="${AEMobject.pdf !== null ? URL.createObjectURL(AEMobject.pdf) : ""}" type="application/pdf" width="100%" height="100%">
+            </div>`,
         9 : `<div class="article_text ${article.meta.theme}_text cpeEditable">
                 Enlace de la API: ${AEMobject.url}
             </div>`,
@@ -91,8 +95,8 @@ function elementHandler(AEMobject){
     return Handler["" + AEMobject.type]
 }
 
-function openFrames(edit=false){
-    let cnvPntFrames = document.getElementById("cnvPntFrames");
+function openFrames(edit=false, pub=false){
+    let cnvPntFrames = pub ? document.getElementById("cnvPntSendFrames") : document.getElementById("cnvPntFrames");
     cnvPntFrames.style.display = "block";
     cnvPntFrames.animate(
         [
@@ -105,16 +109,18 @@ function openFrames(edit=false){
             easing: "ease-in-out",
         }
     );
-
-    if(edit){
-        document.getElementById("cpfElementData").style.display = "flex";
-    }else{
-        document.getElementById("cpfElementSelector").style.display = "block";
+    
+    if(!pub){
+        if(edit){
+            document.getElementById("cpfElementData").style.display = "flex";
+        }else{
+            document.getElementById("cpfElementSelector").style.display = "block";
+        }
     }
 }
 
-function closeFrames(){
-    let cnvPntFrames = document.getElementById("cnvPntFrames");
+function closeFrames(pub=false){
+    let cnvPntFrames = pub ? document.getElementById("cnvPntSendFrames") : document.getElementById("cnvPntFrames");
     cnvPntFrames.animate(
         [
             {filter : "opacity(1)"},
@@ -128,21 +134,23 @@ function closeFrames(){
     ).onfinish = () => {
         cnvPntFrames.style.display = "none";
     };
-    document.getElementById("cpfElementData").style.display = "none";
-    document.getElementById("cpfElementSelector").style.display = "none";
+    if(!pub){
+        document.getElementById("cpfElementData").style.display = "none";
+        document.getElementById("cpfElementSelector").style.display = "none";
 
-    for(let item of document.getElementsByClassName("cnvEditElement")){
-        item.style.display = "none";
+        for(let item of document.getElementsByClassName("cnvEditElement")){
+            item.style.display = "none";
+        }
+
+        document.getElementById("inpTxtLink").value = "";
+        document.getElementById("inpFilePdfArticle").value = "";
+        //document.getElementById("inpFileImgArticle").value = "";
+        for(let item of document.getElementsByName("inpRdbtnAPIType")){
+            item.checked = false;
+        }
+
+        renderArticle();
     }
-
-    document.getElementById("inpTxtLink").value = "";
-    document.getElementById("inpFilePdfArticle").value = "";
-    //document.getElementById("inpFileImgArticle").value = "";
-    for(let item of document.getElementsByName("inpRdbtnAPIType")){
-        item.checked = false;
-    }
-
-    renderArticle();
 }
 
 function openEditBar(){
@@ -399,7 +407,7 @@ function createElements(nType){
     }
 }
 
-const objectProperties = {
+var objectProperties = {
     1 : [],
     2 : [0],
     3 : [],
@@ -448,8 +456,6 @@ function canvas_function(){
         }
     });
 
-    document.getElementById("DTCRenderButton").addEventListener("click", renderArticle);
-
     document.getElementById("cnvDeleteBtn").addEventListener("click", deleteElements);
 
     for(let item of document.getElementsByClassName("cpesBtn")){
@@ -474,6 +480,7 @@ function canvas_function(){
         let files = e.target.files;
         for(let file of files){
             article.AEM[VirtualCanvas.selectedIndex].img = file;
+            console.log(file);
             document.querySelector(`#cpe${VirtualCanvas.selectedIndex} img`).src = URL.createObjectURL(article.AEM[VirtualCanvas.selectedIndex].img);
         }
     });
@@ -508,15 +515,22 @@ function canvas_function(){
     
     document.querySelector("html").addEventListener("click", e => {
         if(article.AEM.length != 0){
-            document.getElementById("cpeSelector" + VirtualCanvas.selectedIndex).checked = false;
+            try {
+                document.getElementById("cpeSelector" + VirtualCanvas.selectedIndex).checked = false;
+            } catch (error) {
+                
+            }
         }
         VirtualCanvas.selectedIndex = -1;
         editBarUpdate();
     });
 
-    document.querySelector(".cnvPntFrames").addEventListener("click", e => {
-        e.stopPropagation();
-    });
+    for(let item of document.querySelectorAll(".cnvPntFrames")){
+        item.addEventListener("click", e => {
+            e.stopPropagation();
+        });
+    }
+
     document.querySelector(".cnvPntEditBar").addEventListener("click", e => {
         e.stopPropagation();
     });

@@ -311,6 +311,6 @@
     transition: all 0.2s ease-in-out 0s;
 }
 
-#frmNavSelector, #frmFileSelector{
+#frmNavSelector, #frmFileSelector, #frmNavVisibility{
     display: none;
 }

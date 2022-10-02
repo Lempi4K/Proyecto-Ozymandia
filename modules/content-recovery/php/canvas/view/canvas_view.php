@@ -111,7 +111,7 @@
                                 <input type="text" id="inpTxtDesc" placeholder="Desc">
                                 <label for="inpTxtDesc" class="no_select">Descripci&oacute;n</label>
                             </div>
-                            <div class="frmLabelSelector">
+                            <div class="frmLabelSelector" id="frmLabelSelector">
                                 <p>Elige las etiquetas:</p>
                                 <ul>
             HTML;
@@ -154,6 +154,20 @@
                                     <option value="7">Contacto</option>
                                 </select>
                             </div>
+                            HTML;
+            if($this->model->getPerm() > 0 && $this->model->getPerm() < 5){
+                $HTML .= <<< HTML
+                            <div class="frmNavSelector" id="frmNavVisibility">
+                                <p>Elige la visibilidad:</p>
+                                <select name="" id="slctNavVisibility">
+                                    <option value="1">Todos</option>
+                                    <option value="2">Alumnos</option>
+                                    <option value="3">Docentes</option>
+                                </select>
+                            </div>
+                HTML;
+            }
+            $HTML .= <<< HTML
                             <div class="frmFileSelector" id="frmFileSelector">
                                 <p>Elige la im&aacute;gen de fondo:</p>
                                 <input type="file" name="" id="inpFileNavasicard" accept=".jpg, .jpeg, .png">
@@ -180,6 +194,17 @@
                 </div>
                 <div class="canvas-frame canvas-painter" id="cnvFrmData">
                     <div class="frmBody">
+                        <div class="cnvPntFrames cnvPntSendFrames" id="cnvPntSendFrames">
+                            <div class="cpFrame cpsFrame">
+                                <div class="cpsfMessage">
+                                    Seguro que quieres publicar el art&iacute;culo?
+                                </div>
+                                <div class="cpsfButtonGroup">
+                                    <input type="button" value="No" class="cnvFrmBackPubBtn" id="cnvFrmBackPubBtn">
+                                    <input type="button" value="Si" class="cnvFrmNextPubBtn" id="cnvFrmNextPubBtn">
+                                </div>
+                            </div>
+                        </div>
                         <div class="cnvPntFrames" id="cnvPntFrames">
                             <button type="button"><i class="fa-solid fa-xmark"></i></button>
                             <div class="cpFrame" id="cpfElementSelector">
@@ -370,8 +395,7 @@
                         </div>
                         <div class="frmChangeButtons">
                             <input type="button" value="Atras" class="cnvFrmBackBtn">
-                            <input type="button" value="Renderizar" id="DTCRenderButton">
-                            <input type="button" value="Siguiente" class="cnvFrmNextBtn">
+                            <input type="button" value="Publicar" class="cnvFrmPubBtn"  id="cnvFrmPubBtn">
                         </div>
                     </div>
                 </div>

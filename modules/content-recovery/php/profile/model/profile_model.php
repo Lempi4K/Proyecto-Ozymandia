@@ -34,7 +34,7 @@
                         $this->data = $this->data->fetch();
                     }
                 }catch (Exception $e){
-                    $this->errors = $this->errors . "PHP.profile_model:Construct:DB-Error:" . $e.getMessage() . ";";
+                    $this->errors = $this->errors . "PHP.profile_model:Construct:DB-Error:" . $e->getMessage() . ";";
                 }
             } else{
                 $this->errors = $this->errors . "PHP.profile_model:Construct:DB-Error:Cookie-Empty;";

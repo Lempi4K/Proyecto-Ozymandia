@@ -1,9 +1,6 @@
 <?php
-    require 'vendor/autoload.php';
+    require $_SERVER['DOCUMENT_ROOT'] . "/vendor/autoload.php";
     class Simple_MongoDB{
-        const ADMIN = 1;
-        const EDITOR = 2;
-        const USER = 0;
         
         //Constructor
         public static function connection($dbname, $conf = 0, $host = "localhost"){
@@ -27,7 +24,7 @@
                 }
             }
 
-            $conection_string = "mongodb://$user:$pass@127.0.0.1:27017/$dbname";
+            $conection_string = "mongodb://$user:$pass@127.0.0.1:27017/";
             //$conection_string = "mongodb://127.0.0.1:27017/"; 
                                 
             try{

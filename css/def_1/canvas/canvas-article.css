@@ -14,7 +14,7 @@
     width: 100%;
     height: 100%;
     position: absolute;
-    z-index: 30;
+    z-index: 33;
     display: block;
     display: none;
 }
@@ -176,6 +176,7 @@ width: 90%;
     position: absolute;
     bottom: 10px;
     left: 0px;
+    z-index: 29;
 }
 
 .cnvPntEditBar{
@@ -303,4 +304,13 @@ width: 90%;
     left: 0%;
 
 
+}
+
+.cpsFrame{
+    display: block;
+}
+
+.cpsfButtonGroup{
+    margin-top: 10px;
+    display: flex;
 }

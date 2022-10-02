@@ -2,6 +2,7 @@ function changeIMG(e){
     let files = e.target.files;
     for(let file of files){
         let img = document.querySelector(".cnvFrmNavasicard > img");
+        article.meta.background_img = file;
         img.src = URL.createObjectURL(file);
     }
 
@@ -39,3 +40,4 @@ function navasidecard_canvas(){
         editDesc(e);
     });
 }
+

@@ -3,6 +3,7 @@
     overflow: hidden;
     position: relative;
     background-color: var(--article-color_1);
+    cursor: pointer;
 }
 
 .article_navasicard > a{

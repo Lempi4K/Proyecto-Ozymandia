@@ -1,16 +1,16 @@
-let canvasFrames = document.getElementsByClassName("");
-let nFrames = 0;
-let activeFrame = 0;
+var canvasFrames = document.getElementsByClassName("");
+var nFrames = 0;
+var activeFrame = 0;
 
-const keyframesHide = [
+var keyframesHide = [
     {filter: "opacity(1)"},
     {filter: "opacity(0)"}
 ]
-const keyframesShow = [
+var keyframesShow = [
     {filter: "opacity(0)"},
     {filter: "opacity(1)"}
 ]
-const animateOptions = {
+var animateOptions = {
     duration: 200,
     iterations: 1,
     easing: "ease-in-out",
@@ -64,3 +64,4 @@ function frame_changer(){
         });
     }
 }
+

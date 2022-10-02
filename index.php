@@ -14,6 +14,7 @@
     <script src="/php/documents/index/js/user-menu.js"></script>
     <script src="/modules/router/js/router.js"></script>
     <script src="/modules/content-recovery/content-recovery.js"></script>
+    <script src="/modules/content-remove/content-remove.js"></script>
     <script src="/modules/logout/js/logout_ajax.js"></script>
     <script src="/php/documents/index/js/nav-menu.js"></script>
     <script src="/modules/drk-mode/js/drk-mode_logic.js"></script>
@@ -23,6 +24,7 @@
     <script src="/modules/canvas/js/navasidcard-canvas.js"></script>
     <script src="/modules/canvas/js/set-article-data.js"></script>
     <script src="/modules/canvas/js/canvas-functions.js"></script>
+    <script src="/modules/canvas/js/canvas-send.js"></script>
 </head>
 <body>
     <div class="charging-display-container" id="charging-display-main"><img src="/src//img/logo/logo.png" alt=""></div>

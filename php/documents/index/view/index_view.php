@@ -278,24 +278,42 @@
         }
 
         public function displayLateralContent(){
-            ?>
-            <aside class="lateral-content">
-                <div class="aside_container">
-                    <article class="article article_navasicard">
-                        <a class="c_click frame_change" data-url="aside?id=1" data-articleID="1">
-                            <div class="article_container article_navasicard_container">
-                                <div class="article_title article_navasicard_title">
-                                    <p>Acuerdos de Convivencia</p>
-                                    <p class="article_text article_navasicard_text">Texto de titulo</p>
+            $this->HTML = <<< HTML
+                    <aside class="lateral-content">
+                        <div class="aside_container">
+            HTML;
+
+            $cursor = $this->model->getAside_cursor()->toArray();
+            if(count( $cursor ) > 0){
+                foreach($cursor as $item){
+                    $this->HTML .= <<< HTML
+                        <article class="article article_navasicard">
+                            <a class="AsideLink" data-get="id={$item['meta']['id']}">
+                                <div class="article_container article_navasicard_container">
+                                    <div class="article_title article_navasicard_title">
+                                        <p>{$item['meta']['title']}</p>
+                                        <p class="article_text article_navasicard_text">{$item['meta']['description']}</p>
+                                    </div>
+                                    <hr>
                                 </div>
-                                <hr>
-                            </div>
-                        </a>
-                        <img src="/src/img/articles/aside_background_1.jpg" alt="" class="article_navasicard_background">
-                    </article>
-                </div>
-            </aside>
-            <?php
+                            </a>
+                            <img src="{$item['meta']['background_img']}" alt="" class="article_navasicard_background">
+                        </article>
+                    HTML;
+                }
+            } else{
+                $this->HTML .= <<< HTML
+                    <h3>No hay contenido</h3>
+                HTML;
+            }
+            
+            $this->HTML .= <<< HTML
+
+                        </div>
+                    </aside>
+            HTML;
+
+            return $this->HTML;
         }
 
         //Main Function
@@ -310,7 +328,7 @@
                     <div class="charging-display-container" id="charging-display-content"><div></div></div>
                     <div id="replazable-content"></div>
                 </section>
-                <?php $this->displayLateralContent() ?>
+                <?php echo $this->displayLateralContent() ?>
             </main>
         <?php }else{
         ?>
