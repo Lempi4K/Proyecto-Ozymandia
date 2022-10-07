@@ -20,11 +20,8 @@ function editTitle(e){
 function editDesc(e){
     const NavasicardDesc = document.getElementById("NavasicardDesc");
 
-    if(e.target.value === ""){
-        NavasicardDesc.innerHTML = "Descripci&oacute;n"
-    }else{
-        NavasicardDesc.textContent = e.target.value;
-    }
+    NavasicardDesc.textContent = e.target.value;
+
 }
 
 function navasidecard_canvas(){

@@ -5,13 +5,19 @@
 
 
     $errors = "";
+    $article_id = 0;
 
-    $mongo = Simple_MongoDB::connection("ARTICLES_DATA", 1);
-    $cursor = $mongo->ARTICLES_DATA->RECIPES->find();
-    $article_id = 1;
-    foreach($cursor as $item){
-        $article_id++;
+    if($_POST["aid"] == 0){
+        $mongo = Simple_MongoDB::connection("ARTICLES_DATA", 1);
+        $cursor = $mongo->ARTICLES_DATA->RECIPES->find();
+        $article_id = 1;
+        foreach($cursor as $item){
+            $article_id++;
+        }
+    } else{
+        $article_id = (int)$_POST["aid"];
     }
+
 
     $routes = array();
 

@@ -154,6 +154,14 @@ window.addEventListener("load", e => {
             });
         }
 
+        for(let item of document.getElementsByClassName("article_EditBtn")){
+            item.addEventListener("click", e => {
+                let aid = item.dataset.aid
+                window.history.pushState({}, "xd", "/lienzo" + "?id=" + aid);
+                handleLocation();
+            });
+        }
+
         for(let item of document.getElementsByClassName("navBarLink")){
             item.addEventListener("click", e => {
                 window.history.pushState({}, "xd", window.location.pathname + "?" + item.dataset.get);

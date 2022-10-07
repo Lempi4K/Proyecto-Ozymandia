@@ -13,13 +13,12 @@
         //Constructor
         public function __construct($articleJSON){
             if(isset($_COOKIE["token"])){
-                $token_ck = $_COOKIE["token"];
                 $dataT = JWT::decode($_COOKIE["token"], "P.O.");
 
                 $user_id = $dataT->uid;
 
                 $this->article = $articleJSON;
-                $this->article["meta"]["autor_uid"] = $user_id;
+                $this->article["meta"]["autor_uid"] = (int)$user_id;
                 $this->article["meta"]["pub_date"] = date("d-m-Y");
             } else{
                 $this->errors = $this->errors . "PHP.canvas_model:Construct:DB-Error:Cookie-Empty;";

@@ -288,7 +288,7 @@
                 foreach($cursor as $item){
                     $this->HTML .= <<< HTML
                         <article class="article article_navasicard">
-                            <a class="AsideLink" data-get="id={$item['meta']['id']}">
+                            <a class="AsideLink frame_change" data-get="id={$item['meta']['id']}">
                                 <div class="article_container article_navasicard_container">
                                     <div class="article_title article_navasicard_title">
                                         <p>{$item['meta']['title']}</p>
