@@ -24,7 +24,9 @@
 
     $type = $POST["type"];
 
-    $section = (($type == 0) ? $POST["section"] : null);
+    $section = $POST["section"] ?? 4;
+    
+    $start = $POST["start"] ?? 0;
 
     $article_id = ((($type != 1 && $type < 4) || $type == 5) ? $POST["article_id"] : null);
     
@@ -36,7 +38,7 @@
 
     switch ($type){
         case 0:{
-            $content_controller = new MainController($section, $article_id);
+            $content_controller = new MainController($section, $article_id, $start);
             break;
         }
         case 1:{

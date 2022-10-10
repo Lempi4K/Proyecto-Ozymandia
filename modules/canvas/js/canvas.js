@@ -37,7 +37,6 @@ window.addEventListener("load", e => {
         if(e.routeType != "lienzo"){
             return;
         }
-
         article = {
             meta: {
                 id: 0,
@@ -50,8 +49,8 @@ window.addEventListener("load", e => {
                 description: "",
                 background_img: null,
                 pub_date: "",
-                label: "",
-                sublabel: new Array(),
+                label: null,
+                sublabel: null,
             },
             AEM: new Array(),
             blocked: false,
@@ -68,7 +67,6 @@ window.addEventListener("load", e => {
             
             article = await AJAX_RecoveryObject(getParameterByName("id"));
             article._id = undefined;
-            console.log(article)
 
             document.getElementById("inpRdbtnFrmArtlType" + article.meta.type).checked = true;
             for(let i = 0; i < article.AEM.length; i++){
@@ -91,7 +89,6 @@ window.addEventListener("load", e => {
                 article.meta.background_img.name = "background_img." + ext;
 
             }
-            console.log(article.meta.background_img.name);
 
             document.getElementById("cnvFrmPubBtn").value = "Editar";
 
@@ -102,6 +99,7 @@ window.addEventListener("load", e => {
         set_article_data();
     
         frame_changer();
+        console.log("Cargado xddd")
     
         navasidecard_canvas();
     

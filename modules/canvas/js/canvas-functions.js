@@ -190,6 +190,9 @@ function openEditBar(){
 
 function closeEditBar(){
     let cnvPntEditBa = document.querySelector(".cnvPntEditBar");
+    if(cnvPntEditBa == null){
+        return;
+    }
     if(cnvPntEditBa.offsetHeight == 50){
         cnvPntEditBa.animate(
             [

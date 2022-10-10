@@ -35,20 +35,17 @@ function set_article_data(){
                     item.checked = false;
                 }
                 article.meta.sublabel = new Array();
-                article.meta.label = e.target.value;
+                article.meta.label = parseInt(e.target.value);
                 console.log(article.meta.label);
             }
         });
     }
 
-    const inpChckbxLbl = document.getElementsByClassName("inpChckbxLbl");
-    for(let item of inpChckbxLbl){
+    const inpRdbtnSlbl = document.getElementsByClassName("inpRdbtnSlbl");
+    for(let item of inpRdbtnSlbl){
         item.addEventListener("change", e => {
             if(e.target.checked){
-                article.meta.sublabel.push(parseInt(e.target.value));
-            } else{
-                let x = article.meta.sublabel.indexOf(parseInt(e.target.value));
-                article.meta.sublabel.splice(x, 1);
+                article.meta.sublabel = parseInt(e.target.value);
             }
             console.log(article.meta.sublabel);
         });
@@ -133,15 +130,24 @@ function initialData(){
     document.getElementById("inpTxtDesc").value = article.meta.description;
     document.getElementById("NavasicardDesc").innerHTML =  article.meta.description || "";
 
+    const labelsName = {
+        "1":"Administrativo",
+        "2":"General",
+        "3":"Invitado"
+    }
+
     for(let item of document.getElementsByName("inpRdbtnLbl")){
         if(item.value == article.meta.label){
             item.checked = true;
             console.log(item.value);
-            for(let items of document.getElementsByClassName("icl" + item.value)){
-                if(article.meta.sublabel.includes(parseInt(items.value))){
-                    items.checked = true;
+            if(article.meta.sublabel != null){
+                for(let items of document.getElementsByClassName("icl" + labelsName[item.value])){
+                    if(article.meta.sublabel == parseInt(items.value)){
+                        items.checked = true;
+                    }
                 }
             }
+
         }
     }
 
@@ -149,5 +155,7 @@ function initialData(){
 
     document.getElementById("slctNavVisibility").value = article.meta.visibility;
 
-    document.querySelector(".cnvFrmNavasicard > img").src = URL.createObjectURL(article.meta.background_img);
+    if(article.meta.background_img != null){
+        document.querySelector(".cnvFrmNavasicard > img").src = URL.createObjectURL(article.meta.background_img);
+    }
 }

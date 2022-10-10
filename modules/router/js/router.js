@@ -3,7 +3,6 @@ function route(item){
     handleLocation();
 };
 
-
 const titles = {
     "/inicio": "Inicio | Proyecto Ozymandia",
     "/perfil": "Perfil | Proyecto Ozymandia",
@@ -32,9 +31,10 @@ function getParameterByName(name) {
     return results === null ? 0 : decodeURIComponent(results[1].replace(/\+/g, " "));
 }
 
-function routeFabric(){
+function routeFabric(section = 0, start = 0){
+    section = (getParameterByName("id") != 0 ? 4 : section)
     const routes = {
-        "/inicio": {type: 0, section: 2, article_id: getParameterByName("id")},
+        "/inicio": {type: 0, section: section, article_id: getParameterByName("id"), start : start},
         "/perfil": {type: 1},
         "/nosotros": {type: 2, subtype: 1, article_id: getParameterByName("id")},
         "/oferta-educativa": {type: 2, subtype: 2, article_id: getParameterByName("id")},
@@ -53,7 +53,7 @@ function routeFabric(){
 
 }
 
-async function handleLocation() {
+async function handleLocation(container = "replazable-content", section = 0) {
     AJAXLoad.routeType = ""; 
     if(! await AJAXrequestChckToken(window.location.pathname)){
         document.getElementById("block-display-main").style.display = "flex";
@@ -61,13 +61,12 @@ async function handleLocation() {
     } else{
         ChargingAnimationStart();
         document.title = titles[window.location.pathname]
-        const central_content = document.getElementById("replazable-content");
-        let HTML = await AJAXrequestContent(routeFabric())
+        const central_content = document.getElementById(container);
+        let HTML = await AJAXrequestContent(routeFabric(section))
         central_content.innerHTML = HTML;
 
         AJAXLoad.routeType = eventType[window.location.pathname];
         central_content.dispatchEvent(AJAXLoad);
-
         //Script Charger
         /*
         for(let item of central_content.querySelectorAll("script")){
@@ -156,9 +155,11 @@ window.addEventListener("load", e => {
 
         for(let item of document.getElementsByClassName("article_EditBtn")){
             item.addEventListener("click", e => {
+                console.log("Ahhh me doxxean")
                 let aid = item.dataset.aid
                 window.history.pushState({}, "xd", "/lienzo" + "?id=" + aid);
                 handleLocation();
+                document.getElementById("inpRdbtnNav9").checked = true;
             });
         }
 
@@ -166,6 +167,30 @@ window.addEventListener("load", e => {
             item.addEventListener("click", e => {
                 window.history.pushState({}, "xd", window.location.pathname + "?" + item.dataset.get);
                 handleLocation();
+            });
+        }
+
+        for(let item of document.getElementsByClassName("main-article")){
+            item.addEventListener("dblclick", e => {
+                window.history.pushState({}, "xd", window.location.pathname + "?id=" + item.dataset.aid);
+                handleLocation();
+            })
+        }
+
+        for(let item of document.getElementsByName("inpRdbtnArtdiv")){
+            item.addEventListener("change", e => {
+                handleLocation("articles-container", item.value);
+            });
+        }
+
+        if(document.getElementById("articles-container") != null){
+            document.getElementById("articles-container").addEventListener("AJAXLoad", e => {
+                for(let item of document.getElementsByClassName("main-article")){
+                    item.addEventListener("dblclick", e => {
+                        window.history.pushState({}, "xd", window.location.pathname + "?id=" + item.dataset.aid);
+                        handleLocation();
+                    })
+                }
             });
         }
     });

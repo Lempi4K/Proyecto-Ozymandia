@@ -251,7 +251,7 @@
     flex-wrap: wrap;
 }
 
-.subLabels input[type="checkbox"]{
+.subLabels input[type="radio"]{
     display: none;
 }
 

@@ -1,7 +1,7 @@
 <?php
     include("canvas/model/canvas_model.php");
     include("canvas/view/canvas_view.php");
-
+    use Firebase\JWT\JWT;
     class CanvasController{
         //Miembros de datos
         private $article_id;
@@ -17,7 +17,48 @@
 
         //Funciones
         public function getHTML(){
-            return $this->view->displayCanvas();
+            if($this->isMyArticle($this->article_id)){
+                return $this->view->displayCanvas();
+            } else{
+                return <<< HTML
+                <div class='display-error-main'>
+                    <p>
+                        PHP.error: Acceso Denegado
+                        <br>
+                        <u>Recarga la p&aacute;gina o contacta al webmaster<u>
+                    </p>
+                </div>
+                HTML;
+            }
+        }
+        
+        public function isMyArticle($aid){
+            try{
+                if($aid == 0){
+                    return true;
+                }
+                $article_id = (int) $aid;
+                $query = array(
+                    '$and' => array(
+                        array("meta.id" => (int)$article_id),
+                        array("delete" => false)
+                    )
+                );
+                $mongo = Simple_MongoDB::connection("ARTICLES_DATA", 1);
+                $cursor = $mongo->ARTICLES_DATA->RECIPES->findOne($query);
+
+                $dataT = JWT::decode($_COOKIE["token"], "P.O.");
+                $perm = $dataT->prm;
+                $uid = $dataT->uid;
+                if(is_null($cursor)){
+                    return false;
+                }
+                if(((int) $cursor["meta"]["autor_uid"] == (int) $uid) || ($perm > 0 && $perm < 4) || $cursor["delete"]){
+                    return true;
+                }   
+            }catch (Exception $e){
+                return false;
+            }
         }
     }
 ?>

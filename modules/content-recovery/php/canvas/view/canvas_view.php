@@ -119,7 +119,7 @@
                 if($this->model->getPermitedLabel($i)){
                     $HTML .= <<< HTML
                                     <li>
-                                        <input type="radio" name="inpRdbtnLbl" value="{$this->model->getPermitedLabelName($i)}" id="inpRdbtnLbl{$i}">
+                                        <input type="radio" name="inpRdbtnLbl" value="{$i}" id="inpRdbtnLbl{$i}">
                                         <label for="inpRdbtnLbl{$i}" id="frmLabel{$this->model->getPermitedLabelName($i)}">{$this->model->getPermitedLabelName($i)}</label>
                                         <ul class="subLabels">
                     HTML;
@@ -127,8 +127,8 @@
                         if($this->model->getLabels()[$j]["LABEL"] == $i){
                             $HTML .= <<< HTML
                                             <li>
-                                                <input type="checkbox" id='inpChckbxLbl{$j}' class="inpChckbxLbl icl{$this->model->getPermitedLabelName($i)}" value='{$this->model->getLabels()[$j]["SUBLABEL"]}'>
-                                                <label for='inpChckbxLbl{$j}' class="frmSubLabel">{$this->model->getLabels()[$j]["SUBLABEL_N"]}</label>
+                                                <input type="radio" id='inpRdbtnSlbl{$j}' class="inpRdbtnSlbl icl{$this->model->getPermitedLabelName($i)}" value='{$this->model->getLabels()[$j]["SUBLABEL"]}' name='inpRdbtnSlbl'>
+                                                <label for='inpRdbtnSlbl{$j}' class="frmSubLabel">{$this->model->getLabels()[$j]["SUBLABEL_N"]}</label>
                                             </li>
                             HTML;
                         }
@@ -155,7 +155,7 @@
                                 </select>
                             </div>
                             HTML;
-            if($this->model->getPerm() > 0 && $this->model->getPerm() < 5){
+            if($this->model->getPerm() > 0 && $this->model->getPerm() < 4){
                 $HTML .= <<< HTML
                             <div class="frmNavSelector" id="frmNavVisibility">
                                 <p>Elige la visibilidad:</p>

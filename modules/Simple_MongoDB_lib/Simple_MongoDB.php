@@ -34,6 +34,5 @@
                 //echo "<script>console.log('PHP: Conexion a $dbname no posible: " . $e->getMessage() . "');</script>";
             }
         }
-
     }
 ?>

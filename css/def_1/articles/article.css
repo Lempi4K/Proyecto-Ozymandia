@@ -153,3 +153,39 @@
     font-size: 20px;
     cursor: pointer;
 }
+
+.article_followBtn{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.article_followBtn > input[type="checkbox"]{
+    display: none;
+}
+
+.article_followBtn > label{
+    background-color: var(--logo_color);
+    display: flex;
+    height: 30px;
+    width: 30px;
+    border-radius: 100%;
+    align-items: center;
+    justify-content: center;
+    border: var(--logo_color) 2px solid;
+}
+
+.article_followBtn > label > i{
+    color: var(--font-color_2);
+    font-size: 18px;
+    transition: all 0.1s ease-in-out 0s;
+}
+
+.article_followBtn > input[type="checkbox"]:checked + label{
+    background-color: var(--font-color_2);
+}
+
+.article_followBtn > input[type="checkbox"]:checked + label > i{
+    color: var(--logo_color);
+    transform: rotate(45deg);
+}

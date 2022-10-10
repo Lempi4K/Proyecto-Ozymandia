@@ -22,6 +22,11 @@ function advanceFrame(e){
     .onfinish = () => {
         canvasFrames[activeFrame].classList.toggle("frame-active");
         activeFrame++;
+        if(activeFrame >= nFrames){
+            activeFrame--;
+            canvasFrames[activeFrame].classList.toggle("frame-active");
+            return
+        }
         canvasFrames[activeFrame].style.filter = "opacity(0)";
         canvasFrames[activeFrame].classList.toggle("frame-active");
         canvasFrames[activeFrame].animate(keyframesShow, animateOptions);
@@ -32,6 +37,11 @@ function returnFrame(e){
     .onfinish = () => {
         canvasFrames[activeFrame].classList.toggle("frame-active");
         activeFrame--;
+        if(activeFrame < 0){
+            activeFrame++;
+            canvasFrames[activeFrame].classList.toggle("frame-active");
+            return;
+        }
         canvasFrames[activeFrame].style.filter = "opacity(0)";
         canvasFrames[activeFrame].classList.toggle("frame-active");
         canvasFrames[activeFrame].animate(keyframesShow, animateOptions);
@@ -39,6 +49,7 @@ function returnFrame(e){
 }
 
 function frame_changer(){
+    activeFrame = 0;
     canvasFrames = document.getElementsByClassName("canvas-frame");
     nFrames = canvasFrames.length;
 
@@ -48,15 +59,18 @@ function frame_changer(){
         }
     }
 
-    const cnvFrmBackBtn = document.getElementsByClassName("cnvFrmBackBtn");
+    let cnvFrmBackBtn = document.getElementsByClassName("cnvFrmBackBtn");
     for(let item of cnvFrmBackBtn){
         item.addEventListener("click", e => {
+            console.log("Retrocede")
             returnFrame(e);
         });
     }
-    const cnvFrmNextBtn = document.getElementsByClassName("cnvFrmNextBtn");
+    let cnvFrmNextBtn = document.getElementsByClassName("cnvFrmNextBtn");
+    console.log("Numero de elementos: " + cnvFrmNextBtn.length)
     for(let item of cnvFrmNextBtn){
         item.addEventListener("click", e => {
+            console.log("Avanza")
             advanceFrame(e);
             if(canvasFrames[activeFrame].id === "cnvFrmData"){
                 renderArticle();

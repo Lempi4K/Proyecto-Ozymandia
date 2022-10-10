@@ -62,7 +62,7 @@
             $cursor = $this->model->getCursor()->toArray();
             if(count( $cursor ) > 0){
                 foreach($cursor as $item){
-                    $this->HTML .= articleDecoder($item);
+                    $this->HTML .= articleDecoder($item, true);
                 }
             } else{
                 $this->HTML .= <<< HTML

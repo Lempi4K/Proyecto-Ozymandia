@@ -62,7 +62,21 @@
         return $handler[$AEMobject["type"]];
     }
 
-    function articleDecoder($article){
+    function mySublabel($sublabel){
+        $dataT = JWT::decode($_COOKIE["token"], "P.O.");
+        $uid = $dataT->uid;
+
+        $sql = "select count(1) as EXIST from USER_LABELS where USER_ID = $uid and SUBLABEL_ID = $sublabel;";
+        try{
+            $db_handler = new S_MySQL("USER_DATA", 1);
+            $data = $db_handler->console_FV($sql);
+            return $data["EXIST"] != 0 ? true : false;
+        }catch (Exception $e){
+            return false;
+        }
+    }
+
+    function articleDecoder($article, $single = false){
         $query = "select concat(ALU.NOMBRES, ' ', ALU.APELLIDOS) as NOM, USER from ALUMNOS as ALU join CREDENCIALES as CRED where CRED.USER_ID = " . ($article["meta"]["autor_uid"]) . " and ALU.USER_ID = " . ($article["meta"]["autor_uid"]) . ";";
         $data = "";
         try{
@@ -89,16 +103,22 @@
                         <div class="">
         HTML;
 
-        if($article["meta"]["type"] == 0){
+        if($article["meta"]["type"] == 1 && $article["meta"]["label"] == 2){
+            $checked = mySublabel($article['meta']['sublabel']) ? "checked" : "";
             $header .= <<< HTML
-                            <input type="button" value="Seguir">
+                            <div class="article_followBtn">
+                                <input type="checkbox" id="inpChckbxFollow{$article['meta']['sublabel']}" value="{$article['meta']['sublabel']}" name="inpChckbxFollow" {$checked}>
+                                <label for="inpChckbxFollow{$article['meta']['sublabel']}">
+                                    <i class="fa-solid fa-plus"></i>
+                                </label>
+                            </div>
             HTML;
         }
         if(!empty($_COOKIE["token"])){
             $dataT = JWT::decode($_COOKIE["token"], "P.O.");
             $perm = $dataT->prm;
             $id = $dataT->uid;
-            if(($perm > 0 && $perm < 4) || $article["meta"]["autor_uid"] == $id){
+            if((($perm > 0 && $perm < 4) || (int) $article["meta"]["autor_uid"] == (int) $id) && $single){
                 $header .= <<< HTML
                             <div class="article_AdminMenu">
                                 <div data-aid="{$article['meta']['id']}" class="article_deleteBtn"><i class="fa-solid fa-trash"></i></div>
@@ -123,9 +143,11 @@
             $AEM .= elementHandler($item, $article['meta']['theme']);
         }
 
+        $click = ($single) ? "" : "c_click";
+        $main_article = ($single) ? "" : "main-article";
         $base = array(
             "article_1" => <<< HTML
-                <article class="article" id="article_{$article['meta']['id']}">
+                <article class="article {$main_article} {$click}" id="article_{$article['meta']['id']}" data-aid="{$article['meta']['id']}">
                     $header
                     <div class="article_container {$article['meta']['theme']}">
                         <div class="article_title {$article['meta']['theme']}_title">
@@ -155,7 +177,7 @@
             </article>
             HTML,
             "article_2" => <<< HTML
-            <article class="article" id="article_{$article['meta']['id']}">
+            <article class="article {$main_article} {$click}" id="article_{$article['meta']['id']}" data-aid="{$article['meta']['id']}">
                 $header
                 <div class="article_container {$article['meta']['theme']}">
                     <div class="article_title {$article['meta']['theme']}_title">
