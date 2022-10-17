@@ -1,3 +1,17 @@
+# **Alpha 3**
+## _v0.0.3_
+### Cambios
+- CRUD de articulos
+    - Crea artículos de manera interactiva con Ozymandia's Canvas
+    - Edita los artículos que consideres desde el mismo editor
+    - Elimina los artículos que creas que no son apropiados
+    - Visita lo artículos de tu preferencia
+- Integracón de MongoDB al proyecto
+    - El almacenamiento de los artículos se hace mediante MongoDB
+- Viualización de artículos
+    - Desde ahora, puedes ver los artículos en todos los apartados de la página
+    - La oágina ya se retroalimenta
+
 # **Alpha 2**
 ## _v0.0.2_
 ### Cambios
