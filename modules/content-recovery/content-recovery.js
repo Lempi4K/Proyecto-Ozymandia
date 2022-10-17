@@ -13,6 +13,7 @@ async function AJAXrequestContent(query){
         if (!res.ok){
             throw new Error("AJAX-Request-Failed");
         }
+        console.log(json)
         return json.HTML;
     } catch (err){
         let HTML = "<div class='display-error-main'><p>" + `JavaScript.Content_ajax:AJAX-Error: ${err.message}` +"<br><u>Recarga la página o contacta al webmaster<u></p></div>";

@@ -1,5 +1,6 @@
 <?php
     include($_SERVER['DOCUMENT_ROOT']."/modules/Simple_MongoDB_lib/Simple_MongoDB.php");
+    include($_SERVER['DOCUMENT_ROOT']."/modules/Simple_MySQL_lib/Simple_MySQL.php");
 
     include($_SERVER['DOCUMENT_ROOT']."/libs/php-jwt-master/src/JWT.php");
     use Firebase\JWT\JWT;
@@ -20,6 +21,20 @@
                 $this->article = $articleJSON;
                 $this->article["meta"]["autor_uid"] = (int)$user_id;
                 $this->article["meta"]["pub_date"] = date("d-m-Y");
+
+                if($this->article["meta"]["label"] == 1 && $this->article["meta"]["sublabel"] == 4){
+                    $query = "select GEN_LABEL from ALUMNOS where USER_ID = $user_id";
+                    $db_handler = new S_MySQL("USER_DATA");
+                    $gen_lbl = $db_handler->console($query);
+                    if($gen_lbl != null && $gen_lbl->rowCount() > 0){
+                        $gen_lbl->setFetchMode(PDO::FETCH_BOTH);
+                        $gen_lbl = $gen_lbl->fetch()["GEN_LABEL"];
+                    } else{
+                        $gen_lbl = null;
+                    }
+
+                    $this->article["meta"]["gen_label"] = $gen_lbl;
+                }
             } else{
                 $this->errors = $this->errors . "PHP.canvas_model:Construct:DB-Error:Cookie-Empty;";
             }

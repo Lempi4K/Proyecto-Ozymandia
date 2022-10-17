@@ -66,6 +66,6 @@
                 HTML;
                 return $this->HTML;
             }
-        } 
+        }
     }
 ?>

@@ -51,6 +51,7 @@ window.addEventListener("load", e => {
                 pub_date: "",
                 label: null,
                 sublabel: null,
+                gen_label: null
             },
             AEM: new Array(),
             blocked: false,

@@ -13,22 +13,81 @@
     align-items: center;
     margin-bottom: 20px;
 }
-.article_head > div > p:first-child{
+.article_head > div > .article_autor-id{
     font-weight: bold;
     font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.article_head > div > .article_autor-id > .profile-rol{
+    width: 17px;
+    height: 17px;
+}
+.article_head > div > .article_autor-id > .profile-rol > p{
+    font-size: 11px;
 }
 .article_head > div > p:last-child{
     font-size: 13px;
 }
 
+.lblArticle{
+    padding: 5px;
+    margin-left: 10px;
+    border-radius: 100px;
+    background-color: var(--user-color_A);
+    box-shadow: var(--user-color_A) 0px 0px 4px 2px;
+    /*border: 1px solid var(--article-color_1);*/
+}
+.lblArticle1{
+    background-color: var(--user-color_A);
+    box-shadow: var(--user-color_A) 0px 0px 4px 2px;
+}
+.lblArticle2{
+    background-color: var(--user-color_M);
+    box-shadow: var(--user-color_M) 0px 0px 4px 2px;
+}
+.lblArticle3{
+    background-color: var(--user-color_I);
+    box-shadow: var(--user-color_I) 0px 0px 4px 2px;
+}
+.lblArticle > p{
+    font-size: 13px;
+    font-weight: bold;
+}
+
 .article_userPic{
-    display: block;
-    padding: 10px;
-    font-size: 20px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
     background-color: blue;
     border-radius: 100%;
     margin-right: 5px;
-    color: white;
+}
+
+.article_userPic[data-perm="I"]{
+    background: var(--user-color_I);
+}
+.article_userPic[data-perm="U"]{
+    background: var(--user-color_U);
+}
+.article_userPic[data-perm="A"]{
+    background: var(--user-color_A);
+}
+.article_userPic[data-perm="D"]{
+    background: var(--user-color_D);
+}
+.article_userPic[data-perm="M"]{
+    background: var(--user-color_M);
+}
+.article_userPic[data-perm="P"]{
+    background: var(--user-color_P);
+}
+.article_userPic[data-perm="J"]{
+    background: var(--user-color_J);
 }
 
 .article_head > input[type="button"]{
@@ -65,7 +124,7 @@
     font-size: 12px;
     font-weight: normal;
 }
-.article b, .article u, .article i{
+.article b, .article u{
     font-size: 12px;
 }
 
@@ -156,8 +215,8 @@
 
 .article_followBtn{
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: 10px;
+    right: 10px;
 }
 
 .article_followBtn > input[type="checkbox"]{

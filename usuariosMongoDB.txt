@@ -1,0 +1,3 @@
+{ user: "Admin", pwd: "090722Admin*", roles: [{ role: "userAdminAnyDatabase", db: "admin" }, "readWriteAnyDatabase"]}
+{ user: "Editor", pwd: "090722Editor*", roles: [{ role: "readWrite", db: "ARTICLES_DATA" }, "readWriteAnyDatabase"]}
+{ user: "User", pwd: "090722User*", roles: [{ role: "readWrite", db: "ARTICLES_DATA" }]}

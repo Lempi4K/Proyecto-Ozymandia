@@ -15,10 +15,6 @@
             return ($condition ? $true : $false);
         }
         public function displayCanvas(){
-            
-            
-
-            
             $HTML = <<< HTML
             <div class="canvas-container">
                 <div class="canvas-background"></div>
@@ -124,13 +120,15 @@
                                         <ul class="subLabels">
                     HTML;
                     for($j = 0; $j < count($this->model->getLabels()); $j++){
-                        if($this->model->getLabels()[$j]["LABEL"] == $i){
+                        if($this->model->getLabels()[$j]["LABEL"] == $i && $this->model->getLabels()[$j]["LABEL"] != 3){
                             $HTML .= <<< HTML
                                             <li>
                                                 <input type="radio" id='inpRdbtnSlbl{$j}' class="inpRdbtnSlbl icl{$this->model->getPermitedLabelName($i)}" value='{$this->model->getLabels()[$j]["SUBLABEL"]}' name='inpRdbtnSlbl'>
                                                 <label for='inpRdbtnSlbl{$j}' class="frmSubLabel">{$this->model->getLabels()[$j]["SUBLABEL_N"]}</label>
                                             </li>
                             HTML;
+                        } else{
+                            continue;
                         }
                     }
                     $HTML .= <<< HTML
@@ -154,9 +152,6 @@
                                     <option value="7">Contacto</option>
                                 </select>
                             </div>
-                            HTML;
-            if($this->model->getPerm() > 0 && $this->model->getPerm() < 4){
-                $HTML .= <<< HTML
                             <div class="frmNavSelector" id="frmNavVisibility">
                                 <p>Elige la visibilidad:</p>
                                 <select name="" id="slctNavVisibility">
@@ -165,8 +160,13 @@
                                     <option value="3">Docentes</option>
                                 </select>
                             </div>
+            HTML;
+            /*
+            if($this->model->getPerm() > 0 && $this->model->getPerm() < 4){
+                $HTML .= <<< HTML
+
                 HTML;
-            }
+            }*/
             $HTML .= <<< HTML
                             <div class="frmFileSelector" id="frmFileSelector">
                                 <p>Elige la im&aacute;gen de fondo:</p>
