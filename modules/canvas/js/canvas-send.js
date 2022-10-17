@@ -89,6 +89,7 @@ async function AJAX_SendCanvas(articleJSON, id=0){
         console.log(json);
         return json.data.success;
     } catch (err){
+        console.log(err)
         return false;
     }
 }

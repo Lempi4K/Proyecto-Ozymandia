@@ -1,5 +1,6 @@
 <?php
     use Firebase\JWT\JWT;
+
     class CanvasModel{
         //Miembros de datos
         private $labels = array();
@@ -17,9 +18,33 @@
                 $user_id = $dataT->uid;
 
                 $this->perm = $dataT->prm;
+
+                $query = "";
+                switch ((int) $this->perm){
+                    case 0:{
+                        break;
+                    }
+                    case 1:{
+                    }
+                    case 2:{
+                    }
+                    case 3:{
+                        $query = "select ET.NOMBRE as LABEL_N, ET.LABEL_ID as 'LABEL', SUET.NOMBRE as SUBLABEL_N , SUET.SUBLABEL_ID as 'SUBLABEL' from ETIQUETAS as ET join SUBETIQUETAS as SUET where ET.LABEL_ID = SUET.LABEL_ID and SUET.SUBLABEL_ID != 0 and SUET.SUBLABEL_ID != 4";
+                        break;
+                    }
+                    case 4:{
+                    }
+                    case 6:{
+                        $query = "select ET.NOMBRE as LABEL_N, PL.LABEL_ID as 'LABEL', SUET.NOMBRE as SUBLABEL_N , PL.SUBLABEL_ID as 'SUBLABEL' from PERM_LABELS as PL join ETIQUETAS as ET join SUBETIQUETAS as SUET where PL.USER_ID = $user_id and PL.LABEL_ID = ET.LABEL_ID and PL.LABEL_ID = SUET.LABEL_ID and PL.SUBLABEL_ID = SUET.SUBLABEL_ID;";
+                        break;
+                    }
+                    case 5:{
+                        $query = "select ET.NOMBRE as LABEL_N, ET.LABEL_ID as 'LABEL', SUET.NOMBRE as SUBLABEL_N , SUET.SUBLABEL_ID as 'SUBLABEL' from ETIQUETAS as ET join SUBETIQUETAS as SUET where ET.LABEL_ID = 1 and SUET.SUBLABEL_ID = 4";
+                        break;
+                    }
+                }
                 
                 try{
-                    $query = "select ET.NOMBRE as LABEL_N, PL.LABEL_ID as 'LABEL', SUET.NOMBRE as SUBLABEL_N , PL.SUBLABEL_ID as 'SUBLABEL' from PERM_LABELS as PL join ETIQUETAS as ET join SUBETIQUETAS as SUET where PL.USER_ID = $user_id and PL.LABEL_ID = ET.LABEL_ID and PL.LABEL_ID = SUET.LABEL_ID and PL.SUBLABEL_ID = SUET.SUBLABEL_ID;";
                     $this->db_handler = new S_MySQL("USER_DATA");
                     
                     $data = $this->db_handler->console($query);

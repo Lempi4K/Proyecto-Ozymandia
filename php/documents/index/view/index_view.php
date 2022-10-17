@@ -190,7 +190,7 @@
                         </a>
                     </li>
 
-                    <?php  if($this->model->getPerm() != -1 && $this->model->getPerm() != 0 && $this->model->getPerm() != 5){?>
+                    <?php  if($this->model->getPerm() != -1 && $this->model->getPerm() != 0){?>
                     <li class="navLastItem">
                         <a class="no_select">
                             <input type="radio" name="inpRdbtnNav" id="inpRdbtnNav9" class="c_click frame_change" data-url="lienzo">

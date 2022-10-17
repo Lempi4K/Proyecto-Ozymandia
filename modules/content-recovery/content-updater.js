@@ -38,6 +38,10 @@ window.addEventListener("load", e => {
                         } else{
                             action = false;
                         }
+
+                        for(let items of document.getElementsByClassName(item.classList.toString())){
+                            items.checked = action;
+                        }
                         (await AJAXEditFollow(sublabel_id, action));
                     });
                 }
@@ -54,6 +58,11 @@ window.addEventListener("load", e => {
                 } else{
                     action = false;
                 }
+
+                for(let items of document.getElementsByClassName(item.classList.toString())){
+                    items.checked = action;
+                }
+
                 (await AJAXEditFollow(sublabel_id, action));
             });
         }

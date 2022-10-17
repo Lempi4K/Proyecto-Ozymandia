@@ -77,7 +77,7 @@
     }
 
     function articleDecoder($article, $single = false){
-        $query = "select concat(ALU.NOMBRES, ' ', ALU.APELLIDOS) as NOM, USER from ALUMNOS as ALU join CREDENCIALES as CRED where CRED.USER_ID = " . ($article["meta"]["autor_uid"]) . " and ALU.USER_ID = " . ($article["meta"]["autor_uid"]) . ";";
+        $query = "select concat(ALU.NOMBRES, ' ', ALU.APELLIDOS) as NOM, USER, US.PERM from ALUMNOS as ALU join CREDENCIALES as CRED join USUARIOS as US where CRED.USER_ID = " . ($article["meta"]["autor_uid"]) . " and ALU.USER_ID = " . ($article["meta"]["autor_uid"]) . " and US.USER_ID = " . ($article["meta"]["autor_uid"]) . ";";
         $data = "";
         try{
             $db_handler = new S_MySQL("USER_DATA");
@@ -86,29 +86,76 @@
             $data->setFetchMode(PDO::FETCH_BOTH);
             $data = $data->fetch();
             if($data == null){
-                $query = "select concat(DOCE.NOMBRES, ' ', DOCE.APELLIDOS) as NOM, USER from DOCENTES as DOCE join CREDENCIALES as CRED where CRED.USER_ID = " . ($article["meta"]["autor_uid"]) . " and DOCE.USER_ID = " . ($article["meta"]["autor_uid"]) . ";";
+                $query = "select concat(DOCE.NOMBRES, ' ', DOCE.APELLIDOS) as NOM, USER, US.PERM from DOCENTES as DOCE join CREDENCIALES as CRED join USUARIOS as US where CRED.USER_ID = " . ($article["meta"]["autor_uid"]) . " and DOCE.USER_ID = " . ($article["meta"]["autor_uid"]) . " and US.USER_ID = " . ($article["meta"]["autor_uid"]) . ";";
                 $data = $db_handler ->console($query);
                 $data->setFetchMode(PDO::FETCH_BOTH);
                 $data = $data->fetch();
+                if($data == null){
+                    $data = [
+                        "USER" => "undefinded",
+                        "NOM" => "undefined",
+                        "PERM" => "-1"
+                    ];
+                }
             }
         }catch (Exception $e){
+            $data = [
+                "USER" => "undefinded",
+                "NOM" => "undefined",
+                "PERM" => "-1"
+            ];
         }
+
+
+        $charsPerms = array("-1" => "I","0" => "U", "1" => "A", "2" => "D", "3" => "M", "4" => "P", "5" => "J");
+        $namePerms = array("-1" => "Invitado", "0" => "Usuario", "1" => "Administrador", "2" => "Director", "3" => "Moderador", "4" => "Profesor", "5" => "Jefe de Grupo");
+
         $header = <<< HTML
                     <div class="article_head">
-                        <i class="fa-solid fa-user-astronaut article_userPic"></i>
+                        <div class="article_userPic" data-perm={$charsPerms[strval($data['PERM'])]}>
+                            <i class="fa-solid fa-graduation-cap"></i>
+                        </div>
                         <div>
-                            <p>{$data['NOM']}</p>
+                            <div class="article_autor-id">
+                                {$data['NOM']}
+                                <div class="rol profile-rol c_default" title={$namePerms[strval($data['PERM'])]} data-perm={$charsPerms[strval($data['PERM'])]}><p class="no_select">{$charsPerms[strval($data['PERM'])]}</p></div>
+                            </div>
                             <p>@{$data['USER']} | <time pubdate="{$article['meta']['pub_date']}">{$article['meta']['pub_date']}</time></p>
                         </div>
                         <div class="">
         HTML;
-
+        if($article["meta"]["type"] == 1 && $article["meta"]["label"] != null){
+            if($article["meta"]["label"] != 3){
+                $query = "select NOMBRE from SUBETIQUETAS where LABEL_ID = " . $article["meta"]["label"] . " and SUBLABEL_ID = " . $article["meta"]["sublabel"] . ";";
+                $label_name = "";
+                try{
+                    $db_handler = new S_MySQL("USER_DATA");
+                    
+                    $label_name = $db_handler ->console($query);
+                    $label_name->setFetchMode(PDO::FETCH_BOTH);
+                    $label_name = $label_name->fetch();
+                    if($label_name == null){
+                        $label_name = ["NOMBRE" => "undefined"];
+                    }
+                }catch (Exception $e){
+                    $label_name = ["NOMBRE" => "undefined"];
+                }
+            } else {
+                $label_name = ["NOMBRE" => "Invitado"];
+            }
+            
+            $header .= <<< HTML
+                            <div class="lblArticle lblArticle{$article['meta']['label']}">
+                                <p>{$label_name["NOMBRE"]}</p>
+                            </div>
+            HTML;
+        }
         if($article["meta"]["type"] == 1 && $article["meta"]["label"] == 2){
             $checked = mySublabel($article['meta']['sublabel']) ? "checked" : "";
             $header .= <<< HTML
                             <div class="article_followBtn">
-                                <input type="checkbox" id="inpChckbxFollow{$article['meta']['sublabel']}" value="{$article['meta']['sublabel']}" name="inpChckbxFollow" {$checked}>
-                                <label for="inpChckbxFollow{$article['meta']['sublabel']}">
+                                <input type="checkbox" class="inpChckbxFollow{$article['meta']['sublabel']}" id="inpChckbxFollow{$article['meta']['id']}" value="{$article['meta']['sublabel']}" name="inpChckbxFollow" {$checked}>
+                                <label for="inpChckbxFollow{$article['meta']['id']}">
                                     <i class="fa-solid fa-plus"></i>
                                 </label>
                             </div>

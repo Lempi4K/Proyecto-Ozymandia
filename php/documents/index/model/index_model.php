@@ -26,7 +26,7 @@
                 if(($tokenData->exp - time()) <= 0){
                     $this->valid_token = false;
                 }
-                $this->perm = $tokenData->prm;
+                $this->perm = (int) $tokenData->prm;
 
                 try{
                     $this->db_handler =  new S_MySQL("USER_DATA");
@@ -36,15 +36,18 @@
                     }
                     
 
-                    $query = "select NOMBRES from " . (($this->perm == 0 || $this->perm == 5)? "ALUMNOS" : "DOCENTES") . " where USER_ID = " . $tokenData->uid . ";";
-                    $names = ($this->db_handler->console_FV($query))["NOMBRES"] ?? null;
+                    $query = "select NOMBRES from " . (($this->perm > 0 && $this->perm < 5)? "DOCENTES" : "ALUMNOS") . " where USER_ID = " . $tokenData->uid . ";";
+                    $names = $this->db_handler->console_FV($query);
                     //echo "<script> console.log('". $names . "') </script>";
                     if($names == null){
                         $query = "select NOMBRES from ALUMNOS where USER_ID = " . $tokenData->uid . ";";
-                        $names = ($this->db_handler->console_FV($query))["NOMBRES"];
+                        $names = ($this->db_handler->console_FV($query));
                     }
-                    if(strpos($names, " ")){
-                        $this->name = explode($names, " ")[0];
+
+                    $names = $names["NOMBRES"];
+                    //echo "<h3>" . explode($names, " ") .  "</h3>";
+                    if(strpos($names, " ") ){
+                        $this->name = substr($names, 0, strpos($names, " "));
                     }else{
                         $this->name = $names;
                     }

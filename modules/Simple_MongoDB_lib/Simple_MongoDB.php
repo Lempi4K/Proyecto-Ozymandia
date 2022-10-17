@@ -3,7 +3,7 @@
     class Simple_MongoDB{
         
         //Constructor
-        public static function connection($dbname, $conf = 0, $host = "localhost"){
+        public static function connection($dbname = "admin", $conf = 0, $host = "127.0.0.1", $port = "27017"){
             $user = "";
             $pass = "";
             switch ($conf){
@@ -24,7 +24,7 @@
                 }
             }
 
-            $conection_string = "mongodb://$user:$pass@127.0.0.1:27017/";
+            $conection_string = "mongodb://$user:$pass@$host:$port/?authSource=admin";
             //$conection_string = "mongodb://127.0.0.1:27017/"; 
                                 
             try{
