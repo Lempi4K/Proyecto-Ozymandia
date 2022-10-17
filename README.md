@@ -10,7 +10,7 @@
     - El almacenamiento de los artículos se hace mediante MongoDB
 - Viualización de artículos
     - Desde ahora, puedes ver los artículos en todos los apartados de la página
-    - La oágina ya se retroalimenta
+    - La página ya se retroalimenta
 
 # **Alpha 2**
 ## _v0.0.2_
