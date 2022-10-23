@@ -11,6 +11,7 @@
 - Viualización de artículos
     - Desde ahora, puedes ver los artículos en todos los apartados de la página
     - La página ya se retroalimenta
+- Visualizacion de articulos en apartado "Perfil"
 
 # **Alpha 2**
 ## _v0.0.2_
