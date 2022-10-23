@@ -7,11 +7,16 @@ namespace Composer\Autoload;
 class ComposerStaticInitc2f1828ec202e76a1dccc45518bb9d90
 {
     public static $files = array (
+        '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
         '3a37ebac017bc098e9a86b35401e7a68' => __DIR__ . '/..' . '/mongodb/mongodb/src/functions.php',
     );
 
     public static $prefixLengthsPsr4 = array (
+        's' => 
+        array (
+            'setasign\\Fpdi\\' => 14,
+        ),
         'V' => 
         array (
             'Vendor\\Ozymandia\\' => 17,
@@ -20,17 +25,35 @@ class ComposerStaticInitc2f1828ec202e76a1dccc45518bb9d90
         array (
             'Symfony\\Polyfill\\Php80\\' => 23,
         ),
+        'P' => 
+        array (
+            'Psr\\Log\\' => 8,
+            'Psr\\Http\\Message\\' => 17,
+        ),
         'M' => 
         array (
+            'Mpdf\\' => 5,
             'MongoDB\\' => 8,
         ),
         'J' => 
         array (
             'Jean85\\' => 7,
         ),
+        'H' => 
+        array (
+            'Http\\Message\\' => 13,
+        ),
+        'D' => 
+        array (
+            'DeepCopy\\' => 9,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
+        'setasign\\Fpdi\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/setasign/fpdi/src',
+        ),
         'Vendor\\Ozymandia\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
@@ -39,6 +62,18 @@ class ComposerStaticInitc2f1828ec202e76a1dccc45518bb9d90
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-php80',
         ),
+        'Psr\\Log\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
+        ),
+        'Psr\\Http\\Message\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/http-message/src',
+        ),
+        'Mpdf\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/mpdf/mpdf/src',
+        ),
         'MongoDB\\' => 
         array (
             0 => __DIR__ . '/..' . '/mongodb/mongodb/src',
@@ -46,6 +81,14 @@ class ComposerStaticInitc2f1828ec202e76a1dccc45518bb9d90
         'Jean85\\' => 
         array (
             0 => __DIR__ . '/..' . '/jean85/pretty-package-versions/src',
+        ),
+        'Http\\Message\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/php-http/message-factory/src',
+        ),
+        'DeepCopy\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy',
         ),
     );
 

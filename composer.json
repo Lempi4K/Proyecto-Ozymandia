@@ -15,6 +15,7 @@
         }
     ],
     "require": {
-        "mongodb/mongodb": "^1.12"
+        "mongodb/mongodb": "^1.12",
+        "mpdf/mpdf": "^8.1"
     }
 }

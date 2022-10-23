@@ -38,3 +38,8 @@
     width: 100px;
     height: 100px;
 }
+
+#charging-display-container_sub{
+    display: none;
+    z-index: 18;
+}
