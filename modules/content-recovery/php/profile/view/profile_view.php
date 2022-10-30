@@ -67,7 +67,7 @@
                     HTML;
                 }
                 
-                $default = <<<HTML
+                $default = <<< HTML
                 HTML;
 
                 $HTML = <<<HTML

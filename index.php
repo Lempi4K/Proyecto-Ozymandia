@@ -26,6 +26,7 @@
     <script src="/modules/canvas/js/set-article-data.js"></script>
     <script src="/modules/canvas/js/canvas-functions.js"></script>
     <script src="/modules/canvas/js/canvas-send.js"></script>
+    <script src="/modules/search/search.js"></script>
 </head>
 <body>
     <div class="charging-display-container" id="charging-display-main"><img src="/src//img/logo/logo.png" alt=""></div>

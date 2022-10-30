@@ -1,12 +1,18 @@
+.search-container{
+    position: relative;
+    height: 100%;
+}
+
 .search{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     display: flex;
+    margin: 0 20px;
+    z-index: 29;
+
 }
 
 .search > input[type="search"]{
+    z-index: 29;
+    min-width: 200px;
     width: 400px;
     height: 30px;
     padding: 5px;
@@ -30,6 +36,7 @@
 }
 
 .search > button{
+    z-index: 29;
     height: 30px;
     width: 60px;
     padding: 5px;
@@ -53,5 +60,122 @@
     transform: translate(0%, 0%);
     align-items: center;
     justify-content: center;
+}
+
+.schBackBox{
+    width: 100%;
+    padding: 30px;
+    padding-top: 50px;
+    position: absolute;
+    z-index: 28;
+    top: -10px;
+    background-color: var(--color_2);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border: var(--color_4) 1px solid;
+    border-top: none;
+    display: none;
+}
+
+.schBackBox > ul{
+    display: flex;
+
+}
+
+.schBackBox > ul > li{
+    flex: 1;
+    list-style: none;
+}
+
+.schBackBox > ul > li > .schFiterHeader{
+
+}
+
+.schBackBox > ul > li > .schFiterHeader > p{
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.schBackBox > ul > li > .schFiterHeader > hr{
+    width: 90%;
+    border-color: var(--select-color_1);
+}
+
+.schBackBox > ul > li > .schFiterBody{
+    padding-left: 10px;
+}
+
+.schBackBox > ul > li > .schFiterBody > .schFilterOptionList{
+
+}
+
+.schFilterOptionList > li{
+    list-style: none;
+}
+
+.schFilterOptionList > li input[type="radio"]{
+    display: none;
+}
+
+.schFilterOptionList > li input[type="radio"]:checked + label{
+    font-weight: bold;
+    color: var(--font-color_1);
+}
+
+.schFilterOptionList > li label{
+    display: block;
+    margin: 5px 0;
+    font-size: 11px;
+    transition: all 0.1s ease-in-out 0s;
+    color: var(--font-color_4);
+}
+
+.schBackBox > ul > li > .schFiterBody > .schFilterLabelList{
+
+}
+
+.schFilterLabelList{
+    background-color: var(--color_1);
+    border-radius: 5px;
+    margin-top: 5px;
+    display: flex;
+}
+
+.schFilterLabelList > li{
+    list-style: none;
+}
+
+.schFilterLabelList > li input[type="radio"]{
+    display:  none;
+}
+
+.schFilterLabelList > li input[type="radio"]:checked + label{
+    border-color: var(--logo_color);
+    box-shadow: inset var(--logo_color) 0px 0px 9px 1px;
+    font-weight: bold;
+    color: var(--font-color_1)
+}
+
+.schFilterLabelList > li label{
+    display: block;
+    width: max-content;
+    border: var(--color_4) 1px solid;
+    padding: 5px;
+    margin: 5px;
+    font-size: 11px;
+    transition: all 0.1s ease-in-out 0s;
+    border-radius: 5px;
+    color: var(--font-color_4);
+    cursor: pointer;
+}
+
+.schTopBar-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    padding: 10px 0;
+    backdrop-filter: blur(5px);
+    background-color: var(--shBackground-color_4)
 }
 

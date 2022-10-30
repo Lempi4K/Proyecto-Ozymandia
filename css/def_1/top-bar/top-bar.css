@@ -9,4 +9,5 @@
     display: flex;
     align-content: center;
     position: relative;
+    height: 100%;
 }

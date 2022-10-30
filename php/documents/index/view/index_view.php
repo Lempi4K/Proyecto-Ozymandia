@@ -20,12 +20,17 @@
                         <p class="no_select">CBTIS 114</p>
                     </a>
                 </div>
+                <!--
                 <div class="search" style="justify-self: center;">
                     <input type="search" name="fetch" id="inpSrhBanner" placeholder="Buscar">
                     <button>
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </button>
-                </div>
+                </div>-->
+                <?php
+                include($_SERVER['DOCUMENT_ROOT']."/php/includes/def_1/search.php");
+                echo displaySearchBar();
+                ?>
                 <div class="user" id="user-FoBl">
                     <label for="inpChkbxUser">
                         <div class="user-button" id="UserButton" <?php echo "data-perm='" . $charsPerms[strval($this->model->getPerm())] . "'" ?>>
