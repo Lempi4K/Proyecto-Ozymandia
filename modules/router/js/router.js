@@ -19,7 +19,9 @@ const titles = {
 }
 
 const eventType = {
-    "/lienzo": "lienzo"
+    "/lienzo": "lienzo",
+    "/inicio": "inicio",
+    "/perfil": "perfil"
 };
 
 let AJAXLoad = new Event("AJAXLoad", {bubbles: false});
@@ -35,7 +37,7 @@ function routeFabric(section = 0, start = 0){
     section = (getParameterByName("id") != 0 ? 4 : section)
     const routes = {
         "/inicio": {type: 0, section: section, article_id: getParameterByName("id"), start : start},
-        "/perfil": {type: 1},
+        "/perfil": {type: 1, section: section, start : start},
         "/nosotros": {type: 2, subtype: 1, article_id: getParameterByName("id")},
         "/oferta-educativa": {type: 2, subtype: 2, article_id: getParameterByName("id")},
         "/departamentos": {type: 2, subtype: 3, article_id: getParameterByName("id")},
@@ -59,7 +61,9 @@ async function handleLocation(container = "replazable-content", section = 0) {
         document.getElementById("block-display-main").style.display = "flex";
         setInterval(() => {location.href="/inicio"}, 2800);
     } else{
-        ChargingAnimationStart();
+        let idLoadAnimation = container === "replazable-content" ? "charging-display-content" : "charging-display-container_sub";
+        console.log(idLoadAnimation);
+        ChargingAnimationStart(idLoadAnimation);
         document.title = titles[window.location.pathname]
         const central_content = document.getElementById(container);
         let HTML = await AJAXrequestContent(routeFabric(section))
@@ -78,7 +82,7 @@ async function handleLocation(container = "replazable-content", section = 0) {
         }
         */
 
-        ChargingAnimationEnd_1();
+        ChargingAnimationEnd_1(idLoadAnimation);
     }
 }
 
@@ -183,6 +187,12 @@ window.addEventListener("load", e => {
             });
         }
 
+        for(let item of document.getElementsByName("inpRdbtnProdiv")){
+            item.addEventListener("change", e => {
+                handleLocation("replazable-content_Profile", item.value, 0);
+            });
+        }
+
         if(document.getElementById("articles-container") != null){
             document.getElementById("articles-container").addEventListener("AJAXLoad", e => {
                 for(let item of document.getElementsByClassName("main-article")){
@@ -190,6 +200,44 @@ window.addEventListener("load", e => {
                         window.history.pushState({}, "xd", window.location.pathname + "?id=" + item.dataset.aid);
                         handleLocation();
                     })
+                }
+            });
+        }
+
+        if(e.routeType == "perfil"){
+            document.getElementById("inpRdbtnProdiv2").addEventListener("change", e => {
+                if(e.target.checked){
+                    document.getElementById("replazable-content_Profile").addEventListener("AJAXLoad", e => {
+
+                        let profile_mainData = document.querySelector(".profile-mainData").offsetHeight;
+                        let profile_background = document.querySelector(".profile-background").offsetHeight;
+                        let profile_content = document.querySelector(".profile-content").offsetHeight;
+                        let height = (profile_content) - (profile_mainData + profile_background);
+                        console.log(profile_content);
+                        document.getElementById("articles-container").style.height = height + "px";
+                        
+                        for(let item of document.getElementsByClassName("article_deleteBtn")){
+                            item.addEventListener("click", async e => {
+                                let aid = item.dataset.aid
+                
+                                await removeArticle(aid);
+                                let article = document.getElementById("article_" + aid);
+                                article.style.display = "none";
+                                article.nextSibling.nextSibling.style.display = "none";
+                                console.log("Eliminado")
+                            });
+                        }
+                
+                        for(let item of document.getElementsByClassName("article_EditBtn")){
+                            item.addEventListener("click", e => {
+                                console.log("Ahhh me doxxean")
+                                let aid = item.dataset.aid
+                                window.history.pushState({}, "xd", "/lienzo" + "?id=" + aid);
+                                handleLocation();
+                                document.getElementById("inpRdbtnNav9").checked = true;
+                            });
+                        }
+                    });
                 }
             });
         }

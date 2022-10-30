@@ -1,12 +1,13 @@
 .central-content{
     padding: 0px;
     position: relative;
+    overflow: hidden;
 }
 
 .profile-content{
     width: 100%;
     height: 100%;
-    overflow-y: auto;
+    overflow-y: hidden;
 }
 
 .profile-background{
@@ -161,12 +162,16 @@
 
 .profile-div{
     display: flex;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
     align-items: center;
     justify-content: center;
+    z-index: 29;
 }
 
 .profile-div > div{
-    background-color: var(--shBackground-color_3);
     flex: 1;
 }
 
@@ -176,18 +181,34 @@
 
 .profile-div > div > input[type="radio"]:checked + label{
     border-bottom: var(--logo_color) 2px solid;
-    background-color: var(--select-color_3);
+    background-color: var(--select-color_4);
 }
 
 .profile-div > div > label{
     display: block;
     text-align: center;
     padding: 10px;
+    background-color: var(--shBackground-color_4);
+    backdrop-filter: blur(5px);
     border-bottom: var(--shComplementary-color_3) 2px solid;
     transition: all 0.1s ease-in-out 0s;
     font-weight: bold;
 }
 
 .profile-div > div > label:hover{
-    background-color: var(--hover-color_3);
+    background-color: var(--hover-color_4);
 }
+
+.profile-mainDiv{
+    position: relative;
+}
+
+.replazable-content_Profile{
+    overflow-y: auto;
+
+}
+
+#charging-display-container_sub{
+    flex-grow: 1;
+}
+

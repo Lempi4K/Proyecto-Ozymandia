@@ -43,7 +43,7 @@
                                 <label for="inpRdbtnArtdiv3">Siguiendo</label>
                             </div>
                         </div>
-                        
+                        <div class="charging-display-container" id="charging-display-container_sub"><div></div></div>
                         <div class="articles-container" id="articles-container">
                     HTML;
                 }else {

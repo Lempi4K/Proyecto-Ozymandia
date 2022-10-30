@@ -26,7 +26,7 @@
 
     $section = $POST["section"] ?? 4;
     
-    $start = $POST["start"] ?? 0;
+    $start = isset($POST["start"]) ? $POST["start"] : 0;
 
     $article_id = ((($type != 1 && $type < 4) || $type == 5) ? $POST["article_id"] : null);
     
@@ -42,7 +42,7 @@
             break;
         }
         case 1:{
-            $content_controller = new ProfileController();
+            $content_controller = new ProfileController($section, $start);
             break;
         }
         case 2:{

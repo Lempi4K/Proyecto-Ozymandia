@@ -1,5 +1,5 @@
-function ChargingAnimationEnd_1(){
-    let chargingDisplay = document.getElementById("charging-display-content");
+function ChargingAnimationEnd_1(idLoadAnimation = "charging-display-content"){
+    let chargingDisplay = document.getElementById(idLoadAnimation);
 
     let keyframes = [
         {opacity: "1"},
@@ -17,8 +17,8 @@ function ChargingAnimationEnd_1(){
     }
 }
 
-function ChargingAnimationStart(){
-    const chargingDisplay = document.getElementById("charging-display-content");
+function ChargingAnimationStart(idLoadAnimation = "charging-display-content"){
+    const chargingDisplay = document.getElementById(idLoadAnimation);
     chargingDisplay.style.display = "flex";
 
 }
