@@ -45,7 +45,7 @@
                                     <ul class="schFilterLabelList">
                                         <li>
                                             <input type="radio" name="inpRdbtnSchLabel{$char}" id="inpRdbtnSchLabel0{$char}" value="0" checked>
-                                            <label for="inpRdbtnSchLabel0{$char}">Todas</label>
+                                            <label for="inpRdbtnSchLabel0{$char}">Todos</label>
                                         </li>
         HTML;
 

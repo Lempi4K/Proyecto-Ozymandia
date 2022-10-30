@@ -1,3 +1,19 @@
+# **Beta 1**
+## _v0.1.0_
+### Cambios
+- Barra de Búsqueda
+    - Busca los articulos por diferentes filtros
+        - Etiquetas
+        - Orden
+            - Más reciente
+            - Más antiguo
+    -Todos los apartados tiene funcionalidades
+        -Correccion de errores de opciones vacias y de estetica
+- API Rest en Ozymandia`s Canvas
+    - Tiene una gran flexibilidad pero también una gran complejidad
+- Mis publicaciones
+    - Ahora está habilitada la opción de "Mis publicaciones" en Perfil
+
 # **Alpha 3**
 ## _v0.0.3_
 ### Cambios
