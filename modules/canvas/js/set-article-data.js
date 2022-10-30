@@ -34,7 +34,7 @@ function set_article_data(){
                 for(let item of document.querySelectorAll(".iclAdministrativo, .iclGeneral, .iclInvitado")){
                     item.checked = false;
                 }
-                article.meta.sublabel = new Array();
+                article.meta.sublabel = 0;
                 article.meta.label = parseInt(e.target.value);
                 console.log(article.meta.label);
             }

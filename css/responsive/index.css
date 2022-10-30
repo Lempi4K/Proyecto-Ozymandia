@@ -23,10 +23,12 @@
     .lateral-content{
         display: none;
     }
-    .search{
+
+    .search-container{
         display: none;
     }
-    .search-nav{
+
+    .schTopBar-container .search-container{
         display: flex;
     }
 }

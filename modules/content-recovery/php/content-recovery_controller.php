@@ -28,11 +28,16 @@
     
     $start = isset($POST["start"]) ? $POST["start"] : 0;
 
-    $article_id = ((($type != 1 && $type < 4) || $type == 5) ? $POST["article_id"] : null);
+    $article_id = (isset($POST["article_id"]) ? $POST["article_id"] : null);
     
     $subtype = (($type == 2 || $type == 4) ? $POST["subtype"] : null);
 
-    $search = (($type == 4) ? $POST["search"] : null);
+    $q = isset($POST["q"]) ? $POST["q"] : null;
+
+    $sublabel = isset($POST["sublabel"]) ? $POST["sublabel"] : null;
+
+    $order = isset($POST["order"]) ? $POST["order"] : null;
+
 
     $content_controller = null;
 
@@ -54,7 +59,7 @@
             break;
         }
         case 4:{
-            $content_controller = new SearchController($search, $subtype);
+            $content_controller = new SearchController($q, $sublabel, $order, $start);
             break;
         }
         case 5:{

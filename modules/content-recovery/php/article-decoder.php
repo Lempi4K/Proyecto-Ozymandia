@@ -187,6 +187,12 @@
         HTML;
 
         foreach($article["AEM"] as $item){
+            if((int) $item["type"] == 9){
+                include($_SERVER['DOCUMENT_ROOT'] . $item["url"]);
+                $API_handler = new API($article['meta']['theme']);
+                $AEM .= $API_handler->getHTML();
+                continue;
+            }
             $AEM .= elementHandler($item, $article['meta']['theme']);
         }
 

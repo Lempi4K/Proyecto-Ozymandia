@@ -21,7 +21,8 @@ const titles = {
 const eventType = {
     "/lienzo": "lienzo",
     "/inicio": "inicio",
-    "/perfil": "perfil"
+    "/perfil": "perfil",
+    "/buscar": "buscar",
 };
 
 let AJAXLoad = new Event("AJAXLoad", {bubbles: false});
@@ -46,7 +47,7 @@ function routeFabric(section = 0, start = 0){
         "/aplicaciones": {type: 2, subtype: 6, article_id: getParameterByName("id")},
         "/contacto": {type: 2, subtype: 7, article_id: getParameterByName("id")},
         "/aside": {type: 3, article_id: getParameterByName("id")},
-        "/buscar": {type: 4, subtype: 8, search: "", article_id: getParameterByName("id")},
+        "/buscar": {type: 4, subtype: 8, q: getParameterByName("q"), sublabel: getParameterByName("sublabel"), article_id: getParameterByName("id"), start : start, order: ( parseInt(getParameterByName("order")) == 0 ? -1 : parseInt(getParameterByName("order")) )},
         "/lienzo": {type: 5, article_id: getParameterByName("id")}
     }
     console.log(routes[window.location.pathname]);
@@ -147,6 +148,18 @@ window.addEventListener("load", e => {
     }
 
     document.getElementById("replazable-content").addEventListener("AJAXLoad", e => {
+
+        let btnsa = document.getElementById("replazable-content").querySelectorAll("a.frame_change");
+        for(let item of btnsa){
+            item.addEventListener("click", e => {
+                route(item);
+                let btnsck = document.querySelectorAll("input[type='radio'].frame_change");
+                for(let item of btnsck){
+                    item.checked = false;
+                }
+            });
+        }
+
         for(let item of document.getElementsByClassName("article_deleteBtn")){
             item.addEventListener("click", async e => {
                 let aid = item.dataset.aid
@@ -167,16 +180,17 @@ window.addEventListener("load", e => {
             });
         }
 
-        for(let item of document.getElementsByClassName("navBarLink")){
+        for(let item of document.getElementById("replazable-content").getElementsByClassName("navBarLink")){
             item.addEventListener("click", e => {
-                window.history.pushState({}, "xd", window.location.pathname + "?" + item.dataset.get);
+                let pathName = window.location.pathname !== "/buscar" ? window.location.pathname : "/aside";
+                window.history.pushState({}, "xd", pathName + "?" + item.dataset.get);
                 handleLocation();
             });
         }
 
         for(let item of document.getElementsByClassName("main-article")){
             item.addEventListener("dblclick", e => {
-                window.history.pushState({}, "xd", window.location.pathname + "?id=" + item.dataset.aid);
+                window.history.pushState({}, "xd", "/inicio" + "?id=" + item.dataset.aid);
                 handleLocation();
             })
         }
@@ -197,7 +211,7 @@ window.addEventListener("load", e => {
             document.getElementById("articles-container").addEventListener("AJAXLoad", e => {
                 for(let item of document.getElementsByClassName("main-article")){
                     item.addEventListener("dblclick", e => {
-                        window.history.pushState({}, "xd", window.location.pathname + "?id=" + item.dataset.aid);
+                        window.history.pushState({}, "xd", "/inicio" + "?id=" + item.dataset.aid);
                         handleLocation();
                     })
                 }

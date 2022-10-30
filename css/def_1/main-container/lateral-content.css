@@ -9,3 +9,8 @@
 .aside_container{
     padding: 10px;
 }
+
+.aside_container_search{
+    position: relative;
+    z-index: 18;
+}

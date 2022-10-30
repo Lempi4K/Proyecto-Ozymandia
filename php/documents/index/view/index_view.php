@@ -28,8 +28,8 @@
                     </button>
                 </div>-->
                 <?php
-                include($_SERVER['DOCUMENT_ROOT']."/php/includes/def_1/search.php");
-                echo displaySearchBar();
+                //include($_SERVER['DOCUMENT_ROOT']."/php/includes/def_1/search.php");
+                //echo displaySearchBar();
                 ?>
                 <div class="user" id="user-FoBl">
                     <label for="inpChkbxUser">
@@ -118,7 +118,8 @@
                             </label>
                         </a>
                     </li>
-                    <li id="search-nav">
+                    <?php if(isset($_COOKIE["token"])){ ?>
+                    <li>
                         <a class="no_select">
                             <input type="radio" name="inpRdbtnNav" id="inpRdbtnNav10" class="c_click frame_change" data-url="buscar">
                             <label for="inpRdbtnNav10">
@@ -127,6 +128,7 @@
                             </label>
                         </a>
                     </li>
+                    <?php } ?>
                     <li class="nav-hide">
                         <a class="no_select">
                             <input type="radio" name="inpRdbtnNav" id="inpRdbtnNav2" class="c_click frame_change" data-url="nosotros">

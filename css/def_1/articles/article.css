@@ -54,6 +54,7 @@
 .lblArticle > p{
     font-size: 13px;
     font-weight: bold;
+    text-align: center;
 }
 
 .article_userPic{
@@ -247,4 +248,8 @@
 .article_followBtn > input[type="checkbox"]:checked + label > i{
     color: var(--logo_color);
     transform: rotate(45deg);
+}
+
+.article_pdf > embed{
+    border-radius: 5px;
 }

@@ -1,16 +1,34 @@
 window.addEventListener("load", e => {
     document.getElementById("replazable-content").addEventListener("AJAXLoad", e => {
-        if(e.routeType == "inicio"){
+        if(e.routeType == "inicio" || e.routeType == "buscar"){
             if(document.getElementById("articles-container") != null){
                 let articles_container = document.getElementById("articles-container");
                 articles_container.addEventListener("scroll", async function (){
                     if(this.offsetHeight + this.scrollTop >= this.scrollHeight){
                         let articles = this.getElementsByClassName("article")
                         let lastArticle = articles[articles.length - 1];
+                        let firstArticle = articles[0];
+                        if(e.routeType == "buscar"){
+                            if(this.firstChild.nextSibling.classList.contains("aside_container")){
+                                return;
+                            }
+                        }
                         if(parseInt(lastArticle.dataset.eof) == 1){
                             return;
                         }
-                        let start = parseInt(lastArticle.dataset.aid) - 1;
+
+                        let start = 0;
+                        if (parseInt(firstArticle.dataset.aid) > parseInt(lastArticle.dataset.aid)){
+                            start = parseInt(lastArticle.dataset.aid) - 1;
+                        }
+
+                        if (parseInt(firstArticle.dataset.aid) < parseInt(lastArticle.dataset.aid)){
+                            start = parseInt(lastArticle.dataset.aid) + 1;
+                        }
+
+                        if (parseInt(firstArticle.dataset.aid) == parseInt(lastArticle.dataset.aid)){
+                            return;
+                        }
     
                         let section;
                         for(let item of document.getElementsByName("inpRdbtnArtdiv")){
