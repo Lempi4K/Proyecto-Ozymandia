@@ -14,7 +14,7 @@
         public function getHTML(){
             $this->HTML = <<< HTML
                 <div class="article_pdf {$this->theme}">
-                    <embed src="/API/prueba/pdf.php" type="application/pdf" width="100%" height="100%">
+                    <iframe src="/API/prueba/pdf.php" type="application/pdf" width="100%" height="100%">
                 </div>
             HTML;
             return $this->HTML;

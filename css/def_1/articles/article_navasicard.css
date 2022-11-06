@@ -18,10 +18,16 @@
 
 .article_navasicard p{
     color: var(--font-color_2);
+    overflow-x: hidden;
+    text-overflow: ellipsis;
 }
 
 .article_navasicard > a hr{
     color: var(--font-color_2);
+}
+
+.article_navasicard_title{
+    overflow-wrap: normal;
 }
 
 .article_navasicard_background{

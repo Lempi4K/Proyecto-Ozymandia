@@ -85,7 +85,7 @@ function elementHandler(AEMobject){
         8 : `
             <div class="article_pdf ${article.meta.theme}_pdf">
                 <hr>
-                <embed src="${AEMobject.pdf !== null ? URL.createObjectURL(AEMobject.pdf) : ""}" type="application/pdf" width="100%" height="100%">
+                <iframe src="${AEMobject.pdf !== null ? URL.createObjectURL(AEMobject.pdf) : ""}" type="application/pdf" width="100%" height="100%">
             </div>`,
         9 : `<div class="article_text ${article.meta.theme}_text cpeEditable">
                 Enlace de la API: ${AEMobject.url}
@@ -452,6 +452,13 @@ function canvas_function(){
         VirtualCanvas.insert = 0;
     })
 
+    for(let item of document.querySelectorAll(".cnvFrmClose")){
+        item.addEventListener("click", e => {
+            closeFrames();
+            VirtualCanvas.insert = 0;
+        })
+    }
+
     document.getElementById("cnvEditBtn").addEventListener("click", e => {
         if(article.AEM[VirtualCanvas.selectedIndex].type >= 5 || article.AEM[VirtualCanvas.selectedIndex].type == 2){
             openFrames(true);
@@ -492,7 +499,7 @@ function canvas_function(){
         let files = e.target.files;
         for(let file of files){
             article.AEM[VirtualCanvas.selectedIndex].pdf = file;
-            document.querySelector(`#cpe${VirtualCanvas.selectedIndex} embed`).src = URL.createObjectURL(article.AEM[VirtualCanvas.selectedIndex].pdf);
+            document.querySelector(`#cpe${VirtualCanvas.selectedIndex} iframe`).src = URL.createObjectURL(article.AEM[VirtualCanvas.selectedIndex].pdf);
         }
     });
 
@@ -537,4 +544,6 @@ function canvas_function(){
     document.querySelector(".cnvPntEditBar").addEventListener("click", e => {
         e.stopPropagation();
     });
+
+    
 }

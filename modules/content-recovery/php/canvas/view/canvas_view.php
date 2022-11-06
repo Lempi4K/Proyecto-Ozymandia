@@ -249,6 +249,9 @@
                                         <p>Rest API</p>
                                     </li>
                                 </ul>
+                                <div class="frmChangeButtons">
+                                    <input type="button" value="Cerrar" class="cnvFrmClose">
+                                </div>
                             </div>
                             <div class="cpFrame" id="cpfElementData">
                                 <div class="frmHead">
@@ -298,6 +301,9 @@
                                             Elige un archivo pdf
                                         </div>
                                     </label>
+                                </div>
+                                <div class="frmChangeButtons">
+                                    <input type="button" value="Cerrar" class="cnvFrmClose">
                                 </div>
                             </div>
                         </div>

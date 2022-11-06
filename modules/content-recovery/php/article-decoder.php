@@ -49,7 +49,7 @@
             "8" => <<< HTML
                 <div class="article_pdf {$theme}_pdf">
                     <hr>
-                    <embed src="{$AEMobject['pdf']}" type="application/pdf" width="100%" height="100%">
+                    <iframe src="{$AEMobject['pdf']}" type="application/pdf" width="100%" height="100%">
                 </div>
                 HTML,
             "9" => <<< HTML
@@ -188,6 +188,12 @@
 
         foreach($article["AEM"] as $item){
             if((int) $item["type"] == 9){
+                if($item["url"] === "" || $item["url"] == null || !file_exists($_SERVER['DOCUMENT_ROOT'] . $item["url"])){
+                    $AEM .= <<< HTML
+                        <p>API Rest no configurada</p>
+                    HTML;
+                    continue;
+                }
                 include($_SERVER['DOCUMENT_ROOT'] . $item["url"]);
                 $API_handler = new API($article['meta']['theme']);
                 $AEM .= $API_handler->getHTML();

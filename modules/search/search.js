@@ -32,7 +32,10 @@ function searchEvents(container = document){
     });
 
     document.querySelector("#inpSrhBanner").addEventListener("keypress", e => {
-        search();
+        if(e.keyCode === 13){
+            search();
+        }
+        
     });
 
     document.querySelector(".search-container").addEventListener("click", e => {

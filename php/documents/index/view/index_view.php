@@ -56,11 +56,19 @@
                                 Configuraci&oacute;n
                                 </a></li>
 
+                            <?php  if($this->model->getPerm() >= 1 && $this->model->getPerm() <= 4){?>
+                                <li><a class="c_click no_select frame_change" data-url="herramientas">
+                                <i class="fa-solid fa-star"></i>
+                                Ozymandia's Admin Tools
+                                </a></li>
+                            <?php } ?>
+
                             <?php  if($this->model->getPerm() == -1){?>
-                            <li><a class="c_click no_select" href="/iniciar-sesion">
+                                <li><a class="c_click no_select" href="/iniciar-sesion">
                                 <i class="fa-solid fa-right-to-bracket"></i>
                                 Iniciar Sesi&oacute;n
                                 </a></li>
+
                             <?php } else{?>
                                 <li><a class="c_click no_select" id="inpBtnLogout">
                                 <i class="fa-solid fa-right-from-bracket"></i>

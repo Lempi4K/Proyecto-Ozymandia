@@ -105,6 +105,7 @@
     font-family: var(--font-text);
     font-weight: bold;
     font-size: 25px;
+    overflow-wrap: break-word;
 }
 
 .article hr{
@@ -250,6 +251,7 @@
     transform: rotate(45deg);
 }
 
-.article_pdf > embed{
+.article_pdf > iframe{
     border-radius: 5px;
+    border: none;
 }
