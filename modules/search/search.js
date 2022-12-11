@@ -43,7 +43,10 @@ function searchEvents(container = document){
     });
 
     window.document.querySelector("html").addEventListener("click", e => {
-        document.querySelector(".schBackBox").style.display = "none";
+        try{
+            document.querySelector(".schBackBox").style.display = "none";
+        }catch(e){
+        }
     });
 
     document.querySelector("#search-propagation").addEventListener("click", e => {

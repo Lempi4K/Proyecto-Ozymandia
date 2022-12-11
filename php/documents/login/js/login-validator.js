@@ -6,7 +6,7 @@ memory_persistance_validator = {
 function onInputValidator(e, id){
     let input = e.target;
     let inputStr = new String(input.value);
-    let hasChars = inputStr.includes('"') || inputStr.includes("'") ||  inputStr.includes(";") || inputStr.includes("=") || inputStr.includes("<") || inputStr.includes(">") || inputStr.includes("/")
+    let hasChars = inputStr.includes('"') || inputStr.includes("'") ||  inputStr.includes(";") || inputStr.includes("=") || inputStr.includes("<") || inputStr.includes(">");
     if(inputStr.length != 0 && !hasChars){
         input.style.boxShadow = "none";
         input.style.borderColor = "#a3a3a3";

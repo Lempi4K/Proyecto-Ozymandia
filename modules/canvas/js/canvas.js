@@ -32,11 +32,13 @@ async function AJAX_RecoveryObject(id){
     }
 }
 
-window.addEventListener("load", e => {
-    document.getElementById("replazable-content").addEventListener("AJAXLoad", async e => {
-        if(e.routeType != "lienzo"){
-            return;
-        }
+async function canvas(){
+
+//window.addEventListener("load", async e => {
+    //document.getElementById("replazable-content").addEventListener("AJAXLoad", async e => {
+    //    if(e.routeType != "lienzo"){
+    //        return;
+    //    }
         article = {
             meta: {
                 id: 0,
@@ -111,9 +113,10 @@ window.addEventListener("load", e => {
         renderArticle();
     
     
-    });
-});
-
+    //});
+//});
+}
+canvas();
 /*
 import {set_article_data} from "./set-article-data";
 import {frame_changer} from "./frame-changer";

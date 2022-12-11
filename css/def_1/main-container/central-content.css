@@ -44,7 +44,13 @@
     background-color: var(--shBackground-color_4);
     backdrop-filter: blur(5px);
     transition: all 0.1s ease-in-out 0s;
-    border-bottom: var(--shComplementary-color_3) 2px solid;  
+    border-bottom: var(--shComplementary-color_3) 2px solid;
+    cursor: pointer;
+}
+
+.article_divisor > div label::selection{
+    background-color: rgba(0, 0, 0, 0);
+    color: var(--font-color_1);
 }
 
 .article_divisor > div label:hover{
@@ -55,4 +61,8 @@
 .article_divisor > div input[type="radio"]:checked + label{
     background-color: var(--select-color_4);
     border-bottom: var(--logo_color) 2px solid;  
+}
+
+.articles-container h1{
+    margin-bottom: 5px;
 }

@@ -279,7 +279,7 @@
                                     </ul>
                                 </fieldset>
                                 <div class="frmInpFile cnvEditElement" id="frmInpFileImg">
-                                    <input type="file" id="inpFileImgArticle" accept=".jpg, .jpeg, .png">
+                                    <input type="file" id="inpFileImgArticle" accept=".jpg, .jpeg, .png, .webp, .svg">
                                     <label for="inpFileImgArticle">
                                         <p>
                                             <i class="fa-solid fa-image"></i>
@@ -410,6 +410,12 @@
                     </div>
                 </div>
             </div>
+            <script src="/modules/canvas/js/frame-changer.js"></script>
+            <script src="/modules/canvas/js/navasidcard-canvas.js"></script>
+            <script src="/modules/canvas/js/set-article-data.js"></script>
+            <script src="/modules/canvas/js/canvas-functions.js"></script>
+            <script src="/modules/canvas/js/canvas-send.js"></script>
+            <script src="/modules/canvas/js/canvas.js"></script>
             HTML;
             return $HTML;
         }

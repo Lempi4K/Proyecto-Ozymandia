@@ -16,8 +16,8 @@
 
         //Funciones
         public function displayInterface(){
-            $charsPerms = array("-1" => "I","0" => "U", "1" => "A", "2" => "D", "3" => "M", "4" => "P", "5" => "J");
-            $namePerms = array("-1" => "Invitado", "0" => "Usuario", "1" => "Administrador", "2" => "Director", "3" => "Moderador", "4" => "Profesor", "5" => "Jefe deGrupo");
+            $charsPerms = array("-1" => "I","0" => "U", "1" => "A", "2" => "D", "3" => "M", "4" => "P", "5" => "J", "6" => "C");
+            $namePerms = array("-1" => "Invitado", "0" => "Usuario", "1" => "Administrador", "2" => "Director", "3" => "Moderador", "4" => "Profesor", "5" => "Jefe deGrupo", "6" => "Creador");
 
                 $this->HTML = <<<HTML
                     <div class="profile-content">

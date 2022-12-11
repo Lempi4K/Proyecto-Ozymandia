@@ -12,9 +12,9 @@ window.addEventListener("load", e => {
                     )
                     container.scrollTop
                 }
-                
-                if(container.scrollTop == 0){
-                    let pathName = item.previousSibling.previousSibling.dataset.url;
+
+                let pathName = item.previousSibling.previousSibling.dataset.url;
+                if(container.scrollTop == 0 && (location.pathname == ("/" + pathName))){
                     window.history.pushState({}, "xd", pathName);
                     handleLocation();
                 }

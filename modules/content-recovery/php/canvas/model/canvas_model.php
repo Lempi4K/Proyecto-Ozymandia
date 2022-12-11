@@ -39,7 +39,7 @@
                         break;
                     }
                     case 5:{
-                        $query = "select ET.NOMBRE as LABEL_N, ET.LABEL_ID as 'LABEL', SUET.NOMBRE as SUBLABEL_N , SUET.SUBLABEL_ID as 'SUBLABEL' from ETIQUETAS as ET join SUBETIQUETAS as SUET where ET.LABEL_ID = 1 and SUET.SUBLABEL_ID = 4";
+                        $query = "select ET.NOMBRE as LABEL_N, SUET.LABEL_ID as 'LABEL', SUET.NOMBRE as SUBLABEL_N , SUET.SUBLABEL_ID as 'SUBLABEL' from ETIQUETAS as ET join SUBETIQUETAS as SUET where ET.LABEL_ID = 1 and SUET.LABEL_ID = 1 and SUET.SUBLABEL_ID = 4";
                         break;
                     }
                 }

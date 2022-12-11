@@ -36,6 +36,9 @@
 .user-button[data-perm="J"]{
     background-color: var(--user-color_J);
 }
+.user-button[data-perm="C"]{
+    background-color: var(--user-color_C);
+}
 
 .user-button > i{
     margin-right: 10px;

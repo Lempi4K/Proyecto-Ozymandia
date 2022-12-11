@@ -20,7 +20,7 @@
 
                 $this->article = $articleJSON;
                 $this->article["meta"]["autor_uid"] = (int)$user_id;
-                $this->article["meta"]["pub_date"] = date("d-m-Y");
+                $this->article["meta"]["pub_date"] = date("U");
 
                 if($this->article["meta"]["label"] == 1 && $this->article["meta"]["sublabel"] == 4){
                     $query = "select GEN_LABEL from ALUMNOS where USER_ID = $user_id";

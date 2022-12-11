@@ -77,6 +77,7 @@ function dark(){
     styles.setProperty("--user-color_M", "rgb(155, 152, 0)");
     styles.setProperty("--user-color_P", "rgb(148, 0, 64)");
     styles.setProperty("--user-color_J", "rgb(0, 7, 136)");
+    styles.setProperty("--user-color_C", "rgb(33, 161, 144)");
     styles.setProperty("--font-color_1", "rgb(255, 255, 255)");
     styles.setProperty("--font-color_3", "rgb(192, 192, 192)");
     styles.setProperty("--font-color_4", "rgb(160, 160, 160)");
@@ -121,6 +122,7 @@ function light(){
     styles.setProperty("--user-color_M", "rgb(255, 253, 156)");
     styles.setProperty("--user-color_P", "rgb(255, 150, 195)");
     styles.setProperty("--user-color_J", "rgb(160, 164, 255)");
+    styles.setProperty("--user-color_C", "rgb(81, 231, 211)");
     styles.setProperty("--font-color_1", "black");
     styles.setProperty("--font-color_3", "rgb(63, 63, 63)");
     styles.setProperty("--font-color_4", "rgb(95, 95, 95)");

@@ -18,7 +18,7 @@
     font-size: 15px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: left;
 }
 .article_head > div > .article_autor-id > .profile-rol{
     width: 17px;
@@ -89,6 +89,9 @@
 }
 .article_userPic[data-perm="J"]{
     background: var(--user-color_J);
+}
+.article_userPic[data-perm="C"]{
+    background: var(--user-color_C);
 }
 
 .article_head > input[type="button"]{
@@ -254,4 +257,8 @@
 .article_pdf > iframe{
     border-radius: 5px;
     border: none;
+}
+
+.article_main{
+    overflow-wrap: break-word;
 }

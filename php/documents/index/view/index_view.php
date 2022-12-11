@@ -10,7 +10,7 @@
 
         //Funciones
         public function displayTopBar(){
-            $charsPerms = array("-1" => "I","0" => "U", "1" => "A", "2" => "D", "3" => "M", "4" => "P", "5" => "J");
+            $charsPerms = array("-1" => "I","0" => "U", "1" => "A", "2" => "D", "3" => "M", "4" => "P", "5" => "J", "6" => "C");
             ?>
         <div class="top-bar">
             <header>
@@ -60,6 +60,13 @@
                                 <li><a class="c_click no_select frame_change" data-url="herramientas">
                                 <i class="fa-solid fa-star"></i>
                                 Ozymandia's Admin Tools
+                                </a></li>
+                            <?php } ?>
+
+                            <?php  if($this->model->getPerm() == 1){?>
+                                <li><a class="c_click no_select frame_change" data-url="pruebas">
+                                <i class="fa-solid fa-flask-vial"></i>
+                                Pruebas
                                 </a></li>
                             <?php } ?>
 

@@ -49,7 +49,7 @@
             "8" => <<< HTML
                 <div class="article_pdf {$theme}_pdf">
                     <hr>
-                    <iframe src="{$AEMobject['pdf']}" type="application/pdf" width="100%" height="100%">
+                    <iframe src="{$AEMobject['pdf']}" type="application/pdf" width="100%" height="100%"></iframe>
                 </div>
                 HTML,
             "9" => <<< HTML
@@ -60,6 +60,21 @@
         );
 
         return $handler[$AEMobject["type"]];
+    }
+
+    function timeString($timestamp){
+        $timestamp = (int) $timestamp;
+        $minusTime = date("U") - $timestamp;
+        if ($minusTime < 86400){
+            if($minusTime >= 60 && $minusTime < 3600){
+                return ((int) ($minusTime / 60)) . " min(s)";
+            }
+            if($minusTime >= 0 && $minusTime < 60){
+                return ($minusTime) . " seg(s)";
+            }
+            return ((int) ($minusTime / 3600)) . " hr(s)";
+        }
+        return date("d-m-Y", $timestamp);
     }
 
     function mySublabel($sublabel){
@@ -107,9 +122,10 @@
         }
 
 
-        $charsPerms = array("-1" => "I","0" => "U", "1" => "A", "2" => "D", "3" => "M", "4" => "P", "5" => "J");
-        $namePerms = array("-1" => "Invitado", "0" => "Usuario", "1" => "Administrador", "2" => "Director", "3" => "Moderador", "4" => "Profesor", "5" => "Jefe de Grupo");
+        $charsPerms = array("-1" => "I","0" => "U", "1" => "A", "2" => "D", "3" => "M", "4" => "P", "5" => "J", "6" => "C");
+        $namePerms = array("-1" => "Invitado", "0" => "Usuario", "1" => "Administrador", "2" => "Director", "3" => "Moderador", "4" => "Profesor", "5" => "Jefe de Grupo", "6" => "Creador");
 
+        $pubdate = timeString($article['meta']['pub_date']);
         $header = <<< HTML
                     <div class="article_head">
                         <div class="article_userPic" data-perm={$charsPerms[strval($data['PERM'])]}>
@@ -120,7 +136,7 @@
                                 {$data['NOM']}
                                 <div class="rol profile-rol c_default" title={$namePerms[strval($data['PERM'])]} data-perm={$charsPerms[strval($data['PERM'])]}><p class="no_select">{$charsPerms[strval($data['PERM'])]}</p></div>
                             </div>
-                            <p>@{$data['USER']} | <time pubdate="{$article['meta']['pub_date']}">{$article['meta']['pub_date']}</time></p>
+                            <p>@{$data['USER']} | <time pubdate="{$pubdate}">{$pubdate}</time></p>
                         </div>
                         <div class="">
         HTML;
