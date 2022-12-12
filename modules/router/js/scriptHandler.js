@@ -20,7 +20,8 @@ function scriptHandler(target, scripts){
             scriptHandler(target, scripts);
         })
         script.src = item.src;
-        target.removeChild(item);
+        //target.removeChild(item);
+
     } else{
         scripts = undefined;
     }

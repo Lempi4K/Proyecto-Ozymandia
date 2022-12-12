@@ -116,7 +116,7 @@
     color: var(--article1--text-color_1);
 }
 
-.article_container p, .article_container a, .article_container ul, .article_container b, .article_container u, .article_container i{
+.article_container p, .article_container a, .article_container ul, .article_container b, .article_container u{
     font-family: var(--font-text);
 }
 
@@ -257,8 +257,82 @@
 .article_pdf > iframe{
     border-radius: 5px;
     border: none;
+    width: 100%;
 }
 
 .article_main{
     overflow-wrap: break-word;
+}
+
+.article_table{
+    width: 100%;
+    border-collapse: collapse;
+    border: var(--article-table_border) 1px dotted;
+    margin-bottom: 20px;
+}
+.article_table thead{
+    background-color: var(--article-table_head);
+}
+.article_table thead th{
+    font-size: 16px;
+    padding: 10px;
+    text-align: left;
+    color: var(--font-color_2);
+
+}
+.article_table tbody{
+    border: var(--article-table_border) 1px dotted;
+}
+.article_table tbody td{
+    font-size: 12px;
+    padding: 5px;
+    word-break: break-all;
+}
+.article_table tbody a{
+    word-break: break-all;
+    text-decoration: none;
+}
+.article_table tbody tr:nth-child(odd){
+    background-color: var(--article-table_tr1);
+}
+.article_table tbody tr:nth-child(even){
+    background-color: var(--article-table_tr2);
+}
+.article_TabMenu{
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+.article_TabMenu li{
+    margin: 0 5px;
+    margin-top: 5px;
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+    border: var(--font-color_1) 1px solid;
+    border-bottom: none;
+}
+.article_TabMenu label{
+    background-color: var(--hover-color_1);
+    padding: 2px 5px;
+    display: block;
+    cursor: pointer;
+    font-weight: bold;
+}
+.article_TabMenu label:hover{
+    filter: brightness(1.1);
+}
+.article_TabNav li{
+    list-style: none;
+}
+.article_TabContent input[type="radio"]{
+    display: none;
+}
+.article_TabContent input[type="radio"]:checked + div{
+    display: block;
+}
+.article_TabContainer{
+    display: none;
+}
+label.article_TabActive{
+    background-color: transparent;
 }

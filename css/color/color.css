@@ -58,6 +58,11 @@
     --article1--text-color_2: red;
     --article1--text-color_3: black;
 
+    --article-table_head: rgb(166, 28, 65);
+    --article-table_tr1: rgb(225, 225, 225);
+    --article-table_tr2: rgb(240, 240, 240);
+    --article-table_border: rgb(134, 134, 134);
+
     --canvas-color_1: #195b96;
 }
 
@@ -115,5 +120,12 @@
         --article1--text-color_1: white;
         --article1--text-color_2: red;
         --article1--text-color_3: white;
+
+        --article-table_head: rgb(166, 28, 65);
+        --article-table_tr1: rgb(88, 88, 88);
+        --article-table_tr2: rgb(77, 77, 77);
+        --article-table_border: rgb(122, 122, 122);
+
+
     }
 }

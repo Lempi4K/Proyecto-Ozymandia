@@ -106,6 +106,11 @@ function dark(){
     styles.setProperty("--article1--text-color_1", "white");
     styles.setProperty("--article1--text-color_2", "red");
     styles.setProperty("--article1--text-color_3", "white");
+
+    styles.setProperty("--article-table_head", "rgb(166, 28, 65)");
+    styles.setProperty("--article-table_tr1", "rgb(88, 88, 88)");
+    styles.setProperty("--article-table_tr2", "rgb(77, 77, 77)");
+    styles.setProperty("--article-table_border", "rgb(122, 122, 122)");
 }
 
 function light(){
@@ -151,6 +156,11 @@ function light(){
     styles.setProperty("--article1--text-color_1", "black");
     styles.setProperty("--article1--text-color_2", "red");
     styles.setProperty("--article1--text-color_3", "black");
+
+    styles.setProperty("--article-table_head", "rgb(166, 28, 65)");
+    styles.setProperty("--article-table_tr1", "rgb(225, 225, 225)");
+    styles.setProperty("--article-table_tr2", "rgb(240, 240, 240)");
+    styles.setProperty("--article-table_border", "rgb(134, 134, 134)");
 }
 
 function colorHub(switcher, start=true){
