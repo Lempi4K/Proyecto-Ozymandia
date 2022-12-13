@@ -50,21 +50,21 @@ function updateBase(){
 function elementHandler(AEMobject){
     const Handler = {
         1 : `
-            <p class="article_text ${article.meta.theme}_text cpeEditable ${AEMobject.bold?"article_bold":""} ${AEMobject.italic?"article_italic":""} ${AEMobject.underline?"article_underline":""}" contenteditable>
+            <div class="article_text ${article.meta.theme}_text cpeEditable ${AEMobject.bold?"article_bold":""} ${AEMobject.italic?"article_italic":""} ${AEMobject.underline?"article_underline":""}" contenteditable>
                 ${AEMobject.content}
-            </p>`,
+            </div>`,
         2 : `
             <a class="article_linkBtn ${article.meta.theme}_linkBtn cpeEditable" contenteditable>
                 ${AEMobject.content}
             </a>`,
         3 : `
-            <p class="article_subtitle_1 ${article.meta.theme}_subtitle_1 cpeEditable ${AEMobject.bold?"article_bold":""} ${AEMobject.italic?"article_italic":""} ${AEMobject.underline?"article_underline":""}" contenteditable>
+            <div class="article_subtitle_1 ${article.meta.theme}_subtitle_1 cpeEditable ${AEMobject.bold?"article_bold":""} ${AEMobject.italic?"article_italic":""} ${AEMobject.underline?"article_underline":""}" contenteditable>
                 ${AEMobject.content}
-            </p>`,
+            </div>`,
         4 : `
-            <p class="article_subtitle_2 ${article.meta.theme}_subtitle_2 cpeEditable ${AEMobject.bold?"article_bold":""} ${AEMobject.italic?"article_italic":""} ${AEMobject.underline?"article_underline":""}" contenteditable>
+            <div class="article_subtitle_2 ${article.meta.theme}_subtitle_2 cpeEditable ${AEMobject.bold?"article_bold":""} ${AEMobject.italic?"article_italic":""} ${AEMobject.underline?"article_underline":""}" contenteditable>
                 ${AEMobject.content}
-            </p>`,
+            </div>`,
         5 : `
             <div class="article_video ${article.meta.theme}_video">
                 <hr>
@@ -389,9 +389,8 @@ function createElements(nType){
         VirtualCanvas.selectedIndex = 0;
     }
     if(VirtualCanvas.insert > 0){
-        article.AEM.splice(VirtualCanvas.selectedIndex + 1, 0, AEMobject);
         VirtualCanvas.selectedIndex++;
-        console.log("E no mames")
+        article.AEM.splice(VirtualCanvas.selectedIndex, 0, AEMobject);
     } else if(VirtualCanvas.insert < 0){
         article.AEM.splice(VirtualCanvas.selectedIndex, 0, AEMobject);
     } else{

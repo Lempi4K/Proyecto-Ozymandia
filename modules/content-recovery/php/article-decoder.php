@@ -7,9 +7,9 @@
 
         $handler = array(
             "1" => <<< HTML
-                <p class="article_text {$theme}_text cpeEditable {$bold} {$italic} {$underline}">
+                <div class="article_text {$theme}_text cpeEditable {$bold} {$italic} {$underline}">
                     {$AEMobject['content']}
-                </p>
+                </div>
                 HTML,
             "2" => <<< HTML
                 <a href="{$AEMobject['url']}" class="article_linkBtn {$theme}_linkBtn cpeEditable" target="_blank">
@@ -17,14 +17,14 @@
                 </a>
                 HTML,
             "3" => <<< HTML
-                <p class="article_subtitle_1 {$theme}_subtitle_1 cpeEditable {$bold} {$italic} {$underline}">
+                <div class="article_subtitle_1 {$theme}_subtitle_1 cpeEditable {$bold} {$italic} {$underline}">
                     {$AEMobject['content']}
-                </p>
+                </div>
                 HTML,
             "4" => <<< HTML
-                <p class="article_subtitle_2 {$theme}_subtitle_2 cpeEditable {$bold} {$italic} {$underline}">
+                <div class="article_subtitle_2 {$theme}_subtitle_2 cpeEditable {$bold} {$italic} {$underline}">
                     {$AEMobject['content']}
-                </p>
+                </div>
                 HTML,
             "5" => <<< HTML
                 <div class="article_video {$theme}_video">
