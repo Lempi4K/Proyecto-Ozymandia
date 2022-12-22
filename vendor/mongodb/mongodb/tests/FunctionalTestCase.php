@@ -28,6 +28,7 @@ use function explode;
 use function filter_var;
 use function getenv;
 use function implode;
+use function in_array;
 use function is_array;
 use function is_callable;
 use function is_object;
@@ -283,14 +284,27 @@ abstract class FunctionalTestCase extends TestCase
         $this->configuredFailPoints[] = [$command->configureFailPoint, $failPointServer];
     }
 
+    public static function getModuleInfo(string $row): ?string
+    {
+        ob_start();
+        phpinfo(INFO_MODULES);
+        $info = ob_get_clean();
+
+        $pattern = sprintf('/^%s(.*)$/m', preg_quote($row . ' => '));
+
+        if (preg_match($pattern, $info, $matches) !== 1) {
+            return null;
+        }
+
+        return $matches[1];
+    }
+
     /**
      * Creates the test collection with the specified options.
      *
      * If the "writeConcern" option is not specified but is supported by the
      * server, a majority write concern will be used. This is helpful for tests
      * using transactions or secondary reads.
-     *
-     * @param array $options
      */
     protected function createCollection(array $options = []): void
     {
@@ -306,8 +320,6 @@ abstract class FunctionalTestCase extends TestCase
      * If the "writeConcern" option is not specified but is supported by the
      * server, a majority write concern will be used. This is helpful for tests
      * using transactions or secondary reads.
-     *
-     * @param array $options
      */
     protected function dropCollection(array $options = []): void
     {
@@ -376,6 +388,40 @@ abstract class FunctionalTestCase extends TestCase
         throw new UnexpectedValueException('Could not determine server storage engine');
     }
 
+    /**
+     * Returns whether clients must specify an API version by checking the
+     * requireApiVersion server parameter.
+     */
+    protected function isApiVersionRequired(): bool
+    {
+        try {
+            $cursor = $this->manager->executeCommand(
+                'admin',
+                new Command(['getParameter' => 1, 'requireApiVersion' => 1])
+            );
+
+            $document = current($cursor->toArray());
+        } catch (CommandException $e) {
+            return false;
+        }
+
+        return isset($document->requireApiVersion) && $document->requireApiVersion === true;
+    }
+
+    protected function isEnterprise(): bool
+    {
+        $buildInfo = $this->getPrimaryServer()->executeCommand(
+            $this->getDatabaseName(),
+            new Command(['buildInfo' => 1])
+        )->toArray()[0];
+
+        if (isset($buildInfo->modules) && is_array($buildInfo->modules)) {
+            return in_array('enterprise', $buildInfo->modules);
+        }
+
+        throw new UnexpectedValueException('Could not determine server modules');
+    }
+
     protected function isLoadBalanced()
     {
         return $this->getPrimaryServer()->getType() == Server::TYPE_LOAD_BALANCER;
@@ -389,6 +435,11 @@ abstract class FunctionalTestCase extends TestCase
     protected function isMongos()
     {
         return $this->getPrimaryServer()->getType() == Server::TYPE_MONGOS;
+    }
+
+    protected function isStandalone()
+    {
+        return $this->getPrimaryServer()->getType() == Server::TYPE_STANDALONE;
     }
 
     /**
@@ -492,7 +543,7 @@ abstract class FunctionalTestCase extends TestCase
             $this->markTestSkipped('Client Side Encryption only supported on FCV 4.2 or higher');
         }
 
-        if ($this->getModuleInfo('libmongocrypt') === 'disabled') {
+        if (static::getModuleInfo('libmongocrypt') === 'disabled') {
             $this->markTestSkipped('Client Side Encryption is not enabled in the MongoDB extension');
         }
     }
@@ -578,25 +629,8 @@ abstract class FunctionalTestCase extends TestCase
         }
     }
 
-    private function getModuleInfo(string $row): ?string
-    {
-        ob_start();
-        phpinfo(INFO_MODULES);
-        $info = ob_get_clean();
-
-        $pattern = sprintf('/^%s([\w ]+)$/m', preg_quote($row . ' => '));
-
-        if (preg_match($pattern, $info, $matches) !== 1) {
-            return null;
-        }
-
-        return $matches[1];
-    }
-
     /**
      * Checks if the failCommand command is supported on this server version
-     *
-     * @return bool
      */
     private function isFailCommandSupported(): bool
     {
@@ -607,8 +641,6 @@ abstract class FunctionalTestCase extends TestCase
 
     /**
      * Checks if the failCommand command is enabled by checking the enableTestCommands parameter
-     *
-     * @return bool
      */
     private function isFailCommandEnabled(): bool
     {

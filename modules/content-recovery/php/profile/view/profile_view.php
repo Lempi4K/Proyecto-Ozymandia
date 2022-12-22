@@ -54,7 +54,7 @@
                                 <div class="charging-display-container" id="charging-display-container_sub"><div></div></div>
                                 <div class="replazable-content_Profile" id="replazable-content_Profile">
                                     {$this->displayProfileData()}
-                                      <!--{$this->displayOwnArticles()}-->
+                                    <!--{$this->displayOwnArticles()}-->
                                 </div>
                             </div>
                         </div>
@@ -150,7 +150,7 @@
             $this->count = count( $cursor );
 
             $HTML = <<< HTML
-            
+                
             HTML;
             if($this->count > 0){
                 foreach($cursor as $item){

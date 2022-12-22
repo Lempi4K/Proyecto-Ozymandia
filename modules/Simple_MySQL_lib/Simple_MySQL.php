@@ -34,7 +34,7 @@
                                           $user, $pass);
                 //echo "<script>console.log('PHP: Conexion a $dbname en $host exitosa');</script>";
             } catch(PDOException $e){
-                //echo "<script>console.log('PHP: Conexion a $dbname no posible: " . $e->getMessage() . "');</script>";
+                echo "PHP: Conexion a $dbname no posible: " . $e->getMessage();
             }
         }
 

@@ -1,4 +1,5 @@
 <?php
+    require $_SERVER['DOCUMENT_ROOT'] . "/vendor/autoload.php";
     use Firebase\JWT\JWT;
     function elementHandler($AEMobject, $theme){
         $bold = $AEMobject['bold'] ? 'article_bold' : '';
@@ -54,7 +55,7 @@
                 HTML,
             "9" => <<< HTML
                 <div class="article_text {$theme}_text cpeEditable">
-                    Enlace de la API: {$AEMobject['url']}
+                    Enlace del OPI: {$AEMobject['url']}
                 </div>
                 HTML,
         );
@@ -206,13 +207,49 @@
             if((int) $item["type"] == 9){
                 if($item["url"] === "" || $item["url"] == null || !file_exists($_SERVER['DOCUMENT_ROOT'] . $item["url"])){
                     $AEM .= <<< HTML
-                        <p>API Rest no configurada</p>
+                        <p>OPI No Configurado</p>
                     HTML;
                     continue;
                 }
-                include($_SERVER['DOCUMENT_ROOT'] . $item["url"]);
-                $API_handler = new API($article['meta']['theme']);
-                $AEM .= $API_handler->getHTML();
+                try{
+                    $url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]";
+                    $client = new GuzzleHttp\Client([
+                        "base_uri" => $url
+                        ]
+                    );
+                    $uid = 0;
+                    if(isset($_COOKIE["token"])){
+                    $uid = (int) Firebase\JWT\JWT::decode($_COOKIE["token"], "P.O.")->uid;
+                    }
+                    $response = $client->request("GET", $item["url"], [
+                        "query" => [
+                            "uid" =>  $uid,
+                            "theme" => $article['meta']['theme']
+                        ]
+                    ]);
+                    $json = json_decode($response->getBody(), true);
+                    //$HTML .= $response->getBody();
+                    switch ($json["status"]){
+                        case 0:{
+                            $AEM .= <<< HTML
+                                <p>Error en el OPI</p>
+                            HTML;
+                            break;
+                        }
+                        case 1:{
+                            $AEM .= $json["data"]["HTML"];
+                            break;
+                        }
+                        case 2:{
+                            $AEM .= <<< HTML
+                                <p>Error en los datos de la solicitud</p>
+                            HTML;
+                            break;
+                        }
+                    }
+                } catch(Throwable $t){
+                    $AEM .= $t->getMessage();
+                }
                 continue;
             }
             $AEM .= elementHandler($item, $article['meta']['theme']);

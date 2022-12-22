@@ -235,7 +235,8 @@ window.addEventListener("load", e => {
                 let height = (profile_content) - (profile_mainData + profile_background);
 
                 if(document.getElementById("inpRdbtnProdiv2").checked){
-                    document.getElementById("articles-container").style.height = height + "px";
+                    let element = document.getElementById("articles-container") || document.querySelector(".display-error-main");
+                    element.style.height = height + "px";
                 } else{
                     document.querySelector(".profile-data-container").style.height = height + "px";
                 }

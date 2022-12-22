@@ -26,7 +26,7 @@
                         for($i = 0; $i < count($blkPerm); $i++){
                             if((int)$perm == (int)$blkPerm[$i]){
                                 $this->result = false;
-                                echo "AAA me doxxean";
+                                //echo "AAA me doxxean";
                                 break;
                             }
                         }

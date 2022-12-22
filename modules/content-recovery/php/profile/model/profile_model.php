@@ -59,6 +59,7 @@
                         if($start == 0){
                             $count = $mongo->ARTICLES_DATA->RECIPES->count();
                             $query['$and'][1]["meta.id"]['$lte'] = $count;
+                            //$query['$and'][1]["meta.id"]['$lte'] = 5;
                         }
                         $this->cursor = $mongo->ARTICLES_DATA->RECIPES->find($query, $options);
 

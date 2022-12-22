@@ -87,8 +87,9 @@ function elementHandler(AEMobject){
                 <hr>
                 <iframe src="${AEMobject.pdf !== null ? URL.createObjectURL(AEMobject.pdf) : ""}" type="application/pdf" width="100%" height="100%"></iframe>
             </div>`,
-        9 : `<div class="article_text ${article.meta.theme}_text cpeEditable">
-                Enlace de la API: ${AEMobject.url}
+        9 : `
+            <div class="article_text ${article.meta.theme}_text cpeEditable">
+                Enlace del OPI: ${AEMobject.url}
             </div>`,
     };
 

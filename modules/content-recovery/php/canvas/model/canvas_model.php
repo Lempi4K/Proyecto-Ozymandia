@@ -29,7 +29,7 @@
                     case 2:{
                     }
                     case 3:{
-                        $query = "select ET.NOMBRE as LABEL_N, ET.LABEL_ID as 'LABEL', SUET.NOMBRE as SUBLABEL_N , SUET.SUBLABEL_ID as 'SUBLABEL' from ETIQUETAS as ET join SUBETIQUETAS as SUET where ET.LABEL_ID = SUET.LABEL_ID and SUET.SUBLABEL_ID != 0 and SUET.SUBLABEL_ID != 4";
+                        $query = "select ET.NOMBRE as LABEL_N, ET.LABEL_ID as 'LABEL', SUET.NOMBRE as SUBLABEL_N , SUET.SUBLABEL_ID as 'SUBLABEL' from ETIQUETAS as ET join SUBETIQUETAS as SUET where ET.LABEL_ID = SUET.LABEL_ID and SUET.SUBLABEL_ID != 0 and (SUET.SUBLABEL_ID != 4 or ET.LABEL_ID != 1)";
                         break;
                     }
                     case 4:{
@@ -45,7 +45,7 @@
                 }
                 
                 try{
-                    $this->db_handler = new S_MySQL("USER_DATA");
+                    $this->db_handler = new S_MySQL("USER_DATA", 1);
                     
                     $data = $this->db_handler->console($query);
                     $data->setFetchMode(PDO::FETCH_BOTH);
@@ -67,7 +67,7 @@
                             array_push($this->labels, $row);
                         }
                     }
-
+                    /*
                     $this->db_handler = new S_MySQL("ARTICLES");
                     $data = $this->db_handler->console($query);
                     $data->setFetchMode(PDO::FETCH_BOTH);
@@ -77,7 +77,7 @@
                         }
                     } else{
 
-                    }
+                    }*/
                 }catch (Exception $e){
                     $this->errors = $this->errors . "PHP.canvas_model:Construct:DB-Error:" . $e->getMessage() . ";";
                 }
