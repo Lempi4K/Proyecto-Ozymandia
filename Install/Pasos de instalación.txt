@@ -1,0 +1,80 @@
+
+      #########@      %#####################################     ####   (###*   
+    ######  #####     &####%&&&&&&&&&&&&&&&&&&&&&&&&&&&#####     ####&  ####%   
+   ######&  &#####     @####@                         #####     .#####  #####   
+  (######@  /######     @####@      %%%%%%%%%#       #####      @##### @#####   
+  &######    ######      @####@      #######&       #####       ######@######&  
+  (######@  /######       %####%      ######      ,#####        ##@###########  
+   ######@  @#####         %####&     (####      #####%        ##@ /######  ##  
+    %#####  #####      @#########      &##      ##########/    #@    ###%    #% 
+      %########.       @#########       #%      ##########/    &      #@      % 
+
+    PROYECTO OZYMANDIA
+    @author Leonardo Moreno Pinto
+    @link https://github.com/Lempi4K/Proyecto-Ozymandia
+                    © 2023 Lempi4K
+
+REQUISITOS
+    1. WampServer
+    2. MongoDB (Servidor y MongoShell o MongoDBCompass)
+
+PASOS DE INSTALACIÓN (WampServer)
+    1. Pegamos el contenido de la carpeta "WampServer" dentro de la carpeta raiz de tu WampServer (Dar a "Reemplazar si es necesario")
+
+    2. Vamos al icono de Wamp en la barra de tareas y hacemos lo siguiente:
+        click izquierdo >> Apache X.XX.XX >> httpd.conf
+       - Bajamos hasta encontrar la línea "Listen 192.168.137.1:80", en donde cambiaremos la ip por la nuestra o por "127.0.0.1", hay que respetar el puerto (la parte de ":80")
+       - Guardamos el archivo y lo cerramos
+
+    3. Crear usuarios en MySQL con las siguientes credenciales:
+        - Admin : 090722Admin*
+        - Editor : 090722Editor*
+        - User : 090722User*
+
+        Si no se desean estas credenciales, se tienen que cambiar en:
+            - \modules\Simple_MongoDB_lib\Simple_MongoDB.php
+            - \modules\Simple_MongoDB_lib\Simple_MongoDB.php
+
+    4. Iniciamos sesión en phpMyAdmin e importamos los privilegios desde el archivo "PrivilegiosMySQL.sql"
+
+    5. Creamos una base de datos llamada USER_DATA
+
+    6. Descomprimimos "BasesDeDatos.rar"
+
+    7. Importamos en la base de datos que recien creamos las tablas desde el archivo "user_data.sql" (Si queremos la base de datos de pruebas)
+
+    8. Una vez hecho esto, si queremos iniciar sesión tenemos que ir a la tabla "CREDENCIALES" para copiar los datos del usuario (Teniendo la base de datos de pruebas)
+
+PASOS DE INSTALACIÓN (MongoDB)
+    1. Iniciamos el servidor de MongoDB
+
+    2. En MongoDBCompass, vamos a insertar las siguientes sentencias
+        - use ARTICLES_DATA
+        - db.createCollection("RECIPES")
+        - use admin
+        - db.createUser({ user: "Admin", pwd: "090722Admin*", roles: [{ role: "userAdminAnyDatabase", db: "admin" }, "readWriteAnyDatabase"]})
+        - db.createUser({ user: "Editor", pwd: "090722Editor*", roles: [{ role: "readWrite", db: "ARTICLES_DATA" }, "readWriteAnyDatabase"]})
+        - db.createUser({ user: "User", pwd: "090722User*", roles: [{ role: "readWrite", db: "ARTICLES_DATA" }]})
+
+    3. Una vez hecho lo anterior, vamos a reiniciar el servidor, pero esta vez con el parametro "--auth"
+
+    4. Volvemos a MongoDBCompass, nos dirigimos a la coleccion "RECIPES" de la base de datos "ARTICLES_DATA" y hacemos lo siguiente (Si queremos la base de datos de pruebas):
+        - ADD DATA >> Import File
+        - Seleccionamos el documento de "RECIPES.json", lo ponemos como JSON y presionmos el boton "IMPORT"
+
+    5. Vamos a la pestaña de Indexes, y creamos un index en el campo de "meta.title_text", de tipo "TEXT" (Esto es obligatorio, la barra de búsqueda no funciona sin esto)
+
+
+PASOS DE INSTALACIÓN (Ficheros)
+    1. Copaimos el contenido de la carpeta de este proyecto y la pegamos en la carpeta "www" ubicada en la carpeta raiz de nuestro WampServer
+
+    2. Copiamos las capetas "OPI" y "media" y las pegamos en la raiz de este proyecto (Si queremos la base de datos de pruebas)
+
+PASOS PARA INICIAR LA PÁGINA
+    1. Ejecutamos WampServer
+
+    2. Abrimos el servidor de MongoDB con el parámetro "--auth"
+
+    3. Escribimos en nuestro navegador "localhost"
+
+    4. DISFRUTA DE LA PÁGINA
