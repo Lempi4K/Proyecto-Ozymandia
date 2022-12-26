@@ -1,10 +1,15 @@
 <?php
+/**
+ * Es el controlador del trafico de ordenes para actualizar contenido dinámicamente
+ */
     include($_SERVER['DOCUMENT_ROOT']."/modules/Simple_MongoDB_lib/Simple_MongoDB.php");
 
     include($_SERVER['DOCUMENT_ROOT']."/modules/Simple_MySQL_lib/Simple_MySQL.php");
 
     include($_SERVER['DOCUMENT_ROOT']."/libs/php-jwt-master/src/JWT.php");
     
+    include("tests/controller/tests_controller.php");
+
     include("profile/controller/profile_controller.php");
 
     include("nav/controller/nav_controller.php");
@@ -16,6 +21,8 @@
     include("search/controller/search_controller.php");
 
     include("canvas/controller/canvas_controller.php");
+
+    include("admin-tools/controller/admin-tools_controller.php");
 
     include("article-decoder.php");
 
@@ -42,6 +49,10 @@
     $content_controller = null;
 
     switch ($type){
+        case -1:{
+            $content_controller = new TestsController();
+            break;
+        }
         case 0:{
             $content_controller = new MainController($section, $article_id, $start);
             break;
@@ -64,6 +75,10 @@
         }
         case 5:{
             $content_controller = new CanvasController($article_id);
+            break;
+        }
+        case 6:{
+            $content_controller = new AdminToolsController();
             break;
         }
     }

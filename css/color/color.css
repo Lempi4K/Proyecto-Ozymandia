@@ -14,6 +14,7 @@
     --user-color_M: rgb(255, 253, 156);
     --user-color_P: rgb(255, 150, 195);
     --user-color_J: rgb(160, 164, 255);
+    --user-color_C: rgb(81, 231, 211);
     --font-color_1: black;
     --font-color_2: white;
     --font-color_3: rgb(63, 63, 63);
@@ -57,7 +58,12 @@
     --article1--text-color_2: red;
     --article1--text-color_3: black;
 
-    --canvas-color_1: rgb(9, 48, 83);
+    --article-table_head: rgb(166, 28, 65);
+    --article-table_tr1: rgb(225, 225, 225);
+    --article-table_tr2: rgb(240, 240, 240);
+    --article-table_border: rgb(134, 134, 134);
+
+    --canvas-color_1: #195b96;
 }
 
 @media (prefers-color-scheme: dark){
@@ -75,6 +81,7 @@
         --user-color_M: rgb(155, 152, 0);
         --user-color_P: rgb(148, 0, 64);
         --user-color_J: rgb(0, 7, 136);
+        --user-color_C: rgb(33, 161, 144);
         --font-color_1: rgb(255, 255, 255);
         --font-color_3: rgb(192, 192, 192);
         --font-color_4: rgb(160, 160, 160);
@@ -113,5 +120,12 @@
         --article1--text-color_1: white;
         --article1--text-color_2: red;
         --article1--text-color_3: white;
+
+        --article-table_head: rgb(166, 28, 65);
+        --article-table_tr1: rgb(88, 88, 88);
+        --article-table_tr2: rgb(77, 77, 77);
+        --article-table_border: rgb(122, 122, 122);
+
+
     }
 }

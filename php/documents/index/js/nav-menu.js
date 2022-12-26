@@ -1,7 +1,15 @@
+/** 
+ * Variables de tiempo de ejecución
+ * @var object
+*/
 let nav_memoryPersistance = {
     width: 50
 };
 
+/** 
+ * Animaciones de del menu de navegacion
+ * @param event
+*/
 function navOpener(e){
     const inpChkbxNav1 = e.target;
     const menu_hideNav = document.getElementById("menu-hideNav");

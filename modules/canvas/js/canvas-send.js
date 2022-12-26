@@ -1,8 +1,19 @@
+/**
+ * Obtiene la extensión de un archivo
+ * @param {string} filename 
+ * @returns {string}
+ */
 function getExtension(filename) {
     let filenameSTR = new String(filename);
     return filenameSTR.slice((filenameSTR.lastIndexOf(".") - 1 >>> 0) + 2);
 }
 
+/**
+ * Sube los archivos de los elementos al servidor
+ * @param {object} articleJSON 
+ * @param {int} id 
+ * @returns {object}
+ */
 async function AJAX_FilesUpCanvas(articleJSON, id = 0){
     let files = new FormData();
 
@@ -63,6 +74,12 @@ async function AJAX_FilesUpCanvas(articleJSON, id = 0){
     }
 }
 
+/**
+ * Sube el artículo al servidor
+ * @param {object} articleJSON 
+ * @param {int} id 
+ * @returns {boolean}
+ */
 async function AJAX_SendCanvas(articleJSON, id=0){
     console.log(id)
     articleJSON = await AJAX_FilesUpCanvas(articleJSON, id);
@@ -94,6 +111,9 @@ async function AJAX_SendCanvas(articleJSON, id=0){
     }
 }
 
+/**
+ * Función principal del módulo
+ */
 function canvas_send(){
     document.getElementById("cnvFrmPubBtn").addEventListener("click", e => {
         openFrames(false, true);

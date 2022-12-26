@@ -1,5 +1,14 @@
 <?php
+
+    require $_SERVER['DOCUMENT_ROOT'] . "/vendor/autoload.php";
     use Firebase\JWT\JWT;
+
+    /**
+     * Fabrica la cadena del elemento del AEM según el tipo
+     * @param array $AEMobject
+     * @param string $theme
+     * @return string
+     */
     function elementHandler($AEMobject, $theme){
         $bold = $AEMobject['bold'] ? 'article_bold' : '';
         $italic = $AEMobject['italic'] ? 'article_italic' : '';
@@ -7,9 +16,9 @@
 
         $handler = array(
             "1" => <<< HTML
-                <p class="article_text {$theme}_text cpeEditable {$bold} {$italic} {$underline}">
+                <div class="article_text {$theme}_text cpeEditable {$bold} {$italic} {$underline}">
                     {$AEMobject['content']}
-                </p>
+                </div>
                 HTML,
             "2" => <<< HTML
                 <a href="{$AEMobject['url']}" class="article_linkBtn {$theme}_linkBtn cpeEditable" target="_blank">
@@ -17,14 +26,14 @@
                 </a>
                 HTML,
             "3" => <<< HTML
-                <p class="article_subtitle_1 {$theme}_subtitle_1 cpeEditable {$bold} {$italic} {$underline}">
+                <div class="article_subtitle_1 {$theme}_subtitle_1 cpeEditable {$bold} {$italic} {$underline}">
                     {$AEMobject['content']}
-                </p>
+                </div>
                 HTML,
             "4" => <<< HTML
-                <p class="article_subtitle_2 {$theme}_subtitle_2 cpeEditable {$bold} {$italic} {$underline}">
+                <div class="article_subtitle_2 {$theme}_subtitle_2 cpeEditable {$bold} {$italic} {$underline}">
                     {$AEMobject['content']}
-                </p>
+                </div>
                 HTML,
             "5" => <<< HTML
                 <div class="article_video {$theme}_video">
@@ -49,12 +58,12 @@
             "8" => <<< HTML
                 <div class="article_pdf {$theme}_pdf">
                     <hr>
-                    <embed src="{$AEMobject['pdf']}" type="application/pdf" width="100%" height="100%">
+                    <iframe src="{$AEMobject['pdf']}" type="application/pdf" width="100%" height="100%"></iframe>
                 </div>
                 HTML,
             "9" => <<< HTML
                 <div class="article_text {$theme}_text cpeEditable">
-                    Enlace de la API: {$AEMobject['url']}
+                    Enlace del OPI: {$AEMobject['url']}
                 </div>
                 HTML,
         );
@@ -62,6 +71,31 @@
         return $handler[$AEMobject["type"]];
     }
 
+    /**
+     * Crea una cadena con el tiempo dinámicamente
+     * @param int $timeString
+     * @return string
+     */
+    function timeString($timestamp){
+        $timestamp = (int) $timestamp;
+        $minusTime = date("U") - $timestamp;
+        if ($minusTime < 86400){
+            if($minusTime >= 60 && $minusTime < 3600){
+                return ((int) ($minusTime / 60)) . " min(s)";
+            }
+            if($minusTime >= 0 && $minusTime < 60){
+                return ($minusTime) . " seg(s)";
+            }
+            return ((int) ($minusTime / 3600)) . " hr(s)";
+        }
+        return date("d-m-Y", $timestamp);
+    }
+
+    /**
+     * Comprueba si existe la sublabel en la persona en la que se muestra el artículo
+     * @param string $sublabel
+     * @return boolean
+     */
     function mySublabel($sublabel){
         $dataT = JWT::decode($_COOKIE["token"], "P.O.");
         $uid = $dataT->uid;
@@ -76,6 +110,12 @@
         }
     }
 
+    /**
+     * Decodifica el documento guardado en la base de datos para crear el HTML
+     * @param array $article
+     * @param boolean $single
+     * @return string HTML
+     */
     function articleDecoder($article, $single = false){
         $query = "select concat(ALU.NOMBRES, ' ', ALU.APELLIDOS) as NOM, USER, US.PERM from ALUMNOS as ALU join CREDENCIALES as CRED join USUARIOS as US where CRED.USER_ID = " . ($article["meta"]["autor_uid"]) . " and ALU.USER_ID = " . ($article["meta"]["autor_uid"]) . " and US.USER_ID = " . ($article["meta"]["autor_uid"]) . ";";
         $data = "";
@@ -107,9 +147,10 @@
         }
 
 
-        $charsPerms = array("-1" => "I","0" => "U", "1" => "A", "2" => "D", "3" => "M", "4" => "P", "5" => "J");
-        $namePerms = array("-1" => "Invitado", "0" => "Usuario", "1" => "Administrador", "2" => "Director", "3" => "Moderador", "4" => "Profesor", "5" => "Jefe de Grupo");
+        $charsPerms = array("-1" => "I","0" => "U", "1" => "A", "2" => "D", "3" => "M", "4" => "P", "5" => "J", "6" => "C");
+        $namePerms = array("-1" => "Invitado", "0" => "Usuario", "1" => "Administrador", "2" => "Director", "3" => "Moderador", "4" => "Profesor", "5" => "Jefe de Grupo", "6" => "Creador");
 
+        $pubdate = timeString($article['meta']['pub_date']);
         $header = <<< HTML
                     <div class="article_head">
                         <div class="article_userPic" data-perm={$charsPerms[strval($data['PERM'])]}>
@@ -120,7 +161,7 @@
                                 {$data['NOM']}
                                 <div class="rol profile-rol c_default" title={$namePerms[strval($data['PERM'])]} data-perm={$charsPerms[strval($data['PERM'])]}><p class="no_select">{$charsPerms[strval($data['PERM'])]}</p></div>
                             </div>
-                            <p>@{$data['USER']} | <time pubdate="{$article['meta']['pub_date']}">{$article['meta']['pub_date']}</time></p>
+                            <p>@{$data['USER']} | <time pubdate="{$pubdate}">{$pubdate}</time></p>
                         </div>
                         <div class="">
         HTML;
@@ -188,9 +229,51 @@
 
         foreach($article["AEM"] as $item){
             if((int) $item["type"] == 9){
-                include($_SERVER['DOCUMENT_ROOT'] . $item["url"]);
-                $API_handler = new API($article['meta']['theme']);
-                $AEM .= $API_handler->getHTML();
+                if($item["url"] === "" || $item["url"] == null || !file_exists($_SERVER['DOCUMENT_ROOT'] . $item["url"])){
+                    $AEM .= <<< HTML
+                        <p>OPI No Configurado</p>
+                    HTML;
+                    continue;
+                }
+                try{
+                    $url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]";
+                    $client = new GuzzleHttp\Client([
+                        "base_uri" => $url
+                        ]
+                    );
+                    $uid = 0;
+                    if(isset($_COOKIE["token"])){
+                    $uid = (int) Firebase\JWT\JWT::decode($_COOKIE["token"], "P.O.")->uid;
+                    }
+                    $response = $client->request("GET", $item["url"], [
+                        "query" => [
+                            "uid" =>  $uid,
+                            "theme" => $article['meta']['theme']
+                        ]
+                    ]);
+                    $json = json_decode($response->getBody(), true);
+                    //$HTML .= $response->getBody();
+                    switch ($json["status"]){
+                        case 0:{
+                            $AEM .= <<< HTML
+                                <p>Error en el OPI</p>
+                            HTML;
+                            break;
+                        }
+                        case 1:{
+                            $AEM .= $json["data"]["HTML"];
+                            break;
+                        }
+                        case 2:{
+                            $AEM .= <<< HTML
+                                <p>Error en los datos de la solicitud</p>
+                            HTML;
+                            break;
+                        }
+                    }
+                } catch(Throwable $t){
+                    $AEM .= $t->getMessage();
+                }
                 continue;
             }
             $AEM .= elementHandler($item, $article['meta']['theme']);

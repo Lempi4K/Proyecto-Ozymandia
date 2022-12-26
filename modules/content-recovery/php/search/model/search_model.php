@@ -38,16 +38,14 @@
                         ], 
                     )
                 );
+                if($q === ""){
+                    array_pop($query['$and']);
+                }
+
                 if((int) $sublabel != 0){
-                    if($q === ""){
-                        array_pop($query['$and']);
-                    }
                     array_push($query['$and'], ["meta.sublabel" => (int) $sublabel]);
                     array_push($query['$and'], ["meta.label" => 2]);
                 } else{
-                    if($q === ""){
-                        array_pop($query['$and']);
-                    }
                     if(isset($_COOKIE["token"])){
                         $dataT = JWT::decode($_COOKIE["token"], "P.O.");
                         $perm = (int) $dataT->prm;

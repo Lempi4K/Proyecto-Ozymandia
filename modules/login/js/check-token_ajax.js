@@ -1,3 +1,6 @@
+/**
+ * Verifica el token
+ */
 window.addEventListener("load", function(){
     async function AJAXrequest(){
         const url = "/modules/check-token/controller/check-token_controller.php";

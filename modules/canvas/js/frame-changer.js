@@ -1,15 +1,43 @@
+/**
+ * Escenas en la herramienta
+ * @var DOMObject
+ */
 var canvasFrames = document.getElementsByClassName("");
+
+/**
+ * Numero de escenas en la herramienta
+ * @var int
+ */
 var nFrames = 0;
+
+/**
+ * Escena activa en el momento
+ * @var int
+ */
 var activeFrame = 0;
 
+/**
+ * Animación al cambiar escena (Ocultar)
+ * @var array
+ */
 var keyframesHide = [
     {filter: "opacity(1)"},
     {filter: "opacity(0)"}
 ]
+
+/**
+ * Animación al cambiar escena (Mostrar)
+ * @var array
+ */
 var keyframesShow = [
     {filter: "opacity(0)"},
     {filter: "opacity(1)"}
 ]
+
+/**
+ * Opciones de animación
+ * @var array
+ */
 var animateOptions = {
     duration: 200,
     iterations: 1,
@@ -17,6 +45,10 @@ var animateOptions = {
     fill: "forwards"
 };
 
+/**
+ * Avanzar de escena
+ * @param {Event} e 
+ */
 function advanceFrame(e){
     canvasFrames[activeFrame].animate(keyframesHide, animateOptions)
     .onfinish = () => {
@@ -32,6 +64,11 @@ function advanceFrame(e){
         canvasFrames[activeFrame].animate(keyframesShow, animateOptions);
     };
 }
+
+/**
+ * Retroceder de escena
+ * @param {Event} e 
+ */
 function returnFrame(e){
     canvasFrames[activeFrame].animate(keyframesHide, animateOptions)
     .onfinish = () => {
@@ -48,6 +85,9 @@ function returnFrame(e){
     };
 }
 
+/**
+ * Función principal del módulo
+ */
 function frame_changer(){
     activeFrame = 0;
     canvasFrames = document.getElementsByClassName("canvas-frame");

@@ -2,7 +2,6 @@
     "name": "vendor/ozymandia",
     "description": "Proyecto Ozymandia",
     "type": "project",
-    "license": "Null",
     "autoload": {
         "psr-4": {
             "Vendor\\Ozymandia\\": "src/"
@@ -10,12 +9,12 @@
     },
     "authors": [
         {
-            "name": "Lempi4K",
-            "email": "lemopi2008@gmail.com"
+            "name": "Lempi4K"
         }
     ],
+    "minimum-stability": "dev",
     "require": {
-        "mongodb/mongodb": "^1.12",
-        "mpdf/mpdf": "^8.1"
+        "guzzlehttp/guzzle": "7.5.x-dev",
+        "mongodb/mongodb": "1.16.x-dev"
     }
 }

@@ -1,3 +1,8 @@
+/**
+ * Hace la solicitud con las páginas y los permisos bloqueados
+ * @param {string} path 
+ * @returns void
+ */
 async function AJAXrequestChckToken(path){
     const blackList = {
         "/perfil": [-1, -1],

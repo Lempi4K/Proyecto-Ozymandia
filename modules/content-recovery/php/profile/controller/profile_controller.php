@@ -23,6 +23,7 @@
         public function getHTML(){
             if($this->section == 0){
                 return $this->view->displayInterface();
+                
             }
             if($this->section == 1){
                 return $this->view->displayProfileData();

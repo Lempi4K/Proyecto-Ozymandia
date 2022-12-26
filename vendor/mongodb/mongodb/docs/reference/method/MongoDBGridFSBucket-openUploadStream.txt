@@ -19,7 +19,7 @@ Definition
 
    .. code-block:: php
 
-      function openUploadStream($filename, array $options = []): resource
+      function openUploadStream(string $filename, array $options = []): resource
 
    This method has the following parameters:
 
@@ -56,7 +56,9 @@ Examples
    $downloadStream = $bucket->openDownloadStreamByName('filename');
    var_dump(stream_get_contents($downloadStream));
 
-The output would then resemble::
+The output would then resemble:
+
+.. code-block:: none
 
    string(6) "foobar"
 

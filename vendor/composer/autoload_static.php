@@ -7,16 +7,15 @@ namespace Composer\Autoload;
 class ComposerStaticInitc2f1828ec202e76a1dccc45518bb9d90
 {
     public static $files = array (
-        '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
+        '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
+        'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
+        '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
+        '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
         '3a37ebac017bc098e9a86b35401e7a68' => __DIR__ . '/..' . '/mongodb/mongodb/src/functions.php',
     );
 
     public static $prefixLengthsPsr4 = array (
-        's' => 
-        array (
-            'setasign\\Fpdi\\' => 14,
-        ),
         'V' => 
         array (
             'Vendor\\Ozymandia\\' => 17,
@@ -27,33 +26,26 @@ class ComposerStaticInitc2f1828ec202e76a1dccc45518bb9d90
         ),
         'P' => 
         array (
-            'Psr\\Log\\' => 8,
             'Psr\\Http\\Message\\' => 17,
+            'Psr\\Http\\Client\\' => 16,
         ),
         'M' => 
         array (
-            'Mpdf\\' => 5,
             'MongoDB\\' => 8,
         ),
         'J' => 
         array (
             'Jean85\\' => 7,
         ),
-        'H' => 
+        'G' => 
         array (
-            'Http\\Message\\' => 13,
-        ),
-        'D' => 
-        array (
-            'DeepCopy\\' => 9,
+            'GuzzleHttp\\Psr7\\' => 16,
+            'GuzzleHttp\\Promise\\' => 19,
+            'GuzzleHttp\\' => 11,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'setasign\\Fpdi\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/setasign/fpdi/src',
-        ),
         'Vendor\\Ozymandia\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
@@ -62,17 +54,14 @@ class ComposerStaticInitc2f1828ec202e76a1dccc45518bb9d90
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-php80',
         ),
-        'Psr\\Log\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
-        ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
+            0 => __DIR__ . '/..' . '/psr/http-factory/src',
+            1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
-        'Mpdf\\' => 
+        'Psr\\Http\\Client\\' => 
         array (
-            0 => __DIR__ . '/..' . '/mpdf/mpdf/src',
+            0 => __DIR__ . '/..' . '/psr/http-client/src',
         ),
         'MongoDB\\' => 
         array (
@@ -82,13 +71,17 @@ class ComposerStaticInitc2f1828ec202e76a1dccc45518bb9d90
         array (
             0 => __DIR__ . '/..' . '/jean85/pretty-package-versions/src',
         ),
-        'Http\\Message\\' => 
+        'GuzzleHttp\\Psr7\\' => 
         array (
-            0 => __DIR__ . '/..' . '/php-http/message-factory/src',
+            0 => __DIR__ . '/..' . '/guzzlehttp/psr7/src',
         ),
-        'DeepCopy\\' => 
+        'GuzzleHttp\\Promise\\' => 
         array (
-            0 => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy',
+            0 => __DIR__ . '/..' . '/guzzlehttp/promises/src',
+        ),
+        'GuzzleHttp\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/guzzlehttp/guzzle/src',
         ),
     );
 

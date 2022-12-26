@@ -5,10 +5,34 @@
     use Firebase\JWT\JWT;
     class DrkModeModel{
         //Miembros de datos
+        /**
+         * Toeken de usuario
+         * @var string
+         */
         private $token;
+
+        /**
+         * datos de usuario
+         * @var object
+         */
         private $data;
+
+        /**
+         * Dark Mode (indicador)
+         * @var int
+         */
         private $dkm;
+
+        /**
+         * Manejador de base de datos
+         * @var S_MySQL
+         */
         private $db_handler;
+
+        /**
+         * Errores de la clase
+         * @var string
+         */
         private $errors = "";
 
         //constructor
@@ -38,6 +62,11 @@
         public function getErrors(){
             return $this->errors;
         }
+
+        /**
+         * Actualiza en la base de datos el token
+         * @param string $nToken
+         */
         public function setToken($nToken){
             if(!empty($nToken)){
                 try{
@@ -50,6 +79,11 @@
                 $this->errors = $this->errors . 'PHP.drk-mode_model:F_setToken():$nToken empty;';
             }
         }
+
+        /**
+         * Actualiza el indicador del modo obscuro
+         * @param string $nDkm
+         */
         public function setDkm($nDkm){
             if(!empty($nDkm)){
                 $this->data->dkm = $nDkm;

@@ -1,3 +1,6 @@
+/**
+ * Función principal del módulo
+ */
 function set_article_data(){
     const inpRdbtnFrmArtlType = document.getElementsByName("inpRdbtnFrmArtlType");
     for(let item of inpRdbtnFrmArtlType){
@@ -89,6 +92,9 @@ function set_article_data(){
 
 }
 
+/**
+ * Inicializa los datos según el artículo
+ */
 function initialData(){
     for(let item of document.getElementsByName("inpRdbtnFrmArtlType")){
         if(item.value == article.meta.type){

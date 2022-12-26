@@ -2,11 +2,40 @@
     include($_SERVER['DOCUMENT_ROOT']."/modules/Simple_MySQL_lib/Simple_MySQL.php");
     class Login_Model{
         //Miembros de datos
+        /**
+         * Indicador de validez en credenciales
+         * @var boolean
+         */
         private $validate = false;
+
+        /**
+         * Identificador de usuario
+         * @var int
+         */
         private $user_id;
+
+        /**
+         * Indicador de existencia del token
+         * @var boolean
+         */
         private $token = false;
+
+        /**
+         * Permiso de usuario
+         * @var int
+         */
         private $perm = 0;
+
+        /**
+         * Manejador de la base de datos
+         * @var S_MySQL
+         */
         private $db_handler;
+
+        /**
+         * Errores en la clase
+         * @var string
+         */
         private $errors = "";
 
         //Constructor

@@ -1,3 +1,7 @@
+/**
+ * Programación de eventos en la barra de búsqueda
+ * @param DOMObject
+ */
 function searchEvents(container = document){
     let document = container;
 
@@ -9,6 +13,10 @@ function searchEvents(container = document){
             element.checked = true;
         }
     }
+
+    /**
+     * Prepara la orden para mandar a traer lo solicitado
+     */
     function search(){
         let q = document.querySelector("#inpSrhBanner").value;
         let sublabel = 0;
@@ -32,7 +40,10 @@ function searchEvents(container = document){
     });
 
     document.querySelector("#inpSrhBanner").addEventListener("keypress", e => {
-        search();
+        if(e.keyCode === 13){
+            search();
+        }
+        
     });
 
     document.querySelector(".search-container").addEventListener("click", e => {
@@ -40,7 +51,10 @@ function searchEvents(container = document){
     });
 
     window.document.querySelector("html").addEventListener("click", e => {
-        document.querySelector(".schBackBox").style.display = "none";
+        try{
+            document.querySelector(".schBackBox").style.display = "none";
+        }catch(e){
+        }
     });
 
     document.querySelector("#search-propagation").addEventListener("click", e => {

@@ -1,3 +1,7 @@
+/** 
+ * Oculta o muestra el menu de usuario
+ * @param event
+*/
 function hide_show_menu(e){
     let inpChkbxUser = e.target;
     let user_hide_menu = document.getElementById("user-hide-menu");
@@ -8,11 +12,19 @@ function hide_show_menu(e){
     }
 }
 
+/** 
+ * Oculta el menu de usuario
+ * @param event
+*/
 function blur_menu(e){
     document.getElementById("user-hide-menu").style.display = "none";
     document.getElementById("inpChkbxUser").checked = false;
 }
 
+/** 
+ * Animación para mostrar el submenu
+ * @param DOMObject
+*/
 function move_submenu(item){
     let submenu_Obtn = item;
     let submenu = document.getElementById(submenu_Obtn.id + "_Menu");
@@ -44,6 +56,10 @@ function move_submenu(item){
     document.getElementById("user-hide-menu").animate(keyframe_parentBox, animateOptions);
 }
 
+/** 
+ * Oculta el submenu de usuario
+ * @param event
+*/
 function hide_submenu(bck_target){
     let id_submenu = (new String(bck_target.id)).replace("_bck", "");
     let submenu = document.getElementById(id_submenu);

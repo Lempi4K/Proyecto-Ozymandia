@@ -1,8 +1,15 @@
+/**
+ * Contiene la base de los artículos (Decoraciones previas)
+ * @var Array
+ */
 var base = {
     "article_1" : "",
     "article_2" : ""
 };
 
+/**
+ * Inicializa la variable base
+ */
 function updateBase(){
     base = {
         "article_1" : `
@@ -47,24 +54,29 @@ function updateBase(){
     };
 }
 
+/**
+ * Crea una cadena con un objeto del AEM (Lo decodifica)
+ * @param {object} AEMobject 
+ * @returns {string}
+ */
 function elementHandler(AEMobject){
     const Handler = {
         1 : `
-            <p class="article_text ${article.meta.theme}_text cpeEditable ${AEMobject.bold?"article_bold":""} ${AEMobject.italic?"article_italic":""} ${AEMobject.underline?"article_underline":""}" contenteditable>
+            <div class="article_text ${article.meta.theme}_text cpeEditable ${AEMobject.bold?"article_bold":""} ${AEMobject.italic?"article_italic":""} ${AEMobject.underline?"article_underline":""}" contenteditable>
                 ${AEMobject.content}
-            </p>`,
+            </div>`,
         2 : `
             <a class="article_linkBtn ${article.meta.theme}_linkBtn cpeEditable" contenteditable>
                 ${AEMobject.content}
             </a>`,
         3 : `
-            <p class="article_subtitle_1 ${article.meta.theme}_subtitle_1 cpeEditable ${AEMobject.bold?"article_bold":""} ${AEMobject.italic?"article_italic":""} ${AEMobject.underline?"article_underline":""}" contenteditable>
+            <div class="article_subtitle_1 ${article.meta.theme}_subtitle_1 cpeEditable ${AEMobject.bold?"article_bold":""} ${AEMobject.italic?"article_italic":""} ${AEMobject.underline?"article_underline":""}" contenteditable>
                 ${AEMobject.content}
-            </p>`,
+            </div>`,
         4 : `
-            <p class="article_subtitle_2 ${article.meta.theme}_subtitle_2 cpeEditable ${AEMobject.bold?"article_bold":""} ${AEMobject.italic?"article_italic":""} ${AEMobject.underline?"article_underline":""}" contenteditable>
+            <div class="article_subtitle_2 ${article.meta.theme}_subtitle_2 cpeEditable ${AEMobject.bold?"article_bold":""} ${AEMobject.italic?"article_italic":""} ${AEMobject.underline?"article_underline":""}" contenteditable>
                 ${AEMobject.content}
-            </p>`,
+            </div>`,
         5 : `
             <div class="article_video ${article.meta.theme}_video">
                 <hr>
@@ -85,16 +97,22 @@ function elementHandler(AEMobject){
         8 : `
             <div class="article_pdf ${article.meta.theme}_pdf">
                 <hr>
-                <embed src="${AEMobject.pdf !== null ? URL.createObjectURL(AEMobject.pdf) : ""}" type="application/pdf" width="100%" height="100%">
+                <iframe src="${AEMobject.pdf !== null ? URL.createObjectURL(AEMobject.pdf) : ""}" type="application/pdf" width="100%" height="100%"></iframe>
             </div>`,
-        9 : `<div class="article_text ${article.meta.theme}_text cpeEditable">
-                Enlace de la API: ${AEMobject.url}
+        9 : `
+            <div class="article_text ${article.meta.theme}_text cpeEditable">
+                Enlace del OPI: ${AEMobject.url}
             </div>`,
     };
 
     return Handler["" + AEMobject.type]
 }
 
+/**
+ * Abre la ventana emergente (Publicación o Edición)
+ * @param {boolean} edit 
+ * @param {boolean} pub 
+ */
 function openFrames(edit=false, pub=false){
     let cnvPntFrames = pub ? document.getElementById("cnvPntSendFrames") : document.getElementById("cnvPntFrames");
     cnvPntFrames.style.display = "block";
@@ -119,6 +137,10 @@ function openFrames(edit=false, pub=false){
     }
 }
 
+/**
+ * Cierra la ventana emergente (Publicación o Edición)
+ * @param {boolean} pub 
+ */
 function closeFrames(pub=false){
     let cnvPntFrames = pub ? document.getElementById("cnvPntSendFrames") : document.getElementById("cnvPntFrames");
     cnvPntFrames.animate(
@@ -153,6 +175,9 @@ function closeFrames(pub=false){
     }
 }
 
+/**
+ * Abre la barra de edición
+ */
 function openEditBar(){
     let cnvPntEditBa = document.querySelector(".cnvPntEditBar");
     let cnvPaintWorkArea = document.getElementById("cnvPaintWorkArea");
@@ -188,6 +213,10 @@ function openEditBar(){
     }
 }
 
+/**
+ * Cierra la ventana de edición
+ * @returns void
+ */
 function closeEditBar(){
     let cnvPntEditBa = document.querySelector(".cnvPntEditBar");
     if(cnvPntEditBa == null){
@@ -225,6 +254,9 @@ function closeEditBar(){
     }
 }
 
+/**
+ * Actualiza la barra de edición según el elemento seleccionado
+ */
 function editBarUpdate(){
     if(article.AEM.length != 0){
         if(VirtualCanvas.selectedIndex != -1){
@@ -264,6 +296,9 @@ function editBarUpdate(){
     }
 }
 
+/**
+ * Carga los eventos de renderización del artículo
+ */
 function renderEvents(){
     for(let item of document.getElementsByName("cpeSelector")){
         item.addEventListener("input", e => {
@@ -307,6 +342,10 @@ function renderEvents(){
     }
 }
 
+/**
+ * Renderiza los artículos según el objeto en memoria
+ * @param {boolean} test 
+ */
 function renderArticle(test=false){
     updateBase();
     document.getElementById("cnvPaintWorkArea").innerHTML = base[article.meta.theme];
@@ -371,6 +410,10 @@ function renderArticle(test=false){
     editBarUpdate();
 }
 
+/**
+ * Crea un elemento en el AEM y lo introduce en el arreglo
+ * @param {int} nType 
+ */
 function createElements(nType){
     let AEMobject = {
         content: "Elemento",
@@ -389,9 +432,8 @@ function createElements(nType){
         VirtualCanvas.selectedIndex = 0;
     }
     if(VirtualCanvas.insert > 0){
-        article.AEM.splice(VirtualCanvas.selectedIndex + 1, 0, AEMobject);
         VirtualCanvas.selectedIndex++;
-        console.log("E no mames")
+        article.AEM.splice(VirtualCanvas.selectedIndex, 0, AEMobject);
     } else if(VirtualCanvas.insert < 0){
         article.AEM.splice(VirtualCanvas.selectedIndex, 0, AEMobject);
     } else{
@@ -410,6 +452,10 @@ function createElements(nType){
     }
 }
 
+/** 
+ * Almacena las propiedades a mostrar en la ventana de edición
+ * @var array
+*/
 var objectProperties = {
     1 : [],
     2 : [0],
@@ -422,6 +468,9 @@ var objectProperties = {
     9 : [0,1],
 };
 
+/**
+ * Muestra los elementos de edición en la ventana emergente según el tipo del elemento
+ */
 function editElements(){
     let cnvEditElement = document.getElementsByClassName("cnvEditElement");
     for(let i = 0; i < cnvEditElement.length; i++){
@@ -440,17 +489,30 @@ function editElements(){
     }
 }
 
+/**
+ * Elimina un elemento del AEM
+ */
 function deleteElements(){
     article.AEM.splice(VirtualCanvas.selectedIndex, 1);
     VirtualCanvas.selectedIndex = -1;
     renderArticle();
 }
 
+/**
+ * Función principal del módulo
+ */
 function canvas_function(){
     document.querySelector(".cnvPntFrames > button").addEventListener("click", e => {
         closeFrames();
         VirtualCanvas.insert = 0;
     })
+
+    for(let item of document.querySelectorAll(".cnvFrmClose")){
+        item.addEventListener("click", e => {
+            closeFrames();
+            VirtualCanvas.insert = 0;
+        })
+    }
 
     document.getElementById("cnvEditBtn").addEventListener("click", e => {
         if(article.AEM[VirtualCanvas.selectedIndex].type >= 5 || article.AEM[VirtualCanvas.selectedIndex].type == 2){
@@ -492,7 +554,7 @@ function canvas_function(){
         let files = e.target.files;
         for(let file of files){
             article.AEM[VirtualCanvas.selectedIndex].pdf = file;
-            document.querySelector(`#cpe${VirtualCanvas.selectedIndex} embed`).src = URL.createObjectURL(article.AEM[VirtualCanvas.selectedIndex].pdf);
+            document.querySelector(`#cpe${VirtualCanvas.selectedIndex} iframe`).src = URL.createObjectURL(article.AEM[VirtualCanvas.selectedIndex].pdf);
         }
     });
 
@@ -537,4 +599,6 @@ function canvas_function(){
     document.querySelector(".cnvPntEditBar").addEventListener("click", e => {
         e.stopPropagation();
     });
+
+    
 }

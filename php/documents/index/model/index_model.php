@@ -3,14 +3,42 @@
     include($_SERVER['DOCUMENT_ROOT']."/modules/Simple_MySQL_lib/Simple_MySQL.php");
     include($_SERVER['DOCUMENT_ROOT']."/libs/php-jwt-master/src/JWT.php");
     use Firebase\JWT\JWT;
-
     class IndexModel{
         //Miembros de datos
+        /** 
+         * Manejador de la base de datos
+         * @var PDO
+        */
         private $db_handler;
+
+        /** 
+         * Permiso del usuario
+         * @var int
+        */
         private $perm;
+
+        /** 
+         * Nombre del usuario
+         * @var string
+        */
         private $name;
+
+        /** 
+         * Cursor de los articulos fijados
+         * @var MongoDB_Cursor
+        */
         private $aside_cursor;
+
+        /** 
+         * Validez del token
+         * @var boolean
+        */
         private $valid_token = true;
+
+        /** 
+         * Errores de la clase
+         * @var string
+        */
         private $errors = "";
 
         //Constructor

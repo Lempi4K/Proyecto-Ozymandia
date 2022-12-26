@@ -246,9 +246,12 @@
                                     </li>
                                     <li class="cpesBtn" data-type="9">
                                         <i class="fa-solid fa-gears"></i>
-                                        <p>Rest API</p>
+                                        <p>OPI</p>
                                     </li>
                                 </ul>
+                                <div class="frmChangeButtons">
+                                    <input type="button" value="Cerrar" class="cnvFrmClose">
+                                </div>
                             </div>
                             <div class="cpFrame" id="cpfElementData">
                                 <div class="frmHead">
@@ -262,21 +265,21 @@
                                     <legend>Tipo de API</legend>
                                     <ul class="form-elements frmInpRdbtn">
                                         <li>
-                                            <input type="radio" name="inpRdbtnAPIType" class="inpRdbtnAPIType" id="inpRdbtnAPIType1" value="1">
-                                            <label for="inpRdbtnAPIType1" class="no_select c_click"><i><i></i></i>Tabla</label>
+                                            <input type="radio" name="inpRdbtnAPIType" class="inpRdbtnAPIType" id="inpRdbtnAPIType1" value="1" checked>
+                                            <label for="inpRdbtnAPIType1" class="no_select c_click"><i><i></i></i>Sencillo</label>
                                         </li>
                                         <li>
-                                            <input type="radio" name="inpRdbtnAPIType" class="inpRdbtnAPIType" id="inpRdbtnAPIType2" value="2">
-                                            <label for="inpRdbtnAPIType2" class="no_select c_click"><i><i></i></i>PDF</label>
+                                            <input type="radio" name="inpRdbtnAPIType" class="inpRdbtnAPIType" id="inpRdbtnAPIType2" value="2" disabled>
+                                            <label for="inpRdbtnAPIType2" class="no_select c_click"><i><i></i></i>Extra 1</label>
                                         </li>
                                         <li>
-                                            <input type="radio" name="inpRdbtnAPIType" class="inpRdbtnAPIType" id="inpRdbtnAPIType3" value="3">
-                                            <label for="inpRdbtnAPIType3" class="no_select c_click"><i><i></i></i>Otro</label>
+                                            <input type="radio" name="inpRdbtnAPIType" class="inpRdbtnAPIType" id="inpRdbtnAPIType3" value="3" disabled>
+                                            <label for="inpRdbtnAPIType3" class="no_select c_click"><i><i></i></i>Extra 2</label>
                                         </li>
                                     </ul>
                                 </fieldset>
                                 <div class="frmInpFile cnvEditElement" id="frmInpFileImg">
-                                    <input type="file" id="inpFileImgArticle" accept=".jpg, .jpeg, .png">
+                                    <input type="file" id="inpFileImgArticle" accept=".jpg, .jpeg, .png, .webp, .svg">
                                     <label for="inpFileImgArticle">
                                         <p>
                                             <i class="fa-solid fa-image"></i>
@@ -298,6 +301,9 @@
                                             Elige un archivo pdf
                                         </div>
                                     </label>
+                                </div>
+                                <div class="frmChangeButtons">
+                                    <input type="button" value="Cerrar" class="cnvFrmClose">
                                 </div>
                             </div>
                         </div>
@@ -404,6 +410,12 @@
                     </div>
                 </div>
             </div>
+            <script src="/modules/canvas/js/frame-changer.js"></script>
+            <script src="/modules/canvas/js/navasidcard-canvas.js"></script>
+            <script src="/modules/canvas/js/set-article-data.js"></script>
+            <script src="/modules/canvas/js/canvas-functions.js"></script>
+            <script src="/modules/canvas/js/canvas-send.js"></script>
+            <script src="/modules/canvas/js/canvas.js"></script>
             HTML;
             return $HTML;
         }

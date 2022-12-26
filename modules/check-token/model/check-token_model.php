@@ -6,8 +6,22 @@
 
     class ChkTkn_Model {
         //Miembros de datos
+        /**
+         * Resultado de la verificación
+         * @var boolean
+         */
         private $result = true;
+
+        /**
+         * Manejadror de la base de datos
+         * @var S_MySQL
+         */
         private $db_handler;
+
+        /**
+         * Errores de la clase
+         * @var string
+         */
         private $errors = "";
 
         //constructor
@@ -26,7 +40,7 @@
                         for($i = 0; $i < count($blkPerm); $i++){
                             if((int)$perm == (int)$blkPerm[$i]){
                                 $this->result = false;
-                                echo "AAA me doxxean";
+                                //echo "AAA me doxxean";
                                 break;
                             }
                         }

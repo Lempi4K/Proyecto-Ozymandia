@@ -39,8 +39,8 @@
 
                 if($this->q == null && $this->sublabel == null){
                     $this->HTML .= <<< HTML
+                            <h1>Fijados</h1>
                             <div class="aside_container aside_container_search">
-                                <h1>Atados</h1>
                     HTML;
 
                     $this->HTML .= $this->view->displayCards();

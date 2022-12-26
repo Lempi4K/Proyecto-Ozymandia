@@ -36,6 +36,9 @@
 .profile-background[data-perm="J"]{
     background: linear-gradient(to right,  var(--user-color_J), rgb(255, 255, 255));
 }
+.profile-background[data-perm="C"]{
+    background: linear-gradient(to right,  var(--user-color_C), rgb(255, 255, 255));
+}
 
 .profile-user-card{
     display: block;
@@ -83,6 +86,9 @@
 }
 .profile-pic[data-perm="J"]{
     background-color: var(--user-color_J);
+}
+.profile-pic[data-perm="C"]{
+    background-color: var(--user-color_C);
 }
 
 .profile-pic > i{
@@ -150,6 +156,9 @@
 .profile-rol[data-perm="J"]{
     background-color: var(--user-color_J);
 }
+.profile-rol[data-perm="C"]{
+    background-color: var(--user-color_C);
+}
 
 .profile-rol p{
     position: absolute;
@@ -157,7 +166,7 @@
     left: 50%;
     font-size: 15px;
     transform: translate(-50%, -50%);
-    color: var(--font-color_2);
+    color: var(--font-color_1);
 }
 
 .profile-div{
@@ -168,7 +177,7 @@
     width: 100%;
     align-items: center;
     justify-content: center;
-    z-index: 29;
+    z-index: 19;
 }
 
 .profile-div > div{

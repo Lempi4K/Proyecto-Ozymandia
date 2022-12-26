@@ -1,3 +1,7 @@
+/**
+ * Solicitud al servidor para removr artículos
+ * @param {int} aid 
+ */
 async function removeArticle(aid){
     const url = "/modules/content-remove/content-remove.php";
     const params = {

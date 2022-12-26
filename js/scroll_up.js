@@ -1,3 +1,6 @@
+/** 
+ * Comportamiento al dar click al Nav. Bar
+*/
 window.addEventListener("load", e => {
     let items = document.querySelectorAll("input[type='radio'].frame_change + label");
     for(let item of items){
@@ -12,9 +15,9 @@ window.addEventListener("load", e => {
                     )
                     container.scrollTop
                 }
-                
-                if(container.scrollTop == 0){
-                    let pathName = item.previousSibling.previousSibling.dataset.url;
+
+                let pathName = item.previousSibling.previousSibling.dataset.url;
+                if(container.scrollTop == 0 && (location.pathname == ("/" + pathName))){
                     window.history.pushState({}, "xd", pathName);
                     handleLocation();
                 }

@@ -1,4 +1,7 @@
 <?php
+/**
+ * Maneja los temas seguidos en un usuario
+ */
     include($_SERVER['DOCUMENT_ROOT']."/modules/Simple_MySQL_lib/Simple_MySQL.php");
 
     include($_SERVER['DOCUMENT_ROOT']."/libs/php-jwt-master/src/JWT.php");
