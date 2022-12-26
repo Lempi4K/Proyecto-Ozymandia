@@ -11,7 +11,6 @@
     - Corrigen muchos de los problemas producidos por las API Rest
     - Fácil creación
 
-# **Beta 1**
 ## _v0.1.0_
 ### Cambios
 - Barra de Búsqueda
@@ -20,8 +19,8 @@
         - Orden
             - Más reciente
             - Más antiguo
-    -Todos los apartados tiene funcionalidades
-        -Correccion de errores de opciones vacias y de estetica
+- Todos los apartados tiene funcionalidades
+    - Correccion de errores de opciones vacias y de estetica
 - API Rest en Ozymandia`s Canvas
     - Tiene una gran flexibilidad pero también una gran complejidad
 - Mis publicaciones
