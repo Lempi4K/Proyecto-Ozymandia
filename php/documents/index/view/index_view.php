@@ -1,6 +1,10 @@
 <?php
     class IndexView{
         //Miembros de datos
+        /** 
+         * Index Model
+         * @var IndexModel
+        */
         private $model;
 
         //Constructor
@@ -9,6 +13,10 @@
         }
 
         //Funciones
+        /** 
+         * Crea el HTML de la parte superior de la página
+         * @return HTML
+        */
         public function displayTopBar(){
             $charsPerms = array("-1" => "I","0" => "U", "1" => "A", "2" => "D", "3" => "M", "4" => "P", "5" => "J", "6" => "C");
             ?>
@@ -120,6 +128,10 @@
 
         }
 
+        /** 
+         * Crea el HTML de la parte de navegación de la página
+         * @return HTML
+        */
         public function displayNavigation(){
             ?>
         <nav class="navigation">
@@ -299,6 +311,10 @@
             <?php
         }
 
+        /** 
+         * Crea el HTML del contenido fijado
+         * @return HTML
+        */
         public function displayLateralContent(){
             $this->HTML = <<< HTML
                     <aside class="lateral-content">
@@ -338,7 +354,10 @@
             return $this->HTML;
         }
 
-        //Main Function
+        /** 
+         * Une las funciones anteriores para formar la página
+         * @return HTML
+        */
         public function displayPage(){
             ?>
         <div class="all-container">

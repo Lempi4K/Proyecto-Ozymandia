@@ -1,3 +1,32 @@
+# **Beta 1**
+## _v0.1.1_
+### Cambios
+- Resolución de errores FATALES de programación
+- Documentación del código
+    - Ahora podrás comprender el código en su totalidad SIN PERDERTE
+- Guia de instalación
+    - Bases de datos
+    - Configuraciones
+- OPI, el perfecto remplazo de las API Rest
+    - Corrigen muchos de los problemas producidos por las API Rest
+    - Fácil creación
+
+# **Beta 1**
+## _v0.1.0_
+### Cambios
+- Barra de Búsqueda
+    - Busca los articulos por diferentes filtros
+        - Etiquetas
+        - Orden
+            - Más reciente
+            - Más antiguo
+    -Todos los apartados tiene funcionalidades
+        -Correccion de errores de opciones vacias y de estetica
+- API Rest en Ozymandia`s Canvas
+    - Tiene una gran flexibilidad pero también una gran complejidad
+- Mis publicaciones
+    - Ahora está habilitada la opción de "Mis publicaciones" en Perfil
+
 # **Alpha 3**
 ## _v0.0.3_
 ### Cambios

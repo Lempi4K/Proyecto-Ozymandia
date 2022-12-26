@@ -1,3 +1,8 @@
+/**
+ * Solicitud para obtener el contenido 
+ * @param {object} query
+ * @return {HTML} HTML
+*/
 async function AJAXrequestContent(query){
     const url = "/modules/content-recovery/php/content-recovery_controller.php";
     let params = query;

@@ -1,3 +1,7 @@
+/**
+ * Recupera el valor del modo obscuro
+ * @returns void
+ */
 async function AJAXrequestRecoveryDkm(){
     const url = "/modules/drk-mode/controller/drk-mode_controller.php";
     const params = {
@@ -29,6 +33,11 @@ async function AJAXrequestRecoveryDkm(){
     }
 }
 
+/**
+ * Actualiza el valor del modo obscuro
+ * @param {int} setValue 
+ * @returns 
+ */
 async function AJAXrequestSetDkm(setValue){
     const url = "/modules/drk-mode/controller/drk-mode_controller.php";
     const params = {
@@ -61,8 +70,14 @@ async function AJAXrequestSetDkm(setValue){
     }
 }
 
+/**
+ * @var CSSStyleDeclaration
+ */
 const styles = document.documentElement.style;
 
+/**
+ * Pone la interfaz en modo obscuro
+ */
 function dark(){
     styles.setProperty("--color_1", "black");
     styles.setProperty("--color_2", "rgb(25, 25, 25)");
@@ -113,6 +128,9 @@ function dark(){
     styles.setProperty("--article-table_border", "rgb(122, 122, 122)");
 }
 
+/**
+ * Pone la interfaz en modo claro
+ */
 function light(){
     styles.setProperty("--color_1", "white");
     styles.setProperty("--color_2", "#f6f6f6");
@@ -163,6 +181,11 @@ function light(){
     styles.setProperty("--article-table_border", "rgb(134, 134, 134)");
 }
 
+/**
+ * Elige el tipo de tema seleccionado
+ * @param {int} switcher 
+ * @param {boolean} start 
+ */
 function colorHub(switcher, start=true){
     switch (switcher){
         case 1:{
@@ -182,12 +205,10 @@ function colorHub(switcher, start=true){
     }
 }
 
-const actions = {
-    "1": AJAXrequestSetDkm,
-    "2": AJAXrequestSetDkm,
-    "3": AJAXrequestSetDkm
-}
-
+/**
+ * Cambia el color
+ * @param {DOMObject} item 
+ */
 async function colorSwitcher(item){
     if(!document.getElementById("inpRdbtnDrkMode3").checked){
         document.querySelector("#inpRdbtnDrkMode3 + label").innerHTML = "<i><i></i></i>Sistema";
@@ -195,7 +216,7 @@ async function colorSwitcher(item){
     const id = new String(item.id);
     const lastCharId = id.charAt(id.length-1);
     if(document.getElementById("UserButton").dataset.perm != "I"){
-        await actions[lastCharId](parseInt(lastCharId))
+        await AJAXrequestSetDkm(parseInt(lastCharId))
     }
     colorHub(parseInt(lastCharId), false);
 }
@@ -209,6 +230,9 @@ window.addEventListener("load", e => {
     }
 });
 
+/**
+ * Funcion principal de la lógica del modo obscuro
+ */
 async function startSwitcher(){
     const dkm = await AJAXrequestRecoveryDkm();
     colorHub(dkm);

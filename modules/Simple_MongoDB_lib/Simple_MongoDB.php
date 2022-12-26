@@ -1,8 +1,13 @@
 <?php
     require $_SERVER['DOCUMENT_ROOT'] . "/vendor/autoload.php";
+    /**
+     * Devuelve una conexión a una base de datos de MongoDB
+     */
     class Simple_MongoDB{
         
-        //Constructor
+        /**
+         * Devuelve el objeto para manejar la conexion a MongoDB
+         */
         public static function connection($dbname = "admin", $conf = 0, $host = "127.0.0.1", $port = "27017"){
             $user = "";
             $pass = "";
@@ -30,7 +35,7 @@
             try{
                 return new MongoDB\Client($conection_string);
                 //echo "<script>console.log('PHP: Conexion a $dbname en $host exitosa');</script>";
-            } catch(PDOException $e){
+            } catch(Exception $e){
                 //echo "<script>console.log('PHP: Conexion a $dbname no posible: " . $e->getMessage() . "');</script>";
             }
         }

@@ -1,6 +1,14 @@
 <?php
+
     require $_SERVER['DOCUMENT_ROOT'] . "/vendor/autoload.php";
     use Firebase\JWT\JWT;
+
+    /**
+     * Fabrica la cadena del elemento del AEM según el tipo
+     * @param array $AEMobject
+     * @param string $theme
+     * @return string
+     */
     function elementHandler($AEMobject, $theme){
         $bold = $AEMobject['bold'] ? 'article_bold' : '';
         $italic = $AEMobject['italic'] ? 'article_italic' : '';
@@ -63,6 +71,11 @@
         return $handler[$AEMobject["type"]];
     }
 
+    /**
+     * Crea una cadena con el tiempo dinámicamente
+     * @param int $timeString
+     * @return string
+     */
     function timeString($timestamp){
         $timestamp = (int) $timestamp;
         $minusTime = date("U") - $timestamp;
@@ -78,6 +91,11 @@
         return date("d-m-Y", $timestamp);
     }
 
+    /**
+     * Comprueba si existe la sublabel en la persona en la que se muestra el artículo
+     * @param string $sublabel
+     * @return boolean
+     */
     function mySublabel($sublabel){
         $dataT = JWT::decode($_COOKIE["token"], "P.O.");
         $uid = $dataT->uid;
@@ -92,6 +110,12 @@
         }
     }
 
+    /**
+     * Decodifica el documento guardado en la base de datos para crear el HTML
+     * @param array $article
+     * @param boolean $single
+     * @return string HTML
+     */
     function articleDecoder($article, $single = false){
         $query = "select concat(ALU.NOMBRES, ' ', ALU.APELLIDOS) as NOM, USER, US.PERM from ALUMNOS as ALU join CREDENCIALES as CRED join USUARIOS as US where CRED.USER_ID = " . ($article["meta"]["autor_uid"]) . " and ALU.USER_ID = " . ($article["meta"]["autor_uid"]) . " and US.USER_ID = " . ($article["meta"]["autor_uid"]) . ";";
         $data = "";

@@ -1,3 +1,6 @@
+/**
+ * LazyLoad al scrollear la página 
+ */
 window.addEventListener("load", e => {
     document.getElementById("replazable-content").addEventListener("AJAXLoad", e => {
         if(e.routeType == "inicio" || e.routeType == "buscar"){
@@ -185,6 +188,12 @@ window.addEventListener("load", e => {
     });
 });
 
+/**
+ * Solicitud para actualizar los temas seguidos
+ * @param {int} sublabel_id 
+ * @param {boolean} action 
+ * @returns {boolean} json.success
+ */
 async function AJAXEditFollow(sublabel_id, action = false){
     const url = "/modules/content-recovery/php/follow_manager.php";
     let params = {

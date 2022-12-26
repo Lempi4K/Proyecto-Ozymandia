@@ -1,4 +1,7 @@
 <?php
+/**
+ * Recupera el artículo según su id
+ */
     include($_SERVER['DOCUMENT_ROOT']."/modules/Simple_MongoDB_lib/Simple_MongoDB.php");
 
     header("Content-type: application/json; charset=utf-8");

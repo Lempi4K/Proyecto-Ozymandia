@@ -1,10 +1,23 @@
+/**
+ * Artículo en crudo
+ * @var object
+ */
 var article = null;
 
+/**
+ * Variables internas del canvas
+ * @var object
+ */
 var VirtualCanvas = {
     selectedIndex: -1,
     insert: -1
 }
 
+/**
+ * Hace la solicitud para mandar a traer el artículo
+ * @param {int} id 
+ * @returns {object} object
+ */
 async function AJAX_RecoveryObject(id){
     const url = "/modules/canvas/controller/canvas_recovery.php";
 
@@ -32,8 +45,10 @@ async function AJAX_RecoveryObject(id){
     }
 }
 
+/**
+ * Función principal del módulo
+ */
 async function canvas(){
-
 //window.addEventListener("load", async e => {
     //document.getElementById("replazable-content").addEventListener("AJAXLoad", async e => {
     //    if(e.routeType != "lienzo"){

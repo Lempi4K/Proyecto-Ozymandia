@@ -1,4 +1,7 @@
 <?php
+/**
+ * Checa el token para dar acceso a una página
+ */
     include("../model/check-token_model.php");
     include("../view/check-token_view.php");
 

@@ -1,3 +1,6 @@
+/** 
+ * Comportamiento al dar click al Nav. Bar
+*/
 window.addEventListener("load", e => {
     let items = document.querySelectorAll("input[type='radio'].frame_change + label");
     for(let item of items){

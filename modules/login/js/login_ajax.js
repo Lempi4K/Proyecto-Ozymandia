@@ -1,3 +1,6 @@
+/**
+ * Hace el proceso de iniciar sesión
+ */
 window.addEventListener("load", function(){
     document.getElementById("inpBtnLogin").addEventListener("click", function(){
         async function AJAXrequest(){

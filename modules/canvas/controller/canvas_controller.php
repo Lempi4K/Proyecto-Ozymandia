@@ -1,4 +1,7 @@
 <?php
+/**
+ * Controla el acceso a la base de datos de MongoDB (Agrega o actualiza)
+ */
     include("../model/canvas_model.php");
     include("../view/canvas_view.php");
 

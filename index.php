@@ -1,3 +1,20 @@
+<!--
+      #########@      %#####################################     ####   (###*   
+    ######  #####     &####%&&&&&&&&&&&&&&&&&&&&&&&&&&&#####     ####&  ####%   
+   ######&  &#####     @####@                         #####     .#####  #####   
+  (######@  /######     @####@      %%%%%%%%%#       #####      @##### @#####   
+  &######    ######      @####@      #######&       #####       ######@######&  
+  (######@  /######       %####%      ######      ,#####        ##@###########  
+   ######@  @#####         %####&     (####      #####%        ##@ /######  ##  
+    %#####  #####      @#########      &##      ##########/    #@    ###%    #% 
+      %########.       @#########       #%      ##########/    &      #@      % 
+
+    PROYECTO OZYMANDIA
+    @author Leonardo Moreno Pinto
+    @version Beta v0.1.1
+    @link https://github.com/Lempi4K/Proyecto-Ozymandia
+                    © 2023 Lempi4K
+-->
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -20,7 +37,6 @@
     <script src="/php/documents/index/js/nav-menu.js"></script>
     <script src="/modules/drk-mode/js/drk-mode_logic.js"></script>
     <script src="/js/scroll_up.js"></script>
-    
     <script src="/modules/search/search.js"></script>
     <script src="/modules/router/js/scriptHandler.js"></script>
 </head>

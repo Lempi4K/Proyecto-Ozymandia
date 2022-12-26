@@ -1,8 +1,15 @@
+/**
+ * Contiene la base de los artículos (Decoraciones previas)
+ * @var Array
+ */
 var base = {
     "article_1" : "",
     "article_2" : ""
 };
 
+/**
+ * Inicializa la variable base
+ */
 function updateBase(){
     base = {
         "article_1" : `
@@ -47,6 +54,11 @@ function updateBase(){
     };
 }
 
+/**
+ * Crea una cadena con un objeto del AEM (Lo decodifica)
+ * @param {object} AEMobject 
+ * @returns {string}
+ */
 function elementHandler(AEMobject){
     const Handler = {
         1 : `
@@ -96,6 +108,11 @@ function elementHandler(AEMobject){
     return Handler["" + AEMobject.type]
 }
 
+/**
+ * Abre la ventana emergente (Publicación o Edición)
+ * @param {boolean} edit 
+ * @param {boolean} pub 
+ */
 function openFrames(edit=false, pub=false){
     let cnvPntFrames = pub ? document.getElementById("cnvPntSendFrames") : document.getElementById("cnvPntFrames");
     cnvPntFrames.style.display = "block";
@@ -120,6 +137,10 @@ function openFrames(edit=false, pub=false){
     }
 }
 
+/**
+ * Cierra la ventana emergente (Publicación o Edición)
+ * @param {boolean} pub 
+ */
 function closeFrames(pub=false){
     let cnvPntFrames = pub ? document.getElementById("cnvPntSendFrames") : document.getElementById("cnvPntFrames");
     cnvPntFrames.animate(
@@ -154,6 +175,9 @@ function closeFrames(pub=false){
     }
 }
 
+/**
+ * Abre la barra de edición
+ */
 function openEditBar(){
     let cnvPntEditBa = document.querySelector(".cnvPntEditBar");
     let cnvPaintWorkArea = document.getElementById("cnvPaintWorkArea");
@@ -189,6 +213,10 @@ function openEditBar(){
     }
 }
 
+/**
+ * Cierra la ventana de edición
+ * @returns void
+ */
 function closeEditBar(){
     let cnvPntEditBa = document.querySelector(".cnvPntEditBar");
     if(cnvPntEditBa == null){
@@ -226,6 +254,9 @@ function closeEditBar(){
     }
 }
 
+/**
+ * Actualiza la barra de edición según el elemento seleccionado
+ */
 function editBarUpdate(){
     if(article.AEM.length != 0){
         if(VirtualCanvas.selectedIndex != -1){
@@ -265,6 +296,9 @@ function editBarUpdate(){
     }
 }
 
+/**
+ * Carga los eventos de renderización del artículo
+ */
 function renderEvents(){
     for(let item of document.getElementsByName("cpeSelector")){
         item.addEventListener("input", e => {
@@ -308,6 +342,10 @@ function renderEvents(){
     }
 }
 
+/**
+ * Renderiza los artículos según el objeto en memoria
+ * @param {boolean} test 
+ */
 function renderArticle(test=false){
     updateBase();
     document.getElementById("cnvPaintWorkArea").innerHTML = base[article.meta.theme];
@@ -372,6 +410,10 @@ function renderArticle(test=false){
     editBarUpdate();
 }
 
+/**
+ * Crea un elemento en el AEM y lo introduce en el arreglo
+ * @param {int} nType 
+ */
 function createElements(nType){
     let AEMobject = {
         content: "Elemento",
@@ -410,6 +452,10 @@ function createElements(nType){
     }
 }
 
+/** 
+ * Almacena las propiedades a mostrar en la ventana de edición
+ * @var array
+*/
 var objectProperties = {
     1 : [],
     2 : [0],
@@ -422,6 +468,9 @@ var objectProperties = {
     9 : [0,1],
 };
 
+/**
+ * Muestra los elementos de edición en la ventana emergente según el tipo del elemento
+ */
 function editElements(){
     let cnvEditElement = document.getElementsByClassName("cnvEditElement");
     for(let i = 0; i < cnvEditElement.length; i++){
@@ -440,12 +489,18 @@ function editElements(){
     }
 }
 
+/**
+ * Elimina un elemento del AEM
+ */
 function deleteElements(){
     article.AEM.splice(VirtualCanvas.selectedIndex, 1);
     VirtualCanvas.selectedIndex = -1;
     renderArticle();
 }
 
+/**
+ * Función principal del módulo
+ */
 function canvas_function(){
     document.querySelector(".cnvPntFrames > button").addEventListener("click", e => {
         closeFrames();

@@ -1,3 +1,7 @@
+/**
+ * Cambia la imagen del Navasidecard en el canvas
+ * @param {Event} e 
+ */
 function changeIMG(e){
     let files = e.target.files;
     for(let file of files){
@@ -8,6 +12,10 @@ function changeIMG(e){
 
 }
 
+/**
+ * Edita el títuo del Navasidecard en el canvas
+ * @param {Event} e 
+ */
 function editTitle(e){
     const NavasicardTitle = document.getElementById("NavasicardTitle");
     if(e.target.value === ""){
@@ -17,6 +25,10 @@ function editTitle(e){
     }
 }
 
+/**
+ * Edita la descripción del Navasidecard en el canvas
+ * @param {Event} e 
+ */
 function editDesc(e){
     const NavasicardDesc = document.getElementById("NavasicardDesc");
 
@@ -24,6 +36,9 @@ function editDesc(e){
 
 }
 
+/**
+ * Función principal del módulo
+ */
 function navasidecard_canvas(){
     document.getElementById("inpFileNavasicard").addEventListener("change", e => {
         changeIMG(e);

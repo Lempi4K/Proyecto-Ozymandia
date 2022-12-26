@@ -1,3 +1,6 @@
+/** 
+ * Cambia las clases del Tab-Menu
+*/
 for(let inpRdbtn of document.getElementsByName("inpRdbtnTabContent")){
     inpRdbtn.addEventListener("change", e => {
         for(let label of document.querySelectorAll(".article_TabMenu label")){

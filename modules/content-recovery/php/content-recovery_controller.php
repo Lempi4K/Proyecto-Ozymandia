@@ -1,4 +1,7 @@
 <?php
+/**
+ * Es el controlador del trafico de ordenes para actualizar contenido dinámicamente
+ */
     include($_SERVER['DOCUMENT_ROOT']."/modules/Simple_MongoDB_lib/Simple_MongoDB.php");
 
     include($_SERVER['DOCUMENT_ROOT']."/modules/Simple_MySQL_lib/Simple_MySQL.php");

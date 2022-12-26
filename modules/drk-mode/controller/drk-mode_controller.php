@@ -1,4 +1,7 @@
 <?php
+/**
+ * Modifica el modo obscuro en el token
+ */
     include("../model/drk-mode_model.php");
     include("../view/drk-mode_view.php");
 

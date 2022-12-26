@@ -1,4 +1,7 @@
 <?php
+/**
+ * "Remueve" un artículo de la base de datos
+ */
     include($_SERVER['DOCUMENT_ROOT']."/modules/Simple_MongoDB_lib/Simple_MongoDB.php");
 
     header("Content-type: application/json; charset=utf-8");

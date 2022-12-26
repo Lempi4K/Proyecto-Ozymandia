@@ -1,4 +1,7 @@
 <?php
+/**
+ * Se verifican las credenciales y se pone el token en las cookies
+ */
     include("../model/login_model.php");
     include("../view/login_view.php");
     include($_SERVER['DOCUMENT_ROOT']."/libs/php-jwt-master/src/JWT.php");

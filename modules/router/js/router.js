@@ -1,9 +1,22 @@
+/**
+ * Cambia la url y la interpreta
+ * @param DOMObject
+ */
 function route(item){
     window.history.pushState({}, "xd", item.dataset.url);
     handleLocation();
 };
 
+/**
+ * Nombre de la página
+ * @var string
+ */
 let pageName = "Proyecto Ozymandia"
+
+/**
+ * Lista de tiulos que aparecerán en la pagina según la url
+ * @var object
+ */
 const titles = {
     "/pruebas": `Pruebas | ${pageName}`,
     "/inicio": `Inicio | ${pageName}`,
@@ -21,6 +34,10 @@ const titles = {
     "/herramientas": `Herramientas | ${pageName}`
 }
 
+/**
+ * Tipo de evento a despachar según la url
+ * @var object
+ */
 const eventType = {
     "/lienzo": "lienzo",
     "/inicio": "inicio",
@@ -28,8 +45,17 @@ const eventType = {
     "/buscar": "buscar",
 };
 
+/**
+ * Evento a despachar
+ * @var Event
+ */
 let AJAXLoad = new Event("AJAXLoad", {bubbles: false});
 
+/**
+ * Obtiene de la url los datos GET
+ * @param string
+ * @return string
+ */
 function getParameterByName(name) {
     name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
     var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
@@ -37,6 +63,12 @@ function getParameterByName(name) {
     return results === null ? 0 : decodeURIComponent(results[1].replace(/\+/g, " "));
 }
 
+/**
+ * Genera la orden que despachará el servidor
+ * @param int
+ * @param int
+ * @return object
+ */
 function routeFabric(section = 0, start = 0){
     section = (getParameterByName("id") != 0 ? 4 : section)
     const routes = {
@@ -61,6 +93,11 @@ function routeFabric(section = 0, start = 0){
 
 }
 
+/**
+ * Manda una orden y recibe una cadena con el HTML a reemplazar
+ * @param string
+ * @param int
+ */
 async function handleLocation(container = "replazable-content", section = 0) {
     AJAXLoad.routeType = ""; 
     if(! await AJAXrequestChckToken(window.location.pathname)){
@@ -103,6 +140,10 @@ window.addEventListener("popstate", e => {
     }
 });
 
+/**
+ * Maneja los navasidecard 
+ * @param string
+ */
 function article_navasicard(url_n){
             obj = {
                 dataset: {url: url_n}

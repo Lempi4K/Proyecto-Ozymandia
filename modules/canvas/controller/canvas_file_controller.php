@@ -1,4 +1,7 @@
 <?php
+/**
+ * Sube los archivos de los elementos del artículo al servidor y devuelve las rutas
+ */
     include("../view/canvas_view.php");
 
     include($_SERVER['DOCUMENT_ROOT']."/modules/Simple_MongoDB_lib/Simple_MongoDB.php");

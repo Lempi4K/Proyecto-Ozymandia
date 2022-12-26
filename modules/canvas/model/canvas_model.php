@@ -7,8 +7,17 @@
 
     class Canvas_Model{
         //Miembros de datos
+
+        /**
+         * Artículo en crudo
+         * @var array
+         */
         private $article;
-        private $db_handler;
+
+        /**
+         * Error en la clase
+         * @var string
+         */
         private $errors = "";
 
         //Constructor

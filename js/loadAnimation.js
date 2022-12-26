@@ -1,3 +1,7 @@
+/** 
+ * Animacion de terminacion 1
+ * @param string
+*/
 function ChargingAnimationEnd_1(idLoadAnimation = "charging-display-content"){
     let chargingDisplay = document.getElementById(idLoadAnimation);
 
@@ -17,6 +21,10 @@ function ChargingAnimationEnd_1(idLoadAnimation = "charging-display-content"){
     }
 }
 
+/** 
+ * Animacion de inicio
+ * @param string
+*/
 function ChargingAnimationStart(idLoadAnimation = "charging-display-content"){
     const chargingDisplay = document.getElementById(idLoadAnimation);
     chargingDisplay.style.display = "flex";

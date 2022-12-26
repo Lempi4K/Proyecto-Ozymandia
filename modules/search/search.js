@@ -1,3 +1,7 @@
+/**
+ * Programación de eventos en la barra de búsqueda
+ * @param DOMObject
+ */
 function searchEvents(container = document){
     let document = container;
 
@@ -9,6 +13,10 @@ function searchEvents(container = document){
             element.checked = true;
         }
     }
+
+    /**
+     * Prepara la orden para mandar a traer lo solicitado
+     */
     function search(){
         let q = document.querySelector("#inpSrhBanner").value;
         let sublabel = 0;

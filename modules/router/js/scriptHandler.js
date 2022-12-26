@@ -1,15 +1,8 @@
-/*function scriptHandler(target, scripts, index = 0){
-    if(scripts.length > 0 && index < scripts.length){
-        let script = document.createElement("script");
-        target.appendChild(script);
-        script.addEventListener("load", e => {
-            scriptHandler(target, scripts, index + 1);
-        })
-        script.src = scripts[index].src;
-        target.removeChild(scripts[index]);
-    }
-}*/
-
+/**
+ * Función recursiva que carga dinámicamente scripts de una petición del servidor
+ * @param DOMObject
+ * @param array
+ */
 function scriptHandler(target, scripts){
     scripts = Array.prototype.slice.call(scripts);
     if(scripts.length > 0){
