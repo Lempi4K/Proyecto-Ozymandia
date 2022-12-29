@@ -330,7 +330,13 @@
             </article>
         HTML
         );
-
+        /*
+        if($single){
+            $base[$article['meta']['theme']] .= <<< HTML
+                <script src="/modules/events/article-events.js"></script>
+            HTML;
+        }
+        */
         return $base[$article['meta']['theme']];
     }
 ?>

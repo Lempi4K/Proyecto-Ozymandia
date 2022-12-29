@@ -83,6 +83,12 @@
         }
     }
 
-    echo json_encode(array("HTML" => $content_controller->getHTML(), "article_id" => $article_id));
+    $HTML = $content_controller->getHTML();
+    if($article_id != null && $article_id > 0){
+        $HTML .=  <<< HTML
+            <script src="/modules/events/article-events.js"></script>
+        HTML;
+    }
+    echo json_encode(array("HTML" => $HTML, "article_id" => $article_id));
 
 ?>

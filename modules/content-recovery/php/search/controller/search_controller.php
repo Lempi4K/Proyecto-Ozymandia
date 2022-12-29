@@ -27,6 +27,8 @@
         public function getHTML(){
             if($this->start == 0){
                 $this->HTML = <<< HTML
+                    <script src="/modules/search/search.js"></script>
+                    <script src="/modules/events/LazyLoaders/lazy-load_1.js"></script>
                     <div class="schTopBar-container">
                 HTML;
                 $this->HTML .= displaySearchBar();

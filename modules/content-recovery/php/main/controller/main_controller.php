@@ -29,6 +29,8 @@
     
                 if($this->article_id == 0){
                     $this->HTML = <<< HTML
+                        <script src="/modules/events/main.js"></script>
+                        <script src="/modules/events/LazyLoaders/lazy-load_1.js"></script>
                         <div class="article_divisor divisor-events">
                             <div>
                                 <input type="radio" name="inpRdbtnArtdiv" id="inpRdbtnArtdiv1" value="2">

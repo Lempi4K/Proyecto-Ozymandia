@@ -62,10 +62,4 @@ function searchEvents(container = document){
     });
 }
 
-window.addEventListener("load", e => {
-    document.getElementById("replazable-content").addEventListener("AJAXLoad", e => {
-        if(e.routeType == "buscar"){
-            searchEvents()
-        }
-    });
-});
+searchEvents()

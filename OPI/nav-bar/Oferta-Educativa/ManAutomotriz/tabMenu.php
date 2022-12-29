@@ -32,7 +32,7 @@
                     </ul>
 
                     <div class="article_img article_1_img">
-                        <img src="/API/nav-bar/Oferta-Educativa/ManAutomotriz/recursos/Banner - Mantenimiento Automotriz.png" alt="">
+                        <img src="/OPI/nav-bar/Oferta-Educativa/ManAutomotriz/recursos/Banner - Mantenimiento Automotriz.png" alt="">
                         <hr>
                     </div>
 

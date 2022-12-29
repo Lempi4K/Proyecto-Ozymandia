@@ -60,6 +60,9 @@
                         </div>
                     </div>
                 HTML;
+                $this->HTML .=  <<< HTML
+                    <script src="/modules/events/profile.js"></script>
+                HTML;
             return $this->HTML;
         }
 
@@ -165,6 +168,11 @@
                         HTML;
                     }
                 }
+                $HTML .=  <<< HTML
+                    <script src="/modules/events/article-events.js"></script>
+                    <script src="/modules/events/LazyLoaders/lazy-load_2.js"></script>
+                HTML;
+
             } else{
                 if($this->model_obj->getStart() == 0){
                     $HTML .= <<< HTML

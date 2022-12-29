@@ -32,7 +32,7 @@
                     </ul>
 
                     <div class="article_img article_1_img">
-                        <img src="/API/nav-bar/Oferta-Educativa/RecHumanos/recursos/Banner - Administracion de Recursos Humanos.png" alt="">
+                        <img src="/OPI/nav-bar/Oferta-Educativa/RecHumanos/recursos/Banner - Administracion de Recursos Humanos.png" alt="">
                         <hr>
                     </div>
 

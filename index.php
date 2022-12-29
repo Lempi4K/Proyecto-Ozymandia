@@ -37,8 +37,8 @@
     <script src="/php/documents/index/js/nav-menu.js"></script>
     <script src="/modules/drk-mode/js/drk-mode_logic.js"></script>
     <script src="/js/scroll_up.js"></script>
-    <script src="/modules/search/search.js"></script>
     <script src="/modules/router/js/scriptHandler.js"></script>
+    <script src="/modules/events/index.js"></script>
 </head>
 <body>
     <div class="charging-display-container" id="charging-display-main"><img src="/src//img/logo/logo.png" alt=""></div>

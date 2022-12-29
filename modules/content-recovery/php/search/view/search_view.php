@@ -37,6 +37,9 @@
                         </article>
                     HTML;
                 }
+                $this->HTML .=  <<< HTML
+                    <script src="/modules/events/subNavAsideLinks.js"></script>
+                HTML;
             } else{
                 $this->HTML .= <<< HTML
                     <h3>No hay contenido</h3>

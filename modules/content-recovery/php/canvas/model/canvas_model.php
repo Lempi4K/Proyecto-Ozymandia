@@ -78,6 +78,15 @@
                     } else{
 
                     }*/
+                    if($this->perm >= 1 && $this->perm <= 3){
+                        $this->db_handler = new S_MySQL("USER_DATA");
+                        $query = "select NOMBRE as LABEL_N, LABEL_ID as LABEL from ETIQUETAS where LABEL_ID = 3;";
+                        $label_3 = $this->db_handler->console($query);
+                        $label_3->setFetchMode(PDO::FETCH_BOTH);
+                        while($row_addi = $label_3->fetch()){
+                            array_push($this->labels, $row_addi);
+                        }
+                    }
                 }catch (Exception $e){
                     $this->errors = $this->errors . "PHP.canvas_model:Construct:DB-Error:" . $e->getMessage() . ";";
                 }
