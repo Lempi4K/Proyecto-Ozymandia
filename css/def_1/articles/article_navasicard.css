@@ -2,7 +2,7 @@
     padding: 0px;
     overflow: hidden;
     position: relative;
-    background-color: var(--article-color_1);
+    background-color: black;
     cursor: pointer;
     margin-bottom: 10px;
 }

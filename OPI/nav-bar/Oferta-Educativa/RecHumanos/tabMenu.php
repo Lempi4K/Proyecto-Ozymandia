@@ -132,7 +132,7 @@
                             <input type="radio" name="inpRdbtnTabContent" id="inpRdbtnTabContent3">
                             <div class="article_TabContainer">
                                 <div class="article_img article_1_img">
-                                    <img src="/API/nav-bar/Oferta-Educativa/RecHumanos/recursos/Estructura Curricular AdmRecHum.png" alt="">
+                                    <img src="/OPI/nav-bar/Oferta-Educativa/RecHumanos/recursos/Estructura Curricular AdmRecHum.png" alt="">
                                 </div>
                             </div>
                         </li>
@@ -140,7 +140,7 @@
                             <input type="radio" name="inpRdbtnTabContent" id="inpRdbtnTabContent4">
                             <div class="article_TabContainer">
                                 <div class="article_img article_1_img">
-                                    <img src="/API/nav-bar/Oferta-Educativa/RecHumanos/recursos/Competencias Profesionales AdmRecHum.png" alt="">
+                                    <img src="/OPI/nav-bar/Oferta-Educativa/RecHumanos/recursos/Competencias Profesionales AdmRecHum.png" alt="">
                                 </div>
                             </div>
                         </li>
@@ -157,7 +157,7 @@
                                     <tbody>
                                         <tr>
                                             <td>Plan de Estudios</td>
-                                            <td><a href="/API/nav-bar/Oferta-Educativa/RecHumanos/recursos/Admon_de_Recursos_Humanos.pdf" target="_blank"><i class="fa-solid fa-download"></i> Descargar</a></td>
+                                            <td><a href="/OPI/nav-bar/Oferta-Educativa/RecHumanos/recursos/Admon_de_Recursos_Humanos.pdf" target="_blank"><i class="fa-solid fa-download"></i> Descargar</a></td>
                                         </tr>
                                     </tbody>
                                 </table>

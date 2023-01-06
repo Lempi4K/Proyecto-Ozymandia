@@ -190,6 +190,14 @@
     padding: 5px;
     flex-wrap: wrap;
     border-radius: 5px;
+    position: relative;
+}
+
+.frmLabelSelector > ul i{
+    position: absolute;
+    right: -2px;
+    top: -4px;
+    cursor: pointer;
 }
 
 .frmLabelSelector > ul li{
@@ -288,7 +296,7 @@
 .cnvFrmNavasicard{
     display: block;
     position: relative;
-    background-color: var(--color_1);
+    /*background-color: var(--color_1);*/
 }
 
 .cnvFrmNavasicard:hover > a > i{

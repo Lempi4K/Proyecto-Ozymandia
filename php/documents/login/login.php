@@ -92,7 +92,7 @@
                 </form>
             </div>
             <footer class="no_select c_default">
-                &copy; 2022 C.B.T.I.s 114
+                &copy; <?php echo date("Y"); ?> C.B.T.I.s 114
                 <br>
                 <a href="tel:(656) 887 27 06">(656) 887 27 06</a> | <a href="tel:(656) 887 27 06">(656) 887 27 07</a>
                 <br>

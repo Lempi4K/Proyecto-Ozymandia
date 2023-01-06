@@ -108,8 +108,9 @@
                                 <label for="inpTxtDesc" class="no_select">Descripci&oacute;n</label>
                             </div>
                             <div class="frmLabelSelector" id="frmLabelSelector">
-                                <p>Elige las etiquetas:</p>
+                                <p>Elige las etiquetas: </p>
                                 <ul>
+                                    <i id="flsReset" class="fa-solid fa-xmark"></i>
             HTML;
             for($i = 1; $i <=3; $i++){
                 if($this->model->getPermitedLabel($i)){
@@ -197,7 +198,7 @@
                         <div class="cnvPntFrames cnvPntSendFrames" id="cnvPntSendFrames">
                             <div class="cpFrame cpsFrame">
                                 <div class="cpsfMessage">
-                                    Seguro que quieres publicar el art&iacute;culo?
+                                    Seguro que quieres guardar el art&iacute;culo?
                                 </div>
                                 <div class="cpsfButtonGroup">
                                     <input type="button" value="No" class="cnvFrmBackPubBtn" id="cnvFrmBackPubBtn">
@@ -341,71 +342,12 @@
                         </div>
                         <div class="cnvPaintWorkArea" id="cnvPaintWorkArea">
                             <article class="article">
-                                <div class="article_container article_1">
-                                    <div class="article_title article_1_title">
-                                        <p>Template 1</p>
-                                        <p class="article_text">Texto de titulo</p>
-                                    </div>
-                                    <hr>
-                                    <div class="article_content article_1_content">
-                                        <div class="article_1_head">
-                                            <img src="/src/img/logo/logo.png" alt="">
-                                            <p>
-                                                CENTRO DE BACHILLERATO TECNOL&Oacute;GICO
-                                                <br>
-                                                industrial y de servicios N&uacute;m. 114
-                                            </p>
-                                            <hr>
-                                        </div>
-                                        <div class="article_main article_1_main">
-                                            <div class="cpElement">
-                                                <input type="radio" name="cpeSelector" id="cpeSelector0" value="0">
-                                                <label for="cpeSelector0">
-                                                    <div class="cpeCreateBtns cpecbTop">
-                                                        <div>
-                                                            <i class="fa-solid fa-plus"></i>
-                                                        </div>
-                                                    </div>
-                                                    <p class="article_subtitle_1 article_1_subtitle_1" contenteditable>
-                                                        Subtitulo 1
-                                                    </p>
-                                                    <div class="cpeCreateBtns cpecbBottom">
-                                                        <div>
-                                                            <i class="fa-solid fa-plus"></i>
-                                                        </div>
-                                                    </div>
-                                                </label>
-                                            </div>
-                                            <div class="cpElement">
-                                                <input type="radio" name="cpeSelector" id="cpeSelector1" value="1">
-                                                <label for="cpeSelector1">
-                                                    <div class="cpeCreateBtns cpecbTop">
-                                                        <div>
-                                                            <i class="fa-solid fa-plus"></i>
-                                                        </div>
-                                                    </div>
-                                                    <p class="article_subtitle_2 article_1_subtitle_2" contenteditable>
-                                                        Subtitulo 2
-                                                    </p>
-                                                    <div class="cpeCreateBtns cpecbBottom">
-                                                        <div>
-                                                            <i class="fa-solid fa-plus"></i>
-                                                        </div>
-                                                    </div>
-                                                </label>
-                                            </div>
-                                            <hr>
-                                            <p class="article_end article_1_end">
-                                                ¡UNA VEZ LOBOS, SIEMPRE LOBOS!
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
+                                
                             </article>
                         </div>
                         <div class="frmChangeButtons">
                             <input type="button" value="Atras" class="cnvFrmBackBtn">
-                            <input type="button" value="Publicar" class="cnvFrmPubBtn"  id="cnvFrmPubBtn">
+                            <input type="button" value="Guardar" class="cnvFrmPubBtn"  id="cnvFrmPubBtn">
                         </div>
                     </div>
                 </div>

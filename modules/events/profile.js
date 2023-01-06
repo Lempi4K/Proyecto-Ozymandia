@@ -1,7 +1,7 @@
-let profile_mainData = document.querySelector(".profile-mainData").offsetHeight;
-let profile_background = document.querySelector(".profile-background").offsetHeight;
-let profile_content = document.querySelector(".profile-content").offsetHeight;
-let height = (profile_content) - (profile_mainData + profile_background);
+var profile_mainData = document.querySelector(".profile-mainData").offsetHeight;
+var profile_background = document.querySelector(".profile-background").offsetHeight;
+var profile_content = document.querySelector(".profile-content").offsetHeight;
+var height = (profile_content) - (profile_mainData + profile_background);
 document.querySelector(".profile-data-container").style.height = height + "px";
 
 for(let item of document.getElementsByName("inpRdbtnProdiv")){

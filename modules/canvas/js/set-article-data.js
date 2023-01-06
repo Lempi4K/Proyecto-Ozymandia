@@ -1,4 +1,15 @@
 /**
+ * Reemplaza en la cadena los caracteres que coincidan con la expresión regular
+ * @param {string} string 
+ * @param {regex} regex 
+ * @returns {string}
+ */
+function regexReplace(string, regex = /[`;=<>]/g){
+    //La "g" final es para que se haga con toda la cadena y no con la primera coincidencia
+    return string.replace(regex, '');
+}
+
+/**
  * Función principal del módulo
  */
 function set_article_data(){
@@ -7,7 +18,28 @@ function set_article_data(){
         item.addEventListener("change", e => {
             if(e.target.checked){
                 article.meta.type = parseInt(e.target.value);
-                console.log(article.meta.type);
+                if(article.meta.type == 1){
+                    if(article.meta.sublabel == null || article.meta.label == null){
+                        document.getElementById("cnvFrmPubBtn").value = "Guardar";
+                        document.querySelector(".cpsfMessage").innerHTML = "Seguro que quieres guardar el borrador";
+                    } else{
+                        if(article.meta.id == 0){
+                            document.getElementById("cnvFrmPubBtn").value = "Publicar";
+                            document.querySelector(".cpsfMessage").innerHTML = "Seguro que quieres publicar el art&iacute;culo";
+                        } else{
+                            document.getElementById("cnvFrmPubBtn").value = "Editar";
+                            document.querySelector(".cpsfMessage").innerHTML = "Seguro que quieres editar el art&iacute;culo";
+                        }
+                    }
+                } else{
+                    if(article.meta.id == 0){
+                        document.getElementById("cnvFrmPubBtn").value = "Publicar";
+                        document.querySelector(".cpsfMessage").innerHTML = "Seguro que quieres publicar el art&iacute;culo";
+                    } else{
+                        document.getElementById("cnvFrmPubBtn").value = "Editar";
+                        document.querySelector(".cpsfMessage").innerHTML = "Seguro que quieres editar el art&iacute;culo";
+                    }
+                }
             }
         });
     }
@@ -17,27 +49,43 @@ function set_article_data(){
         item.addEventListener("change", e => {
             if(e.target.checked){
                 article.meta.theme = e.target.value;
-                console.log(article.meta.theme);
             }
         });
     }
 
     document.getElementById("inpTxtTitle").addEventListener("input", e => {
+        e.target.value = regexReplace(e.target.value);
         article.meta.title = e.target.value;
     });
 
     document.getElementById("inpTxtDesc").addEventListener("input", e => {
+        e.target.value = regexReplace(e.target.value);
         article.meta.description = e.target.value;
     });
 
-    const inpRdbtnLbl = document.getElementsByName("inpRdbtnLbl");
-    for(let item of inpRdbtnLbl){
+    document.getElementById("flsReset").addEventListener("click", e => {
+        for(let item of document.querySelectorAll(".inpRdbtnSlbl")){
+            item.checked = false;
+        }
+        for(let item of document.getElementsByName("inpRdbtnLbl")){
+            item.checked = false;
+        }
+
+        article.meta.sublabel = null;
+        article.meta.label = null;
+        if(article.meta.type == 1){
+            document.getElementById("cnvFrmPubBtn").value = "Guardar";
+            document.querySelector(".cpsfMessage").innerHTML = "Seguro que quieres guardar el borrador";
+        }
+    });
+
+    for(let item of document.getElementsByName("inpRdbtnLbl")){
         item.addEventListener("change", e => {
             if(e.target.checked){
-                for(let item of document.querySelectorAll(".iclAdministrativo, .iclGeneral, .iclInvitado")){
+                for(let item of document.querySelectorAll(".inpRdbtnSlbl")){
                     item.checked = false;
                 }
-                article.meta.sublabel = 0;
+                article.meta.sublabel = null;
                 article.meta.label = parseInt(e.target.value);
                 console.log(article.meta.label);
             }
@@ -49,7 +97,16 @@ function set_article_data(){
         item.addEventListener("change", e => {
             if(e.target.checked){
                 article.meta.sublabel = parseInt(e.target.value);
+
+                if(article.meta.id == 0){
+                    document.getElementById("cnvFrmPubBtn").value = "Publicar";
+                    document.querySelector(".cpsfMessage").innerHTML = "Seguro que quieres publicar el art&iacute;culo";
+                } else{
+                    document.getElementById("cnvFrmPubBtn").value = "Editar";
+                    document.querySelector(".cpsfMessage").innerHTML = "Seguro que quieres editar el art&iacute;culo";
+                }
             }
+
             console.log(article.meta.sublabel);
         });
     }

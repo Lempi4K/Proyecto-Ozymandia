@@ -323,7 +323,7 @@ function renderEvents(){
         })
         item.addEventListener("input", e => {
             let id = new String(item.parentNode.parentNode.id);
-            article.AEM[parseInt(id.replace("cpe", ""))].content = item.innerHTML;
+            article.AEM[parseInt(id.replace("cpe", ""))].content = regexReplace(item.innerHTML, /<script([^>]*)?>.*?<\/script>/gm);
         })
     }
 

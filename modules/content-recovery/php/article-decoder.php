@@ -190,6 +190,10 @@
                                 <p>{$label_name["NOMBRE"]}</p>
                             </div>
             HTML;
+
+            if($article["meta"]["sublabel"] == null){
+                $article["meta"]["sublabel"] = -1;
+            }
         }
         if($article["meta"]["type"] == 1 && $article["meta"]["label"] == 2){
             $checked = mySublabel($article['meta']['sublabel']) ? "checked" : "";

@@ -2,6 +2,7 @@
     class NavView{
         //Miembros de datos
         private $model;
+        private $HTML;
 
 
         //constructor
@@ -43,10 +44,10 @@
                     <h3>No hay contenido</h3>
                 HTML;
             }
-            
+            $date = date("Y");
             $this->HTML .= <<< HTML
                     <footer class="no_select c_default">
-                        &copy; 2022 C.B.T.I.s 114
+                        &copy; {$date} C.B.T.I.s 114
                         <br>
                         <a href="tel:(656) 887 27 06">(656) 887 27 06</a> | <a href="tel:(656) 887 27 06">(656) 887 27 07</a>
                         <br>

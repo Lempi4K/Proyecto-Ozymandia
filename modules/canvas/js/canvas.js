@@ -108,9 +108,15 @@ async function canvas(){
 
             }
 
-            document.getElementById("cnvFrmPubBtn").value = "Editar";
 
-            document.querySelector(".cpsfMessage").innerHTML = "Seguro que quieres editar el art&iacute;culo?";
+
+            if((article.meta.sublabel == null || article.meta.label == null) && article.meta.type == 1){
+                document.getElementById("cnvFrmPubBtn").value = "Guardar";
+                document.querySelector(".cpsfMessage").innerHTML = "Seguro que quieres guardar el borrador";
+            } else{
+                document.getElementById("cnvFrmPubBtn").value = "Editar";
+                document.querySelector(".cpsfMessage").innerHTML = "Seguro que quieres editar el art&iacute;culo?";
+            }
 
             initialData(); //set-article-data.js
         }

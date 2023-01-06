@@ -81,6 +81,9 @@
                 case (2):{
                     $query['$and'][1]["meta.label"] = 2;
                     array_pop($query['$and']);
+                    array_push($query['$and'], [
+                        "meta.sublabel" => ['$ne' => null]
+                    ]);
                     break;
                 }
                 case (3):{
