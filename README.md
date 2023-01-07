@@ -1,5 +1,4 @@
-![Proyecto Ozymandia](https://i.imgur.com/dGSrHUf.png)
-
+[![Proyecto Ozymandia](https://i.imgur.com/dGSrHUf.png)](https://github.com/Lempi4K/Proyecto-Ozymandia)
 # **Beta 2**
 ## _v0.2.0_
 ### Cambios
