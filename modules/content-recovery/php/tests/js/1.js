@@ -1,1 +1,5 @@
-console.log("Primer archivo");
+var xd = class {
+    constructor (a){
+        console.log("1");
+    }
+}
