@@ -1,3 +1,12 @@
+# **Beta 2**
+## _v0.2.0_
+### Cambios
+- Resolución de errores
+    - Barra de búsqueda
+    - Ozymandia's Canvas
+- Refactoreo de código
+- Actualización del código
+
 # **Beta 1**
 ## _v0.1.1_
 ### Cambios
