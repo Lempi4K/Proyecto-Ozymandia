@@ -7,8 +7,11 @@
     --color_4: rgb(100, 100, 100);
     --color_5: rgb(228, 228, 228);
     --color_6: rgb(217, 217, 217);
+    --color_7: rgba(25, 92, 150, 0.75);
+    --color_8: rgba(166, 28, 65, 0.75);
+    --color_9: rgba(151, 142, 13, 0.75);
     --user-color_I: rgb(171, 235, 255);
-    --user-color_U: rgb(76, 206, 76);
+    --user-color_U: #4cce4c;
     --user-color_A: rgb(255, 162, 162);
     --user-color_D: rgb(255, 210, 158);
     --user-color_M: rgb(255, 253, 156);
@@ -22,6 +25,7 @@
     --font-color_5: rgb(162, 162, 162);
     --font-logo: "Cookie";
     --font-text: "Roboto";
+    --font-text_1: "Rowdies";
     --font-warning: "Oswald";
 
     --hover-color_1: rgb(215, 215, 215);
@@ -64,6 +68,12 @@
     --article-table_border: rgb(134, 134, 134);
 
     --canvas-color_1: #195b96;
+
+    --admintools-color_1: #195b96;
+    --admintools-color_2: #103c63b0;
+    --admintools-color_3: #de780b;
+    --admintools-hover-color_1: rgba(255, 255, 255, 0.1);
+    --admintools-select-color_1: rgba(255, 255, 255, 0.2);
 }
 
 @media (prefers-color-scheme: dark){
@@ -74,14 +84,14 @@
         --color_4: rgb(155, 155, 155);
         --color_5: rgb(27, 27, 27);
         --color_6: white;
-        --user-color_I: rgb(0, 118, 154);
-        --user-color_U: rgb(0, 156, 0);
-        --user-color_A: rgb(158, 0, 0);
-        --user-color_D: rgb(161, 86, 0);
-        --user-color_M: rgb(155, 152, 0);
-        --user-color_P: rgb(148, 0, 64);
-        --user-color_J: rgb(0, 7, 136);
-        --user-color_C: rgb(33, 161, 144);
+        --user-color_I: #00769a;
+        --user-color_U: #009c00;
+        --user-color_A: #9e0000;
+        --user-color_D: #a15600;
+        --user-color_M: #9b9800;
+        --user-color_P: #940040;
+        --user-color_J: #000788;
+        --user-color_C: #21a190;
         --font-color_1: rgb(255, 255, 255);
         --font-color_3: rgb(192, 192, 192);
         --font-color_4: rgb(160, 160, 160);

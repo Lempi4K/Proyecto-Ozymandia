@@ -2,11 +2,13 @@
 /**
  * Es el controlador del trafico de ordenes para actualizar contenido dinámicamente
  */
+    include($_SERVER['DOCUMENT_ROOT'] . "/libs/OzyTool/OzyTool.php");
+
     include($_SERVER['DOCUMENT_ROOT']."/modules/Simple_MongoDB_lib/Simple_MongoDB.php");
 
     include($_SERVER['DOCUMENT_ROOT']."/modules/Simple_MySQL_lib/Simple_MySQL.php");
 
-    include($_SERVER['DOCUMENT_ROOT']."/libs/php-jwt-master/src/JWT.php");
+    //include($_SERVER['DOCUMENT_ROOT']."/libs/php-jwt-master/src/JWT.php");
     
     include("tests/controller/tests_controller.php");
 
@@ -26,6 +28,8 @@
 
     include("article-decoder.php");
 
+    const BLOCK_MESSAGE = "Contenido no disponible para tí";
+
     header("Content-type: application/json; charset=utf-8");
     $POST = json_decode(file_get_contents("php://input"), true);
 
@@ -44,6 +48,8 @@
     $sublabel = isset($POST["sublabel"]) ? $POST["sublabel"] : null;
 
     $order = isset($POST["order"]) ? $POST["order"] : null;
+    
+    $internal = isset($POST["internal"]) ? $POST["internal"] : null;
 
 
     $content_controller = null;
@@ -78,7 +84,7 @@
             break;
         }
         case 6:{
-            $content_controller = new AdminToolsController();
+            $content_controller = new AdminToolsController($section, $internal);
             break;
         }
     }

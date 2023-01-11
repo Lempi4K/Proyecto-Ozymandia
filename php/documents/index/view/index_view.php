@@ -66,7 +66,7 @@
                 $HTML .= <<< HTML
                                         <li>
                                             <a class="c_click no_select frame_change" data-url="herramientas">
-                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-screwdriver-wrench"></i>
                                                 Ozymandia's Admin Tools
                                             </a>
                                         </li>
@@ -77,7 +77,7 @@
                 $HTML .= <<< HTML
                                         <li>
                                             <a class="c_click no_select frame_change" data-url="pruebas">
-                                                <i class="fa-solid fa-flask-vial"></i>
+                                                <i class="fa-solid fa-star"></i>
                                                 Pruebas
                                             </a>
                                         </li>
@@ -405,6 +405,7 @@
                         <section id="central-content">
                             <div class="charging-display-container" id="charging-display-content"><div></div></div>
                             <div id="replazable-content"></div>
+                            <div class="spot"><div class="spotMessageText">asdasdasd</div></div>
                         </section>
                         {$this->displayLateralContent()}
                     </main>

@@ -3,13 +3,24 @@
         'name' => 'vendor/ozymandia',
         'pretty_version' => 'dev-develop',
         'version' => 'dev-develop',
-        'reference' => '65803b49d63a4d6bdc445059d25b0ea649c74db1',
+        'reference' => '691432aea95260816db8a10fa57e9b53eb88cb16',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
         'dev' => true,
     ),
     'versions' => array(
+        'firebase/php-jwt' => array(
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => '213924f51936291fbbca99158b11bd4ae56c2c95',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../firebase/php-jwt',
+            'aliases' => array(
+                0 => '9999999-dev',
+            ),
+            'dev_requirement' => false,
+        ),
         'guzzlehttp/guzzle' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
@@ -146,7 +157,7 @@
         'vendor/ozymandia' => array(
             'pretty_version' => 'dev-develop',
             'version' => 'dev-develop',
-            'reference' => '65803b49d63a4d6bdc445059d25b0ea649c74db1',
+            'reference' => '691432aea95260816db8a10fa57e9b53eb88cb16',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

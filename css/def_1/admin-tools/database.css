@@ -1,0 +1,8 @@
+.atDBContainer{
+    grid-template-rows: 1fr;
+    padding-top: 20px;
+}
+
+.atDBContainer .athSubtitle{
+    width: 100%;
+}

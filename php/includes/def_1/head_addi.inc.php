@@ -1,10 +1,10 @@
 <script src="https://kit.fontawesome.com/f94d4553b5.js" crossorigin="anonymous"></script>
 <link rel="icon" href="/src/img/logo/logo.png" type="image/png" sizes="16x16">
 <style>
-
         @import url('https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap');
-
+        @import url('https://fonts.googleapis.com/css2?family=Rowdies:wght@300;400;700&display=swap');
+        
         @import url("/css/def_1/general-setings.css") screen;
         @import url("/css/def_1/error-displays.css") screen;
         @import url("/css/def_1/charging-displays.css") screen;
@@ -31,6 +31,10 @@
         @import url("/css/def_1/canvas/canvas.css") screen;
         @import url("/css/def_1/canvas/canvas-frame.css") screen;
         @import url("/css/def_1/canvas/canvas-article.css") screen;
+
+        @import url("/css/def_1/admin-tools/admin-tools.css") screen;
+        @import url("/css/def_1/admin-tools/users.css") screen;
+        @import url("/css/def_1/admin-tools/database.css") screen;
 
         @import url("/css/responsive/index.css") screen;     
 </style>

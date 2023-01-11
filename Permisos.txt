@@ -1,0 +1,10 @@
+Ozy.*
+    AdminTools.*
+        .see -> Permite ver el apartado
+        .users.*
+            .see
+            .db.*
+                .normal.*
+                    .see
+                .admin.*
+                    .see

@@ -32,6 +32,17 @@
     color: var(--font-color_1);
     transition: color, background-color 0.2s ease-in-out 0s;
     scrollbar-color: var(--color_1);
+    --webkit-tap-highlight-color: transparent;
+}
+
+textarea, select, input, button, a, label { 
+    outline: none;
+    --webkit-tap-highlight-color: transparent;
+}
+
+:focus { 
+    outline-color: transparent; 
+    outline-style: none;
 }
 
 *::selection{

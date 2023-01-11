@@ -20,7 +20,6 @@ async function AJAXrequest(){
         if (!res.ok){
             throw new Error("AJAX-Request-Failed")
         }
-
         if(json.errors === ""){
             if (json.data.success){
                 sucessStyle()

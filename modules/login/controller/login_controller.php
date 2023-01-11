@@ -4,9 +4,10 @@
  */
     include("../model/login_model.php");
     include("../view/login_view.php");
-    include($_SERVER['DOCUMENT_ROOT']."/libs/php-jwt-master/src/JWT.php");
+    require $_SERVER['DOCUMENT_ROOT'] . "/vendor/autoload.php";
 
     use Firebase\JWT\JWT;
+    use Firebase\JWT\Key;
 
     header("Content-type: application/json; charset=utf-8");
     $POST = json_decode(file_get_contents("php://input"), true);
@@ -27,11 +28,11 @@
 
         if($model->getToken()){
             $token = $model->getTokenStr();
-            $dataT = (JWT::decode($token, $key));
+            $dataT = (JWT::decode($token, new Key($key, "HS256")));
             if(($dataT->exp - $time) <= 0){
                 $dataT->iat = $time;
                 $dataT->exp = $time + $a_time;
-                $token = JWT::encode((array) $dataT, $key);
+                $token = JWT::encode((array) $dataT, $key, "HS256");
 
                 $model->setToken($token);
             }
@@ -40,13 +41,13 @@
         } else{
             $token = bin2hex(openssl_random_pseudo_bytes(15));
 
-            $dataT = array("uid" => $model->getUser_id(),
+            $dataT = array("uid" => (int) $model->getUser_id(),
                           "iat" => $time,
                           "exp" => $time + $a_time,
                           "iss" => "server",
-                          "prm" => $model->getPerm(),
+                          "prm" => (int) $model->getPerm(),
                           "dkm" => 3);
-            $token = JWT::encode($dataT, $key);
+            $token = JWT::encode($dataT, $key, "HS256");
 
 
             $model->setToken($token);

@@ -15,10 +15,10 @@
         //Funciones
 
         public function getHTML(){
+            $ozy_tool = new OzyTool\OzyTool();
+            $perm = $ozy_tool->User()->getPersonalData()->fetch()["NOMBRES"];
             $HTML = <<< HTML
-                <script src="/modules/content-recovery/php/tests/js/1.js"></script>
-                <script src="/modules/content-recovery/php/tests/js/2.js"></script>
-                <script src="/modules/content-recovery/php/tests/js/3.js"></script>
+                {$perm}
             HTML;
 
             return $HTML;

@@ -1,0 +1,44 @@
+.atUsersContainer{
+}
+
+.atusToolBar{
+
+}
+
+.atusSearch, .attbusButtons{
+    width: 50%;
+}
+
+.atusSearch {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin: 0 10px;
+}
+
+#inpSearchDataBase1{
+    color: var(--color_1);
+    display: block;
+    width: 100%;
+    height: 65%;
+    border: none;
+    border-radius: 5px;
+    padding-left: 20px;
+}
+
+#inpSearchDataBase1::-webkit-search-decoration,
+#inpSearchDataBase1::-webkit-search-cancel-button,
+#inpSearchDataBase1::-webkit-search-results-button,
+#inpSearchDataBase1::-webkit-search-results-decoration {
+  -webkit-appearance:none;
+}
+
+.atusSearch i{
+    position: absolute;
+    cursor: pointer;
+    color: var(--admintools-color_3);
+    font-size: 15px;
+    left: 0px;
+    padding: 0 3px;
+}

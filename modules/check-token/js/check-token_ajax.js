@@ -28,6 +28,7 @@ async function AJAXrequestChckToken(path){
         if (!res.ok){
             throw new Error("AJAX-Request-Failed")
         }
+        console.log(json)
         if(json.errors === ""){
             console.log(json.data.result);
             return json.data.result;

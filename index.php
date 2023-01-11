@@ -26,6 +26,7 @@
     <style>
         @import url("/css/color/color.css");
     </style>
+    <script src="/libs/OzyTool_JS/OzyTool.js"></script>
     <script src="/js/height-mobile-fix.js"></script>
     <script src="/modules/check-token/js/check-token_ajax.js"></script>
     <script src="/php/documents/index/js/user-menu.js"></script>

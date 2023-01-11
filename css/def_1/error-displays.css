@@ -29,3 +29,34 @@
         left: 0%;
     }
 }
+
+.spot{
+    max-width: 300px;
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translate(-50%, -0%);
+    background-color: rgba(0, 0, 0, 0.205);
+    padding: 20px;
+    z-index: 30;
+    border-radius: 10px;
+    display: none;
+}
+
+.spotMessage{
+    background-color: var(--color_7);
+
+}
+
+.spotError{
+    background-color: var(--color_8);
+}
+
+.spotWarn{
+    background-color: var(--color_9);
+}
+
+.spotMessageText{
+    color: var(--font-color_2);
+    font-family: var(--font-warning);
+}

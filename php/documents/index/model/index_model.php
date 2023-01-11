@@ -1,8 +1,9 @@
 <?php
     include($_SERVER['DOCUMENT_ROOT']."/modules/Simple_MongoDB_lib/Simple_MongoDB.php");
     include($_SERVER['DOCUMENT_ROOT']."/modules/Simple_MySQL_lib/Simple_MySQL.php");
-    include($_SERVER['DOCUMENT_ROOT']."/libs/php-jwt-master/src/JWT.php");
+    require $_SERVER['DOCUMENT_ROOT'] . "/vendor/autoload.php";
     use Firebase\JWT\JWT;
+    use Firebase\JWT\Key;
     class IndexModel{
         //Miembros de datos
         /** 
@@ -46,7 +47,7 @@
             if(isset($_COOKIE["token"])){
                 $token = $_COOKIE["token"];
                 try{
-                    $tokenData = JWT::decode($token, "P.O.");
+                    $tokenData = JWT::decode($token, new Key("P.O.", "HS256"));
                 }catch (Exception $e){
                     $this->valid_token = false;
                     return;

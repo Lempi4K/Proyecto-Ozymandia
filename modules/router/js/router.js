@@ -69,7 +69,7 @@ function getParameterByName(name) {
  * @param int
  * @return object
  */
-function routeFabric(section = 0, start = 0){
+function routeFabric(section = 0, start = 0, internal = false){
     section = (getParameterByName("id") != 0 ? 4 : section)
     const routes = {
         "/pruebas": {type: -1},
@@ -85,9 +85,9 @@ function routeFabric(section = 0, start = 0){
         "/fijado": {type: 3, article_id: getParameterByName("id")},
         "/buscar": {type: 4, subtype: 8, q: getParameterByName("q"), sublabel: getParameterByName("sublabel"), article_id: getParameterByName("id"), start : start, order: ( parseInt(getParameterByName("order")) == 0 ? -1 : parseInt(getParameterByName("order")) )},
         "/lienzo": {type: 5, article_id: getParameterByName("id")},
-        "/herramientas": {type: 6, article_id: getParameterByName("id")}
+        "/herramientas": {type: 6, section: section, internal: internal}
     }
-    console.log(routes[window.location.pathname]);
+    console.log(JSON.stringify(routes[window.location.pathname]));
     return routes[window.location.pathname];
 
 
@@ -98,7 +98,7 @@ function routeFabric(section = 0, start = 0){
  * @param string
  * @param int
  */
-async function handleLocation(container = "replazable-content", section = 0) {
+async function handleLocation(container = "replazable-content", section = (getParameterByName("section") == 0 ? 1 : getParameterByName("section")), internal = false) {
     AJAXLoad.routeType = ""; 
     if(! await AJAXrequestChckToken(window.location.pathname)){
         document.getElementById("block-display-main").style.display = "flex";
@@ -109,7 +109,8 @@ async function handleLocation(container = "replazable-content", section = 0) {
         ChargingAnimationStart(idLoadAnimation);
         document.title = titles[window.location.pathname]
         const central_content = document.getElementById(container);
-        let HTML = await AJAXrequestContent(routeFabric(section))
+        console.log(central_content.id);
+        let HTML = await AJAXrequestContent(routeFabric(section, 0, internal));
         central_content.innerHTML = HTML;
 
         AJAXLoad.routeType = eventType[window.location.pathname];
@@ -118,7 +119,7 @@ async function handleLocation(container = "replazable-content", section = 0) {
         
         //Script Charger
 
-
+        console.log("BRUH");
         ChargingAnimationEnd_1(idLoadAnimation);
 
     }
