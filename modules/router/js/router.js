@@ -73,7 +73,7 @@ function routeFabric(section = 0, start = 0, internal = false){
     section = (getParameterByName("id") != 0 ? 4 : section)
     const routes = {
         "/pruebas": {type: -1},
-        "/inicio": {type: 0, section: section, article_id: getParameterByName("id"), start : start},
+        "/inicio": {type: 0, section: section, article_id: getParameterByName("id"), start : start, internal: internal},
         "/perfil": {type: 1, section: section, start : start},
         "/nosotros": {type: 2, subtype: 1, article_id: getParameterByName("id")},
         "/oferta-educativa": {type: 2, subtype: 2, article_id: getParameterByName("id")},
@@ -98,7 +98,7 @@ function routeFabric(section = 0, start = 0, internal = false){
  * @param string
  * @param int
  */
-async function handleLocation(container = "replazable-content", section = (getParameterByName("section") == 0 ? 1 : getParameterByName("section")), internal = false) {
+async function handleLocation(container = "replazable-content", section = (getParameterByName("section") == 0 ? 0 : getParameterByName("section")), internal = false) {
     AJAXLoad.routeType = ""; 
     if(! await AJAXrequestChckToken(window.location.pathname)){
         document.getElementById("block-display-main").style.display = "flex";

@@ -3,13 +3,13 @@ var AdminTools = {
     Users: null,
 
     tableUpdater: async (section, search, start = 1, func = ()=>{}) => {
-        $url = "/modules/admin-tools/scripts/tableUpdater.php"
-        $params = {
+        let url = "/modules/admin-tools/scripts/tableUpdater.php"
+        let params = {
             "section": section,
             "search": search,
             "start": start
         };
-        let response = await OzyTool.AJAX($url, $params);
+        let response = await OzyTool.AJAX(url, params);
 
         if(!response.success){
             console.log(response);
@@ -26,5 +26,44 @@ var AdminTools = {
 
             func()
         }
+    },
+
+    openFrame: (element) => {
+        let container = document.querySelector(".atHideFrames");
+        container.style.display = "flex";
+        element.style.display = "block";
+        container.animate(
+            [
+                {filter : "opacity(0)"},
+                {filter : "opacity(1)"}
+            ],
+            {
+                duration: 150,
+                iterations: 1,
+                easing: "ease-in-out",
+                fill: "forwards"
+            }
+        );
+    },
+    closeFrame: (element) => { 
+        let container = document.querySelector(".atHideFrames");
+
+
+        container.animate(
+            [
+                {filter : "opacity(1)"},
+                {filter : "opacity(0)"}
+            ],
+            {
+                duration: 150,
+                iterations: 1,
+                easing: "ease-in-out",
+                fill: "forwards"
+            }
+        ).onfinish = () => {
+            element.scrollTop = 0;
+            element.style.display = "none";
+            container.style.display = "none";
+        };
     }
 }

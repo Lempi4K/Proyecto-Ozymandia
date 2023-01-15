@@ -35,6 +35,7 @@ use OzyTool\User;
 
             $content = "";
             switch((int) $this->section){
+                case 0:
                 case 1: {
                     if(! $user->hasPerm("Ozy.AdminTools.users.see")){
                         $content = $ozy_tool->displayErrorMessage(BLOCK_MESSAGE);
@@ -86,30 +87,48 @@ use OzyTool\User;
                             </div>
                             <div class="atMenu">
                                 <ul>
-                                    <li>
-                                        <input type="radio" name="inpRdbtnMenu" id="inpRdbtnMenu1" title="Usuarios" checked value="1">
-                                        <label for="inpRdbtnMenu1">
-                                            <i class="fa-solid fa-user"></i>
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <input type="radio" name="inpRdbtnMenu" id="inpRdbtnMenu2" title="Base de Datos" value="2">
-                                        <label for="inpRdbtnMenu2">
-                                            <i class="fa-solid fa-database"></i>
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <input type="radio" name="inpRdbtnMenu" id="inpRdbtnMenu3" title="Etiquetas" disabled value="3">
-                                        <label for="inpRdbtnMenu3">
-                                            <i class="fa-solid fa-tag"></i>
-                                        </label>
-                                    </li>
-                                    <li>
-                                        <input type="radio" name="inpRdbtnMenu" id="inpRdbtnMenu4" title="Roles" disabled value="4">
-                                        <label for="inpRdbtnMenu4">
-                                            <i class="fa-solid fa-key"></i>
-                                        </label>
-                                    </li>
+                HTML;
+                if($user->hasPerm("Ozy.AdminTools.users.see")){
+                    $HTML .= <<< HTML
+                                        <li>
+                                            <input type="radio" name="inpRdbtnMenu" id="inpRdbtnMenu1" title="Usuarios" checked value="1">
+                                            <label for="inpRdbtnMenu1">
+                                                <i class="fa-solid fa-user"></i>
+                                            </label>
+                                        </li>
+                    HTML;
+                }
+                if($user->hasPerm("Ozy.AdminTools.database.see")){
+                    $HTML .= <<< HTML
+                                        <li>
+                                            <input type="radio" name="inpRdbtnMenu" id="inpRdbtnMenu2" title="Base de Datos" value="2">
+                                            <label for="inpRdbtnMenu2">
+                                                <i class="fa-solid fa-database"></i>
+                                            </label>
+                                        </li>
+                    HTML;
+                }
+                if($user->hasPerm("Ozy.AdminTools.labels.see")){
+                    $HTML .= <<< HTML
+                                        <li>
+                                            <input type="radio" name="inpRdbtnMenu" id="inpRdbtnMenu3" title="Etiquetas" disabled value="3">
+                                            <label for="inpRdbtnMenu3">
+                                                <i class="fa-solid fa-tag"></i>
+                                            </label>
+                                        </li>
+                    HTML;
+                }
+                if($user->hasPerm("Ozy.AdminTools.roles.see")){
+                    $HTML .= <<< HTML
+                                        <li>
+                                            <input type="radio" name="inpRdbtnMenu" id="inpRdbtnMenu4" title="Roles" disabled value="4">
+                                            <label for="inpRdbtnMenu4">
+                                                <i class="fa-solid fa-key"></i>
+                                            </label>
+                                        </li>
+                    HTML;
+                }
+                $HTML .= <<< HTML
                                 </ul>
                             </div>
                         </div>

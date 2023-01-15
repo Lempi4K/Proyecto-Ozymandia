@@ -1,15 +1,19 @@
 <?php
+    use OzyTool\User;
     class AdminToolsView{
         //Miembros de datos
         private $model;
+        private $ozy_tool;
 
         //constructor
         public function __construct($model){
             $this->model = $model;
+            $this->ozy_tool = new OzyTool\OzyTool();
         }
 
         //Funciones
         public function displayUsersView(){
+            $user = $this->ozy_tool->User();
             $HTML = <<< HTML
                 <div class="atUsersContainer atMainContainer">
                     <div class="atusToolBar atToolBar">
@@ -19,15 +23,30 @@
                         </div>
                         <div class="attbusButtons attButtons">
                             <ul>
+            HTML;
+            if($user->hasPerm("Ozy.AdminTools.users.db.add")){
+                $HTML .= <<< HTML
                                 <li id="attButtonAdd">
                                     <i class="fa-solid fa-plus"></i>
                                 </li>
+                HTML;
+            }
+            if($user->hasPerm("Ozy.AdminTools.users.db.edit")){
+                $HTML .= <<< HTML
                                 <li id="attButtonEdit" class="attButtonDisable">
                                     <i class="fa-solid fa-pen"></i>
                                 </li>
+                HTML;
+            }
+            if($user->hasPerm("Ozy.AdminTools.users.db.delete")){
+                $HTML .= <<< HTML
                                 <li id="attButtonDelete" class="attButtonDisable">
                                     <i class="fa-solid fa-trash"></i>
                                 </li>
+                HTML;
+            }
+
+            $HTML .= <<< HTML
                             </ul>
                         </div>
                     </div>
@@ -47,20 +66,20 @@
                         </div>
                     </div>
                     <div class="atHideFrames">
-                        <div class="athFrame">
+                        <div class="athFrame" id="athFrame1">
                             <div class="athTitle">
                                 Datos
                             </div>
                             <div class="athBody">
                                 <form class="athForm" id="athForm" onsubmit="return false">
-                                    <div class="athFormElementsContainer">
+                                    <div class="athFormElementsContainer" id="athFormElementsContainer">
                                         <h1 class="athSubtitle">Plataforma<hr></h1>
                                         <div class="frmInpText">
-                                            <input type="text" id="inpTxtUser" placeholder="User">
+                                            <input type="text" id="inpTxtUser" placeholder="User" required pattern="[A-Za-z]">
                                             <label for="inpTxtUser" class="no_select">Usuario</label>
                                         </div>
                                         <div class="frmInpText">
-                                            <input type="text" id="inpTxtPass" placeholder="Pass">
+                                            <input type="text" id="inpTxtPass" placeholder="Pass" required>
                                             <label for="inpTxtPass" class="no_select">Contraseña</label>
                                         </div>
                                         <div class="frmLabelSelector" id="frmLabelSelector">
@@ -81,7 +100,7 @@
                                         </div>
                                         <div class="frmNavSelector frmSelector" id="frmSelectorRol">
                                             <p>Rol:</p>
-                                            <select name="" id="slctRol">
+                                            <select name="" id="slctRol" required>
                                                 <option value="0">Usuario</option>
                                                 <option value="1">Administrador</option>
                                                 <option value="2">Director</option>
@@ -91,13 +110,35 @@
                                                 <option value="6">Creador</option>
                                             </select>
                                         </div>
+                                        <fieldset class="cnvEditElement APITypeElements frmRadioBtn">
+                                            <legend>Tipo de Usuario</legend>
+                                            <ul class="form-elements frmInpRdbtn">
+                                                <li>
+                                                    <input type="radio" name="inpRdbtnUserType" class="inpRdbtnUserType" id="inpRdbtnUserType1" value="1" checked>
+                                                    <label for="inpRdbtnUserType1" class="no_select c_click"><i><i></i></i>Alumno</label>
+                                                </li>
+                                                <li>
+                                                    <input type="radio" name="inpRdbtnUserType" class="inpRdbtnUserType" id="inpRdbtnUserType2" value="2">
+                                                    <label for="inpRdbtnUserType2" class="no_select c_click"><i><i></i></i>Docente</label>
+                                                </li>
+                                            </ul>
+                                        </fieldset>
                                         <h1 class="athSubtitle">Personal<hr></h1>
                                     </div>
                                     <div class="athButtons">
+                                        <input type="button" value="Cancelar" id="inpBtnATCloseFrame1">
                                         <input type="submit" value="Guardar" id="inpBtnATSave">
-                                        <input type="button" value="Cancelar" id="inpBtnATSave">
                                     </div>
                                 </form>
+                            </div>
+                        </div>
+                        <div class="athFrame" id="athFrame2">
+                            <div class="athText">
+                                Seguro que quieres eliminar este usuario?
+                            </div>
+                            <div class="athButtons">
+                                <input type="button" value="No" id="inpBtnATCloseFrame2">
+                                <input type="submit" value="Si" id="inpBtnATYes">
                             </div>
                         </div>
                     </div>

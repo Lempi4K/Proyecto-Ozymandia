@@ -7,7 +7,7 @@ for(let item of document.getElementsByClassName("main-article")){
 
 for(let item of document.getElementsByName("inpRdbtnArtdiv")){
     item.addEventListener("change", e => {
-        handleLocation("articles-container", item.value);
+        handleLocation("articles-container", item.value, true);
     });
 }
 

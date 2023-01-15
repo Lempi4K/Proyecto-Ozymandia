@@ -59,6 +59,12 @@ class OzyTool{
      */
     public $jwt_alg = "HS256";
 
+    /**
+     * Tipo de usuarios en las bases de datos
+     * @var array
+     */
+    public $types = [1 => "ALUMNOS", 2 => "DOCENTES"];
+
     public function __construct($conf = 0){
         switch ($conf){
             case 0:{
@@ -110,9 +116,9 @@ class OzyTool{
      * Devuelve un objeto con los datos relevantes al usuario que está usando el proyecto
      * @return OzyTool\User||null
      */
-    public function User(){
+    public function User($uid = 0){
         try{
-            return new User($this);
+            return new User($this, $uid);
         } catch(Exception $e){
             return null;
         }

@@ -16,10 +16,20 @@
 
         public function getHTML(){
             $ozy_tool = new OzyTool\OzyTool();
-            $perm = $ozy_tool->User()->getPersonalData()->fetch()["NOMBRES"];
+            $cursor = $ozy_tool->MySQL()->console("
+            SELECT JSON_EXTRACT(JSON, '$.2[2]') as JSON
+            FROM PERM_LABELS
+            WHERE USER_ID = 1");
             $HTML = <<< HTML
-                {$perm}
+            
             HTML;
+
+            foreach($cursor as $item){
+                $HTML .= <<< HTML
+                    JSON:{$item["JSON"]}<br>
+                HTML;
+
+            }
 
             return $HTML;
         }

@@ -8,6 +8,7 @@
     use InvalidArgumentException;
     use UnexpectedValueException;
     use LogicException;
+    use Exception;
 
     class User{
         public $ozy_tool;
@@ -15,8 +16,31 @@
         public $id;
         public $prm;
         public $dkm;
-        public function __construct(OzyTool $ozy_tool){
+        public function __construct(OzyTool $ozy_tool, int $uid = 0){
             $this->ozy_tool = $ozy_tool;
+
+            if($uid != 0){
+                $query = "select PERM from USUARIOS where USER_ID = $uid";
+                try{
+                    $cursor = $ozy_tool->MySQL()->console($query);
+                } catch(Exception $e){
+                    return null;
+                }
+
+                if($cursor->rowCount()){
+                    foreach($cursor as $item){
+                        $this->prm = $item["PERM"];
+                        break;
+                    }
+                    $this->id = $uid;
+                    $this->dkm = 3;
+
+                    return;
+                }
+
+                return null;
+            }
+
             if(! isset($_COOKIE["token"])){
                 $this->id = 0;
                 $this->prm = -1;
@@ -51,7 +75,7 @@
 
         public function hasPerm(string $perm){
             $dbh = $this->ozy_tool->MySQL();
-            if($dbh == null || $this->token["payload"] == null){
+            if($dbh == null){
                 return false;
             }
 
@@ -101,8 +125,71 @@
             return $cursor;
         }
 
-        public function getLabels(){
-            //Pendiente
+        public function getSublabels(){
+            $dbh = $this->ozy_tool->MySQL();
+            if($dbh == null){
+                return null;
+            }
+            $sublabels = ["G" => []];
+
+            if($this->hasPerm("Ozy.Labels.General")){
+                $query = "select * from SUBETIQUETAS where LABEL_ID = 2 && SUBLABEL_ID != 0";
+
+                $cursor = $dbh->console($query);
+                foreach($cursor as $item){
+                    $sublabels["G"][$item["SUBLABEL_ID"]] = $item["NOMBRE"];
+                }
+                return $sublabels;
+            }
+
+            $query = "select JSON from PERM_LABELS where USER_ID = {$this->id}";
+            $cursor = $dbh->console($query);
+
+            $json = [];
+            foreach($cursor as $item){
+                $json = json_decode($item["JSON"], true);
+                break;
+            }
+
+            $query = "select * from SUBETIQUETAS where LABEL_ID = 2 && SUBLABEL_ID != 0";
+            $cursor = $dbh->console($query);
+            //var_dump($json["G"]);
+            foreach($cursor as $item){
+                //echo "key: {$item["SUBLABEL_ID"]}";
+                if(in_array($item["SUBLABEL_ID"], $json["G"])){
+                    $sublabels["G"][$item["SUBLABEL_ID"]] = $item["NOMBRE"];
+                }
+            }
+
+            return $sublabels;
+        }
+
+        public function getType(){
+            $dbh = $this->ozy_tool->MySQL();
+            if($dbh == null){
+                return null;
+            }
+
+            $query = "select TIPO from USUARIOS where USER_ID = {$this->id}";
+            $cursor = $dbh->console($query);
+
+            foreach($cursor as $item){
+                return $item["TIPO"];
+            }
+        }
+
+        public function isBlocked(){
+            $dbh = $this->ozy_tool->MySQL();
+            if($dbh == null || $this->token["payload"] == null){
+                return null;
+            }
+
+            $query = "select ESTADO from USUARIOS where USER_ID = {$this->id}";
+            $cursor = $dbh->console($query);
+
+            foreach($cursor as $item){
+                return $item["ESTADO"] != 1 ? true : false;
+            }
         }
     }
 ?>

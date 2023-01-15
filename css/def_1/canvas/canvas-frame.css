@@ -140,7 +140,7 @@
     background-color: transparent;
 }
 
-.frmInpText > input[type="text"]{
+.frmInpText > input{
     padding: 5px;
     width: 100%;
     padding-top: 15px;
@@ -153,18 +153,18 @@
     color: black;
 }
 
-.frmInpText > input[type="text"]:focus{
+.frmInpText > input:focus{
     outline: none;
     border-color: #a61c41;
 }
 
-.frmInpText > input[type="text"]:focus + label{
+.frmInpText > input:focus + label{
     top: 12px;
     color: #a61c41;
     font-size: 11px;
 }
 
-.frmInpText > input[type="text"]::placeholder{
+.frmInpText > input::placeholder{
     color: transparent;
 }
 
@@ -205,14 +205,14 @@
     list-style: none;
 }
 
-.frmLabelSelector > ul li > input[type="radio"]{
+.frmLabelSelector > ul li > input[type="radio"], .frmLabelSelector > ul li > input[type="checkbox"]{
     display: none;
 }
 
-.frmLabelSelector > ul li > input[type="radio"]:not(:checked) + label{
+.frmLabelSelector > ul li > input[type="radio"]:not(:checked) + label, .frmLabelSelector > ul li > input[type="checkbox"]:not(:checked) + label{
     filter: brightness(0.6)
 }
-.frmLabelSelector > ul li > input[type="radio"]:checked ~ ul{
+.frmLabelSelector > ul li > input[type="radio"]:checked ~ ul, .frmLabelSelector > ul li > input[type="checkbox"]:checked ~ ul{
     display: flex;
 }
 

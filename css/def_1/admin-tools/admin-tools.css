@@ -8,7 +8,9 @@
     width: 100%;
     height: 100%;
     padding: 20px;
-    padding-top: 45px;
+    padding-top: 0px;
+    margin-top: 45px;
+    position: relative;
 }
 
 .atTopBar{
@@ -216,7 +218,7 @@ tr.selectedRow td{
 
 .atHideFrames{
     width: 100%;
-    height: 100%;
+    height: calc(100% - 45px);
     position: absolute;
     display: flex;
     align-items: center;
@@ -229,12 +231,15 @@ tr.selectedRow td{
 }
 
 .athFrame{
-    width: 80%;
+    width: 90%;
     border-radius: 10px;
     background-color: var(--color_1);
     padding: 10px;
     box-shadow: var(--article-color_1) 0px 0px 5px 0px;
-    max-height: 90%;
+    max-height: 85%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    display: none;
 }
 
 .athTitle{
@@ -243,6 +248,7 @@ tr.selectedRow td{
     align-items: center;
     font-size: 30px;
     font-weight: bold;
+    width: 100%;
 
 }
 
@@ -265,6 +271,14 @@ tr.selectedRow td{
     cursor: pointer;
 }
 
+.atContainer input[type="button"]:disabled, .atContainer input[type="submit"]:disabled{
+    filter: brightness(0.7);
+}
+.atContainer input[type="button"]:disabled:hover, .atContainer input[type="submit"]:disabled:hover{
+    color: var(--font-color_2);
+    background-color: var(--admintools-color_1);
+}
+
 .atContainer input[type="button"]:hover, .atContainer input[type="submit"]:hover{
     color: var(--admintools-color_1);
     background-color: var(--font-color_2);
@@ -281,6 +295,9 @@ tr.selectedRow td{
     justify-content: center;
     align-items: center;
 }
+.athForm{
+    width: 100%;
+}
 
 .frmSelector{
     display: flex;
@@ -292,4 +309,47 @@ tr.selectedRow td{
     text-justify: left;
     font-size: 20px;
     margin-bottom: 10px;
+}
+
+.frmInpText > input[type="text"]:focus, .frmInpText > input[type="password"]:focus{
+    border-color: var(--admintools-color_1);
+}
+
+.frmInpText > input[type="text"]:focus + label, .frmInpText > input[type="password"]:focus + label{
+    color: var(--admintools-color_1);
+}
+
+.frmInpText > input[type="text"]:focus
+
+.cnvEditElement{
+    display: block;
+}
+
+.atReplazableContainer .form-elements > li > label > i > i{
+    background-color: var(--admintools-color_1);
+}
+
+.frmPlatformData, .frmPersonalData {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.frmRadioBtn{
+    display: block;
+}
+
+.athText{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+}
+
+#athFrame2{
+    width: 50%;
 }

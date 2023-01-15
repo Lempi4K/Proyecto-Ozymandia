@@ -14,6 +14,7 @@ function scriptHandler(target, scripts){
         })
         script.src = item.src;
         //target.removeChild(item);
+        console.log("xasd")
 
     } else{
         scripts = undefined;

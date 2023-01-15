@@ -8,3 +8,21 @@ Ozy.*
                     .see
                 .admin.*
                     .see
+                .platformData.*
+                    .see
+                    .pass
+                    .sublabel
+                    .rol
+                    .userType
+                .personalData.*
+                    .see
+                .alterLTE
+                .edit
+                .add
+                .delete
+        .labels.*
+        .roles.*
+    Labels.*
+        General
+        Admin
+        Invit

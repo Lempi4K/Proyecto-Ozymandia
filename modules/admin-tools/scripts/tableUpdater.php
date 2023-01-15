@@ -1,5 +1,4 @@
 <?php
-
     use OzyTool\OzyTool;
     include($_SERVER['DOCUMENT_ROOT'] . "/libs/OzyTool/OzyTool.php");
     $ozy_tool = new OzyTool();
@@ -16,13 +15,13 @@
             $queryALU = "
             select ALU.USER_ID as ID, CONCAT('@', CRED.USER) as USUARIO, CONCAT(ALU.NOMBRES, ' ', ALU.APELLIDOS) as NOMBRE, PERM.NOMBRE as ROL 
             from CREDENCIALES as CRED, ALUMNOS as ALU, PERMISOS as PERM, USUARIOS as US
-            where CRED.USER_ID = ALU.USER_ID and PERM.PERM_ID = US.PERM and US.USER_ID = ALU.USER_ID
+            where CRED.USER_ID = ALU.USER_ID and PERM.PERM_ID = US.PERM and US.USER_ID = ALU.USER_ID and US.ESTADO = 1
             ";
 
             $queryDOC = "
             select DOC.USER_ID as ID, CONCAT('@', CRED.USER) as USUARIO, CONCAT(DOC.NOMBRES, ' ', DOC.APELLIDOS) as NOMBRE, PERM.NOMBRE as ROL 
             from CREDENCIALES as CRED, DOCENTES as DOC, PERMISOS as PERM, USUARIOS as US
-            where CRED.USER_ID = DOC.USER_ID and PERM.PERM_ID = US.PERM and US.USER_ID = DOC.USER_ID
+            where CRED.USER_ID = DOC.USER_ID and PERM.PERM_ID = US.PERM and US.USER_ID = DOC.USER_ID and US.ESTADO = 1
             ";
 
             $search_id = (int) $search;
