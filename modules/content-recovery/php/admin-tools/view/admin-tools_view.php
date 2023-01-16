@@ -175,14 +175,22 @@
                             <br>
                             <h1 class="athSubtitle">Exportar<hr></h1>
                             <div class="athButtons">
-                                <input type="button" value="Descargar" id="inpBtnATSave" onclick="OzyTool.stream('Llamen a Dios', OzyTool.CONST.WARN)")>
+                                <input type="button" value="Descargar" id="inpBtnATDownload">
                             </div>
                         </div>
                     <div class="atHideFrames">
-                        <div class="athFrame">
+                        <div class="athFrame" id="athFrame1">
+                            <div class="athText">
+                                Se va a reemplazar el contenido de las bases de datos<br>¿Quieres continuar?
+                            </div>
+                            <div class="athButtons">
+                                <input type="button" value="No" id="inpBtnATCloseFrame1">
+                                <input type="submit" value="Si" id="inpBtnATYes">
+                            </div>
                         </div>
                     </div>
                 </div>
+                <script src="/modules/admin-tools/js/database.js"></script>
             HTML;
 
             return $HTML;

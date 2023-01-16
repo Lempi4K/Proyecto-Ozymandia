@@ -1,5 +1,6 @@
 <?php
-    use Firebase\JWT\JWT;
+
+use OzyTool\OzyTool;
 
     class CanvasModel{
         //Miembros de datos
@@ -11,9 +12,10 @@
 
         //Constructor
         public function __construct(){
+            $ozy_tool = new OzyTool();
             if(isset($_COOKIE["token"])){
                 $token_ck = $_COOKIE["token"];
-                $dataT = JWT::decode($_COOKIE["token"], "P.O.");
+                $dataT = $ozy_tool->jwt_decode($_COOKIE["token"], "P.O.");
 
                 $user_id = $dataT->uid;
 

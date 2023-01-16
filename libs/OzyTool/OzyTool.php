@@ -27,25 +27,25 @@ class OzyTool{
      * Nombre del usuario en la base de datos
      * @var string
      */
-    protected string $db_user;
+    public string $db_user;
 
     /**
      * Contraseña de la base de datos
      * @var string
      */
-    protected string $db_password;
+    public string $db_password;
 
     /**
      * Host de la base de datos
      * @var string
      */
-    protected string $db_host = "127.0.0.1";
+    public string $db_host = "127.0.0.1";
 
     /**
      * Puerto de la base de datos
      * @var string
      */
-    protected string $db_port = "27017";
+    public string $db_port = "27017";
 
     /**
      * Contraseña con la cual se encripta un token
@@ -158,10 +158,55 @@ class OzyTool{
                     {$message}
                 </p>
             </div>
-            <script>
-                setInterval(() => {location.href="/iniciar-sesion"}, 2000);
-            </script>
         HTML;
+    }
+
+    public function defaultResponse(){
+        return [
+            "success" => true,
+            "message" => "Acción realizada con exito",
+            "data" => [
+
+            ],
+            "error" => [
+                "indicator" => false,
+                "number" => 0,
+                "message" => "",
+            ],
+            "warn" => [
+                "indicator" => false,
+                "number" => 0,
+                "message" => "",
+            ],
+        ];
+    }
+
+    function killApp($errorCode, $errorMessage){
+        $response = $this->defaultResponse();
+        $response["success"] = false;
+        $response["error"]["indicator"] = true;
+        $response["error"]["number"] = $errorCode;
+        $response["error"]["message"] = $errorMessage;
+        echo json_encode($response);
+        die();
+    }
+
+    function cursorVerificator($cursor, &$sql, $transaction = true){
+        if($cursor->errorCode() != "0000"){
+            if($transaction){
+                $sql->getDbh()->rollBack();
+            }
+            killApp($cursor->errorInfo()[0], $cursor->errorInfo()[2]);
+        }
+        return;
+    }
+
+    function warnApp($warnCode, $warnMessage, &$response){
+        $response["success"] = true;
+        $response["warn"]["indicator"] = true;
+        $response["warn"]["number"] = $warnCode;
+        $response["warn"]["message"] = $warnMessage;
+
     }
 }
 ?>

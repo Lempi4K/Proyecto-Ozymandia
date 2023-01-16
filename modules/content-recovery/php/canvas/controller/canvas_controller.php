@@ -1,7 +1,8 @@
 <?php
     include("canvas/model/canvas_model.php");
     include("canvas/view/canvas_view.php");
-    use Firebase\JWT\JWT;
+use OzyTool\OzyTool;
+
     class CanvasController{
         //Miembros de datos
         private $article_id;
@@ -33,6 +34,7 @@
         }
         
         public function isMyArticle($aid){
+            $ozy_tool = new OzyTool();
             try{
                 if($aid == 0){
                     return true;
@@ -47,7 +49,7 @@
                 $mongo = Simple_MongoDB::connection("ARTICLES_DATA", 1);
                 $cursor = $mongo->ARTICLES_DATA->RECIPES->findOne($query);
 
-                $dataT = JWT::decode($_COOKIE["token"], "P.O.");
+                $dataT = $ozy_tool->jwt_decode($_COOKIE["token"]);
                 $perm = $dataT->prm;
                 $uid = $dataT->uid;
                 if(is_null($cursor)){

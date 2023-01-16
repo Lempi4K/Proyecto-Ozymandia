@@ -1,5 +1,4 @@
 <?php
-    use Firebase\JWT\JWT;
     class AsideModel{
         //Miembros de datos
         private $cursor;

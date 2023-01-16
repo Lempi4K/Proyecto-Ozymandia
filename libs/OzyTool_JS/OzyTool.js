@@ -80,5 +80,41 @@ var OzyTool = class {
         WARN: 1,
         ERROR: 2,
         MESSAGE: 3,
-    }    
+    }
+    
+    static async defaultAJAXListener(
+                                    url, 
+                                    params, 
+                                    passFunction = (data) => {}, 
+                                    refuseFunction = (data) => {})
+                                    {
+        let response = await OzyTool.AJAX(url, params);
+
+        if(!response.success){
+            OzyTool.stream("Error fatal en el servidor", OzyTool.CONST.ERROR);
+            console.log(response.response);
+            return -1;
+        }
+
+        if(response.response.error.indicator){
+            OzyTool.stream("Error #" + response.response.error.number + " :: " + response.response.error.message, OzyTool.CONST.ERROR);
+            return 0;
+        }
+
+        if(response.response.warn.indicator){
+            OzyTool.stream("Advertencia " + response.response.warn.number + " :: " + response.response.warn.message, OzyTool.CONST.WARN);
+        } 
+        
+        if(!response.response.success){
+            refuseFunction(response.response.data);
+            return 1;
+        }
+
+        if(response.response.message != ""){
+            OzyTool.stream(response.response.message, OzyTool.CONST.MESSAGE);
+        }
+        passFunction(response.response.data);
+        return 2;
+
+    }
 }

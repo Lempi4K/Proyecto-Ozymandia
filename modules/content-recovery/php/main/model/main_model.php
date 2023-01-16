@@ -1,5 +1,7 @@
 <?php
-    use Firebase\JWT\JWT;
+
+use OzyTool\OzyTool;
+
     class MainModel{
         //Miembros de datos
         private $cursor;
@@ -11,6 +13,7 @@
 
         //Constructor
         public function __construct($section = 0, $article_id, $start = 0){
+            $ozy_tool = new OzyTool();
             $this->start = $start;
             $this->article_id = (int) $article_id;
             $id_index = 2;
@@ -33,7 +36,7 @@
                     array_push($query['$and'][4]['$or'], array( "meta.sublabel" => 1 ));
 
                     if(!empty($_COOKIE["token"])){
-                        $dataT = JWT::decode($_COOKIE["token"], "P.O.");
+                        $dataT = $ozy_tool->jwt_decode($_COOKIE["token"]);
                         $perm = $dataT->prm;
 
                         if($perm > 0 && $perm <= 3){
@@ -89,7 +92,7 @@
                 case (3):{
                     try{
                         $query['$and'][1]["meta.label"] = 2;
-                        $dataT = JWT::decode($_COOKIE["token"], "P.O.");
+                        $dataT = $ozy_tool->jwt_decode($_COOKIE["token"]);
                         $uid = $dataT->uid;
                         $sql = "select LABEL_ID as LABEL, SUBLABEL_ID as SUBLABEL from USER_LABELS where USER_ID = $uid;";
 

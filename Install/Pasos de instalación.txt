@@ -52,7 +52,7 @@ PASOS DE INSTALACIÓN (MongoDB)
         - use ARTICLES_DATA
         - db.createCollection("RECIPES")
         - use admin
-        - db.createUser({ user: "Admin", pwd: "090722Admin*", roles: [{ role: "userAdminAnyDatabase", db: "admin" }, "readWriteAnyDatabase"]})
+        - db.createUser({ user: "Admin", pwd: "090722Admin*", roles: ["root"]})
         - db.createUser({ user: "Editor", pwd: "090722Editor*", roles: [{ role: "readWrite", db: "ARTICLES_DATA" }, "readWriteAnyDatabase"]})
         - db.createUser({ user: "User", pwd: "090722User*", roles: [{ role: "readWrite", db: "ARTICLES_DATA" }]})
 

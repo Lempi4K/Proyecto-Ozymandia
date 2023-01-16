@@ -2,7 +2,7 @@
     class AsideView{
         //Miembros de datos
         private $model;
-
+        private $HTML;
 
         //constructor
         public function __construct($model){

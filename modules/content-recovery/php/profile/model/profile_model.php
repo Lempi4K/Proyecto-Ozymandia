@@ -1,5 +1,4 @@
 <?php
-    use Firebase\JWT\JWT;
     class ProfileModel{
         //Miembros de datos
         private $data = null;
@@ -10,9 +9,10 @@
 
         //Constructor
         public function __construct($section, $start){
+            $ozy_tool = new OzyTool\OzyTool();
             $this->start = $start;
             if(isset($_COOKIE["token"])){
-                $dataT = JWT::decode($_COOKIE["token"], "P.O.");
+                $dataT = $ozy_tool->jwt_decode($_COOKIE["token"]);
 
                 $user_id = (int) $dataT->uid;
 

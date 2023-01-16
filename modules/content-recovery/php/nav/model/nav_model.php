@@ -1,5 +1,7 @@
 <?php
-    use Firebase\JWT\JWT;
+
+use OzyTool\OzyTool;
+
     class NavModel{
         //Miembros de datos
         private $cursor;
@@ -8,10 +10,11 @@
 
         //Constructor
         public function __construct($article_id, $subtype){
+            $ozy_tool = new OzyTool();
             $article_id = (int) $article_id;
             $this->subtype = $subtype;
             if(isset($_COOKIE["token"])){
-                $dataT = JWT::decode($_COOKIE["token"], "P.O.");
+                $dataT = $ozy_tool->jwt_decode($_COOKIE["token"]);
                 $perm = $dataT->prm;
                 $visibility = ($perm > 4 || $perm < 1) ? 2 : 3;
 

@@ -1,5 +1,5 @@
 <?php
-    use Firebase\JWT\JWT;
+
     class SearchModel{
         //Miembros de datos
         private $cursor;
@@ -13,6 +13,7 @@
             $this->start = $start;
             $query = null;
             $options = null;
+            $ozy_tool = new OzyTool\OzyTool();
 
             $orderSTR = (int) $order == -1 ? '$lte' : '$gte';
 
@@ -47,7 +48,7 @@
                     array_push($query['$and'], ["meta.label" => 2]);
                 } else{
                     if(isset($_COOKIE["token"])){
-                        $dataT = JWT::decode($_COOKIE["token"], "P.O.");
+                        $dataT = $ozy_tool->jwt_decode($_COOKIE["token"]);
                         $perm = (int) $dataT->prm;
                         //Bsucar forma de mejorar seguridad
                         array_push($query['$and'], ["meta.label" => 1]);

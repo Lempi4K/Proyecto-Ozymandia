@@ -1,7 +1,8 @@
 <?php
 
+use OzyTool\OzyTool;
+
     require $_SERVER['DOCUMENT_ROOT'] . "/vendor/autoload.php";
-    use Firebase\JWT\JWT;
 
     /**
      * Fabrica la cadena del elemento del AEM según el tipo
@@ -97,7 +98,8 @@
      * @return boolean
      */
     function mySublabel($sublabel){
-        $dataT = JWT::decode($_COOKIE["token"], "P.O.");
+        $ozy_tool = new OzyTool();
+        $dataT = $ozy_tool->jwt_decode($_COOKIE["token"], "P.O.");
         $uid = $dataT->uid;
 
         $sql = "select count(1) as EXIST from USER_LABELS where USER_ID = $uid and SUBLABEL_ID = $sublabel;";
@@ -117,6 +119,8 @@
      * @return string HTML
      */
     function articleDecoder($article, $single = false){
+        $ozy_tool = new OzyTool();
+
         $query = "select concat(ALU.NOMBRES, ' ', ALU.APELLIDOS) as NOM, USER, US.PERM from ALUMNOS as ALU join CREDENCIALES as CRED join USUARIOS as US where CRED.USER_ID = " . ($article["meta"]["autor_uid"]) . " and ALU.USER_ID = " . ($article["meta"]["autor_uid"]) . " and US.USER_ID = " . ($article["meta"]["autor_uid"]) . ";";
         $data = "";
         try{
@@ -207,7 +211,7 @@
             HTML;
         }
         if(!empty($_COOKIE["token"])){
-            $dataT = JWT::decode($_COOKIE["token"], "P.O.");
+            $dataT = $ozy_tool->jwt_decode($_COOKIE["token"]);
             $perm = $dataT->prm;
             $id = $dataT->uid;
             if((($perm > 0 && $perm < 4) || (int) $article["meta"]["autor_uid"] == (int) $id) && $single){
@@ -247,7 +251,7 @@
                     );
                     $uid = 0;
                     if(isset($_COOKIE["token"])){
-                    $uid = (int) Firebase\JWT\JWT::decode($_COOKIE["token"], "P.O.")->uid;
+                    $uid = (int) $ozy_tool->jwt_decode($_COOKIE["token"])->uid;
                     }
                     $response = $client->request("GET", $item["url"], [
                         "query" => [
