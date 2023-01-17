@@ -1376,7 +1376,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` (`USER_ID`, `PERM`, `ESTADO`, `TIPO`) VALUES (1,1,1,1),(2,1,1,2),(3,5,1,1),(4,0,1,1),(5,4,1,2),(6,4,1,2),(7,4,1,2),(8,4,1,2),(9,4,1,2),(10,4,1,2),(11,2,1,2),(12,3,1,2),(13,6,1,1),(14,3,1,2),(15,3,1,2);
+INSERT INTO `usuarios` (`USER_ID`, `PERM`, `ESTADO`, `TIPO`) VALUES (1,1,1,1),(2,1,1,2),(3,5,1,1),(4,0,1,1),(5,4,1,2),(6,4,1,2),(7,4,1,2),(8,4,1,2),(9,4,1,2),(10,4,1,2),(11,2,1,2),(12,3,1,2),(13,6,1,1),(14,4,1,2),(15,3,1,2);
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -1412,4 +1412,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-01-15 19:11:54
+-- Dump completed on 2023-01-16 18:26:00

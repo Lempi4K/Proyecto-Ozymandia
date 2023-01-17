@@ -18,6 +18,7 @@ use OzyTool\DB\Simple_MySQL;
 use OzyTool\DB\Simple_MongoDB;
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
+use PhpZip\ZipFile;
 
 /**
  * Herramienta con la cual se desarrolla el Proyecto Ozymandia
@@ -58,6 +59,12 @@ class OzyTool{
      * @var string
      */
     public $jwt_alg = "HS256";
+
+    /**
+     * Algoritmo con el cual se encripta un token
+     * @var string
+     */
+    public $zipPass = "P.O.";
 
     /**
      * Tipo de usuarios en las bases de datos
@@ -181,7 +188,7 @@ class OzyTool{
         ];
     }
 
-    function killApp($errorCode, $errorMessage){
+    public function killApp($errorCode, $errorMessage){
         $response = $this->defaultResponse();
         $response["success"] = false;
         $response["error"]["indicator"] = true;
@@ -191,7 +198,7 @@ class OzyTool{
         die();
     }
 
-    function cursorVerificator($cursor, &$sql, $transaction = true){
+    public function cursorVerificator($cursor, &$sql, $transaction = true){
         if($cursor->errorCode() != "0000"){
             if($transaction){
                 $sql->getDbh()->rollBack();
@@ -201,12 +208,16 @@ class OzyTool{
         return;
     }
 
-    function warnApp($warnCode, $warnMessage, &$response){
+    public function warnApp($warnCode, $warnMessage, &$response){
         $response["success"] = true;
         $response["warn"]["indicator"] = true;
         $response["warn"]["number"] = $warnCode;
         $response["warn"]["message"] = $warnMessage;
 
+    }
+
+    public function Zip(){
+        return new ZipFile();
     }
 }
 ?>

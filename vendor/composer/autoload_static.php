@@ -23,11 +23,13 @@ class ComposerStaticInitc2f1828ec202e76a1dccc45518bb9d90
         'S' => 
         array (
             'Symfony\\Polyfill\\Php80\\' => 23,
+            'Symfony\\Component\\Finder\\' => 25,
         ),
         'P' => 
         array (
             'Psr\\Http\\Message\\' => 17,
             'Psr\\Http\\Client\\' => 16,
+            'PhpZip\\' => 7,
         ),
         'M' => 
         array (
@@ -58,6 +60,10 @@ class ComposerStaticInitc2f1828ec202e76a1dccc45518bb9d90
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-php80',
         ),
+        'Symfony\\Component\\Finder\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/finder',
+        ),
         'Psr\\Http\\Message\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/http-factory/src',
@@ -66,6 +72,10 @@ class ComposerStaticInitc2f1828ec202e76a1dccc45518bb9d90
         'Psr\\Http\\Client\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/http-client/src',
+        ),
+        'PhpZip\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/nelexa/zip/src',
         ),
         'MongoDB\\' => 
         array (

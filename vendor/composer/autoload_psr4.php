@@ -8,8 +8,10 @@ $baseDir = dirname($vendorDir);
 return array(
     'Vendor\\Ozymandia\\' => array($baseDir . '/src'),
     'Symfony\\Polyfill\\Php80\\' => array($vendorDir . '/symfony/polyfill-php80'),
+    'Symfony\\Component\\Finder\\' => array($vendorDir . '/symfony/finder'),
     'Psr\\Http\\Message\\' => array($vendorDir . '/psr/http-factory/src', $vendorDir . '/psr/http-message/src'),
     'Psr\\Http\\Client\\' => array($vendorDir . '/psr/http-client/src'),
+    'PhpZip\\' => array($vendorDir . '/nelexa/zip/src'),
     'MongoDB\\' => array($vendorDir . '/mongodb/mongodb/src'),
     'Jean85\\' => array($vendorDir . '/jean85/pretty-package-versions/src'),
     'GuzzleHttp\\Psr7\\' => array($vendorDir . '/guzzlehttp/psr7/src'),

@@ -3,7 +3,7 @@
         'name' => 'vendor/ozymandia',
         'pretty_version' => 'dev-develop',
         'version' => 'dev-develop',
-        'reference' => '691432aea95260816db8a10fa57e9b53eb88cb16',
+        'reference' => 'd1ccb73b91fc0108c50ec4ac35d7ec3db1b48a50',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -71,6 +71,17 @@
             'install_path' => __DIR__ . '/../mongodb/mongodb',
             'aliases' => array(
                 0 => '1.16.x-dev',
+            ),
+            'dev_requirement' => false,
+        ),
+        'nelexa/zip' => array(
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'reference' => '330c724ce6980a7ae0e00e0e7072893282644c6f',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../nelexa/zip',
+            'aliases' => array(
+                0 => '9999999-dev',
             ),
             'dev_requirement' => false,
         ),
@@ -143,6 +154,15 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'symfony/finder' => array(
+            'pretty_version' => '6.3.x-dev',
+            'version' => '6.3.9999999.9999999-dev',
+            'reference' => '725285d8b254c57f061801e3e8210effe361c929',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../symfony/finder',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'symfony/polyfill-php80' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
@@ -157,7 +177,7 @@
         'vendor/ozymandia' => array(
             'pretty_version' => 'dev-develop',
             'version' => 'dev-develop',
-            'reference' => '691432aea95260816db8a10fa57e9b53eb88cb16',
+            'reference' => 'd1ccb73b91fc0108c50ec4ac35d7ec3db1b48a50',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

@@ -56,7 +56,7 @@
         }
         $HTML .= <<< HTML
                 <div class="frmInpText">
-                    <input type="text" id="inpTxtUser" placeholder="User" required pattern="[A-Za-z1-9@!#*%./]{5,14}" value="{$platformData['USUARIO']}" {$disabled}>
+                    <input type="text" id="inpTxtUser" placeholder="User" required pattern="[A-Za-z1-9@!#*%./]{5,20}" value="{$platformData['USUARIO']}" {$disabled}>
                     <label for="inpTxtUser" class="no_select">Usuario</label>
                 </div>
         HTML;

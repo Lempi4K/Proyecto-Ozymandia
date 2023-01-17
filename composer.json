@@ -16,6 +16,7 @@
     "require": {
         "guzzlehttp/guzzle": "7.5.x-dev",
         "mongodb/mongodb": "1.16.x-dev",
-        "firebase/php-jwt": "dev-main"
+        "firebase/php-jwt": "dev-main",
+        "nelexa/zip": "dev-master"
     }
 }
