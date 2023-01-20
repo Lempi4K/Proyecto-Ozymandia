@@ -60,7 +60,7 @@ var OzyTool = class {
             "spotError",
             "spotMessage"
         ];
-        console.log(classLst);
+        //console.log(classLst);
         spot.className = "spot " + classLst[conf - 1]
         spot.style.display = "block";
         let listener = spot.animate(animationIn, animateOptions);
@@ -117,4 +117,5 @@ var OzyTool = class {
         return 2;
 
     }
+
 }

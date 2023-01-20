@@ -20,7 +20,7 @@ AdminTools.Header = class {
 }
 
 function Header(){
-    let section = (getParameterByName("section") == 0 ? 1 : getParameterByName("section"));
+    let section = getParameterByName("section");
     console.log(section);
     document.getElementById("inpRdbtnMenu" + section).checked = true;
     window.history.pushState({}, "xd", "herramientas" + "?section=" + section);

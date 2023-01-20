@@ -26,3 +26,8 @@ Ozy.*
         General
         Admin
         Invit
+
+    Articles
+        pubArticleWithoutAprovation
+    Canvas.*
+        see

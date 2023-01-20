@@ -61,7 +61,7 @@ class OzyTool{
     public $jwt_alg = "HS256";
 
     /**
-     * Algoritmo con el cual se encripta un token
+     * Contraseña del zip
      * @var string
      */
     public $zipPass = "P.O.";
@@ -218,6 +218,39 @@ class OzyTool{
 
     public function Zip(){
         return new ZipFile();
+    }
+
+    public function rmDir_rf($folder){
+        foreach(glob($folder . "/*") as $archives){             
+            if (is_dir($archives)){
+                $this->rmDir_rf($archives);
+            } else{
+                unlink($archives);
+            }
+        }
+        rmdir($folder);
+    }
+
+    function full_copy( $source, $target ) {
+        if ( is_dir( $source ) ) {
+            @mkdir( $target );
+            $d = dir( $source );
+            while ( FALSE !== ( $entry = $d->read() ) ) {
+                if ( $entry == '.' || $entry == '..' ) {
+                    continue;
+                }
+                $Entry = $source . '/' . $entry; 
+                if ( is_dir( $Entry ) ) {
+                    $this->full_copy( $Entry, $target . '/' . $entry );
+                    continue;
+                }
+                copy( $Entry, $target . '/' . $entry );
+            }
+     
+            $d->close();
+        }else {
+            copy( $source, $target );
+        }
     }
 }
 ?>

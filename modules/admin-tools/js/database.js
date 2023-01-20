@@ -31,6 +31,7 @@ function database(){
 
         AdminTools.Database.file = file;
         AdminTools.openFrame(document.getElementById("athFrame1"));
+        console.log("xddd");
     });
 
     document.getElementById("inpBtnATCloseFrame1").addEventListener("click", e => {
@@ -38,15 +39,10 @@ function database(){
         AdminTools.closeFrame(document.getElementById("athFrame1"));
     });
 
-    document.getElementById("inpBtnATYes").addEventListener("click", e => {
-        OzyTool.stream("Se ha completado con satisfacción", OzyTool.CONST.MESSAGE);
-        AdminTools.Database.file = null;
-        AdminTools.closeFrame(document.getElementById("athFrame1"));
-    });
-
-    document.getElementById("inpBtnATDownload").addEventListener("click", async e => {
-        let url = "/modules/admin-tools/scripts/Database/export.php";
+    document.getElementById("inpBtnATYes").addEventListener("click", async e => {
+        let url = "/modules/admin-tools/scripts/Database/import.php";
         let body = new FormData();
+        body.append("zip", AdminTools.Database.file);
         const options = {
             method : "POST",
             headers: {
@@ -56,8 +52,54 @@ function database(){
             
         };
 
+        let response = "";
+
+        document.getElementById("inpBtnATYes").disabled = true;
+        document.getElementById("inpBtnATCloseFrame1").disabled = true;
+
+        let text = "";
+        try{
+            let res = await fetch(url, options), json = await res.text();
+            if (!res.ok){
+                throw new Error("AJAX-Request-Failed");
+            }
+            text = json;
+            response = JSON.parse(json);
+        }catch(err){
+            console.log(text);
+            OzyTool.stream("Error en el servidor", OzyTool.CONST.ERROR);
+            AdminTools.Database.file = null;
+            AdminTools.closeFrame(document.getElementById("athFrame1"));
+            document.getElementById("inpBtnATYes").disabled = false;
+            document.getElementById("inpBtnATCloseFrame1").disabled = false;
+            return;
+        }
+
+        if(response.error.indicator){
+            console.log()
+            OzyTool.stream("Error #"+ response.error.number + " :: " + response.error.message, OzyTool.CONST.ERROR);
+            AdminTools.Database.file = null;
+            AdminTools.closeFrame(document.getElementById("athFrame1"));
+            document.getElementById("inpBtnATYes").disabled = false;
+            document.getElementById("inpBtnATCloseFrame1").disabled = false;
+            return;
+        }
+
+        OzyTool.stream(response.message, OzyTool.CONST.MESSAGE);
+        AdminTools.Database.file = null;
+        AdminTools.closeFrame(document.getElementById("athFrame1"));
+        document.getElementById("inpBtnATYes").disabled = false;
+        document.getElementById("inpBtnATCloseFrame1").disabled = false;
+    });
+
+    document.getElementById("inpBtnATDownload").addEventListener("click", async e => {
+        document.getElementById("inpBtnATDownload").disabled = true;
+
+        let url = "/modules/admin-tools/scripts/Database/export.php";
 
         let text;
+        OzyTool.stream("Se ha iniciado la solicitud al servidor", OzyTool.CONST.MESSAGE);
+
         try{
             let res = await fetch(url), response = await res.blob();
             if (!res.ok){
@@ -66,23 +108,13 @@ function database(){
 
             text = response;
 
-            let file = new Blob(response);
-
         }catch(err){
-
+            OzyTool.stream("Error : " + err, OzyTool.CONST.ERROR);
         }
 
 
         OzyTool.stream("Comenzando descarga", OzyTool.CONST.MESSAGE);
         
-        /*
-        var byteArray = new Uint8Array(text.length/2);
-        for (var x = 0; x < byteArray.length; x++){
-            byteArray[x] = parseInt(text.substr(x*2,2), 16);
-        }*/
-
-        //let file = new Blob([text], {type: "application/zip"});
-        //file.name = "wwasdfw.zip";
         let file = text;
 
         file.name = "Backup.ozy";
@@ -93,6 +125,7 @@ function database(){
         link.click();
         URL.revokeObjectURL(link.href);
         
+        document.getElementById("inpBtnATDownload").disabled = false;
     });
 }
 

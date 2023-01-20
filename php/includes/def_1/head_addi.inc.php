@@ -35,6 +35,7 @@
         @import url("/css/def_1/admin-tools/admin-tools.css") screen;
         @import url("/css/def_1/admin-tools/users.css") screen;
         @import url("/css/def_1/admin-tools/database.css") screen;
+        @import url("/css/def_1/admin-tools/articles-aprove.css") screen;
 
         @import url("/css/responsive/index.css") screen;     
 </style>

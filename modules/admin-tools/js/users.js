@@ -137,7 +137,6 @@ function Users (){
         user_object["FORM"] = [];
         for(let item of formData.entries()){
             if(item[0] == "TIPO"){
-                console.log("Chido Carnal")
                 continue;
             }
             user_object["FORM"][item[0]] = item[1];
@@ -229,7 +228,7 @@ function Users (){
         if(response.response.warnI){
             OzyTool.stream("Advertencia " + response.response.warn.number + " :: " + response.response.warn.message, OzyTool.CONST.WARN);
         } else{
-            OzyTool.stream("Usuario con exito", OzyTool.CONST.MESSAGE);
+            OzyTool.stream("Usuario eliminado con exito", OzyTool.CONST.MESSAGE);
         }
 
         AdminTools.Users.unselectRow(document.querySelector(".selectedRow"));

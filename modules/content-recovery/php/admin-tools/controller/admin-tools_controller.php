@@ -35,7 +35,15 @@ use OzyTool\User;
 
             $content = "";
             switch((int) $this->section){
-                case 0:
+                case 0: {
+                    if(! $user->hasPerm("Ozy.AdminTools.aproveArticles.see")){
+                        $content = $ozy_tool->displayErrorMessage(BLOCK_MESSAGE);
+                        break;
+                    }
+
+                    $content = $this->view->displayAproveArticles();
+                    break;
+                }
                 case 1: {
                     if(! $user->hasPerm("Ozy.AdminTools.users.see")){
                         $content = $ozy_tool->displayErrorMessage(BLOCK_MESSAGE);
@@ -88,7 +96,14 @@ use OzyTool\User;
                             <div class="atMenu">
                                 <ul>
                 HTML;
-                if($user->hasPerm("Ozy.AdminTools.users.see")){
+                    $HTML .= <<< HTML
+                                        <li>
+                                            <input type="radio" name="inpRdbtnMenu" id="inpRdbtnMenu0" title="Publicaciones Pendientes" checked value="0">
+                                            <label for="inpRdbtnMenu0">
+                                                <i class="fa-solid fa-square-check"></i>
+                                            </label>
+                                        </li>
+                    HTML;
                     $HTML .= <<< HTML
                                         <li>
                                             <input type="radio" name="inpRdbtnMenu" id="inpRdbtnMenu1" title="Usuarios" checked value="1">
@@ -97,8 +112,6 @@ use OzyTool\User;
                                             </label>
                                         </li>
                     HTML;
-                }
-                if($user->hasPerm("Ozy.AdminTools.database.see")){
                     $HTML .= <<< HTML
                                         <li>
                                             <input type="radio" name="inpRdbtnMenu" id="inpRdbtnMenu2" title="Base de Datos" value="2">
@@ -107,8 +120,6 @@ use OzyTool\User;
                                             </label>
                                         </li>
                     HTML;
-                }
-                if($user->hasPerm("Ozy.AdminTools.labels.see")){
                     $HTML .= <<< HTML
                                         <li>
                                             <input type="radio" name="inpRdbtnMenu" id="inpRdbtnMenu3" title="Etiquetas" disabled value="3">
@@ -117,8 +128,6 @@ use OzyTool\User;
                                             </label>
                                         </li>
                     HTML;
-                }
-                if($user->hasPerm("Ozy.AdminTools.roles.see")){
                     $HTML .= <<< HTML
                                         <li>
                                             <input type="radio" name="inpRdbtnMenu" id="inpRdbtnMenu4" title="Roles" disabled value="4">
@@ -127,7 +136,6 @@ use OzyTool\User;
                                             </label>
                                         </li>
                     HTML;
-                }
                 $HTML .= <<< HTML
                                 </ul>
                             </div>

@@ -20,7 +20,7 @@
     }
 
     try {
-        $query = "mysqldump -u {$ozy_tool->db_user} --password={$ozy_tool->db_password} --all-databases --add-drop-database --add-drop-table --complete-insert > {$folder}/MySQL.sql";
+        $query = "mysqldump -u {$ozy_tool->db_user} --password={$ozy_tool->db_password} --add-drop-database --add-drop-table --complete-insert --databases USER_DATA > {$folder}/MySQL.sql";
         exec($query);
     } catch (\Throwable $th) {
     }
@@ -37,8 +37,6 @@
             $mongodump, $user, $password, $host, $port, $folder);
         
         exec($query, $output);
-        foreach($output as $item){
-        }
         //echo $output;
     } catch (\Throwable $th) {
     }
@@ -47,17 +45,19 @@
     $zip = $ozy_tool->Zip();
     $zip->addDirRecursive($folder . "/");
 
-    $zip->addEmptyDir("/media");
+    //$zip->addEmptyDir("/media");
     if(file_exists($_SERVER['DOCUMENT_ROOT'] . "/media/")){
         $zip->addDirRecursive($_SERVER['DOCUMENT_ROOT'] . "/media/", "/media");
     }
 
-    $zip->addEmptyDir("/OPI");
+    //$zip->addEmptyDir("/OPI");
     if(file_exists($_SERVER['DOCUMENT_ROOT'] . "/OPI/")){
         $zip->addDirRecursive($_SERVER['DOCUMENT_ROOT'] . "/OPI/", "/OPI");
     }
-
+    //$zip->setPassword($ozy_tool->zipPass);
     $zip->outputAsAttachment("archive.zip", 'application/zip');
-
+    //$zip->saveAsFile("archive.zip");
     rmDir_rf($folder);
+
+    flush();
 ?>

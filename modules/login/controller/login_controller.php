@@ -28,8 +28,11 @@
 
         if($model->getToken()){
             $token = $model->getTokenStr();
-            $dataT = (JWT::decode($token, new Key($key, "HS256")));
-            if(($dataT->exp - $time) <= 0){
+            try{
+                $dataT = (JWT::decode($token, new Key($key, "HS256")));
+            } catch(Exception $e){
+                list($header, $payload, $signature) = explode(".", $token);
+                $dataT = json_decode(base64_decode($payload));
                 $dataT->iat = $time;
                 $dataT->exp = $time + $a_time;
                 $token = JWT::encode((array) $dataT, $key, "HS256");
@@ -51,6 +54,7 @@
 
 
             $model->setToken($token);
+            
         }
 
         setcookie("token", $token, ($time + $a_time), "/", $_SERVER["HTTP_HOST"], false, true);

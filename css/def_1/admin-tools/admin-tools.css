@@ -6,7 +6,7 @@
 
 .atReplazableContainer{
     width: 100%;
-    height: 100%;
+    height: calc(100% - 45px);
     padding: 20px;
     padding-top: 0px;
     margin-top: 45px;
@@ -138,6 +138,7 @@
     box-shadow: var(--font-color_1) 0px 0px 10px 1px;
     margin-bottom: 20px;
     justify-content: center;
+    overflow: hidden;
 }
 
 .attButtons{
@@ -218,7 +219,7 @@ tr.selectedRow td{
 
 .atHideFrames{
     width: 100%;
-    height: calc(100% - 45px);
+    height: calc(100%);
     position: absolute;
     display: flex;
     align-items: center;
