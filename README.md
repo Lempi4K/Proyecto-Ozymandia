@@ -1,4 +1,19 @@
 [![Proyecto Ozymandia](https://i.imgur.com/dGSrHUf.png)](https://github.com/Lempi4K/Proyecto-Ozymandia)
+
+# **Beta 3**
+## _v0.3.0_
+### Cambios
+- Ozymandia's AdminTools (Experimental)
+    - La herramienta perfecta para los administradores
+    - Edita, agrega, elimina y visualiza la base de datos respecto a los usuarios
+    - Importa y exporta la base de datos
+        - Tráfico de archivos con extensión ".ozy"
+    - Aprueba y desaprueba los artículos de las personas con acceso limitado (Maqueta)
+- Permisos
+    - Se crea un nuevo sistema más práctico para manejar permisos en subaplicaciones
+- OzyTool
+    - Simplifica la manera de programar la página
+
 # **Beta 2**
 ## _v0.2.0_
 ### Cambios
