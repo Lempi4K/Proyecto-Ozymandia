@@ -5,15 +5,15 @@
  */
 async function AJAXrequestChckToken(path){
     const blackList = {
-        "/perfil": [-1, -1],
-        "/aplicaciones": [-1, -1],
-        "/iniciar-sesion": [-2, 0, 1, 2, 3, 4, 5, 6],
-        "/lienzo": [-1, 0],
-        "/pruebas": [-1, 0, 2, 3, 4, 5, 6]
+        "/perfil": "Ozy.Profile.see",
+        "/aplicaciones": "Ozy.Aplications.see",
+        "/iniciar-sesion": "Ozy.Login.see",
+        "/lienzo": "Ozy.Canvas.see",
+        "/pruebas": "Ozy.Tests.see"
     };
     const url = "/modules/check-token/controller/check-token_controller.php";
     const params = {
-        blkPerm: blackList[path] || [-2, -2]
+        blkPerm: blackList[path] || "",
     };
     //console.log(params.blkPerm)
     const options = {
@@ -36,6 +36,8 @@ async function AJAXrequestChckToken(path){
             throw new Error(new String((json.errors)).replace(";", '\n'));
         }
     } catch (err){
+        let res = await fetch (url, options), json = await res.text();
+        console.log(json);
         console.log("JavaScript.login_ajax:AJAX-Error: " + err);
     }
 }

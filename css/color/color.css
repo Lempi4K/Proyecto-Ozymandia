@@ -72,6 +72,9 @@
     --admintools-color_1: #195b96;
     --admintools-color_2: #103c63b0;
     --admintools-color_3: #de780b;
+    --admintools-color_4: rgba(0, 0, 0, 0.4);
+    --admintools-color_5: rgb(12, 145, 12);
+    --admintools-color_6: rgb(145, 12, 12);
     --admintools-hover-color_1: rgba(255, 255, 255, 0.1);
     --admintools-select-color_1: rgba(255, 255, 255, 0.2);
 }

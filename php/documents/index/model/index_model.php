@@ -1,9 +1,5 @@
 <?php
-    include($_SERVER['DOCUMENT_ROOT']."/modules/Simple_MongoDB_lib/Simple_MongoDB.php");
-    include($_SERVER['DOCUMENT_ROOT']."/modules/Simple_MySQL_lib/Simple_MySQL.php");
-    require $_SERVER['DOCUMENT_ROOT'] . "/vendor/autoload.php";
-    use Firebase\JWT\JWT;
-    use Firebase\JWT\Key;
+    use OzyTool\OzyTool;
     class IndexModel{
         //Miembros de datos
         /** 
@@ -44,10 +40,12 @@
 
         //Constructor
         public function __construct(){
+            $ozy_tool = new OzyTool();
             if(isset($_COOKIE["token"])){
+
                 $token = $_COOKIE["token"];
                 try{
-                    $tokenData = JWT::decode($token, new Key("P.O.", "HS256"));
+                    $tokenData = $ozy_tool->jwt_decode($token);
                 }catch (Exception $e){
                     $this->valid_token = false;
                     return;
@@ -58,7 +56,7 @@
                 $this->perm = (int) $tokenData->prm;
 
                 try{
-                    $this->db_handler =  new S_MySQL("USER_DATA");
+                    $this->db_handler =  $ozy_tool->MySQL();
 
                     if(! $this->db_handler->exist("'" . $token . "'", "TOKEN", "CREDENCIALES")){
                         $this->valid_token = false;
@@ -87,7 +85,7 @@
                             array("delete" => false)
                         )
                     );
-                    $mongo = Simple_MongoDB::connection("ARTICLES_DATA", 1);
+                    $mongo = $ozy_tool->MongoDB();
                     $this->aside_cursor = $mongo->ARTICLES_DATA->RECIPES->find($query);
                 } catch(Exception $e){
                     $this->errors = $this->errors . "PHP.profile_model:Construct:DB-Error:" . $e->getMessage() . ";";
@@ -102,7 +100,7 @@
                             array("delete" => false)
                         )
                     );
-                    $mongo = Simple_MongoDB::connection("ARTICLES_DATA", 1);
+                    $mongo = $ozy_tool->MongoDB();
                     $this->aside_cursor = $mongo->ARTICLES_DATA->RECIPES->find($query);
                 } catch(Exception $e){
                     $this->errors = $this->errors . "PHP.profile_model:Construct:DB-Error:" . $e->getMessage() . ";";

@@ -112,31 +112,27 @@
                                 <ul>
                                     <i id="flsReset" class="fa-solid fa-xmark"></i>
             HTML;
-            for($i = 1; $i <=3; $i++){
-                if($this->model->getPermitedLabel($i)){
-                    $HTML .= <<< HTML
-                                    <li>
-                                        <input type="radio" name="inpRdbtnLbl" value="{$i}" id="inpRdbtnLbl{$i}">
-                                        <label for="inpRdbtnLbl{$i}" id="frmLabel{$this->model->getPermitedLabelName($i)}">{$this->model->getPermitedLabelName($i)}</label>
-                                        <ul class="subLabels">
-                    HTML;
-                    for($j = 0; $j < count($this->model->getLabels()); $j++){
-                        if($this->model->getLabels()[$j]["LABEL"] == $i && $this->model->getLabels()[$j]["LABEL"] != 3){
-                            $HTML .= <<< HTML
-                                            <li>
-                                                <input type="radio" id='inpRdbtnSlbl{$j}' class="inpRdbtnSlbl icl{$this->model->getPermitedLabelName($i)}" value='{$this->model->getLabels()[$j]["SUBLABEL"]}' name='inpRdbtnSlbl'>
-                                                <label for='inpRdbtnSlbl{$j}' class="frmSubLabel">{$this->model->getLabels()[$j]["SUBLABEL_N"]}</label>
-                                            </li>
-                            HTML;
-                        } else{
-                            continue;
-                        }
-                    }
-                    $HTML .= <<< HTML
-                                        </ul>
-                                    </li>
-                    HTML;
+
+            foreach($this->model->labels as $key => $value){
+
+                $HTML .= <<< HTML
+                                <li>
+                                    <input type="radio" name="inpRdbtnLbl" value="{$this->model->labels_id[$key]}" id="inpRdbtnLbl{$this->model->labels_id[$key]}">
+                                    <label for="inpRdbtnLbl{$this->model->labels_id[$key]}" id="frmLabel{$key}">{$key}</label>
+                                    <ul class="subLabels">
+                HTML;
+                foreach($value as $skey => $svalue){
+                        $HTML .= <<< HTML
+                                        <li>
+                                            <input type="radio" id='inpRdbtnSlbl{$skey}' class="inpRdbtnSlbl icl{$key}" value='{$skey}' name='inpRdbtnSlbl'>
+                                            <label for='inpRdbtnSlbl{$skey}' class="frmSubLabel">{$svalue}</label>
+                                        </li>
+                        HTML;
                 }
+                $HTML .= <<< HTML
+                                    </ul>
+                                </li>
+                HTML;
             }
             $HTML .= <<< HTML
                                 </ul>

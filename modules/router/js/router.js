@@ -103,6 +103,7 @@ async function handleLocation(container = "replazable-content", section = (getPa
     if(! await AJAXrequestChckToken(window.location.pathname)){
         document.getElementById("block-display-main").style.display = "flex";
         setInterval(() => {location.href="/inicio"}, 2800);
+        console.log("Router");
     } else{
         let idLoadAnimation = container === "replazable-content" ? "charging-display-content" : "charging-display-container_sub";
         console.log(idLoadAnimation);

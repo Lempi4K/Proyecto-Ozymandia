@@ -1,4 +1,5 @@
 var AdminTools = {
+    AproveArticle: null,
     Header: null,
     Users: null,
     Database: null,

@@ -36,7 +36,7 @@ use OzyTool\User;
             $content = "";
             switch((int) $this->section){
                 case 0: {
-                    if(! $user->hasPerm("Ozy.AdminTools.aproveArticles.see")){
+                    if(! $user->hasPerm("Ozy.AdminTools.approveArticles.see")){
                         $content = $ozy_tool->displayErrorMessage(BLOCK_MESSAGE);
                         break;
                     }

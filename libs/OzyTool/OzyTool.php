@@ -171,7 +171,7 @@ class OzyTool{
     public function defaultResponse(){
         return [
             "success" => true,
-            "message" => "Acción realizada con exito",
+            "message" => "",
             "data" => [
 
             ],

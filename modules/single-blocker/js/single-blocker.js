@@ -8,5 +8,6 @@ window.addEventListener("load", async e => {
     if(! await AJAXrequestChckToken(path)){
         document.getElementById("block-display-main").style.display = "flex";
         setInterval(() => {location.href="/inicio"}, 2800);
+        console.log("SingleBlocker");
     }
 });

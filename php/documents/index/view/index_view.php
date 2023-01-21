@@ -1,4 +1,5 @@
 <?php
+    use OzyTool\OzyTool;
     class IndexView{
         //Miembros de datos
         /** 
@@ -18,6 +19,8 @@
          * @return HTML
         */
         public function displayTopBar(){
+            $ozy_tool = new OzyTool();
+            $user = $ozy_tool->User();
             $charsPerms = array("-1" => "I","0" => "U", "1" => "A", "2" => "D", "3" => "M", "4" => "P", "5" => "J", "6" => "C");
             $name = ($this->model->getPerm() == -1) ? "Invitado" : $this->model->getName();
             $HTML = <<< HTML
@@ -41,7 +44,7 @@
                                 <ul id="main-menu">
             HTML;
 
-            if($this->model->getPerm() != -1){
+            if($user->hasPerm("Ozy.Profile.see")){
                 $HTML .= <<< HTML
                                     <li>
                                         <a class="c_click no_select frame_change" data-url="perfil">
@@ -62,7 +65,7 @@
                                     </li>
             HTML;
 
-            if($this->model->getPerm() >= 1 && $this->model->getPerm() <= 4){
+            if($user->hasPerm("Ozy.AdminTools.see")){
                 $HTML .= <<< HTML
                                         <li>
                                             <a class="c_click no_select frame_change" data-url="herramientas">
@@ -73,7 +76,7 @@
                 HTML;
             }
 
-            if($this->model->getPerm() == 1){
+            if($user->hasPerm("Ozy.Test.see")){
                 $HTML .= <<< HTML
                                         <li>
                                             <a class="c_click no_select frame_change" data-url="pruebas">
@@ -84,7 +87,7 @@
                 HTML;
             }
 
-            if($this->model->getPerm() == -1){
+            if($user->hasPerm("Ozy.Login.see")){
                 $HTML .= <<< HTML
                                         <li>
                                             <a class="c_click no_select" href="/iniciar-sesion">
@@ -405,7 +408,7 @@
                         <section id="central-content">
                             <div class="charging-display-container" id="charging-display-content"><div></div></div>
                             <div id="replazable-content"></div>
-                            <div class="spot"><div class="spotMessageText">asdasdasd</div></div>
+                            <div class="spot"><div class="spotMessageText"></div></div>
                         </section>
                         {$this->displayLateralContent()}
                     </main>

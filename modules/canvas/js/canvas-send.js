@@ -106,7 +106,8 @@ async function AJAX_SendCanvas(articleJSON, id=0){
         console.log(json);
         return json.data.success;
     } catch (err){
-        console.log(err)
+        let res = await fetch (url, options), json = await res.text();
+        console.log(json)
         return false;
     }
 }

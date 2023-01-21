@@ -118,11 +118,13 @@
                         </label>
                     </div>
                     <div class="atFrame">
-                        <div class="atCentralText">
-                            Nada por aprobar<br>*Maqueta*
+                        <div class="atArticlesCointainer">
+
                         </div>
+                        <div class="charging-display-container charging-display-container_sub" id="charging-display-container_articles"><div></div></div>
                     </div>
                 </div>
+                <script src="/modules/admin-tools/js/approve-article.js"></script>
             HTML;
 
             return $HTML;

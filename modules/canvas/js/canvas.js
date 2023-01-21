@@ -72,7 +72,8 @@ async function canvas(){
             },
             AEM: new Array(),
             blocked: false,
-            delete: false
+            delete: false,
+            approved: false,
         };
 
         if(getParameterByName("id") != ""){

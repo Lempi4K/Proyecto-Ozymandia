@@ -1,10 +1,5 @@
 <?php
-    include($_SERVER['DOCUMENT_ROOT']."/modules/Simple_MongoDB_lib/Simple_MongoDB.php");
-    include($_SERVER['DOCUMENT_ROOT']."/modules/Simple_MySQL_lib/Simple_MySQL.php");
-
-    include($_SERVER['DOCUMENT_ROOT']."/libs/php-jwt-master/src/JWT.php");
-    use Firebase\JWT\JWT;
-
+    use OzyTool\OzyTool;
     class Canvas_Model{
         //Miembros de datos
 
@@ -22,8 +17,9 @@
 
         //Constructor
         public function __construct($articleJSON){
+            $ozy_tool = new OzyTool(1);
             if(isset($_COOKIE["token"])){
-                $dataT = JWT::decode($_COOKIE["token"], "P.O.");
+                $dataT = $ozy_tool->jwt_decode($_COOKIE["token"]);
 
                 $user_id = $dataT->uid;
 
@@ -33,7 +29,7 @@
 
                 if($this->article["meta"]["label"] == 1 && $this->article["meta"]["sublabel"] == 4){
                     $query = "select GEN_LABEL from ALUMNOS where USER_ID = $user_id";
-                    $db_handler = new S_MySQL("USER_DATA");
+                    $db_handler = $ozy_tool->MySQL();
                     $gen_lbl = $db_handler->console($query);
                     if($gen_lbl != null && $gen_lbl->rowCount() > 0){
                         $gen_lbl->setFetchMode(PDO::FETCH_BOTH);
@@ -53,7 +49,8 @@
         public function sendArticle(){
             if(isset($this->article)){
                 try{
-                    $mongo = Simple_MongoDB::connection("ARTICLES_DATA", 1);
+                    $ozy_tool = new OzyTool(1);
+                    $mongo = $ozy_tool->MongoDB();
                     $mongo->ARTICLES_DATA->RECIPES->insertOne($this->article);
                     return true;
                 }catch (Exception $e){
@@ -69,15 +66,4 @@
             return $this->errors;
         }
     }
-    /*
-    $mongo = Simple_MongoDB::connection("ARTICLES_DATA", 1);
-    var_dump($mongo->ARTICLES_DATA->RECIPES->find());
-    $mongo->ARTICLES_DATA->RECIPES->insertOne();
-    print("aaaa")
-    
-    $mongo = Simple_MongoDB::connection("ARTICLES_DATA", 1);
-    foreach($mongo->ARTICLES_DATA->RECIPES->find() as $item){
-        print(var_dump($item["AEM"][0]["pdf"]));
-    }
-    */
 ?>

@@ -56,7 +56,7 @@
         }
         $HTML .= <<< HTML
                 <div class="frmInpText">
-                    <input type="text" id="inpTxtUser" placeholder="User" pattern="[A-Za-z.1-9].[^@!#*%/()]{5,20}" value="{$platformData['USUARIO']}" {$disabled}>
+                    <input type="text" id="inpTxtUser" placeholder="User" pattern="[A-Za-z.0-9].[^@!#*%/()]{5,20}" value="{$platformData['USUARIO']}" {$disabled}>
                     <label for="inpTxtUser" class="no_select">Usuario</label>
                 </div>
         HTML;
@@ -64,7 +64,7 @@
         if($user->hasPerm("Ozy.AdminTools.users.db.platformData.pass")){
             $HTML .= <<< HTML
                     <div class="frmInpText">
-                        <input type="text" id="inpTxtPass" placeholder="Pass" pattern="[A-Za-z1-9@!#*%/]{5,20}" value="{$platformData['CONTRASENA']}">
+                        <input type="text" id="inpTxtPass" placeholder="Pass" pattern="[A-Za-z0-9@!#*%/]{5,20}" value="{$platformData['CONTRASENA']}">
                         <label for="inpTxtPass" class="no_select">Contraseña</label>
                     </div>
             HTML;

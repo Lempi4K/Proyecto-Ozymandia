@@ -39,6 +39,12 @@
     height: 100px;
 }
 
+.charging-display-container_sub{
+    display: none;
+    height: 100%;
+    z-index: 29;
+}
+
 #charging-display-container_sub{
     display: none;
     z-index: 18;

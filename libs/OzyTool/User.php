@@ -73,7 +73,7 @@
             }
         }
 
-        public function hasPerm(string $perm){
+        public function hasPerm(string $perm, $heredate = true){
             $dbh = $this->ozy_tool->MySQL();
             if($dbh == null){
                 return false;
@@ -98,6 +98,30 @@
 
                 if($cursor->rowCount() != 0){
                     return true;
+                }
+            }
+
+            if($this->prm > 0 && $heredate){
+                $query = "select 1 from PERMISOS where (PERM_ID > {$this->prm} || PERM_ID = 0) && PERMISOS like ('%{$perm}%')";
+                $cursor = $dbh->console($query);
+                if($cursor->rowCount() != 0){
+                    return true;
+                }
+
+                $concatPerm = "";
+                foreach(explode(".", $perm) as $item){
+                    if($item === "*"){
+                        return false;
+                    }
+    
+                    $concatPerm = $item . ".";
+                    $nPerm = $concatPerm . "*";
+                    $query = "select 1 from PERMISOS where (PERM_ID > {$this->prm} || PERM_ID = 0) && PERMISOS like ('%{$nPerm}%')";
+                    $cursor = $dbh->console($query);
+    
+                    if($cursor->rowCount() != 0){
+                        return true;
+                    }
                 }
             }
             

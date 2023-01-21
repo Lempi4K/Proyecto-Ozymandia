@@ -23,6 +23,7 @@ use OzyTool\OzyTool;
                     array("meta.label" => 0),
                     array("meta.id" => array('$lte' => $start)),
                     array("delete" => false),
+                    array("approved" => true),
                     array(
                         '$or' => array(   
                         )
@@ -33,28 +34,28 @@ use OzyTool\OzyTool;
                 case (0):{}
                 case (1):{
                     $query['$and'][1]["meta.label"] = 1;
-                    array_push($query['$and'][4]['$or'], array( "meta.sublabel" => 1 ));
+                    array_push($query['$and'][5]['$or'], array( "meta.sublabel" => 1 ));
 
                     if(!empty($_COOKIE["token"])){
                         $dataT = $ozy_tool->jwt_decode($_COOKIE["token"]);
                         $perm = $dataT->prm;
 
                         if($perm > 0 && $perm <= 3){
-                            array_push($query['$and'][4]['$or'], array("meta.sublabel" => 2));
-                            array_push($query['$and'][4]['$or'], array("meta.sublabel" => 3));
-                            array_push($query['$and'][4]['$or'], array("meta.sublabel" => 4));
-                            array_push($query['$and'][4]['$or'], array("meta.label" => 1));
-                            array_push($query['$and'][4]['$or'], array("meta.label" => 3));
+                            array_push($query['$and'][5]['$or'], array("meta.sublabel" => 2));
+                            array_push($query['$and'][5]['$or'], array("meta.sublabel" => 3));
+                            array_push($query['$and'][5]['$or'], array("meta.sublabel" => 4));
+                            array_push($query['$and'][5]['$or'], array("meta.label" => 1));
+                            array_push($query['$and'][5]['$or'], array("meta.label" => 3));
                             $query['$and'][1]["meta.label"] = ['$ne' => 2];
                             //array_splice($query['$and'], 1, 1);
                             break;
                         }
                         if($perm == 4){
-                            array_push($query['$and'][4]['$or'], array("meta.sublabel" => 3));
+                            array_push($query['$and'][5]['$or'], array("meta.sublabel" => 3));
                             break;
                         }
                         if($perm == 0 || $perm > 4){
-                            array_push($query['$and'][4]['$or'], array("meta.sublabel" => 2));
+                            array_push($query['$and'][5]['$or'], array("meta.sublabel" => 2));
                             
                             $user_id = $dataT->uid;
                             $sql = "select GEN_LABEL from ALUMNOS where USER_ID = $user_id";
@@ -72,7 +73,7 @@ use OzyTool\OzyTool;
                                 $gen_lbl = "";
                             }
 
-                            array_push($query['$and'][4]['$or'], array( "meta.gen_label" => $gen_lbl));
+                            array_push($query['$and'][5]['$or'], array( "meta.gen_label" => $gen_lbl));
                             break;
                         }
                     } else{
@@ -87,6 +88,7 @@ use OzyTool\OzyTool;
                     array_push($query['$and'], [
                         "meta.sublabel" => ['$ne' => null]
                     ]);
+                    
                     break;
                 }
                 case (3):{
@@ -100,18 +102,18 @@ use OzyTool\OzyTool;
                         $data = $db_handler->console($sql);
 
                         if($data == null || $data->rowCount() <= 0){
-                            array_push($query['$and'][4]['$or'], array( "meta.sublabel" => 0 ));
+                            array_push($query['$and'][5]['$or'], array( "meta.sublabel" => 0 ));
                             break;
                         }
 
                         $data->setFetchMode(PDO::FETCH_BOTH);
 
                         while($row = $data->fetch()){
-                            array_push($query['$and'][4]['$or'], array( "meta.sublabel" => (int)$row["SUBLABEL"] ));
+                            array_push($query['$and'][5]['$or'], array( "meta.sublabel" => (int)$row["SUBLABEL"] ));
                         }
 
                     }catch (Exception $e){
-                        array_push($query['$and'][4]['$or'], array( "meta.sublabel" => 0 ));
+                        array_push($query['$and'][5]['$or'], array( "meta.sublabel" => 0 ));
                         break;
                     }
                     break;

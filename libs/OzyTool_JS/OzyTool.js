@@ -97,6 +97,7 @@ var OzyTool = class {
         }
 
         if(response.response.error.indicator){
+            refuseFunction(response.response.data);
             OzyTool.stream("Error #" + response.response.error.number + " :: " + response.response.error.message, OzyTool.CONST.ERROR);
             return 0;
         }
@@ -107,14 +108,14 @@ var OzyTool = class {
         
         if(!response.response.success){
             refuseFunction(response.response.data);
-            return 1;
+            return 2;
         }
 
         if(response.response.message != ""){
             OzyTool.stream(response.response.message, OzyTool.CONST.MESSAGE);
         }
         passFunction(response.response.data);
-        return 2;
+        return 1;
 
     }
 

@@ -22,9 +22,13 @@ Ozy.*
                 .delete
         .labels.*
         .roles.*
+        .approveArticles.*
+            .see
+
     Labels.*
         General
         Admin
+        Group
         Invit
 
     Articles

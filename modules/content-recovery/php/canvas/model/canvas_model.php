@@ -4,7 +4,8 @@ use OzyTool\OzyTool;
 
     class CanvasModel{
         //Miembros de datos
-        private $labels = array();
+        public $labels = array();
+        public $labels_id = array();
         private $perm;
         private $sections = array();
         private $db_handler;
@@ -20,75 +21,79 @@ use OzyTool\OzyTool;
                 $user_id = $dataT->uid;
 
                 $this->perm = $dataT->prm;
+                $this->db_handler = $ozy_tool->MySQL();
+                $user = $ozy_tool->User();
+                $user->getSublabels();
 
-                $query = "";
-                switch ((int) $this->perm){
-                    case 0:{
-                        break;
-                    }
-                    case 1:{
-                    }
-                    case 2:{
-                    }
-                    case 3:{
-                        $query = "select ET.NOMBRE as LABEL_N, ET.LABEL_ID as 'LABEL', SUET.NOMBRE as SUBLABEL_N , SUET.SUBLABEL_ID as 'SUBLABEL' from ETIQUETAS as ET join SUBETIQUETAS as SUET where ET.LABEL_ID = SUET.LABEL_ID and SUET.SUBLABEL_ID != 0 and (SUET.SUBLABEL_ID != 4 or ET.LABEL_ID != 1)";
-                        break;
-                    }
-                    case 4:{
-                    }
-                    case 6:{
-                        $query = "select ET.NOMBRE as LABEL_N, PL.LABEL_ID as 'LABEL', SUET.NOMBRE as SUBLABEL_N , PL.SUBLABEL_ID as 'SUBLABEL' from PERM_LABELS as PL join ETIQUETAS as ET join SUBETIQUETAS as SUET where PL.USER_ID = $user_id and PL.LABEL_ID = ET.LABEL_ID and PL.LABEL_ID = SUET.LABEL_ID and PL.SUBLABEL_ID = SUET.SUBLABEL_ID;";
-                        break;
-                    }
-                    case 5:{
-                        $query = "select ET.NOMBRE as LABEL_N, SUET.LABEL_ID as 'LABEL', SUET.NOMBRE as SUBLABEL_N , SUET.SUBLABEL_ID as 'SUBLABEL' from ETIQUETAS as ET join SUBETIQUETAS as SUET where ET.LABEL_ID = 1 and SUET.LABEL_ID = 1 and SUET.SUBLABEL_ID = 4";
-                        break;
-                    }
-                }
-                
+
                 try{
-                    $this->db_handler = new S_MySQL("USER_DATA", 1);
-                    
-                    $data = $this->db_handler->console($query);
-                    $data->setFetchMode(PDO::FETCH_BOTH);
-                    if(!$data == null){
-                        while($row = $data->fetch()){
-                            if($row["SUBLABEL_N"] === "*" && $row["LABEL"] != 3){
-                                $label_id = $row["LABEL"];
-                                $query = "select ET.NOMBRE as LABEL_N, SUET.LABEL_ID as 'LABEL', SUET.NOMBRE as SUBLABEL_N , SUET.SUBLABEL_ID as 'SUBLABEL' from SUBETIQUETAS as SUET join ETIQUETAS as ET where SUET.LABEL_ID = $label_id and SUET.SUBLABEL_ID != 0 and ET.LABEL_ID = SUET.LABEL_ID;";
-                                
-                                $this->db_handler = new S_MySQL("USER_DATA");
-                                $data_addi = $this->db_handler->console($query);
-                                $data_addi->setFetchMode(PDO::FETCH_BOTH);
+                    $query = "select * from ETIQUETAS";
+                    $cursor = $this->db_handler->console($query);
+                    foreach($cursor as $item){
+                        $this->labels_id[$item["NOMBRE"]] = $item["LABEL_ID"];
+                    }
 
-                                while($row_addi = $data_addi->fetch()){
-                                    array_push($this->labels, $row_addi);
-                                }
-                                continue;
-                            }
-                            array_push($this->labels, $row);
+
+                    if($user->hasPerm("Ozy.Labels.Admin")){
+                        $query = "select * from ETIQUETAS where LABEL_ID = 1";
+                        $cursor = $this->db_handler->console($query);
+    
+                        $name = "";
+                        foreach($cursor as $item){
+                            $name = $item["NOMBRE"];
+                            break;
+                        }
+                        $this->labels[$name] = [];
+    
+                        $query = "select * from SUBETIQUETAS where LABEL_ID = 1 and SUBLABEL_ID != 4 and SUBLABEL_ID != 0";
+                        $cursor = $this->db_handler->console($query);
+
+                        foreach($cursor as $item){
+                            $this->labels[$name][$item["SUBLABEL_ID"]] = $item["NOMBRE"];
                         }
                     }
-                    /*
-                    $this->db_handler = new S_MySQL("ARTICLES");
-                    $data = $this->db_handler->console($query);
-                    $data->setFetchMode(PDO::FETCH_BOTH);
-                    if(!$data == null){
-                        while($row = $data->fetch()){
-                            array_push($this->sections, $row);
+                    if($user->hasPerm("Ozy.Labels.Group", false) && !$user->hasPerm("Ozy.Labels.Admin")){
+                        $query = "select * from ETIQUETAS where LABEL_ID = 1";
+                        $cursor = $this->db_handler->console($query);
+    
+                        $name = "";
+                        foreach($cursor as $item){
+                            $name = $item["NOMBRE"];
+                            break;
                         }
-                    } else{
+                        $this->labels[$name] = [];
+    
+                        $query = "select * from SUBETIQUETAS where LABEL_ID = 1 and SUBLABEL_ID = 4";
+                        $cursor = $this->db_handler->console($query);
 
-                    }*/
-                    if($this->perm >= 1 && $this->perm <= 3){
-                        $this->db_handler = new S_MySQL("USER_DATA");
-                        $query = "select NOMBRE as LABEL_N, LABEL_ID as LABEL from ETIQUETAS where LABEL_ID = 3;";
-                        $label_3 = $this->db_handler->console($query);
-                        $label_3->setFetchMode(PDO::FETCH_BOTH);
-                        while($row_addi = $label_3->fetch()){
-                            array_push($this->labels, $row_addi);
+                        foreach($cursor as $item){
+                            $this->labels[$name][$item["SUBLABEL_ID"]] = $item["NOMBRE"];
                         }
                     }
+
+                    $general = $user->getSublabels()["G"];
+                    $query = "select * from ETIQUETAS where LABEL_ID = 2";
+                    $cursor = $this->db_handler->console($query);
+
+                    $name = "";
+                    foreach($cursor as $item){
+                        $name = $item["NOMBRE"];
+                        break;
+                    }
+                    $this->labels[$name] = $general;
+
+                    if($user->hasPerm("Ozy.Labels.Invit")){
+                        $query = "select * from ETIQUETAS where LABEL_ID = 3";
+                        $cursor = $this->db_handler->console($query);
+    
+                        $name = "";
+                        foreach($cursor as $item){
+                            $name = $item["NOMBRE"];
+                            break;
+                        }
+                        $this->labels[$name] = [];
+                    }
+
                 }catch (Exception $e){
                     $this->errors = $this->errors . "PHP.canvas_model:Construct:DB-Error:" . $e->getMessage() . ";";
                 }

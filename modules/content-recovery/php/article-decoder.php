@@ -99,12 +99,12 @@ use OzyTool\OzyTool;
      */
     function mySublabel($sublabel){
         $ozy_tool = new OzyTool();
-        $dataT = $ozy_tool->jwt_decode($_COOKIE["token"], "P.O.");
+        $dataT = $ozy_tool->jwt_decode($_COOKIE["token"]);
         $uid = $dataT->uid;
 
         $sql = "select count(1) as EXIST from USER_LABELS where USER_ID = $uid and SUBLABEL_ID = $sublabel;";
         try{
-            $db_handler = new S_MySQL("USER_DATA", 1);
+            $db_handler = $ozy_tool->MySQL();
             $data = $db_handler->console_FV($sql);
             return $data["EXIST"] != 0 ? true : false;
         }catch (Exception $e){
@@ -118,13 +118,13 @@ use OzyTool\OzyTool;
      * @param boolean $single
      * @return string HTML
      */
-    function articleDecoder($article, $single = false){
+    function articleDecoder($article, $single = false, $general = true){
         $ozy_tool = new OzyTool();
 
         $query = "select concat(ALU.NOMBRES, ' ', ALU.APELLIDOS) as NOM, USER, US.PERM from ALUMNOS as ALU join CREDENCIALES as CRED join USUARIOS as US where CRED.USER_ID = " . ($article["meta"]["autor_uid"]) . " and ALU.USER_ID = " . ($article["meta"]["autor_uid"]) . " and US.USER_ID = " . ($article["meta"]["autor_uid"]) . ";";
         $data = "";
         try{
-            $db_handler = new S_MySQL("USER_DATA");
+            $db_handler = $ozy_tool->MySQL();
             
             $data = $db_handler ->console($query);
             $data->setFetchMode(PDO::FETCH_BOTH);
@@ -174,7 +174,7 @@ use OzyTool\OzyTool;
                 $query = "select NOMBRE from SUBETIQUETAS where LABEL_ID = " . $article["meta"]["label"] . " and SUBLABEL_ID = " . $article["meta"]["sublabel"] . ";";
                 $label_name = "";
                 try{
-                    $db_handler = new S_MySQL("USER_DATA");
+                    $db_handler = $ozy_tool->MySQL();
                     
                     $label_name = $db_handler ->console($query);
                     $label_name->setFetchMode(PDO::FETCH_BOTH);
@@ -199,7 +199,7 @@ use OzyTool\OzyTool;
                 $article["meta"]["sublabel"] = -1;
             }
         }
-        if($article["meta"]["type"] == 1 && $article["meta"]["label"] == 2){
+        if($article["meta"]["type"] == 1 && $article["meta"]["label"] == 2 && $general){
             $checked = mySublabel($article['meta']['sublabel']) ? "checked" : "";
             $header .= <<< HTML
                             <div class="article_followBtn">
@@ -214,7 +214,7 @@ use OzyTool\OzyTool;
             $dataT = $ozy_tool->jwt_decode($_COOKIE["token"]);
             $perm = $dataT->prm;
             $id = $dataT->uid;
-            if((($perm > 0 && $perm < 4) || (int) $article["meta"]["autor_uid"] == (int) $id) && $single){
+            if((($perm == 1) || (int) $article["meta"]["autor_uid"] == (int) $id) && $single){
                 $header .= <<< HTML
                             <div class="article_AdminMenu">
                                 <div data-aid="{$article['meta']['id']}" class="article_deleteBtn"><i class="fa-solid fa-trash"></i></div>
