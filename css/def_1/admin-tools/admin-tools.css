@@ -313,15 +313,15 @@ tr.selectedRow td{
     margin-bottom: 10px;
 }
 
-.frmInpText > input[type="text"]:focus, .frmInpText > input[type="password"]:focus{
+.atContainer .frmInpText > input[type="text"]:focus, .frmInpText > input[type="password"]:focus{
     border-color: var(--admintools-color_1);
 }
 
-.frmInpText > input[type="text"]:focus + label, .frmInpText > input[type="password"]:focus + label{
+.atContainer .frmInpText > input[type="text"]:focus + label, .frmInpText > input[type="password"]:focus + label{
     color: var(--admintools-color_1);
 }
 
-.frmInpText > input[type="text"]:focus
+.atContainer .frmInpText > input[type="text"]:focus
 
 .cnvEditElement{
     display: block;

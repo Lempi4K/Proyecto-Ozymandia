@@ -79,7 +79,7 @@
                 return false;
             }
 
-            $query = "select 1 from PERMISOS where PERM_ID = {$this->prm} && PERMISOS like ('%{$perm}%')";
+            $query = "select 1 from PERMISOS where PERM_ID = {$this->prm} and PERMISOS like ('%{$perm}%')";
             $cursor = $dbh->console($query);
             if($cursor->rowCount() != 0){
                 return true;
@@ -93,7 +93,7 @@
 
                 $concatPerm = $item . ".";
                 $nPerm = $concatPerm . "*";
-                $query = "select 1 from PERMISOS where PERM_ID = {$this->prm} && PERMISOS like ('%{$nPerm}%')";
+                $query = "select 1 from PERMISOS where PERM_ID = {$this->prm} and PERMISOS like ('%{$nPerm}%')";
                 $cursor = $dbh->console($query);
 
                 if($cursor->rowCount() != 0){
@@ -102,7 +102,7 @@
             }
 
             if($this->prm > 0 && $heredate){
-                $query = "select 1 from PERMISOS where (PERM_ID > {$this->prm} || PERM_ID = 0) && PERMISOS like ('%{$perm}%')";
+                $query = "select 1 from PERMISOS where (PERM_ID > {$this->prm} or PERM_ID = 0) and PERMISOS like ('%{$perm}%')";
                 $cursor = $dbh->console($query);
                 if($cursor->rowCount() != 0){
                     return true;
@@ -116,7 +116,7 @@
     
                     $concatPerm = $item . ".";
                     $nPerm = $concatPerm . "*";
-                    $query = "select 1 from PERMISOS where (PERM_ID > {$this->prm} || PERM_ID = 0) && PERMISOS like ('%{$nPerm}%')";
+                    $query = "select 1 from PERMISOS where (PERM_ID > {$this->prm} or PERM_ID = 0) and PERMISOS like ('%{$nPerm}%')";
                     $cursor = $dbh->console($query);
     
                     if($cursor->rowCount() != 0){
