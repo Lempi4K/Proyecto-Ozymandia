@@ -3,7 +3,7 @@
 # **Beta 3**
 ## _v0.3.1_
 ### Cambios
-- Se terminó la opzion "Approve Articles"
+- Se terminó la opción "Approve Articles"
     - Aprueba los artículos de usuarios normales en el apartado de General
     - Rechaza artículos que no sean de tu interés
 - Ozymandia's Canvas se actualiza
