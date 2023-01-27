@@ -28,3 +28,7 @@
 .frame-active{
     display: block;
 }
+
+#cnvTitle > h1{
+    font-family: var(--font-text_1);
+}

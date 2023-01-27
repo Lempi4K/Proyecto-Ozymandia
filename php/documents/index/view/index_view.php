@@ -70,7 +70,7 @@
                                         <li>
                                             <a class="c_click no_select frame_change" data-url="herramientas">
                                                 <i class="fa-solid fa-screwdriver-wrench"></i>
-                                                Ozymandia's Admin Tools
+                                                Ozymandia's AdminTools
                                             </a>
                                         </li>
                 HTML;
@@ -87,7 +87,7 @@
                 HTML;
             }
 
-            if($user->hasPerm("Ozy.Login.see")){
+            if($user->hasPerm("Ozy.Login.see") && !$user->hasPerm("Ozy.*")){
                 $HTML .= <<< HTML
                                         <li>
                                             <a class="c_click no_select" href="/iniciar-sesion">

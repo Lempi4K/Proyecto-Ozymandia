@@ -157,7 +157,7 @@
             $sublabels = ["G" => []];
 
             if($this->hasPerm("Ozy.Labels.General")){
-                $query = "select * from SUBETIQUETAS where LABEL_ID = 2 && SUBLABEL_ID != 0";
+                $query = "select * from SUBETIQUETAS where LABEL_ID = 2 && SUBLABEL_ID != 0 && ESTADO = 1";
 
                 $cursor = $dbh->console($query);
                 foreach($cursor as $item){

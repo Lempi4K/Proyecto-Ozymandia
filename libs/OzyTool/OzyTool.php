@@ -72,6 +72,8 @@ class OzyTool{
      */
     public $types = [1 => "ALUMNOS", 2 => "DOCENTES"];
 
+    public $regex_NOT = "[^`;=]";
+
     public function __construct($conf = 0){
         switch ($conf){
             case 0:{
@@ -153,9 +155,7 @@ class OzyTool{
 
     public function postData(){
         header("Content-type: application/json; charset=utf-8");
-        $POST = json_decode(file_get_contents("php://input"), true);
-
-        return $POST;
+        return json_decode(file_get_contents("php://input"), true);
     }
 
     public function displayErrorMessage($message){
@@ -203,7 +203,7 @@ class OzyTool{
             if($transaction){
                 $sql->getDbh()->rollBack();
             }
-            killApp($cursor->errorInfo()[0], $cursor->errorInfo()[2]);
+            $this->killApp($cursor->errorInfo()[0], $cursor->errorInfo()[2]);
         }
         return;
     }

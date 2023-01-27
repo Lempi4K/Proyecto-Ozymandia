@@ -19,7 +19,7 @@
                 if($cursor->rowCount()){
                     foreach($cursor as $item){
                         $this->HTML = <<< HTML
-                            <iframe src="/API/nav-bar/Aplicaciones/AluHorarios/Horarios/{$item['GRADO']}{$item['GRUPO']}-V3.pdf" type="application/pdf" width="100%" height="100%"></iframe>
+                            <iframe src="/OPI/nav-bar/Aplicaciones/AluHorarios/Horarios/{$item['GRADO']}{$item['GRUPO']}-V3.pdf" type="application/pdf" width="100%" height="100%"></iframe>
                         HTML;
                     }
                     return $this->HTML;

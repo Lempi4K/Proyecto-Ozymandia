@@ -3,6 +3,8 @@ var AdminTools = {
     Header: null,
     Users: null,
     Database: null,
+    Sublabels: null,
+    Roles: null,
 
     tableUpdater: async (section, search, start = 1, func = ()=>{}) => {
         let url = "/modules/admin-tools/scripts/tableUpdater.php"

@@ -10,6 +10,11 @@
     border: none;
     cursor: pointer;
     padding: 0 10px;
+    color: var(--font-color_2)
+}
+
+#aaSlctLabel option{
+    color: var(--font-color_2)
 }
 
 .aaSlctLabel{
@@ -39,7 +44,7 @@
 .atArticlesCointainer{
     position: absolute;
     width: 100%;
-    z-index: 19;
+    z-index: 18;
     padding: 10px;
     overflow-y: auto;
 }
@@ -50,6 +55,8 @@
 
 .aaArticle{
     position: relative;
+    overflow: hidden;
+    border-radius: 10px;
 }
 
 .aaButtonsContainer{
@@ -62,10 +69,13 @@
     align-items: center;
     justify-content: center;
     background-color: var(--admintools-color_4);
+    filter: opacity(0);
+    transition: all 0.1s ease-in-out 0s;
 }
 
 .aaArticle:hover .aaButtonsContainer{
     display: flex;
+    filter: opacity(1);
 }
 
 .article:hover + .aaButtonsContainer:hover{

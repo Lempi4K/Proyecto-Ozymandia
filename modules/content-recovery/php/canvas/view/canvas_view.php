@@ -19,7 +19,7 @@
             <div class="canvas-container">
                 <div class="canvas-background"></div>
                 <div class="canvas-frame frame-active" id="cnvFrmTitle">
-                    <div class="frmHead">
+                    <div class="frmHead" id="cnvTitle">
                         <h1>Ozymandia's Canvas</h1>
                     </div>
                     <div class="frmBody">

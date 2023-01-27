@@ -18,7 +18,7 @@
     top: 0px;
     left: 0px;
     width: 100%;
-    z-index: 25;
+    z-index: 19;
 }
 
 .atMainContainer{
@@ -212,6 +212,7 @@ tr.selectedRow, .atTable .article_table tr.selectedRow:hover{
 
 tr.selectedRow td{
     background-color: var(--admintools-color_1);
+    color: var(--font-color_2);
 }
 
 .atTable .article_table thead{
@@ -350,4 +351,31 @@ tr.selectedRow td{
     align-items: center;
     padding: 20px;
     text-align: center;
+}
+
+.frmTextArea > label, .frmInpColor > label{
+    display: block;
+    font-weight: bold;
+}
+
+.frmTextArea{
+    width: 80%;
+}
+
+.frmTextArea textarea{
+    background-color: var(--article-table_tr1);
+    width: 100%;
+    max-height: 200px;
+    padding: 5px;
+    resize: none;
+    border-radius: 5px;
+    border: var(--article-table_tr2) 1px solid;
+}
+
+.frmInpColor{
+    width: 70%;
+}
+
+.frmInpColor input{
+    width: 100%;
 }

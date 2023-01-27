@@ -56,6 +56,22 @@
 
             break;
         }
+        case 3:{
+            $query = "
+                select SUBLABEL_ID as ID, NOMBRE, if(ESTADO = 1, 'Activo', 'Archivado') as ESTADO 
+                from SUBETIQUETAS 
+                where LABEL_ID = 2 and ESTADO = 1 order by SUBLABEL_ID asc;
+            ";
+            break;
+        }
+        case 4:{
+            $query = "
+                select PERM_ID as ID, NOMBRE 
+                from PERMISOS 
+                where ESTADO = 1 order by PERM_ID asc;
+            ";
+            break;
+        }
         default:{
             $query = "";
             break;
