@@ -1,5 +1,5 @@
 for(let item of document.getElementsByClassName("main-article")){
-    item.addEventListener("dblclick", e => {
+    item.addEventListener("click", e => {
         window.history.pushState({}, "xd", "/inicio" + "?id=" + item.dataset.aid);
         handleLocation();
     })
@@ -16,10 +16,27 @@ for(let item of document.getElementsByName("inpRdbtnArtdiv")){
 if(document.getElementById("articles-container") != null){
     document.getElementById("articles-container").addEventListener("AJAXLoad", e => {
         for(let item of document.getElementsByClassName("main-article")){
-            item.addEventListener("dblclick", e => {
+            item.addEventListener("click", e => {
                 window.history.pushState({}, "xd", "/inicio" + "?id=" + item.dataset.aid);
                 handleLocation();
             })
         }
+
+        for(let item of document.getElementsByClassName("article_followBtn")){
+            console.log("xdd")
+            item.addEventListener("click", e => {
+                e.stopPropagation();
+            });
+        }
+
+        follow_event();
     });
 }
+for(let item of document.getElementsByClassName("article_followBtn")){
+    console.log("xdd")
+    item.addEventListener("click", e => {
+        e.stopPropagation();
+    });
+}
+
+follow_event();

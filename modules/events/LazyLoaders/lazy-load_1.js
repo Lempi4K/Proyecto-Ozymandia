@@ -48,4 +48,3 @@ if(document.getElementById("articles-container") != null){
     });
 }
 
-follow_event()

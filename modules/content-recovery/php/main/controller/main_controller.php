@@ -55,12 +55,15 @@
                 }
                 $this->HTML .= $this->view->displayArticles();
                 $this->HTML .= <<< HTML
+                    <script src="/modules/events/singleArticles.js"></script>
                     </div>
                 HTML;
                 return $this->HTML;
             } else{
                 $this->HTML = <<< HTML
                     <div class="articles-container articles-container-single">
+                        <script src="/modules/events/LazyLoaders/lazy-load_1.js"></script>
+                        <script src="/modules/events/main.js"></script>
                 HTML;
                 $this->HTML .= $this->view->displayArticles();
                 $this->HTML .= <<< HTML

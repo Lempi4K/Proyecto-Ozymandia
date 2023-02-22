@@ -29,7 +29,8 @@
                         <div class="logo">
                             <a href="/inicio" >
                                 <img src="/src/img/logo/logo.png" alt="">
-                                <p class="no_select">CBTIS 114</p>
+                                <img src="/src/img/logo/text.png" alt="">
+                                <!--<p class="no_select">P. Ozymandia</p>-->
                             </a>
                         </div>
                         <div class="user" id="user-FoBl">

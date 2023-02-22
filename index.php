@@ -11,7 +11,7 @@
 
     PROYECTO OZYMANDIA
     @author Leonardo Moreno Pinto
-    @version Beta v0.3.1
+    @version Oficial v1.0
     @link https://github.com/Lempi4K/Proyecto-Ozymandia
                     © 2023 Lempi4K
 -->

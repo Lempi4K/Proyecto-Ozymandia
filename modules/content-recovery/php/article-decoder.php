@@ -305,7 +305,7 @@ use OzyTool\OzyTool;
                             <p>
                                 CENTRO DE BACHILLERATO TECNOL&Oacute;GICO
                                 <br>
-                                industrial y de servicios N&uacute;m. 114
+                                industrial y de servicios N&uacute;m. XXX
                             </p>
                             <hr>
                         </div>
@@ -313,7 +313,7 @@ use OzyTool\OzyTool;
                             {$AEM}
                             <hr>
                             <p class="article_end {$article['meta']['theme']}_end">
-                                ¡UNA VEZ LOBOS, SIEMPRE LOBOS!
+                                PROYECTO OZYMANDIA
                             </p>
                         </div>
                     </div>

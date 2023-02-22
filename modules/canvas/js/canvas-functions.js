@@ -26,7 +26,7 @@ function updateBase(){
                         <p>
                             CENTRO DE BACHILLERATO TECNOL&Oacute;GICO
                             <br>
-                            industrial y de servicios N&uacute;m. 114
+                            industrial y de servicios N&uacute;m. XXX
                         </p>
                         <hr>
                     </div>
@@ -398,7 +398,7 @@ function renderArticle(test=false){
         elementStr += `
         <hr>
         <p class="article_end ${article.meta.theme}_end">
-            ¡UNA VEZ LOBOS, SIEMPRE LOBOS!
+            PROYECTO OZYMANDIA
         </p>`
     }
     article_main.innerHTML = elementStr;
