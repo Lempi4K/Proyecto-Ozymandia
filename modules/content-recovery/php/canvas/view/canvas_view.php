@@ -124,8 +124,8 @@
                 foreach($value as $skey => $svalue){
                         $HTML .= <<< HTML
                                         <li>
-                                            <input type="radio" id='inpRdbtnSlbl{$skey}' class="inpRdbtnSlbl icl{$key}" value='{$skey}' name='inpRdbtnSlbl'>
-                                            <label for='inpRdbtnSlbl{$skey}' class="frmSubLabel">{$svalue}</label>
+                                            <input type="radio" id='inpRdbtnSlbl{$this->model->labels_id[$key]}_{$skey}' class="inpRdbtnSlbl icl{$key}" value='{$skey}' name='inpRdbtnSlbl'>
+                                            <label for='inpRdbtnSlbl{$this->model->labels_id[$key]}_{$skey}' class="frmSubLabel">{$svalue}</label>
                                         </li>
                         HTML;
                 }
