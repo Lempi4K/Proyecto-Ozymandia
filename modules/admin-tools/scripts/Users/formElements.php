@@ -78,7 +78,7 @@
             HTML;
             //Poner conforme permisos la query
             //$cursor = $sql->console("select * from PERMISOS where PERM_ID != 0 and PERM_ID > {$user->prm}");
-            $cursor = $sql->console("select * from PERMISOS where PERM_ID != 0");
+            $cursor = $sql->console("select * from PERMISOS where PERM_ID != -1");
             foreach($cursor as $item){
                 $selected = "";
                 if((int) $platformData["ROL"] == (int) $item['PERM_ID']){

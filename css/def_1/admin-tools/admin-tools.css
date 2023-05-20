@@ -322,8 +322,6 @@ tr.selectedRow td{
     color: var(--admintools-color_1);
 }
 
-.atContainer .frmInpText > input[type="text"]:focus
-
 .cnvEditElement{
     display: block;
 }
@@ -378,4 +376,12 @@ tr.selectedRow td{
 
 .frmInpColor input{
     width: 100%;
+}
+
+.athForm input:invalid, .athForm input[type="text"]:focus:invalid{
+    border-color: red;
+    box-shadow: red 0px 0px 10px;
+}
+.athForm input:invalid + label, .athForm input[type="text"]:focus:invalid + label{
+    color: red;
 }

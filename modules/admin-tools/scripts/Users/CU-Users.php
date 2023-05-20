@@ -112,7 +112,7 @@
 
         $where = "where USER_ID = {$user_data["USER_ID"]}";
 
-        if(isset($user_data["USER"])){
+        if(isset($user_data["USER"]) && $user_data["USER"] != false){
             if(!$user->hasPerm("Ozy.AdminTools.users.db.platformData.user")){
                 killApp(0, "No puedes hacer eso");
             }
@@ -151,7 +151,7 @@
             cursorVerificator($cursor, $sql);
         }
 
-        if(isset($user_data["PASS"])){
+        if(isset($user_data["PASS"]) && $user_data["PASS"] != false){
             $query = "update CREDENCIALES set PASS = '{$user_data["PASS"]}' $where";
             $cursor = $sql->console($query);
             cursorVerificator($cursor, $sql);

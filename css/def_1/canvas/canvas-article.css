@@ -52,7 +52,7 @@
 }
 
 #cpfElementSelector{
-    width: 50%;
+    width: 80%;
 }
 
 #cpfElementSelector > ul{
@@ -98,7 +98,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 70%;
+    width: 80%;
 }
 
 #cpfElementData > div, #cpfElementData > fieldset{

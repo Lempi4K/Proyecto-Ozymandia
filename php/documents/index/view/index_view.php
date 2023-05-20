@@ -432,6 +432,18 @@
                 </div>
             HTML;
 
+            $ozy_tool = new OzyTool();
+            if($ozy_tool->screen_saver){
+                $HTML .= <<< HTML
+                    <script src="/modules/screensaver/screensaver.js"></script>
+                    <div class="screenSaver">
+                        <video autoplay muted loop>
+                            <source src="/src/vid/Proyecto-Ozymandia.mp4">
+                        </video>
+                    </div>
+                HTML;
+            }
+
             return $HTML;
         }
     }

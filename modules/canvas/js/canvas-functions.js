@@ -138,6 +138,25 @@ function openFrames(edit=false, pub=false){
 }
 
 /**
+ * Resetea todos ls elementos para torgar datos a un elemento
+ */
+function resetElementsData(){
+    document.getElementById("cpfElementData").style.display = "none";
+    document.getElementById("cpfElementSelector").style.display = "none";
+
+    for(let item of document.getElementsByClassName("cnvEditElement")){
+        item.style.display = "none";
+    }
+
+    document.getElementById("inpTxtLink").value = "";
+    document.getElementById("inpFilePdfArticle").value = "";
+    //document.getElementById("inpFileImgArticle").value = "";
+    for(let item of document.getElementsByName("inpRdbtnAPIType")){
+        item.checked = false;
+    }
+}
+
+/**
  * Cierra la ventana emergente (Publicación o Edición)
  * @param {boolean} pub 
  */
@@ -157,19 +176,7 @@ function closeFrames(pub=false){
         cnvPntFrames.style.display = "none";
     };
     if(!pub){
-        document.getElementById("cpfElementData").style.display = "none";
-        document.getElementById("cpfElementSelector").style.display = "none";
-
-        for(let item of document.getElementsByClassName("cnvEditElement")){
-            item.style.display = "none";
-        }
-
-        document.getElementById("inpTxtLink").value = "";
-        document.getElementById("inpFilePdfArticle").value = "";
-        //document.getElementById("inpFileImgArticle").value = "";
-        for(let item of document.getElementsByName("inpRdbtnAPIType")){
-            item.checked = false;
-        }
+        resetElementsData()
 
         renderArticle();
     }
@@ -261,7 +268,6 @@ function editBarUpdate(){
     if(article.AEM.length != 0){
         if(VirtualCanvas.selectedIndex != -1){
             openEditBar();
-
             if(article.AEM[VirtualCanvas.selectedIndex].type <= 4 && article.AEM[VirtualCanvas.selectedIndex].type != 2){
                 for(let item of document.getElementsByClassName("cpebText")){
                     item.style.display = "block";
@@ -477,6 +483,7 @@ function editElements(){
         for(let item of objectProperties[article.AEM[VirtualCanvas.selectedIndex].type]){
             if(item == i){
                 cnvEditElement[i].style.display = "block";
+                console.log("aparece : " + i)
             }
         }
     }
@@ -502,6 +509,9 @@ function deleteElements(){
  * Función principal del módulo
  */
 function canvas_function(){
+
+    resetElementsData();
+
     document.querySelector(".cnvPntFrames > button").addEventListener("click", e => {
         closeFrames();
         VirtualCanvas.insert = 0;

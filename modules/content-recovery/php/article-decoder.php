@@ -39,7 +39,14 @@ use OzyTool\OzyTool;
             "5" => <<< HTML
                 <div class="article_video {$theme}_video">
                     <hr>
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/{$AEMobject['url']}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe width="560" height="315" 
+                        src="https://www.youtube.com/embed/{$AEMobject['url']}"
+                        srcdoc="<style>*{padding:0;margin:0;overflow:hidden}html,body{height:100%}img,span{position:absolute;width:100%;top:0;bottom:0;margin:auto}span{height:1.5em;text-align:center;font:48px/1.5 sans-serif;color:white;text-shadow:0 0 0.5em black}</style><a href=https://www.youtube.com/embed/{$AEMobject['url']}?autoplay=1><img src=https://img.youtube.com/vi/{$AEMobject['url']}/hqdefault.jpg alt='Youtube Video Player'><span>▶</span></a>"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen
+                        title="Youtube Video Player">
+                    </iframe>
                 </div>
                 HTML,
             "6" => <<< HTML

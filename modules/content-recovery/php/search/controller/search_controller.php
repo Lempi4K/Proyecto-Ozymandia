@@ -28,7 +28,6 @@
             if($this->start == 0){
                 $this->HTML = <<< HTML
                     <script src="/modules/search/search.js"></script>
-                    <script src="/modules/events/LazyLoaders/lazy-load_1.js"></script>
                     <div class="schTopBar-container">
                 HTML;
                 $this->HTML .= displaySearchBar();
@@ -39,7 +38,7 @@
                         <div class="articles-container" id="articles-container">
                 HTML;
 
-                if($this->q == null && $this->sublabel == null){
+                if(empty($this->q) && $this->sublabel == null){
                     $this->HTML .= <<< HTML
                             <h1>Fijados</h1>
                             <div class="aside_container aside_container_search">
@@ -51,6 +50,10 @@
                             </div>
                     HTML;
                 } else{
+                    $this->HTML .= <<< HTML
+                        <script src="/modules/events/LazyLoaders/lazy-load_1.js"></script>
+                        <script src="/modules/events/main.js"></script>
+                    HTML;
                     $this->HTML .= $this->view->displayArticles();
                 }
 
@@ -58,6 +61,9 @@
                         </div>
                 HTML;
             } else{
+                $this->HTML .= <<< HTML
+                    <script src="/modules/events/main.js"></script>
+                HTML;
                 $this->HTML .= $this->view->displayArticles();
             }
             return $this->HTML;

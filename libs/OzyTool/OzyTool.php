@@ -72,6 +72,12 @@ class OzyTool{
      */
     public $types = [1 => "ALUMNOS", 2 => "DOCENTES"];
 
+    /**
+     * Constante que indica si se visualiza el salva-pantallas
+     * @var booleam
+     */
+    public $screen_saver = true;
+
     public $regex_NOT = "[^`;=]";
 
     public function __construct($conf = 0){
