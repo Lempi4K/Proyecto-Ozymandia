@@ -321,11 +321,15 @@ function renderEvents(){
 
     for(let item of document.getElementsByClassName("cpeEditable")){
         item.addEventListener("blur", e => {
+            e.target.innerHTML = String(e.target.innerHTML).replace(/(&nbsp;)/g, "");
+            e.target.innerHTML = e.target.innerHTML.trim();
+
             if(e.target.innerHTML === ""){
                 e.target.innerHTML = "Elemento";
-                let id = new String(item.parentNode.parentNode.id);
-                article.AEM[parseInt(id.replace("cpe", ""))].content = item.innerHTML;
             }
+
+            let id = new String(item.parentNode.parentNode.id);
+            article.AEM[parseInt(id.replace("cpe", ""))].content = item.innerHTML;
         })
         item.addEventListener("input", e => {
             let id = new String(item.parentNode.parentNode.id);
@@ -446,6 +450,10 @@ function createElements(nType){
         article.AEM[0] = AEMobject;
     }
 
+    if(article.AEM.length == 1){
+        document.getElementById("cnvFrmPubBtn").disabled = false;
+    }
+
     VirtualCanvas.insert = 0;
     if(article.AEM[VirtualCanvas.selectedIndex].type > 4 || article.AEM[VirtualCanvas.selectedIndex].type == 2){
         renderArticle();
@@ -502,6 +510,11 @@ function editElements(){
 function deleteElements(){
     article.AEM.splice(VirtualCanvas.selectedIndex, 1);
     VirtualCanvas.selectedIndex = -1;
+
+    if(article.AEM.length == 0){
+        document.getElementById("cnvFrmPubBtn").disabled = true;
+    }
+
     renderArticle();
 }
 

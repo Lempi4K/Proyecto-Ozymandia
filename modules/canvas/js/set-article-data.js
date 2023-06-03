@@ -57,6 +57,15 @@ function set_article_data(){
         e.target.value = regexReplace(e.target.value);
         article.meta.title = e.target.value;
     });
+    
+
+    document.getElementById("inpTxtTitle").addEventListener("blur", e => {
+        if(e.target.value == "" || e.target.value == " "){
+            e.target.value = "Título";
+            document.getElementById("NavasicardTitle").innerHTML = e.target.value;
+            article.meta.title = e.target.value;
+        }
+    });
 
     document.getElementById("inpTxtDesc").addEventListener("input", e => {
         e.target.value = regexReplace(e.target.value);
@@ -85,9 +94,17 @@ function set_article_data(){
                 for(let item of document.querySelectorAll(".inpRdbtnSlbl")){
                     item.checked = false;
                 }
+
+                if(e.target.value == "3"){
+                    document.getElementById("cnvFrmPubBtn").value = "Publicar";
+                    document.querySelector(".cpsfMessage").innerHTML = "Seguro que quieres publicar el art&iacute;culo";
+                } else{
+                    document.getElementById("cnvFrmPubBtn").value = "Guardar";
+                    document.querySelector(".cpsfMessage").innerHTML = "Seguro que quieres guardar el borrador";
+                }
                 article.meta.sublabel = null;
                 article.meta.label = parseInt(e.target.value);
-                console.log(article.meta.label);
+                console.log(e.target.value);
             }
         });
     }

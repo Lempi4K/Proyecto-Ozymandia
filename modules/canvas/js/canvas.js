@@ -64,7 +64,7 @@ async function canvas(){
                 autor_uid: 0,
                 title: "Titulo",
                 description: "",
-                background_img: null,
+                background_img: "/src/img/logo/default-banner.jpg",
                 pub_date: "",
                 label: null,
                 sublabel: null,
@@ -120,6 +120,8 @@ async function canvas(){
             }
 
             initialData(); //set-article-data.js
+        } else{
+            document.getElementById("cnvFrmPubBtn").disabled = true;
         }
         set_article_data();
     

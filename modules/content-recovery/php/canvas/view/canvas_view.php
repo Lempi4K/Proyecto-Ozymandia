@@ -179,7 +179,7 @@
                                         </div>
                                         <i class="fa-solid fa-image"></i>
                                     </a>
-                                    <img alt="" class="article_navasicard_background">
+                                    <img alt="" class="article_navasicard_background" src="/src/img/logo/default-banner.jpg">
                                 </label>
                             </div>
                         </div>

@@ -5,6 +5,10 @@
 function route(item){
     window.history.pushState({}, "xd", item.dataset.url);
     handleLocation();
+
+
+    blur_menu(1);
+
 };
 
 /**

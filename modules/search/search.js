@@ -18,7 +18,7 @@ function searchEvents(container = document){
      * Prepara la orden para mandar a traer lo solicitado
      */
     function search(){
-        let q = document.querySelector("#inpSrhBanner").value;
+        let q = document.querySelector("#inpSrhBanner").value.trim();
         let sublabel = 0;
         for(let element of document.getElementsByName("inpRdbtnSchLabel")){
             if(element.checked){
@@ -46,7 +46,7 @@ function searchEvents(container = document){
         
     });
 
-    document.querySelector(".search-container").addEventListener("click", e => {
+    document.querySelector("#inpSrhBanner").addEventListener("click", e => {
         document.querySelector(".schBackBox").style.display = "block";
     });
 
