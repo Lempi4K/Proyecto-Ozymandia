@@ -37,10 +37,21 @@
     z-index: 31;
 }
 
+.frmBody input[type="button"]:disabled{
+    filter: brightness(0.7);
+    cursor: not-allowed;
+}
+
 
 .frmBody input[type="button"]:hover{
     background-color: white;
     color: var(--logo_color)
+}
+
+.frmBody input[type="button"]:hover:disabled{
+    filter: brightness(0.7);
+    color: white;
+    background-color: var(--logo_color);
 }
 
 .frmChangeButtons{

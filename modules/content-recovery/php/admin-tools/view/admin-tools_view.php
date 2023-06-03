@@ -138,7 +138,10 @@
                             <div class="athTitle">
                                 Base de Datos
                             </div>
-                            <h1 class="athSubtitle">Importar<hr></h1>
+                            <h1 class="athSubtitle">
+                                <i class="fa-solid fa-file-import"></i> Importar
+                                <hr>
+                            </h1>
                             <div class="athBody">
                                 <div class="frmInpFile" id="frmInpFileOzy">
                                     <input type="file" id="inpFileOzy" accept=".ozy">
@@ -154,7 +157,10 @@
                                 </div>
                             </div>
                             <br>
-                            <h1 class="athSubtitle">Exportar<hr></h1>
+                            <h1 class="athSubtitle">
+                                <i class="fa-solid fa-file-export"></i> Exportar
+                                <hr>
+                            </h1>
                             <div class="athButtons">
                                 <input type="button" value="Descargar" id="inpBtnATDownload">
                             </div>
@@ -174,6 +180,130 @@
                 <script src="/modules/admin-tools/js/database.js"></script>
             HTML;
 
+            return $HTML;
+        }
+
+        public function displaySublabelsView(){
+            $HTML = <<< HTML
+                <div class="atSublabelContainer atMainContainer">
+                    <div class="atslToolBar atToolBar">
+                        <div class="attbslButtons attButtons">
+                            <ul>
+                            <li id="attButtonAdd">
+                                <i class="fa-solid fa-plus"></i>
+                            </li>
+                            <li id="attButtonEdit" class="attButtonDisable">
+                                <i class="fa-solid fa-pen"></i>
+                            </li>
+
+                            <li id="attButtonDelete" class="attButtonDisable">
+                                <i class="fa-solid fa-box-archive"></i>
+                            </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="atFrame">
+                        <div class="atslTable atTable">
+                            <table class="article_table">
+                                <thead>
+                                    <th width="10%">ID</th>
+                                    <th width="45%">NOMBRE</th>
+                                    <th width="45%">ESTADO</th>
+                                </thead>
+                                <tbody>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="atHideFrames">
+                        <div class="athFrame" id="athFrame1">
+                            <div class="athTitle">
+                                Datos
+                            </div>
+                            <div class="athBody">
+                                <form class="athForm" id="athForm" onsubmit="return false">
+                                    <div class="athFormElementsContainer" id="athFormElementsContainer">
+
+                                    </div>
+                                    <div class="athButtons">
+                                        <input type="button" value="Cancelar" id="inpBtnATCloseFrame1">
+                                        <input type="submit" value="Guardar" id="inpBtnATSave">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="athFrame" id="athFrame2">
+                            <div class="athText">
+                                Seguro que quieres archivar esta etiqueta?
+                            </div>
+                            <div class="athButtons">
+                                <input type="button" value="No" id="inpBtnATCloseFrame2">
+                                <input type="submit" value="Si" id="inpBtnATYes">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <script src="/modules/admin-tools/js/sublabels.js"></script>
+            HTML;
+            return $HTML;
+        }
+
+        public function displayRolesView(){
+            $HTML = <<< HTML
+                <div class="atRolesContainer atMainContainer">
+                    <div class="atrlToolBar atToolBar">
+                        <div class="attbrlButtons attButtons">
+                            <ul>
+                            <li id="attButtonEdit" class="attButtonDisable">
+                                <i class="fa-solid fa-pen"></i>
+                            </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="atFrame">
+                        <div class="atrlTable atTable">
+                            <table class="article_table">
+                                <thead>
+                                    <th width="10%">ID</th>
+                                    <th width="90%">NOMBRE</th>
+                                </thead>
+                                <tbody>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="atHideFrames">
+                        <div class="athFrame" id="athFrame1">
+                            <div class="athTitle">
+                                Datos
+                            </div>
+                            <div class="athBody">
+                                <form class="athForm" id="athForm" onsubmit="return false">
+                                    <div class="athFormElementsContainer" id="athFormElementsContainer">
+
+                                    </div>
+                                    <div class="athButtons">
+                                        <input type="button" value="Cancelar" id="inpBtnATCloseFrame1">
+                                        <input type="submit" value="Guardar" id="inpBtnATSave">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="athFrame" id="athFrame2">
+                            <div class="athText">
+                                Seguro que quieres eliminar este rol?
+                            </div>
+                            <div class="athButtons">
+                                <input type="button" value="No" id="inpBtnATCloseFrame2">
+                                <input type="submit" value="Si" id="inpBtnATYes">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <script src="/modules/admin-tools/js/roles.js"></script>
+            HTML;
             return $HTML;
         }
     }

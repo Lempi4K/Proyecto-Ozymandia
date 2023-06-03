@@ -19,7 +19,7 @@
             <div class="canvas-container">
                 <div class="canvas-background"></div>
                 <div class="canvas-frame frame-active" id="cnvFrmTitle">
-                    <div class="frmHead">
+                    <div class="frmHead" id="cnvTitle">
                         <h1>Ozymandia's Canvas</h1>
                     </div>
                     <div class="frmBody">
@@ -124,8 +124,8 @@
                 foreach($value as $skey => $svalue){
                         $HTML .= <<< HTML
                                         <li>
-                                            <input type="radio" id='inpRdbtnSlbl{$skey}' class="inpRdbtnSlbl icl{$key}" value='{$skey}' name='inpRdbtnSlbl'>
-                                            <label for='inpRdbtnSlbl{$skey}' class="frmSubLabel">{$svalue}</label>
+                                            <input type="radio" id='inpRdbtnSlbl{$this->model->labels_id[$key]}_{$skey}' class="inpRdbtnSlbl icl{$key}" value='{$skey}' name='inpRdbtnSlbl'>
+                                            <label for='inpRdbtnSlbl{$this->model->labels_id[$key]}_{$skey}' class="frmSubLabel">{$svalue}</label>
                                         </li>
                         HTML;
                 }
@@ -179,7 +179,7 @@
                                         </div>
                                         <i class="fa-solid fa-image"></i>
                                     </a>
-                                    <img alt="" class="article_navasicard_background">
+                                    <img alt="" class="article_navasicard_background" src="/src/img/logo/default-banner.jpg">
                                 </label>
                             </div>
                         </div>

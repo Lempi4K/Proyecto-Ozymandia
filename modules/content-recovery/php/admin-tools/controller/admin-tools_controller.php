@@ -64,8 +64,24 @@ use OzyTool\User;
                     break;
                 }
                 case 3: {
+                    if(! $user->hasPerm("Ozy.AdminTools.sublabels.see")){
+                        $content = $ozy_tool->displayErrorMessage(BLOCK_MESSAGE);
+                        break;
+                    }
+
+
+                    $content = $this->view->displaySublabelsView();
+                    break;
                 }
                 case 4: {
+                    if(! $user->hasPerm("Ozy.AdminTools.roles.see")){
+                        $content = $ozy_tool->displayErrorMessage(BLOCK_MESSAGE);
+                        break;
+                    }
+
+
+                    $content = $this->view->displayRolesView();
+                    break;
                 }
                 default: {
                     $content = <<< HTML
@@ -98,40 +114,40 @@ use OzyTool\User;
                 HTML;
                     $HTML .= <<< HTML
                                         <li>
-                                            <input type="radio" name="inpRdbtnMenu" id="inpRdbtnMenu0" title="Publicaciones Pendientes" checked value="0">
-                                            <label for="inpRdbtnMenu0">
+                                            <input type="radio" name="inpRdbtnMenu" id="inpRdbtnMenu0" checked value="0">
+                                            <label for="inpRdbtnMenu0" title="Publicaciones Pendientes">
                                                 <i class="fa-solid fa-square-check"></i>
                                             </label>
                                         </li>
                     HTML;
                     $HTML .= <<< HTML
                                         <li>
-                                            <input type="radio" name="inpRdbtnMenu" id="inpRdbtnMenu1" title="Usuarios" checked value="1">
-                                            <label for="inpRdbtnMenu1">
+                                            <input type="radio" name="inpRdbtnMenu" id="inpRdbtnMenu1" checked value="1">
+                                            <label for="inpRdbtnMenu1" title="Usuarios">
                                                 <i class="fa-solid fa-user"></i>
                                             </label>
                                         </li>
                     HTML;
                     $HTML .= <<< HTML
                                         <li>
-                                            <input type="radio" name="inpRdbtnMenu" id="inpRdbtnMenu2" title="Base de Datos" value="2">
-                                            <label for="inpRdbtnMenu2">
+                                            <input type="radio" name="inpRdbtnMenu" id="inpRdbtnMenu2" value="2">
+                                            <label for="inpRdbtnMenu2" title="Base de Datos">
                                                 <i class="fa-solid fa-database"></i>
                                             </label>
                                         </li>
                     HTML;
                     $HTML .= <<< HTML
                                         <li>
-                                            <input type="radio" name="inpRdbtnMenu" id="inpRdbtnMenu3" title="Etiquetas" disabled value="3">
-                                            <label for="inpRdbtnMenu3">
+                                            <input type="radio" name="inpRdbtnMenu" id="inpRdbtnMenu3" value="3">
+                                            <label for="inpRdbtnMenu3" title="Etiquetas">
                                                 <i class="fa-solid fa-tag"></i>
                                             </label>
                                         </li>
                     HTML;
                     $HTML .= <<< HTML
                                         <li>
-                                            <input type="radio" name="inpRdbtnMenu" id="inpRdbtnMenu4" title="Roles" disabled value="4">
-                                            <label for="inpRdbtnMenu4">
+                                            <input type="radio" name="inpRdbtnMenu" id="inpRdbtnMenu4" value="4">
+                                            <label for="inpRdbtnMenu4" title="Roles">
                                                 <i class="fa-solid fa-key"></i>
                                             </label>
                                         </li>

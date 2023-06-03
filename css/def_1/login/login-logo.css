@@ -14,6 +14,10 @@
     margin-right: 10px;
 }
 
+.login-logo > a > .logo_text{
+    width: 150px;
+}
+
 .login-logo > a > p{
     font-family: "Cookie";
     color: #a61c41;    

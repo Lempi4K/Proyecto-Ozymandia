@@ -49,8 +49,8 @@ use Exception;
                 $this->result = $this->dbh->prepare($query);
                 $this->result->execute($tasks);
                 return $this->result;
-            } catch(Exception $e){
-                //echo "Accion CRUD no posible: $e->getMessage()";
+            } catch(\Throwable $e){
+                echo  $e->getMessage();
             }
         }
 

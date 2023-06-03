@@ -36,7 +36,7 @@ var OzyTool = class {
         }
     }
 
-    static stream(string, conf){
+    static stream(string, conf = 1){
         let spotMessage = document.querySelector(".spotMessageText");
         let spot = document.querySelector(".spot");
         spotMessage.innerHTML = string;

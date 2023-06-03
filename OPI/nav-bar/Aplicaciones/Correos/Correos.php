@@ -19,7 +19,7 @@
                 if($cursor->rowCount()){
                     foreach($cursor as $item){
                         $this->HTML = <<< HTML
-                            <p class="article_subtitle_2 article_1_subtitle_2 cpeEditable">Correo: {$item["USER"]}@cbtis114.edu.mx</p>
+                            <p class="article_subtitle_2 article_1_subtitle_2 cpeEditable">Correo: {$item["USER"]}@cbtisXXX.edu.mx</p>
                             <p class="article_subtitle_2 article_1_subtitle_2 cpeEditable">Contraseña: {$item["PASS"]}</p>
                         HTML;
                     }

@@ -20,7 +20,7 @@ Ozy.*
                 .edit
                 .add
                 .delete
-        .labels.*
+        .sublabels.*
         .roles.*
         .approveArticles.*
             .see

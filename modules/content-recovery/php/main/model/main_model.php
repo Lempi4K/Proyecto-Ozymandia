@@ -124,7 +124,9 @@ use OzyTool\OzyTool;
                             '$and' => array(
                                 array("meta.type" => 1),
                                 array("meta.id" => $this->article_id),
-                                array("delete" => false)
+                                array("delete" => false),
+                                array("approved" => true)
+
                             )
                         );
                         break;

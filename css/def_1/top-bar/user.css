@@ -57,9 +57,10 @@
     background-color: var(--color_1);
     border: var(--color_4) 1px solid;
     border-top: 0px;
-    z-index: 99;
+    z-index: 30;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
+    filter: opacity(0);
 }
 #main-menu{
     position: relative;

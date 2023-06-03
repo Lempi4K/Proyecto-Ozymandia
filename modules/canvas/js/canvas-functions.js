@@ -26,7 +26,7 @@ function updateBase(){
                         <p>
                             CENTRO DE BACHILLERATO TECNOL&Oacute;GICO
                             <br>
-                            industrial y de servicios N&uacute;m. 114
+                            industrial y de servicios N&uacute;m. XXX
                         </p>
                         <hr>
                     </div>
@@ -138,6 +138,25 @@ function openFrames(edit=false, pub=false){
 }
 
 /**
+ * Resetea todos ls elementos para torgar datos a un elemento
+ */
+function resetElementsData(){
+    document.getElementById("cpfElementData").style.display = "none";
+    document.getElementById("cpfElementSelector").style.display = "none";
+
+    for(let item of document.getElementsByClassName("cnvEditElement")){
+        item.style.display = "none";
+    }
+
+    document.getElementById("inpTxtLink").value = "";
+    document.getElementById("inpFilePdfArticle").value = "";
+    //document.getElementById("inpFileImgArticle").value = "";
+    for(let item of document.getElementsByName("inpRdbtnAPIType")){
+        item.checked = false;
+    }
+}
+
+/**
  * Cierra la ventana emergente (Publicación o Edición)
  * @param {boolean} pub 
  */
@@ -157,19 +176,7 @@ function closeFrames(pub=false){
         cnvPntFrames.style.display = "none";
     };
     if(!pub){
-        document.getElementById("cpfElementData").style.display = "none";
-        document.getElementById("cpfElementSelector").style.display = "none";
-
-        for(let item of document.getElementsByClassName("cnvEditElement")){
-            item.style.display = "none";
-        }
-
-        document.getElementById("inpTxtLink").value = "";
-        document.getElementById("inpFilePdfArticle").value = "";
-        //document.getElementById("inpFileImgArticle").value = "";
-        for(let item of document.getElementsByName("inpRdbtnAPIType")){
-            item.checked = false;
-        }
+        resetElementsData()
 
         renderArticle();
     }
@@ -261,7 +268,6 @@ function editBarUpdate(){
     if(article.AEM.length != 0){
         if(VirtualCanvas.selectedIndex != -1){
             openEditBar();
-
             if(article.AEM[VirtualCanvas.selectedIndex].type <= 4 && article.AEM[VirtualCanvas.selectedIndex].type != 2){
                 for(let item of document.getElementsByClassName("cpebText")){
                     item.style.display = "block";
@@ -315,11 +321,15 @@ function renderEvents(){
 
     for(let item of document.getElementsByClassName("cpeEditable")){
         item.addEventListener("blur", e => {
+            e.target.innerHTML = String(e.target.innerHTML).replace(/(&nbsp;)/g, "");
+            e.target.innerHTML = e.target.innerHTML.trim();
+
             if(e.target.innerHTML === ""){
                 e.target.innerHTML = "Elemento";
-                let id = new String(item.parentNode.parentNode.id);
-                article.AEM[parseInt(id.replace("cpe", ""))].content = item.innerHTML;
             }
+
+            let id = new String(item.parentNode.parentNode.id);
+            article.AEM[parseInt(id.replace("cpe", ""))].content = item.innerHTML;
         })
         item.addEventListener("input", e => {
             let id = new String(item.parentNode.parentNode.id);
@@ -398,7 +408,7 @@ function renderArticle(test=false){
         elementStr += `
         <hr>
         <p class="article_end ${article.meta.theme}_end">
-            ¡UNA VEZ LOBOS, SIEMPRE LOBOS!
+            PROYECTO OZYMANDIA
         </p>`
     }
     article_main.innerHTML = elementStr;
@@ -440,6 +450,10 @@ function createElements(nType){
         article.AEM[0] = AEMobject;
     }
 
+    if(article.AEM.length == 1){
+        document.getElementById("cnvFrmPubBtn").disabled = false;
+    }
+
     VirtualCanvas.insert = 0;
     if(article.AEM[VirtualCanvas.selectedIndex].type > 4 || article.AEM[VirtualCanvas.selectedIndex].type == 2){
         renderArticle();
@@ -477,6 +491,7 @@ function editElements(){
         for(let item of objectProperties[article.AEM[VirtualCanvas.selectedIndex].type]){
             if(item == i){
                 cnvEditElement[i].style.display = "block";
+                console.log("aparece : " + i)
             }
         }
     }
@@ -495,6 +510,11 @@ function editElements(){
 function deleteElements(){
     article.AEM.splice(VirtualCanvas.selectedIndex, 1);
     VirtualCanvas.selectedIndex = -1;
+
+    if(article.AEM.length == 0){
+        document.getElementById("cnvFrmPubBtn").disabled = true;
+    }
+
     renderArticle();
 }
 
@@ -502,6 +522,9 @@ function deleteElements(){
  * Función principal del módulo
  */
 function canvas_function(){
+
+    resetElementsData();
+
     document.querySelector(".cnvPntFrames > button").addEventListener("click", e => {
         closeFrames();
         VirtualCanvas.insert = 0;

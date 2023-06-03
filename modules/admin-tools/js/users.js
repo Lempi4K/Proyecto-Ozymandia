@@ -89,7 +89,7 @@ function Users (){
         AdminTools.Users.unselectRow(document.querySelector(".selectedRow"));
     });
 
-    document.querySelector(".atUsersContainer").addEventListener("click", e => {
+    document.querySelector(".atMainContainer").addEventListener("click", e => {
         AdminTools.Users.unselectRow(document.querySelector(".selectedRow"));
     });
     for(let item of document.getElementsByClassName("atTopBar")){

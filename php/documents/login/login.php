@@ -73,7 +73,8 @@
                 <div class="login-logo">
                     <a href="/inicio" class="no_select">
                         <img src="/src/img/logo/logo.png" alt="">
-                        <p class="no_select">CBTIS 114</p>
+                        <img src="/src/img/logo/text.png" class="logo_text" alt="">
+                        <!--<p class="no_select">CBTIS 114</p>-->
                     </a>
                 </div>
                 <form action="" class="login-form">
@@ -92,11 +93,11 @@
                 </form>
             </div>
             <footer class="no_select c_default">
-                &copy; <?php echo date("Y"); ?> C.B.T.I.s 114
+                &copy; <?php echo date("Y"); ?> C.B.T.I.s XXX
                 <br>
-                <a href="tel:(656) 887 27 06">(656) 887 27 06</a> | <a href="tel:(656) 887 27 06">(656) 887 27 07</a>
+                <a href="tel:(656) 123 45 67">(656) 123 45 67</a> | <a href="tel:(656) 234 56 78">(656) 234 56 78</a>
                 <br>
-                <a href="mailto:contacto@cbtis114.edu.mx">contacto@cbtis114.edu.mx</a>
+                <a href="mailto:contacto@cbtisXXX.edu.mx">contacto@cbtisXXX.edu.mx</a>
             </footer>
         </div>
     </div>

@@ -10,6 +10,11 @@
     border: none;
     cursor: pointer;
     padding: 0 10px;
+    color: var(--font-color_2)
+}
+
+#aaSlctLabel option{
+    color: var(--font-color_2)
 }
 
 .aaSlctLabel{
@@ -39,37 +44,46 @@
 .atArticlesCointainer{
     position: absolute;
     width: 100%;
-    z-index: 19;
+    z-index: 18;
     padding: 10px;
     overflow-y: auto;
 }
 
 .atArticlesCointainer .article{
     cursor: default;
+    border: none;
 }
 
 .aaArticle{
     position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    border: var(--article-color_1) 1px solid;
+    border-radius: 10px;
 }
 
-.aaButtonsContainer{
+.aaArticle .aaButtonsContainer{
     width: 100%;
-    height: 100%;
+    height: 100px;
     position: absolute;
-    top: 0px;
+    bottom: 0px;
     left: 0px;
-    display: none;
+    display: flex;
     align-items: center;
     justify-content: center;
     background-color: var(--admintools-color_4);
+    filter: opacity(0);
+    transition: all 0.1s ease-in-out 0s;
 }
 
 .aaArticle:hover .aaButtonsContainer{
     display: flex;
+    filter: opacity(1);
 }
 
 .article:hover + .aaButtonsContainer:hover{
     display: flex;
+
 }
 
 .aaButtons{

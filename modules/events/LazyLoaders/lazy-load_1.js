@@ -1,12 +1,29 @@
 if(document.getElementById("articles-container") != null){
     let articles_container = document.getElementById("articles-container");
     articles_container.addEventListener("scroll", async function (){
-        if(this.offsetHeight + this.scrollTop >= this.scrollHeight){
-            let articles = this.getElementsByClassName("article")
+        await lz_load_1(articles_container);
+    });
+    articles_container.addEventListener("touchmove", async function (){
+        await lz_load_1(articles_container);
+    });
+    articles_container.addEventListener("touchend", async function (){
+        await lz_load_1(articles_container);
+    });
+    articles_container.addEventListener("touchstart", async function (){
+        await lz_load_1(articles_container);
+    });
+
+    articles_container.addEventListener("AJAXLoad", e => {
+        follow_event();
+    });
+
+    async function lz_load_1(objectAC){
+        if(objectAC.offsetHeight + objectAC.scrollTop >= objectAC.scrollHeight){
+            let articles = objectAC.getElementsByClassName("article")
             let lastArticle = articles[articles.length - 1];
             let firstArticle = articles[0];
             if(location.pathname == "/buscar"){
-                if(this.firstChild.nextSibling.classList.contains("aside_container")){
+                if(objectAC.firstChild.nextSibling.classList.contains("aside_container")){
                     return;
                 }
             }
@@ -38,14 +55,10 @@ if(document.getElementById("articles-container") != null){
             if(newContent == ""){
                 newContent = "<article class='article' data-eof='1'><h3>No hay nada más que mostrar...</h3></article>";
             }
-            this.innerHTML = this.innerHTML + newContent;
-            this.dispatchEvent(AJAXLoad);
-        }
-    });
+            objectAC.innerHTML = objectAC.innerHTML + newContent;
+            objectAC.dispatchEvent(AJAXLoad);
 
-    articles_container.addEventListener("AJAXLoad", e => {
-        follow_event();
-    });
+        }
+    }
 }
 
-follow_event()

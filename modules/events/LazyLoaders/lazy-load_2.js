@@ -1,8 +1,21 @@
 if(document.getElementById("inpRdbtnProdiv2").checked && document.getElementById("articles-container") != null){
     let articles_container = document.getElementById("articles-container");
     articles_container.addEventListener("scroll", async function (){
-        if(this.offsetHeight + this.scrollTop >= this.scrollHeight){
-            let articles = this.getElementsByClassName("article")
+        await lz_load_2(articles_container);
+    });
+    articles_container.addEventListener("touchmove", async function (){
+        await lz_load_2(articles_container);
+    });
+    articles_container.addEventListener("touchstart", async function (){
+        await lz_load_2(articles_container);
+    });
+    articles_container.addEventListener("touchend", async function (){
+        await lz_load_2(articles_container);
+    });
+
+    async function lazy_load_2(articles_container){
+        if(articles_container.offsetHeight + articles_container.scrollTop >= articles_container.scrollHeight){
+            let articles = articles_container.getElementsByClassName("article")
             let lastArticle = articles[articles.length - 1];
             if(parseInt(lastArticle.dataset.eof) == 1){
                 return;
@@ -21,14 +34,14 @@ if(document.getElementById("inpRdbtnProdiv2").checked && document.getElementById
                 if(newContent == ""){
                     newContent = "<article class='article' data-eof='1'><h3>No hay nada más que mostrar...</h3></article>";
                 }
-                this.innerHTML = this.innerHTML + newContent;
-                this.dispatchEvent(AJAXLoad);
+                articles_container.innerHTML = articles_container.innerHTML + newContent;
+                articles_container.dispatchEvent(AJAXLoad);
             } else {
-                this.innerHTML = this.innerHTML + "<article class='article' data-eof='1'><h3>No hay nada más que mostrar...</h3></article>";
-                this.dispatchEvent(AJAXLoad);
+                articles_container.innerHTML = articles_container.innerHTML + "<article class='article' data-eof='1'><h3>No hay nada más que mostrar...</h3></article>";
+                articles_container.dispatchEvent(AJAXLoad);
             }
         }
-    });
+    }
 
     articles_container.addEventListener("AJAXLoad", e=> {
         article_buttons_events()

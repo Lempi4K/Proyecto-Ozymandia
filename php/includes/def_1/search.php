@@ -49,7 +49,7 @@
                                         </li>
         HTML;
 
-        $query = "select * from SUBETIQUETAS where LABEL_ID = 2 and SUBLABEL_ID != 0";
+        $query = "select * from SUBETIQUETAS where LABEL_ID = 2 and SUBLABEL_ID != 0 and ESTADO = 1";
         try{
             $db_handler =  new S_MySQL("USER_DATA");
             $cursor = $db_handler->console($query);

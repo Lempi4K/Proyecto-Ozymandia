@@ -6,9 +6,22 @@ function hide_show_menu(e){
     let inpChkbxUser = e.target;
     let user_hide_menu = document.getElementById("user-hide-menu");
     if(inpChkbxUser.checked){
-        user_hide_menu.style.display = "block";
+        document.getElementById("user-hide-menu").style.display = "block";
+        let keyframe = [
+            {filter : "opacity(0)"},
+            {filter : "opacity(1)"}
+        ];
+        let animateOptions= {
+            duration: 100,
+            iterations: 1,
+            easing: "ease-in-out",
+            fill: "forwards"
+        };
+        document.getElementById("user-hide-menu").animate(keyframe, animateOptions).
+        onfinish = () => {
+        }
     } else{
-        user_hide_menu.style.display = "none";
+        blur_menu(e)
     }
 }
 
@@ -17,7 +30,20 @@ function hide_show_menu(e){
  * @param event
 */
 function blur_menu(e){
-    document.getElementById("user-hide-menu").style.display = "none";
+    let keyframe = [
+        {filter : "opacity(1)"},
+        {filter : "opacity(0)"}
+    ];
+    let animateOptions= {
+        duration: 100,
+        iterations: 1,
+        easing: "ease-in-out",
+        fill: "forwards"
+    };
+    document.getElementById("user-hide-menu").animate(keyframe, animateOptions).
+    onfinish = () => {
+        document.getElementById("user-hide-menu").style.display = "none";
+    }
     document.getElementById("inpChkbxUser").checked = false;
 }
 

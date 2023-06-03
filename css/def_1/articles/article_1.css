@@ -14,7 +14,6 @@
 .article_1_head > img{
     width: 70px;
     position: relative;
-    top: 8px;
     float: left;
     margin-right: 10px;
     z-index: 2;

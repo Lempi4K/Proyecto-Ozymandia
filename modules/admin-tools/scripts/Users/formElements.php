@@ -78,7 +78,7 @@
             HTML;
             //Poner conforme permisos la query
             //$cursor = $sql->console("select * from PERMISOS where PERM_ID != 0 and PERM_ID > {$user->prm}");
-            $cursor = $sql->console("select * from PERMISOS where PERM_ID != 0");
+            $cursor = $sql->console("select * from PERMISOS where PERM_ID != -1");
             foreach($cursor as $item){
                 $selected = "";
                 if((int) $platformData["ROL"] == (int) $item['PERM_ID']){
@@ -199,7 +199,7 @@
 
             $HTML .= <<< HTML
                 <div class="frmInpText">
-                    <input type="text" id="inpTxt{$item['COLUMN_NAME']}" placeholder="{$item['COLUMN_NAME']}" name="{$item['COLUMN_NAME']}" required pattern="[A-Za-z0-9 -_]{1,{$item['CHARACTER_MAXIMUM_LENGTH']}}" value="{$personalData[$item['COLUMN_NAME']]}">
+                    <input type="text" id="inpTxt{$item['COLUMN_NAME']}" placeholder="{$item['COLUMN_NAME']}" name="{$item['COLUMN_NAME']}" required pattern="{$ozy_tool->regex_NOT}{1,{$item['CHARACTER_MAXIMUM_LENGTH']}}" value="{$personalData[$item['COLUMN_NAME']]}">
                     <label for="inpTxt{$item['COLUMN_NAME']}" class="no_select">{$item['COLUMN_NAME']}</label>
                 </div>
             HTML;

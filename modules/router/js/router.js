@@ -5,6 +5,10 @@
 function route(item){
     window.history.pushState({}, "xd", item.dataset.url);
     handleLocation();
+
+
+    blur_menu(1);
+
 };
 
 /**
@@ -103,7 +107,6 @@ async function handleLocation(container = "replazable-content", section = (getPa
     if(! await AJAXrequestChckToken(window.location.pathname)){
         document.getElementById("block-display-main").style.display = "flex";
         setInterval(() => {location.href="/inicio"}, 2800);
-        console.log("Router");
     } else{
         let idLoadAnimation = container === "replazable-content" ? "charging-display-content" : "charging-display-container_sub";
         console.log(idLoadAnimation);
@@ -118,9 +121,12 @@ async function handleLocation(container = "replazable-content", section = (getPa
         scriptHandler(central_content, central_content.querySelectorAll("script"));
         central_content.dispatchEvent(AJAXLoad);
         
-        //Script Charger
+        document.getElementById(container).scroll({
+                top: 0,
+            }
+        )
+        document.getElementById(container).scrollTop;
 
-        console.log("BRUH");
         ChargingAnimationEnd_1(idLoadAnimation);
 
     }

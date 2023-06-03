@@ -11,7 +11,8 @@
 
         //Funciones implementadas
         public function createHTML(){
-            $query = "select USER_ID, USER, PASS from CREDENCIALES";
+            $query = "
+            select USUARIOS.USER_ID, USER, PASS from CREDENCIALES, USUARIOS where usuarios.ESTADO = 1 and CREDENCIALES.USER_ID = USUARIOS.USER_ID order by CREDENCIALES.USER_ID asc;";
             try{
                 $dbh = new S_MySQL("USER_DATA");
                 $cursor = $dbh->console($query);

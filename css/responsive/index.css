@@ -17,6 +17,9 @@
 }
 
 @media screen and (max-width: 1000px){
+    .aaArticle .aaButtonsContainer{
+        filter: opacity(1);
+    }
     #search-nav{
         display: block;
     }
@@ -34,6 +37,10 @@
 }
 
 @media screen and (max-width: 500px){
+    .aaArticle .aaButtonsContainer{
+        filter: opacity(1);
+    }
+
     .main-container{
         flex-direction: column-reverse;
         overflow: hidden;

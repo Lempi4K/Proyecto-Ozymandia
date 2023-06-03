@@ -29,7 +29,8 @@
                         <div class="logo">
                             <a href="/inicio" >
                                 <img src="/src/img/logo/logo.png" alt="">
-                                <p class="no_select">CBTIS 114</p>
+                                <img src="/src/img/logo/text.png" alt="">
+                                <!--<p class="no_select">P. Ozymandia</p>-->
                             </a>
                         </div>
                         <div class="user" id="user-FoBl">
@@ -70,7 +71,7 @@
                                         <li>
                                             <a class="c_click no_select frame_change" data-url="herramientas">
                                                 <i class="fa-solid fa-screwdriver-wrench"></i>
-                                                Ozymandia's Admin Tools
+                                                Ozymandia's AdminTools
                                             </a>
                                         </li>
                 HTML;
@@ -87,7 +88,7 @@
                 HTML;
             }
 
-            if($user->hasPerm("Ozy.Login.see")){
+            if($user->hasPerm("Ozy.Login.see") && !$user->hasPerm("Ozy.*")){
                 $HTML .= <<< HTML
                                         <li>
                                             <a class="c_click no_select" href="/iniciar-sesion">
@@ -430,6 +431,18 @@
             $HTML .= <<< HTML
                 </div>
             HTML;
+
+            $ozy_tool = new OzyTool();
+            if($ozy_tool->screen_saver){
+                $HTML .= <<< HTML
+                    <script src="/modules/screensaver/screensaver.js"></script>
+                    <div class="screenSaver">
+                        <video autoplay muted loop>
+                            <source src="/src/vid/Proyecto-Ozymandia.mp4">
+                        </video>
+                    </div>
+                HTML;
+            }
 
             return $HTML;
         }
