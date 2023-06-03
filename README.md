@@ -1,4 +1,22 @@
 [![Proyecto Ozymandia](https://i.imgur.com/dGSrHUf.png)](https://github.com/Lempi4K/Proyecto-Ozymandia)
+# **Oficial**
+## _v1.0_
+### Cambios
+- Ozymandia´s AdminTools
+    - Prueba la nueva herramienta orientado a administración
+    - Se agregó el apartado de "Etiquetas"
+    - Se agregó el apartado de "Roles"
+    - Cambios mínimos en "Approve Articles"
+- Versión totalmente estable
+    - Solución de varios errores
+    - Refactoring del código
+    - Optimización de tiempos de carga
+- Programa "Database-Friendly"
+    - Las posibilidades de tener registros nulos se redujeron
+- Documentación experimental del proyecto
+    - Manual de Sistemas
+    - Informe de Investigación
+
 
 # **Beta 3**
 ## _v0.3.1_

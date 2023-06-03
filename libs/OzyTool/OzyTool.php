@@ -76,7 +76,7 @@ class OzyTool{
      * Constante que indica si se visualiza el salva-pantallas
      * @var booleam
      */
-    public $screen_saver = true;
+    public $screen_saver = false;
 
     public $regex_NOT = "[^`;=]";
 
